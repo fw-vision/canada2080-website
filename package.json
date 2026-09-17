@@ -1,0 +1,24 @@
+{
+  "name": "canada2080-website",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Public website for Canada2080, a national initiative on Canadian-controlled capability.",
+  "type": "module",
+  "packageManager": "pnpm@11.5.2",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "check": "astro check",
+    "preview": "astro preview"
+  },
+  "engines": {
+    "node": ">=20.18.0"
+  },
+  "devDependencies": {
+    "astro": "^5.13.5",
+    "typescript": "^5.7.3"
+  },
+  "dependencies": {
+    "@astrojs/check": "0.9.6"
+  }
+}

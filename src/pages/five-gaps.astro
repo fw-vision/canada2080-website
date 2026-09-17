@@ -1,0 +1,12 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import EvidenceLabel from '../components/EvidenceLabel.astro';
+import { fiveGaps } from '../data/site';
+---
+
+<BaseLayout title="Five Gaps | Canada2080" description="Francis Wang's Five Canadian Systemic Gaps form Canada2080's public problem spine.">
+  <section class="page-hero shell"><p class="eyebrow">Problem spine / 01</p><h1>Five Gaps</h1><p>Canada2080 uses five linked systemic gaps to examine why strong inputs do not always become Canadian-controlled capability.</p></section>
+  <section class="section shell"><div class="reading-column wide-copy"><EvidenceLabel label="Hypothesis" /><p>The gaps reinforce one another. Weak procurement and patient capital can reduce scale-up opportunities; thin domestic scale-up roles can weaken talent retention; fragmented governance can prevent durable response. This is a systems hypothesis, not proof of one deterministic chain.</p></div></section>
+  <section class="section shell"><ol class="detail-list">{fiveGaps.map((gap) => <li><span class="gap-number">{gap.number}</span><div><EvidenceLabel label={gap.evidenceClass} /><h2>{gap.title}</h2><p>{gap.summary}</p></div></li>)}</ol></section>
+  <section class="section shell split-section"><div><p class="eyebrow">Definition</p><h2>Selective capability in an open economy.</h2></div><div class="reading-column"><p>Economic sovereignty is the ability to create, own, govern, finance, deploy, repair, and renew essential capability from Canada while participating in trusted international exchange. It does not mean domestic ownership of everything.</p>        <a class="text-link" href="/missions">Read the mission response <span aria-hidden="true">↗</span></a></div></section>
+</BaseLayout>

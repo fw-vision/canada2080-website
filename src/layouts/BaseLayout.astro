@@ -1,0 +1,55 @@
+---
+import '../styles/global.css';
+import SiteFooter from '../components/SiteFooter.astro';
+import SiteHeader from '../components/SiteHeader.astro';
+import AccessGate from '../components/AccessGate.astro';
+
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+const canonicalPath = Astro.url.pathname === '/' ? '/' : Astro.url.pathname.replace(/\/$/, '');
+const canonical = new URL(canonicalPath, Astro.site);
+---
+
+<!doctype html>
+<html lang="en-CA">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta name="theme-color" content="#f4f0e6" />
+    <meta name="robots" content="noindex, nofollow" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Birthstone&family=Caveat:wght@500&display=swap" rel="stylesheet" />
+    <script is:inline>
+      (() => {
+        try {
+          if (localStorage.getItem('canada2080.preview.access') === 'granted') {
+            document.documentElement.classList.add('preview-unlocked');
+          }
+        } catch {
+          try {
+            if (sessionStorage.getItem('canada2080.preview.access') === 'granted') {
+              document.documentElement.classList.add('preview-unlocked');
+            }
+          } catch {}
+        }
+      })();
+    </script>
+    <title>{title}</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+    <AccessGate />
+    <div class="protected-site">
+      <SiteHeader />
+      <main id="main-content"><slot /></main>
+      <SiteFooter />
+    </div>
+  </body>
+</html>

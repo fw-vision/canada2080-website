@@ -1,0 +1,12 @@
+---
+interface Props {
+  label: string;
+}
+
+const { label } = Astro.props;
+---
+
+<span class="evidence-label" data-evidence={label.toLowerCase().replaceAll(' ', '-')}>
+  <span aria-hidden="true">●</span>
+  {label}
+</span>

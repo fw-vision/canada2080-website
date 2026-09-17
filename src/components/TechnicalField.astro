@@ -1,0 +1,17 @@
+---
+interface Props {
+  label?: string;
+}
+
+const { label = 'Capability field' } = Astro.props;
+---
+
+<div class="technical-field" aria-hidden="true">
+  <span class="technical-label">{label}</span>
+  <div class="technical-orbit orbit-one"></div>
+  <div class="technical-orbit orbit-two"></div>
+  <div class="technical-axis"></div>
+  <div class="technical-node node-one"></div>
+  <div class="technical-node node-two"></div>
+  <div class="technical-node node-three"></div>
+</div>

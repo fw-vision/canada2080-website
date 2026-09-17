@@ -1,0 +1,12 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import EvidenceLabel from '../components/EvidenceLabel.astro';
+import { missions } from '../data/site';
+---
+
+<BaseLayout title="Missions | Canada2080" description="Six regional missions and national common services for Canadian capability.">
+  <section class="page-hero shell"><p class="eyebrow">Strategic response / 02</p><h1>Missions</h1><p>Six regional missions create a public frame for connecting evidence, long-horizon capital, institutions, demand, infrastructure, and accountability.</p></section>
+  <section class="section shell"><div class="reading-column wide-copy"><EvidenceLabel label="Aspiration" /><p>The mission portfolio is a proposed direction, not a forecast or a commitment by any named organisation. Delivery should be regional and differentiated, with common services that increase learning and public value.</p></div></section>
+  <section class="section shell"><ol class="mission-detail-list">{missions.map(([number, title, summary]) => <li><span>{number}</span><h2>{title}</h2><p>{summary}</p></li>)}</ol></section>
+  <section class="section section-inverse"><div class="shell split-section"><div><p class="eyebrow">National common services</p><h2>Build the conditions that let regional work compound.</h2></div><div class="reading-column"><p>Patient capital, standards, procurement, secure compute, export support, data governance, and measurement are common services proposed across the mission portfolio.</p><p>Every strategic project should clarify additionality, control rights, demand, local learning, infrastructure capacity, trusted partners, public return, Indigenous rights, labour standards, affordability, and ecological limits.</p></div></div></section>
+</BaseLayout>

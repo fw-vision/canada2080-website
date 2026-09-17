@@ -1,0 +1,26 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import EvidenceLabel from '../../components/EvidenceLabel.astro';
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  entry: CollectionEntry<'research'>;
+}
+
+export async function getStaticPaths() {
+  const entries = await getCollection('research', (item: { data: { status: string; draft: boolean } }) => item.data.status === 'published' && !item.data.draft);
+  return entries.map((entry: CollectionEntry<'research'>) => ({ params: { slug: entry.id }, props: { entry } }));
+}
+
+const { entry } = Astro.props as Props;
+const { Content } = await render(entry);
+---
+
+<BaseLayout title={`${entry.data.title} | Canada2080`} description={entry.data.description}>
+  <article class="article shell">
+    <header class="article-header"><p class="eyebrow">Research entry</p><EvidenceLabel label={entry.data.evidenceClass} /><h1>{entry.data.title}</h1><p class="article-deck">{entry.data.description}</p><p class="entry-date">Published {entry.data.publishedAt.toLocaleDateString('en-CA', { year: 'numeric', month: 'long', day: 'numeric' })}</p></header>
+    <div class="article-body"><Content /></div>
+    <footer class="article-sources"><h2>Sources</h2><ul>{entry.data.sources.map((source: string) => <li>{source}</li>)}</ul></footer>
+  </article>
+</BaseLayout>

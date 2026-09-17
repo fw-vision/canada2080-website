@@ -1,0 +1,21 @@
+# AI session files (ephemeral, never committed)
+.opencode/
+
+# Dependencies and build output
+node_modules/
+dist/
+.astro/
+
+# Deployment and debug output
+.vercel/
+
+# Environment and editor state
+.env
+.env.local
+.env.*.local
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+.vscode/settings.json
+.idea/

@@ -1,0 +1,15 @@
+---
+import { navigation } from '../data/site';
+import DynamicWordmark from './DynamicWordmark.astro';
+---
+
+  <header class="site-header">
+    <div class="shell header-inner">
+      <DynamicWordmark />
+      <nav aria-label="Primary navigation">
+        <ul class="nav-list">
+          {navigation.map((item) => <li><a href={item.href}>{item.label}</a></li>)}
+        </ul>
+      </nav>
+    </div>
+  </header>

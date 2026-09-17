@@ -6,6 +6,10 @@
 
 Canada2080 is a public national initiative for investors, institutions, and policy leaders building Canadian-controlled capability for a changing planet. The site introduces Francis Wang's Five Canadian Systemic Gaps, six regional missions, and an evidence-led public research programme.
 
+## Canonical context
+
+Before changing positioning, evidence claims, missions, or public copy, read `../../../04_Execute/Canada2080/README.md` and the relevant files it routes to. The website repository remains authoritative for implementation and deployment.
+
 ## Current focus
 
 Launch MVP. Build an accessible, static public site with approved working copy, evidence labels, and a research publishing path. CMS integration, mailing-list delivery, analytics, and bilingual publishing remain out of scope until a separately accepted decision.

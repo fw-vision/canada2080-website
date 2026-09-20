@@ -128,9 +128,11 @@ ol, ul { margin: 0; padding: 0; }
 
 .hero-copy .eyebrow { color: var(--horizon); }
 .hero-copy h1 {
-  max-width: 14ch;
+  max-width: min(100%, 46rem);
   margin-bottom: 0.85rem;
-  font-size: clamp(2.2rem, 5vw, 4rem);
+  font-size: clamp(1.55rem, 3vw, 2.55rem);
+  line-height: 1.08;
+  white-space: pre-line;
   text-shadow: 0 8px 32px rgb(0 0 0 / 35%);
 }
 

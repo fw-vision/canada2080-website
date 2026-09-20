@@ -19,7 +19,7 @@ The public site publishes ten connected areas:
 | About | Initiative scope, provenance, and publication standards |
 | Join | Clear routes for investors, institutions, policy leaders, operators, and researchers |
 
-The launch line is **Build what the future requires**. The identity uses a bold 2080 mark with a maple leaf held inside the final zero.
+The launch line is **Actualizing an abundant, resilient, sustainable, and sovereign future for Canada**. The identity uses a bold 2080 mark with a maple leaf held inside the first zero.
 
 ## Stack
 

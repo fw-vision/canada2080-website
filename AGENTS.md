@@ -40,7 +40,7 @@ Public launch. Deliver an accessible, static advocacy, research, events, and jou
 - Attribute the Five Canadian Systemic Gaps to Francis Wang's 2025 DDes proposal, *Foresight-Driven Innovation*.
 - Never turn climate exposure estimates into displacement, migration, or Canada-destination claims.
 - Treat Indigenous rights, authorities, knowledge, images, data, and territorial references as requiring appropriate consent and protocol.
-- The launch line is "Build what the future requires". The 2080 horizon remains an aspiration and decision boundary, not a forecast.
+- The launch line is "Actualizing an abundant, resilient, sustainable, and sovereign future for Canada". The 2080 horizon remains an aspiration and decision boundary, not a forecast.
 - Present academic contributors as independent perspectives. Participation does not imply endorsement.
 
 ### Development and testing

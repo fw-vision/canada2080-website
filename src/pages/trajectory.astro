@@ -1,0 +1,21 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import EvidenceLabel from '../components/EvidenceLabel.astro';
+import TrajectoryTimeline from '../components/TrajectoryTimeline.astro';
+import { offramps } from '../data/site';
+---
+
+<BaseLayout title="Trajectory | Canada2080" description="The Canada2080 preferred trajectory, indicators, scenarios, and failure paths from 2026 to 2080.">
+  <section class="page-hero page-hero-dark">
+    <div class="shell">
+      <p class="eyebrow">Preferred future / 2026-2080</p>
+      <h1>The long horizon has a present tense.</h1>
+      <p>Canada2080 advocates a measurable trajectory from evidence and governed demonstrations to repeatable production, regional compounding, global leadership, and institutional renewal.</p>
+      <EvidenceLabel label="Aspiration" />
+    </div>
+  </section>
+  <section class="section section-horizon"><div class="shell"><TrajectoryTimeline /></div></section>
+  <section class="section shell statement-section"><div><p class="eyebrow">Near-term action</p></div><div><h2>Ninety days, one year, three years, ten years.</h2><ol class="numbered-actions"><li><strong>90 days</strong><span>Publish baselines, choose one demonstration, name owners, and secure lead-user questions.</span></li><li><strong>One year</strong><span>Establish a public scorecard, mission working groups, and one governed demonstration agreement.</span></li><li><strong>Three years</strong><span>Show a complete path from evidence and rights through capital, procurement, operation, and learning.</span></li><li><strong>Ten years</strong><span>Demonstrate repeatability across multiple regions and missions.</span></li></ol></div></section>
+  <section class="section section-dark"><div class="shell"><div class="section-heading"><div><p class="eyebrow">Offramps to avoid</p><h2>Ambition needs early warning signals.</h2></div><p>Canada2080 will track failure paths alongside the preferred trajectory. Advocacy becomes credible when it identifies what could go wrong.</p></div><div class="offramp-grid">{offramps.map(([title, summary], index) => <article><span>0{index + 1}</span><h3>{title}</h3><p>{summary}</p></article>)}</div></div></section>
+  <section class="section shell split-section"><div><p class="eyebrow">Leadership, defined</p><h2>Strategic choice and public value.</h2></div><div class="reading-column"><EvidenceLabel label="Aspiration" /><p>Global leadership should be tested through productivity, quality of life, secure energy and compute, domestic value capture, resilience, ecological performance, trusted contribution, and the ability to redirect essential systems.</p><p>Any comparison with the United States requires a defined measure and a trajectory that makes the comparison useful rather than symbolic.</p></div></section>
+</BaseLayout>

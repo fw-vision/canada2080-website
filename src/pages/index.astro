@@ -1,48 +1,47 @@
 ---
+import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import ContentCard from '../components/ContentCard.astro';
 import EvidenceLabel from '../components/EvidenceLabel.astro';
-import TechnicalField from '../components/TechnicalField.astro';
+import HeroShowcase from '../components/HeroShowcase.astro';
+import TrajectoryTimeline from '../components/TrajectoryTimeline.astro';
 import { fiveGaps, missions } from '../data/site';
+
+const research = (await getCollection('research', ({ data }) => data.status === 'published' && !data.draft))[0];
+const journal = (await getCollection('journal', ({ data }) => !data.draft)).sort((a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime())[0];
 ---
 
 <BaseLayout
-  title="Canada2080 | Capability for a changing planet"
-  description="Canada2080 is a public national initiative for Canadian-controlled capability, economic sovereignty, and sustainable strategic innovation."
+  title="Canada2080 | Build what the future requires"
+  description="Canada2080 develops the evidence, missions, and coalitions for Canada to become a major economic power by 2080, with the capability to surpass the United States through sovereign industry and public value."
 >
-  <section class="hero shell">
-    <div class="hero-copy">
-      <p class="eyebrow">Canada2080 / Public national initiative</p>
-      <h1>Capability for a<br />changing planet.</h1>
-      <p class="hero-deck">Canada2080 helps investors, institutions, and policy leaders build the linked capabilities required for Canadian economic sovereignty and global leadership by 2080.</p>
-      <div class="action-row">
-        <a class="button button-primary" href="#five-gaps">Read the problem</a>
-        <a class="text-link" href="/join">Join the work <span aria-hidden="true">↗</span></a>
-      </div>
-      <p class="provisional-note">Working tagline pending stakeholder testing.</p>
-    </div>
-    <TechnicalField label="2080 horizon / system field" />
-  </section>
+  <HeroShowcase
+    headline="Build what the future requires."
+    deck="By 2080, Canada can become one of the world's major economic powers, with the capability to surpass the United States through sovereign industry, research, capital, and public value built at home."
+    primaryHref="/trajectory"
+    primaryLabel="Explore the trajectory"
+    secondaryHref="/events/2026-kickoff"
+    secondaryLabel="September 28 kickoff"
+  />
 
-  <section class="section shell split-section" aria-labelledby="problem-title">
+  <section class="section shell statement-section" aria-labelledby="ambition-title">
     <div>
-      <p class="eyebrow">The problem spine</p>
-      <h2 id="problem-title">Canada has meaningful strengths. It needs stronger conversion and control.</h2>
+      <p class="eyebrow">The ambition</p>
+      <EvidenceLabel label="Aspiration" />
     </div>
-    <div class="reading-column">
-      <EvidenceLabel label="Qualified claim" />
-      <p>Canada has research, talent, infrastructure, and market assets. The connected challenge is turning priority knowledge into Canadian-controlled production, learning, demand, and reinvestment.</p>
-      <p>Economic sovereignty means the practical ability to make, finance, govern, repair, improve, and redirect essential capabilities from Canada while trading and collaborating internationally.</p>
-        <a class="text-link" href="/five-gaps">Explore the Five Gaps <span aria-hidden="true">↗</span></a>
+    <div>
+      <h2 id="ambition-title">A country with the capability to choose its future.</h2>
+      <p class="lead">By 2080, Canada can become an economically sovereign major power whose strategic capabilities are researched, financed, governed, operated, repaired, and renewed through Canadian institutions, with the capability to surpass the United States in the arenas Canada chooses to lead.</p>
     </div>
   </section>
 
-  <section id="five-gaps" class="section shell gaps-section" aria-labelledby="gaps-title">
+  <section id="five-gaps" class="section shell" aria-labelledby="gaps-title">
     <div class="section-heading">
       <div>
-        <p class="eyebrow">Francis Wang's Five Canadian Systemic Gaps</p>
-        <h2 id="gaps-title">Five linked constraints on capability.</h2>
+        <p class="eyebrow">The problem spine</p>
+        <h2 id="gaps-title">Five gaps between knowledge and capability.</h2>
       </div>
-      <p>Originated in Francis Wang's 2025 DDes research proposal, <em>Foresight-Driven Innovation</em>. The gaps are a problem frame for public research and action.</p>
+      <p>Francis Wang first formulated the Five Canadian Systemic Gaps in his 2025 DDes research proposal, <em>Foresight-Driven Innovation</em>. Together they describe a conversion-and-control problem.</p>
     </div>
     <ol class="gap-list">
       {fiveGaps.map((gap) => (
@@ -53,43 +52,74 @@ import { fiveGaps, missions } from '../data/site';
         </li>
       ))}
     </ol>
+    <a class="button button-outline" href="/five-gaps">Study the Five Gaps</a>
   </section>
 
-  <section class="section section-inverse" aria-labelledby="missions-title">
+  <section class="section section-horizon" aria-labelledby="trajectory-title">
     <div class="shell">
       <div class="section-heading">
         <div>
-          <p class="eyebrow">A mission portfolio</p>
-          <h2 id="missions-title">Regional delivery. National common services.</h2>
+          <p class="eyebrow">The preferred trajectory</p>
+          <h2 id="trajectory-title">Establish. Demonstrate. Compound. Lead. Renew.</h2>
         </div>
-        <p>Canada2080 proposes six missions to test where evidence, capital, institutions, demand, and public accountability can connect.</p>
+        <p>Canada2080 links present actions to gates that can be measured and revised across five horizons.</p>
+      </div>
+      <TrajectoryTimeline />
+      <a class="button button-dark" href="/trajectory">See the path and offramps</a>
+    </div>
+  </section>
+
+  <section class="section section-dark" aria-labelledby="missions-title">
+    <div class="shell">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Six mission fields</p>
+          <h2 id="missions-title">Regional delivery. National capability.</h2>
+        </div>
+        <p>Each mission connects evidence, rights, demand, infrastructure, long-horizon capital, skilled work, and public accountability.</p>
       </div>
       <ol class="mission-grid">
         {missions.map(([number, title, summary]) => (
           <li><span>{number}</span><h3>{title}</h3><p>{summary}</p></li>
         ))}
       </ol>
-        <a class="button button-light" href="/missions">Explore the missions</a>
+      <a class="button button-light" href="/missions">Explore the missions</a>
     </div>
   </section>
 
-  <section class="section shell split-section" aria-labelledby="climate-title">
+  <section class="section shell event-feature" aria-labelledby="event-title">
+    <div class="event-date" aria-hidden="true"><span>SEP</span><strong>28</strong><span>2026</span></div>
     <div>
-      <p class="eyebrow">Preparedness and managed growth</p>
-      <h2 id="climate-title">Prepare capabilities before conditions demand them.</h2>
-    </div>
-    <div class="reading-column">
-      <EvidenceLabel label="Scenario" />
-      <p>Under defined climate and demographic scenarios, billions of people may be exposed to less favourable climatic conditions. Exposure is distinct from displacement, migration, or movement to Canada.</p>
-      <p>Canada2080 tests a preparedness approach: climate-safe housing, energy, water, services, lawful pathways, and resilient infrastructure in existing receiving regions, with rights-holder-supported regional capacity where appropriate.</p>
+      <p class="eyebrow">Featured gathering</p>
+      <h2 id="event-title">The capability we choose to build.</h2>
+      <p class="lead">An invitation-only kickoff release and founding conversation with networking, a focused 60-minute programme, independent academic perspectives, and commitment-focused follow-up.</p>
+      <p>Private time, venue, accessibility, and arrival details will be issued directly to confirmed guests when finalised.</p>
+      <a class="button button-signal" href="/events/2026-kickoff">View the programme</a>
     </div>
   </section>
 
-  <section class="section shell join-panel" aria-labelledby="join-title">
-    <div>
-      <p class="eyebrow">An invitation to contribute</p>
-      <h2 id="join-title">Choose one capability that Canada must make, finance, govern, repair, improve, and renew.</h2>
+  <section class="section shell" aria-labelledby="record-title">
+    <div class="section-heading">
+      <div>
+        <p class="eyebrow">The public record</p>
+        <h2 id="record-title">Evidence people can inspect. Progress people can check.</h2>
+      </div>
+      <p>Research carries visible evidence classes. The journal records events, interpretations, corrections, reflections, and accountability.</p>
     </div>
-    <div><p>Commit evidence, capital, institutional capacity, or policy action. Canada2080 convenes work around specific missions and accountable public value.</p>        <a class="button button-primary" href="/join">Find your role</a></div>
+    <div class="content-grid">
+      {research && <ContentCard eyebrow={`Research / ${research.data.evidenceClass}`} title={research.data.title} description={research.data.description} href={`/research/${research.id.replace(/\.md$/, '')}`} linkLabel="Read the research" />}
+      {journal && <ContentCard eyebrow="Journal / Announcement" title={journal.data.title} description={journal.data.description} href={`/journal/${journal.id.replace(/\.md$/, '')}`} linkLabel="Read the journal" />}
+    </div>
+  </section>
+
+  <section class="section section-signal" aria-labelledby="join-title">
+    <div class="shell statement-section">
+      <div><p class="eyebrow">The invitation</p></div>
+      <div>
+        <h2 id="join-title">Choose one capability Canada must build and renew.</h2>
+        <p class="lead">Contribute evidence, capital, institutional capacity, policy action, operating knowledge, regional leadership, or independent evaluation.</p>
+        <a class="button button-dark" href="/join">Find your role</a>
+      </div>
+    </div>
   </section>
 </BaseLayout>

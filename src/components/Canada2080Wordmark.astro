@@ -1,0 +1,55 @@
+---
+import YearWordmark from './YearWordmark.astro';
+
+interface Props {
+  variant?: 'full' | 'year';
+  tone?: 'default' | 'inverse' | 'hero' | 'nav';
+  large?: boolean;
+}
+
+const { variant = 'year', tone = 'nav', large = false } = Astro.props;
+const yearTone = tone === 'hero' || tone === 'inverse' ? tone : 'nav';
+---
+
+<a
+  class:list={['canada2080-wordmark', `wordmark-${variant}`, `wordmark-${tone}`, { 'wordmark-large': large }]}
+  href="/"
+  aria-label="Canada2080 home"
+>
+  <span class="wordmark-year">
+    <YearWordmark tone={yearTone} />
+  </span>
+</a>
+
+<style>
+  .canada2080-wordmark {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+  }
+
+  .canada2080-wordmark:hover {
+    opacity: 0.88;
+  }
+
+  .wordmark-year {
+    display: block;
+    width: 6.75rem;
+  }
+
+  .wordmark-year :global(.year-wordmark) {
+    width: 100%;
+  }
+
+  /* Hero mark: double previous size (was max 52rem) */
+  .wordmark-large {
+    display: flex;
+    justify-content: center;
+    width: min(100%, 104rem);
+    margin-inline: auto;
+  }
+
+  .wordmark-large .wordmark-year {
+    width: min(100%, 104rem);
+  }
+</style>

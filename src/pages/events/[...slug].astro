@@ -1,0 +1,41 @@
+---
+import { getCollection, render } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+interface Props { entry: CollectionEntry<'events'>; }
+
+export async function getStaticPaths() {
+  const entries = await getCollection('events', ({ data }) => !data.draft);
+  return entries.map((entry) => ({ params: { slug: entry.id.replace(/\.md$/, '') }, props: { entry } }));
+}
+
+const { entry } = Astro.props as Props;
+const { Content } = await render(entry);
+const statusLabel = entry.data.status.replaceAll('-', ' ');
+---
+
+<BaseLayout title={`${entry.data.title} | Canada2080`} description={entry.data.description}>
+  <article>
+    <header class="event-hero page-hero-dark">
+      <div class="shell event-hero-grid">
+        <div>
+          <p class="eyebrow">September 28, 2026 / {statusLabel}</p>
+          <h1>{entry.data.title}</h1>
+          <p>{entry.data.description}</p>
+        </div>
+        <dl class="event-facts">
+          <div><dt>Date</dt><dd>{entry.data.date.toLocaleDateString('en-CA', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' })}</dd></div>
+          <div><dt>Format</dt><dd>{entry.data.format}</dd></div>
+          <div><dt>Duration</dt><dd>{entry.data.duration}</dd></div>
+          {entry.data.time && <div><dt>Time</dt><dd>{entry.data.time}</dd></div>}
+          {entry.data.location && <div><dt>Location</dt><dd>{entry.data.location}</dd></div>}
+        </dl>
+      </div>
+    </header>
+    <section class="section shell event-body"><div class="article-body"><Content /></div></section>
+    <section class="section section-horizon"><div class="shell"><div class="section-heading"><div><p class="eyebrow">Two-hour format</p><h2>A precise hour of speaking between two periods of connection.</h2></div><p>The spoken programme totals exactly 60 minutes. Private time and venue details will be issued to confirmed guests.</p></div><ol class="event-itinerary">{entry.data.itinerary.map((item) => <li><span>{item.time}</span><h3>{item.title}</h3><p>{item.duration}</p></li>)}</ol></div></section>
+    <section class="section shell"><div class="section-heading"><div><p class="eyebrow">Academic perspectives</p><h2>Short contributions that test the work.</h2></div><p>Participation is presented as an independent perspective and does not imply endorsement of Canada2080, its claims, partners, or future projects.</p></div><div class="speaker-grid">{entry.data.speakers.map((speaker) => <article><p class="eyebrow">{speaker.status}</p><h3>{speaker.name}</h3><p>{speaker.institution}</p><p>{speaker.lane}</p></article>)}</div></section>
+    <section class="section section-signal"><div class="shell statement-section"><div><p class="eyebrow">Invitation-only</p></div><div><h2>Attendance is confirmed directly.</h2><p class="lead">The small guest list is being assembled across policy, capital, research, institutions, operations, community leadership, and media. Private logistics will be sent when finalised.</p><a class="button button-dark" href="/join">Explore contribution roles</a></div></div></section>
+  </article>
+</BaseLayout>

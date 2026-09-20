@@ -2,7 +2,6 @@
 import '../styles/global.css';
 import SiteFooter from '../components/SiteFooter.astro';
 import SiteHeader from '../components/SiteHeader.astro';
-import AccessGate from '../components/AccessGate.astro';
 
 interface Props {
   title: string;
@@ -21,35 +20,19 @@ const canonical = new URL(canonicalPath, Astro.site);
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
-    <meta name="theme-color" content="#f4f0e6" />
-    <meta name="robots" content="noindex, nofollow" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Birthstone&family=Caveat:wght@500&display=swap" rel="stylesheet" />
-    <script is:inline>
-      (() => {
-        try {
-          if (localStorage.getItem('canada2080.preview.access') === 'granted') {
-            document.documentElement.classList.add('preview-unlocked');
-          }
-        } catch {
-          try {
-            if (sessionStorage.getItem('canada2080.preview.access') === 'granted') {
-              document.documentElement.classList.add('preview-unlocked');
-            }
-          } catch {}
-        }
-      })();
-    </script>
+    <meta name="theme-color" content="#071f26" />
+    <meta property="og:site_name" content="Canada2080" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta name="twitter:card" content="summary_large_image" />
     <title>{title}</title>
   </head>
   <body>
     <a class="skip-link" href="#main-content">Skip to main content</a>
-    <AccessGate />
-    <div class="protected-site">
-      <SiteHeader />
-      <main id="main-content"><slot /></main>
-      <SiteFooter />
-    </div>
+    <SiteHeader />
+    <main id="main-content"><slot /></main>
+    <SiteFooter />
   </body>
 </html>

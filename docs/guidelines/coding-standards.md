@@ -25,19 +25,21 @@
 - Attribute the Five Canadian Systemic Gaps to Francis Wang's 2025 DDes research proposal, *Foresight-Driven Innovation*.
 - Do not include unreviewed personal information, partner names, endorsements, images, Indigenous knowledge, or territorial material.
 
-## Research collection
+## Content collections
 
-- Create a Markdown file in `src/content/research/` for each entry.
-- Include title, description, publication date, evidence class, status, and a non-empty sources array.
-- Use `draft: true` until editorial and claims review are complete. Draft entries are excluded from public lists.
+- Create research Markdown in `src/content/research/`, events in `src/content/events/`, and journal entries in `src/content/journal/`.
+- Research entries include title, description, publication date, evidence class, status, and a non-empty sources array.
+- Event entries include approved public status, programme, access, and contributor information. Omit private or unconfirmed logistics.
+- Journal entries require author, publication date, type, attribution review, and rights-cleared media.
+- Use `draft: true` until editorial, claims, consent, and rights review are complete. Draft entries are excluded from public lists.
 
 ## Verification
 
 Run these terminating commands before requesting review:
 
 ```bash
-npm run check
-npm run build
+pnpm run check
+pnpm run build
 ```
 
 Do not run `npm run dev`, `npm run preview`, or any watch command as part of agent verification.

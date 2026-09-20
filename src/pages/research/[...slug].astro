@@ -10,7 +10,7 @@ interface Props {
 
 export async function getStaticPaths() {
   const entries = await getCollection('research', (item: { data: { status: string; draft: boolean } }) => item.data.status === 'published' && !item.data.draft);
-  return entries.map((entry: CollectionEntry<'research'>) => ({ params: { slug: entry.id }, props: { entry } }));
+  return entries.map((entry: CollectionEntry<'research'>) => ({ params: { slug: entry.id.replace(/\.md$/, '') }, props: { entry } }));
 }
 
 const { entry } = Astro.props as Props;

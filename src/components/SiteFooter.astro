@@ -1,11 +1,21 @@
+---
+import Canada2080Wordmark from './Canada2080Wordmark.astro';
+---
+
 <footer class="site-footer">
   <div class="shell footer-grid">
     <div>
-      <p class="eyebrow">Canada2080 / Public initiative</p>
-      <p>Capability for a changing planet <span class="provisional">Working line</span></p>
+      <Canada2080Wordmark variant="year" tone="inverse" />
+      <p class="footer-statement">By 2080, Canada can stand among the major economic powers, with the capability to surpass the United States.</p>
     </div>
     <div>
-      <p class="footer-note">Canada2080 uses the 2080 horizon as an ambition and scenario boundary for present decisions.</p>
+      <p class="footer-note">Canada2080 treats that horizon as an aspiration and decision boundary for present action, not a forecast.</p>
+      <nav aria-label="Footer navigation" class="footer-links">
+        <a href="/trajectory">Trajectory</a>
+        <a href="/events">Events</a>
+        <a href="/journal">Journal</a>
+        <a href="/join">Join the work</a>
+      </nav>
       <p class="footer-note">© {new Date().getFullYear()} Canada2080</p>
     </div>
   </div>

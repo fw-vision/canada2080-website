@@ -1,0 +1,89 @@
+---
+import Canada2080Wordmark from './Canada2080Wordmark.astro';
+import { heroSlides } from '../data/heroSlides';
+
+interface Props {
+  headline: string;
+  deck: string;
+  primaryHref: string;
+  primaryLabel: string;
+  secondaryHref: string;
+  secondaryLabel: string;
+}
+
+const { headline, deck, primaryHref, primaryLabel, secondaryHref, secondaryLabel } = Astro.props;
+const captions = heroSlides.map((slide) => ({
+  subject: slide.subject,
+  place: slide.place,
+  credit: slide.credit,
+}));
+const first = captions[0];
+---
+
+<section class="hero-showcase" aria-label="Canada2080 introduction">
+  <div class="hero-stage" aria-hidden="true">
+    {heroSlides.map((slide, index) => (
+      <figure class:list={['hero-slide', { 'is-active': index === 0 }]} data-hero-slide>
+        <img
+          src={slide.src}
+          alt=""
+          width="2400"
+          height="1600"
+          loading={index === 0 ? 'eager' : 'lazy'}
+          decoding="async"
+          fetchpriority={index === 0 ? 'high' : 'auto'}
+        />
+      </figure>
+    ))}
+    <div class="hero-veil"></div>
+  </div>
+
+  <div class="shell hero-showcase-inner">
+    <div class="hero-brand">
+      <Canada2080Wordmark variant="year" tone="hero" large />
+    </div>
+
+    <div class="hero-bottom">
+      <div class="hero-copy">
+        <p class="eyebrow">Long-horizon national capability initiative</p>
+        <h1>{headline}</h1>
+        <p class="hero-deck">{deck}</p>
+        <div class="action-row">
+          <a class="button button-signal" href={primaryHref}>{primaryLabel}</a>
+          <a class="text-link text-link-light" href={secondaryHref}>{secondaryLabel} <span aria-hidden="true">↗</span></a>
+        </div>
+      </div>
+
+      <aside class="hero-credit" data-hero-credit aria-live="polite">
+        <p class="hero-credit-subject" data-hero-subject>{first.subject}</p>
+        <p class="hero-credit-place" data-hero-place>{first.place}</p>
+        <p class="hero-credit-photo" data-hero-photo>Photo: {first.credit}</p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<script is:inline define:vars={{ captions }}>
+  const slides = Array.from(document.querySelectorAll('[data-hero-slide]'));
+  const subjectEl = document.querySelector('[data-hero-subject]');
+  const placeEl = document.querySelector('[data-hero-place]');
+  const photoEl = document.querySelector('[data-hero-photo]');
+
+  function setCaption(index) {
+    const caption = captions[index];
+    if (!caption) return;
+    if (subjectEl) subjectEl.textContent = caption.subject;
+    if (placeEl) placeEl.textContent = caption.place;
+    if (photoEl) photoEl.textContent = 'Photo: ' + caption.credit;
+  }
+
+  if (slides.length > 1 && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    let index = 0;
+    window.setInterval(() => {
+      slides[index]?.classList.remove('is-active');
+      index = (index + 1) % slides.length;
+      slides[index]?.classList.add('is-active');
+      setCaption(index);
+    }, 6500);
+  }
+</script>

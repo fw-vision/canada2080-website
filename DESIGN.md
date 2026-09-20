@@ -1,33 +1,33 @@
 ---
 name: "Canada2080"
-version: "0.1.0"
-description: "A public research and coalition-building initiative for Canadian capability."
-mode: "light-first"
+version: "0.2.0"
+description: "A long-horizon advocacy, research, and convening initiative for Canadian capability."
+mode: "horizon-contrast"
 contrast_target: "WCAG-AA"
 
 colors:
   brand:
-    primary: "#32182d"
-    secondary: "#5b3652"
-    accent: "#a04b37"
+    primary: "#071f26"
+    secondary: "#111719"
+    accent: "#f02e23"
   signal:
-    success: "#2f6a54"
-    error: "#9e342d"
+    success: "#2e6256"
+    error: "#b71d15"
     warning: "#8b5b1f"
-    info: "#415f78"
+    info: "#3e6677"
   surface:
-    background: "#f4f0e6"
-    card: "#fbf8f1"
+    background: "#f5f4ef"
+    card: "#f5f4ef"
     elevated: "#ffffff"
-    border: "#c9c0b2"
+    border: "#8fa6ad"
   text:
-    primary: "#241f1c"
-    secondary: "#625a54"
-    muted: "#847b72"
+    primary: "#071f26"
+    secondary: "#34484d"
+    muted: "#53656a"
 
 typography:
   families:
-    display: "Arial, Helvetica, sans-serif"
+    display: "Arial Black, Helvetica Neue, Arial, sans-serif"
     body: "Arial, Helvetica, sans-serif"
     mono: "ui-monospace, SFMono-Regular, Consolas, monospace"
   scale:
@@ -59,7 +59,8 @@ Make long-horizon national capability legible, discussable, and actionable witho
 
 ## Personality
 
-- **Dossier-like**: information is ordered, sourced, and easy to inspect.
+- **Mission-led**: national ambition appears with confidence and a concrete present tense.
+- **Inspectable**: information is ordered, sourced, and easy to challenge.
 - **Grounded**: every proposition connects to real places, systems, and people.
 - **Soberly ambitious**: the work invites action while marking uncertainty.
 - **Plural**: the visual language makes room for regional, institutional, and generational difference.
@@ -77,16 +78,17 @@ We are not promotional, exceptionalist, techno-utopian, or decorative.
 
 ## Colour Philosophy
 
-Warm parchment is the default reading surface. Aubergine is reserved for inversion sections, commitments, and visual rests. Rust marks selected actions and diagram signals. The palette remains near-monochrome so evidence labels and data carry the visual hierarchy.
+Snow is the default reading surface. Northern Ink carries institutional weight and long-form contrast. Canada Signal marks calls to action, selected numbers, and the final leaf-zero. Horizon Peach connects the identity to future horizons, while Boreal Green, Lake Steel, and evidence colours support interpretation.
 
 ## Typography Philosophy
 
-Use a locally available neutral grotesque stack for rapid, accessible loading. Large tightly set display text establishes the horizon; body text remains generous and calm. Monospace supports classifications, evidence labels, dates, and source metadata.
+Use a locally available heavy grotesque display stack for rapid, accessible loading. Large tightly set display text establishes the horizon; body text remains generous and calm. Monospace supports classifications, evidence labels, dates, and source metadata. Handwritten and script typography are excluded from the core identity.
 
 ## Component Principles
 
 - One dominant idea and one clear action per section.
 - Fine rules, generous whitespace, and two-column grids carry structure before ornament.
+- The bold 2080 wordmark uses an original maple leaf held inside the final zero.
 - Technical graphics are CSS or original SVG linework, never copied reference assets.
 - Labels describe evidence status rather than decorate copy.
 - Motion is sparse and must respect `prefers-reduced-motion`.

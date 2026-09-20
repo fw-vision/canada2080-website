@@ -1,0 +1,35 @@
+---
+/**
+ * Vectorized 2080 wordmark from the approved lockup.
+ * hero/inverse: white digits, red leaf in the first zero
+ * default/nav: red digits, transparent leaf window for light surfaces
+ */
+interface Props {
+  tone?: 'hero' | 'inverse' | 'default' | 'nav';
+  class?: string;
+}
+
+const { tone = 'default', class: className } = Astro.props;
+
+const src =
+  tone === 'nav' || tone === 'default'
+    ? '/brand/2080-wordmark-nav.svg'
+    : '/brand/2080-wordmark.svg';
+---
+
+<img
+  class:list={['year-wordmark', `year-wordmark-${tone}`, className]}
+  src={src}
+  alt=""
+  width="590"
+  height="141"
+  decoding="async"
+/>
+
+<style>
+  .year-wordmark {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+</style>

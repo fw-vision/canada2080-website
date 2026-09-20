@@ -12,7 +12,7 @@ Before changing positioning, evidence claims, missions, or public copy, read `..
 
 ## Current focus
 
-Launch MVP. Build an accessible, static public site with approved working copy, evidence labels, and a research publishing path. CMS integration, mailing-list delivery, analytics, and bilingual publishing remain out of scope until a separately accepted decision.
+Public launch. Deliver an accessible, static advocacy, research, events, and journal platform with the September 28, 2026 kickoff as featured content. CMS integration, first-party RSVP processing, mailing-list delivery, analytics, and bilingual publishing remain out of scope until a separately accepted decision.
 
 ## Tech stack (locked)
 
@@ -40,13 +40,17 @@ Launch MVP. Build an accessible, static public site with approved working copy, 
 - Attribute the Five Canadian Systemic Gaps to Francis Wang's 2025 DDes proposal, *Foresight-Driven Innovation*.
 - Never turn climate exposure estimates into displacement, migration, or Canada-destination claims.
 - Treat Indigenous rights, authorities, knowledge, images, data, and territorial references as requiring appropriate consent and protocol.
-- The working line "Capability for a changing planet" is provisional. Do not present it as a locked brand decision.
+- The launch line is "Build what the future requires". The 2080 horizon remains an aspiration and decision boundary, not a forecast.
+- Present academic contributors as independent perspectives. Participation does not imply endorsement.
 
-### Testing
+### Development and testing
 
-- Run `npm run check` and `npm run build` before handoff. Both commands terminate.
-- Do not run dev servers, preview servers, or watch commands in agent sessions.
+- Interactive development uses `bun run dev`, which binds Astro to `0.0.0.0` for access from trusted Tailnet devices.
+- Reach this dev box at `http://100.71.170.90:4321` or through its MagicDNS name and port `4321`.
+- Treat the persistent dev server as a user-managed runtime process. Do not use it as automated verification.
+- Run `pnpm run check` and `pnpm run build` before handoff. Both commands terminate.
 - Add tests only when introducing non-trivial logic or client-side behaviour.
+- Binding to `0.0.0.0` listens on every host interface. Preserve host firewall controls and never enable public Funnel access without explicit approval.
 
 ### Documentation
 
@@ -60,6 +64,7 @@ Launch MVP. Build an accessible, static public site with approved working copy, 
 - Use PascalCase for Astro components and kebab-case for route files and content slugs.
 - Put shared view components in `src/components/`, layouts in `src/layouts/`, and site data in `src/data/`.
 - Put research Markdown in `src/content/research/`. Every entry needs an evidence class and source list.
+- Put event Markdown in `src/content/events/` and journal Markdown in `src/content/journal/`.
 - Put public static assets in `public/`. Do not add proprietary reference-site assets.
 
 ## Out of scope
@@ -67,7 +72,7 @@ Launch MVP. Build an accessible, static public site with approved working copy, 
 - A claim that Canada will receive a predetermined climate-displaced population
 - A single-city model for Canada or an unqualified Waterloo causal story
 - Partner endorsements, investment offers, private discussions, personal data, or unreviewed imagery
-- CMS, authentication, analytics, database, and newsletter provider integration
+- CMS, authentication, analytics, database, newsletter provider integration, and first-party RSVP processing
 
 ## Reading order for new contributors
 

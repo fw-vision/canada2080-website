@@ -1,9 +1,11 @@
 export const navigation = [
-  { href: '/#five-gaps', label: 'Five Gaps' },
+  { href: '/trajectory', label: 'Trajectory' },
+  { href: '/five-gaps', label: 'Five Gaps' },
   { href: '/missions', label: 'Missions' },
   { href: '/research', label: 'Research' },
-  { href: '/about', label: 'About' },
-  { href: '/join', label: 'Join' }
+  { href: '/events', label: 'Events' },
+  { href: '/journal', label: 'Journal' },
+  { href: '/about', label: 'About' }
 ] as const;
 
 export const evidenceClasses = [
@@ -46,6 +48,23 @@ export const fiveGaps = [
     summary: 'Capability requires patient capital, credible demand, follow-on finance, and institutions prepared to support delivery.',
     evidenceClass: 'Verified fact'
   }
+] as const;
+
+export const trajectory = [
+  ['2026-2030', 'Establish', 'Publish the baseline, select missions, organise lead users, and demonstrate one governed path from evidence to operation.'],
+  ['2030-2040', 'Demonstrate', 'Repeatedly cross the gaps between research, pilots, first customers, production, skilled work, and retained learning.'],
+  ['2040-2055', 'Compound', 'Deepen regional suppliers, repair capacity, secure energy and compute, exports, workforce, and domestic reinvestment.'],
+  ['2055-2070', 'Lead', 'Become a trusted source of complete systems, standards, stewardship, and public-value models.'],
+  ['2070-2080', 'Renew', 'Reassess the missions, retire obsolete systems, transfer knowledge, and preserve strategic choice for another generation.']
+].map(([years, title, summary]) => ({ years, title, summary })) as readonly { years: string; title: string; summary: string }[];
+
+export const offramps = [
+  ['Metrics theatre', 'Announcements, patents, or capital raised increase while production, adoption, control, and reinvestment remain weak.'],
+  ['One-city exceptionalism', 'One successful regional case crowds out different Canadian assets, authorities, and operating needs.'],
+  ['Build-first economics', 'Land, technology, and capital advance before demand, operators, rights, and lifecycle economics are clear.'],
+  ['Foreign capital without strategic terms', 'Investment grows activity while decision rights, learning, data, suppliers, or reinvestment can leave Canada.'],
+  ['Infrastructure without legitimacy', 'National ambition outruns Indigenous rights, local authority, affordability, ecological limits, labour, or community benefit.'],
+  ['Permanent launch mode', 'Events and announcements multiply while owners, 90-day actions, measures, and follow-up remain absent.']
 ] as const;
 
 export const missions = [

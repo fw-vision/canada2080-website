@@ -1,116 +1,349 @@
 ---
-import { getCollection } from 'astro:content';
-import BaseLayout from '../layouts/BaseLayout.astro';
-import ContentCard from '../components/ContentCard.astro';
-import EvidenceLabel from '../components/EvidenceLabel.astro';
-import HeroShowcase from '../components/HeroShowcase.astro';
-import TrajectoryTimeline from '../components/TrajectoryTimeline.astro';
-import { gaps, missions } from '../data/site';
+import { getCollection } from "astro:content";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ContentCard from "../components/ContentCard.astro";
+import EvidenceLabel from "../components/EvidenceLabel.astro";
+import HeroShowcase from "../components/HeroShowcase.astro";
+import TrajectoryTimeline from "../components/TrajectoryTimeline.astro";
+import { gaps, missions } from "../data/site";
 
-const latestSignals = (await getCollection('signals', ({ data }) => data.status === 'published' && !data.draft))
-  .sort((a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime())
-  .slice(0, 2);
+const latestSignals = (
+    await getCollection(
+        "signals",
+        ({ data }) => data.status === "published" && !data.draft,
+    )
+)
+    .sort((a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime())
+    .slice(0, 2);
 ---
 
 <BaseLayout
-  title="Canada2080 | Actualizing an abundant, resilient, sustainable, and sovereign future for Canada"
-  description="By 2080, Canada will become one of the world's major economic powers, with the capability to surpass the United States through sovereign industry, research, capital, and public value built at home."
+    title="Canada2080 | Actualizing an abundant, resilient, sustainable, and sovereign future for Canada"
+    description="By 2080, Canada will become one of the world's major economic powers, with the capability to surpass the United States through sovereign industry, research, capital, and public value built at home."
 >
-  <HeroShowcase
-    headline={"Actualizing an abundant,\nresilient, sustainable, and sovereign\nfuture for Canada."}
-    deck={"By 2080, Canada will become one of the world's major economic powers, with\nthe capability to surpass the United States through sovereign industry,\nresearch, capital, and public value built at home."}
-    primaryHref="/trajectory"
-    primaryLabel="Explore the trajectory"
-    secondaryHref="/events/2026-kickoff"
-    secondaryLabel="Kickoff coming soon"
-  />
+    <HeroShowcase
+        headline={
+            "Actualizing an abundant,\nresilient, sustainable, and sovereign\nfuture for Canada."
+        }
+        deck={
+            "By 2080, Canada will become one of the world's major economic powers, with\nthe capability to surpass the United States through sovereign industry,\nresearch, capital, and public value built at home."
+        }
+        primaryHref="/trajectory"
+        primaryLabel="Explore the trajectory"
+        secondaryHref="/events/2026-kickoff"
+        secondaryLabel="Kickoff coming soon"
+    />
 
-  <section class="section shell statement-section" aria-labelledby="ambition-title">
-    <div><p class="eyebrow">The ambition</p><EvidenceLabel label="Aspiration" /></div>
-    <div>
-      <h2 id="ambition-title">Canada has the foundation to lead, but foundations do not commercialize themselves.</h2>
-      <p class="lead">Canada combines strong zero-to-one research, universities, talent, natural systems, energy potential, and trusted institutions. But too much knowledge remains disconnected from domestic demand, patient capital, production, control, and reinvestment.</p>
-      <p>That is not a reason for decline. It is a generational opportunity for a country willing to apply strategic foresight, build complete capability systems, and sustain them beyond election, funding, and technology cycles.</p>
-    </div>
-  </section>
+    <section
+        class="section shell statement-section"
+        aria-labelledby="ambition-title"
+    >
+        <div>
+            <p class="eyebrow">The ambition</p>
+            <EvidenceLabel label="Aspiration" />
+        </div>
+        <div>
+            <h2 id="ambition-title" class="ambition-title">
+                Canada has the foundation to lead, but foundations do&nbsp;not
+                commercialize themselves.
+            </h2>
+            <p class="lead">
+                Canada combines strong zero-to-one research, universities,
+                talent, natural systems, energy potential, and trusted
+                institutions. But too much knowledge remains disconnected from
+                domestic demand, patient capital, production, control, and
+                reinvestment.
+            </p>
+            <p>
+                That is not a reason for decline. It is a generational
+                opportunity for a country willing to apply strategic foresight,
+                build complete capability systems, and sustain them beyond
+                election, funding, and technology cycles.
+            </p>
+        </div>
+    </section>
 
-  <section id="gaps" class="section shell" aria-labelledby="gaps-title">
-    <div class="section-heading">
-      <div><p class="eyebrow">The problem space</p><h2 id="gaps-title">Four structural gaps between knowledge and capability.</h2></div>
-      <p>Francis Wang's research into Canadian sustainable innovation identifies four barriers to building power at home: commercialization and scale, ambitious domestic opportunity, Canadian decision rights, and long-term productive investment.</p>
-    </div>
-    <ol class="gap-list">
-      {gaps.map((gap) => (
-        <li>
-          <span class="gap-number">{gap.number}</span>
-          <div><h3>{gap.title}</h3><p>{gap.summary}</p></div>
-          <div class="gap-metric"><strong>{gap.metric}</strong><span>{gap.metricContext}</span><div class="gap-sources">{gap.metricSources.map(([label, href]) => <a href={href}>{label} ↗</a>)}</div></div>
-        </li>
-      ))}
-    </ol>
-    <a class="button button-outline" href="/innovation-gaps">Study the Gaps</a>
-  </section>
+    <section id="gaps" class="section shell" aria-labelledby="gaps-title">
+        <div class="section-heading">
+            <div>
+                <p class="eyebrow">The problem space</p>
+                <h2 id="gaps-title">
+                    Four structural gaps between knowledge and capability.
+                </h2>
+            </div>
+            <p>
+                Francis Wang's research into Canadian sustainable innovation
+                identifies four barriers to building power at home:
+                commercialization and scale, ambitious domestic opportunity,
+                Canadian decision rights, and long-term productive investment.
+            </p>
+        </div>
+        <ol class="gap-list">
+            {gaps.map((gap) => (
+                <li>
+                    <span class="gap-number">{gap.number}</span>
+                    <div>
+                        <h3>{gap.title}</h3>
+                        <p>{gap.summary}</p>
+                    </div>
+                    <div class="gap-metric">
+                        <strong>{gap.metric}</strong>
+                        <span>{gap.metricContext}</span>
+                        <div class="gap-sources">
+                            {gap.metricSources.map(([label, href]) => (
+                                <a href={href}>{label} ↗</a>
+                            ))}
+                        </div>
+                    </div>
+                </li>
+            ))}
+        </ol>
+        <a class="button button-outline" href="/innovation-gaps">
+            Study the Gaps
+        </a>
+    </section>
 
-  <section class="section natural-advantage-feature" aria-labelledby="natural-advantage-title">
-    <div class="shell natural-advantage-grid">
-      <div>
-        <p class="eyebrow">Canada's natural advantage</p>
-        <p class="natural-advantage-kicker">Water. Land. Forests. Minerals. Clean power.</p>
-      </div>
-      <div>
-        <EvidenceLabel label="Qualified claim" />
-        <h2 id="natural-advantage-title">Canada can become a leading builder of the world's resilient future.</h2>
-        <p class="lead">Canada begins with major freshwater systems, agricultural capacity, forests, mineral potential, and predominantly non-emitting electricity. The opportunity is to turn selected endowments into complete Canadian capability.</p>
-        <p>That means building the chain from rights and stewardship through processing, manufacturing, deployment, repair, recovery, skilled work, decision rights, and reinvestment. A resource becomes a national advantage when Canada can govern it responsibly, improve it, create value from it, and renew the capability for the next generation.</p>
-        <a class="button button-dark" href="/natural-advantage">Explore Canada's natural advantage</a>
-      </div>
-    </div>
-  </section>
+    <section
+        class="section natural-advantage-feature"
+        aria-labelledby="natural-advantage-title"
+    >
+        <div class="shell natural-advantage-grid">
+            <div>
+                <p class="eyebrow">Canada's natural advantage</p>
+                <p class="natural-advantage-kicker">
+                    Water. Land. Forests. Minerals. Clean power.
+                </p>
+            </div>
+            <div>
+                <EvidenceLabel label="Qualified claim" />
+                <h2 id="natural-advantage-title">
+                    Canada can become a leading builder of the world's resilient
+                    future.
+                </h2>
+                <p class="lead">
+                    Canada begins with major freshwater systems, agricultural
+                    capacity, forests, mineral potential, and predominantly
+                    non-emitting electricity. The opportunity is to turn
+                    selected endowments into complete Canadian capability.
+                </p>
+                <p>
+                    That means building the chain from rights and stewardship
+                    through processing, manufacturing, deployment, repair,
+                    recovery, skilled work, decision rights, and reinvestment. A
+                    resource becomes a national advantage when Canada can govern
+                    it responsibly, improve it, create value from it, and renew
+                    the capability for the next generation.
+                </p>
+                <a class="button button-dark" href="/natural-advantage">
+                    Explore Canada's natural advantage
+                </a>
+            </div>
+        </div>
+    </section>
 
-  <section class="section section-dark" aria-labelledby="precision-title">
-    <div class="shell statement-section">
-      <div><p class="eyebrow">Working hypothesis</p><EvidenceLabel label="Hypothesis" /></div>
-      <div>
-        <h2 id="precision-title">Precision technology. Living systems. Networked resilience.</h2>
-        <p class="lead">Precision resilience proposes that AI and compute can help manage personalized, complex systems at small scales, while nature-informed systems add regenerative and failure-tolerant capacity.</p>
-        <p><strong>Scenario:</strong> every household has sovereign compute for its health records, financial data, and other sensitive processes. Those households can join with neighbours, buildings, and local institutions to form resilient compute clusters, sharing capacity for non-sensitive work while retaining control where it matters most.</p>
-        <a class="text-link text-link-light" href="/signals/precision-resilience-household-compute">Learn more <span aria-hidden="true">↗</span></a>
-      </div>
-    </div>
-  </section>
+    <section class="section section-dark" aria-labelledby="precision-title">
+        <div class="shell statement-section">
+            <div>
+                <p class="eyebrow">Working hypothesis</p>
+                <EvidenceLabel label="Hypothesis" />
+            </div>
+            <div>
+                <h2 id="precision-title">
+                    Precision technology. Living systems. Networked resilience.
+                </h2>
+                <p class="lead">
+                    Precision resilience proposes that AI and compute can help
+                    manage personalized, complex systems at small scales, while
+                    nature-informed systems add regenerative and
+                    failure-tolerant capacity.
+                </p>
+                <p>
+                    <strong>Scenario:</strong> every household has sovereign
+                    compute for its health records, financial data, and other
+                    sensitive processes. Those households can join with
+                    neighbours, buildings, and local institutions to form
+                    resilient compute clusters, sharing capacity for
+                    non-sensitive work while retaining control where it matters
+                    most.
+                </p>
+                <a
+                    class="text-link text-link-light"
+                    href="/signals/precision-resilience-household-compute"
+                >
+                    Learn more <span aria-hidden="true">↗</span>
+                </a>
+            </div>
+        </div>
+    </section>
 
-  <section class="section section-horizon" aria-labelledby="trajectory-title"><div class="shell">
-    <div class="section-heading"><div><p class="eyebrow">The preferred trajectory</p><h2 id="trajectory-title">Prove it small. Connect the chain. Scale what works. Reinvest.</h2></div><p>The same framework must work across scales: household, community, regional system, national capability, and trusted global contribution. Every horizon turns theory into operating practice and preserves a route back when evidence changes.</p></div>
-    <TrajectoryTimeline />
-    <a class="button button-dark" href="/trajectory">See the path and offramps</a>
-  </div></section>
+    <section class="section section-horizon" aria-labelledby="trajectory-title">
+        <div class="shell">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">The preferred trajectory</p>
+                    <h2 id="trajectory-title">
+                        Prove it small. Connect the chain. Scale what works.
+                        Reinvest.
+                    </h2>
+                </div>
+                <p>
+                    The same framework must work across scales: household,
+                    community, regional system, national capability, and trusted
+                    global contribution. Every horizon turns theory into
+                    operating practice and preserves a route back when evidence
+                    changes.
+                </p>
+            </div>
+            <TrajectoryTimeline />
+            <a class="button button-dark" href="/trajectory">
+                See the path and offramps
+            </a>
+        </div>
+    </section>
 
-  <section class="section shell planetary-section" aria-labelledby="planetary-title">
-    <div><p class="eyebrow">A future home on a changing planet</p><EvidenceLabel label="Scenario" /></div>
-    <div>
-      <p class="planetary-stat">2.1–3.7 billion</p>
-      <h2 id="planetary-title">people could face unprecedented heat or conditions outside a historical human temperature niche by late century.</h2>
-      <p>This is a modelled exposure range under specified climate and demographic scenarios, not a displacement or migration forecast. Climate stress can increase mobility pressures, but where people move depends on rights, safety, livelihoods, networks, housing, services, and public policy.</p>
-      <p>Canada can become better at lawful, equitable managed growth by building housing, energy, water, services, climate adaptation, meaningful work, and rights-respecting regional capacity. The goal is not population for its own sake. It is resilient per-person capability and a stronger shared economy.</p>
-      <div class="source-row"><a href="https://doi.org/10.1038/s41893-023-01132-6">Human climate niche research ↗</a><a href="https://www150.statcan.gc.ca/n1/pub/91-520-x/91-520-x2022001-eng.htm">Statistics Canada population scenarios ↗</a><a href="https://www.ipcc.ch/report/ar6/wg2/">IPCC impacts and mobility evidence ↗</a></div>
-    </div>
-  </section>
+    <section
+        class="section shell planetary-section"
+        aria-labelledby="planetary-title"
+    >
+        <div>
+            <p class="eyebrow">A future home on a changing planet</p>
+            <EvidenceLabel label="Scenario" />
+        </div>
+        <div>
+            <p class="planetary-stat">2.1–3.7 billion</p>
+            <h2 id="planetary-title">
+                people could face unprecedented heat or conditions outside a
+                historical human temperature niche by late century.
+            </h2>
+            <p>
+                This is a modelled exposure range under specified climate and
+                demographic scenarios, not a displacement or migration forecast.
+                Climate stress can increase mobility pressures, but where people
+                move depends on rights, safety, livelihoods, networks, housing,
+                services, and public policy.
+            </p>
+            <p>
+                Canada can become better at lawful, equitable managed growth by
+                building housing, energy, water, services, climate adaptation,
+                meaningful work, and rights-respecting regional capacity. The
+                goal is not population for its own sake. It is resilient
+                per-person capability and a stronger shared economy.
+            </p>
+            <div class="source-row">
+                <a href="https://doi.org/10.1038/s41893-023-01132-6">
+                    Human climate niche research ↗
+                </a>
+                <a href="https://www150.statcan.gc.ca/n1/pub/91-520-x/91-520-x2022001-eng.htm">
+                    Statistics Canada population scenarios ↗
+                </a>
+                <a href="https://www.ipcc.ch/report/ar6/wg2/">
+                    IPCC impacts and mobility evidence ↗
+                </a>
+            </div>
+        </div>
+    </section>
 
-  <section class="section section-dark" aria-labelledby="missions-title"><div class="shell">
-    <div class="section-heading"><div><p class="eyebrow">Six mission fields</p><h2 id="missions-title">Regional delivery. National capability. Planetary contribution.</h2></div><p>Canada2080 connects energy, compute, living systems, manufacturing, trusted infrastructure, climate-ready regions, and human capability into one national portfolio.</p></div>
-    <ol class="mission-grid">{missions.map(([number, title, summary]) => <li><span>{number}</span><h3>{title}</h3><p>{summary}</p></li>)}</ol>
-    <a class="button button-light" href="/missions">Explore the missions</a>
-  </div></section>
+    <section class="section section-dark" aria-labelledby="missions-title">
+        <div class="shell">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">Six mission fields</p>
+                    <h2 id="missions-title">
+                        Regional delivery. National capability. Planetary
+                        contribution.
+                    </h2>
+                </div>
+                <p>
+                    Canada2080 connects energy, compute, living systems,
+                    manufacturing, trusted infrastructure, climate-ready
+                    regions, and human capability into one national portfolio.
+                </p>
+            </div>
+            <ol class="mission-grid">
+                {missions.map(([number, title, summary]) => (
+                    <li>
+                        <span>{number}</span>
+                        <h3>{title}</h3>
+                        <p>{summary}</p>
+                    </li>
+                ))}
+            </ol>
+            <a class="button button-light" href="/missions">
+                Explore the missions
+            </a>
+        </div>
+    </section>
 
-  <section class="section shell event-feature" aria-labelledby="event-title">
-    <div class="event-date event-date-flexible" aria-hidden="true"><span>COMING</span><strong>SOON</strong><span>2026</span></div>
-    <div><p class="eyebrow">Kickoff release · date being finalized</p><h2 id="event-title">The capability we choose to build.</h2><p class="lead">A small founding conversation with 30 minutes of networking, a focused 60-minute programme, and 30 minutes of commitment-focused follow-up.</p><p>Saturday, October 3 and Sunday, October 4 are under consideration. The first invitation responses will determine the final day, time, guest list, and speaker programme.</p><a class="button button-signal" href="/events/2026-kickoff">View the programme</a></div>
-  </section>
+    <section class="section shell event-feature" aria-labelledby="event-title">
+        <div class="event-date event-date-flexible" aria-hidden="true">
+            <span>COMING</span>
+            <strong>SOON</strong>
+            <span>2026</span>
+        </div>
+        <div>
+            <p class="eyebrow">Kickoff release · date being finalized</p>
+            <h2 id="event-title">The capability we choose to build.</h2>
+            <p class="lead">
+                A small founding conversation with 30 minutes of arrival
+                networking, an 80-minute programme, and 30 minutes of
+                commitment-focused follow-up.
+            </p>
+            <p>
+                Saturday, October 3 and Sunday, October 4 are under
+                consideration. The first invitation responses will determine the
+                exact date, time, guest list, possible panel, and wider
+                programme.
+            </p>
+            <a class="button button-signal" href="/events/2026-kickoff">
+                View the programme
+            </a>
+        </div>
+    </section>
 
-  <section class="section shell" aria-labelledby="signals-title">
-    <div class="section-heading"><div><p class="eyebrow">Signals</p><h2 id="signals-title">Evidence people can inspect. Progress people can check.</h2></div><p>Research, interpretation, event records, field notes, and accountability updates share one public record.</p></div>
-    <div class="content-grid">{latestSignals.map((signal) => <ContentCard eyebrow={`${signal.data.kind.replaceAll('-', ' ')}${signal.data.evidenceClass ? ` / ${signal.data.evidenceClass}` : ''}`} title={signal.data.title} description={signal.data.description} href={`/signals/${signal.id.replace(/\.md$/, '')}`} linkLabel="Read the signal" />)}</div>
-  </section>
+    <section class="section shell" aria-labelledby="signals-title">
+        <div class="section-heading">
+            <div>
+                <p class="eyebrow">Signals</p>
+                <h2 id="signals-title">
+                    Evidence people can inspect. Progress people can check.
+                </h2>
+            </div>
+            <p>
+                Research, interpretation, event records, field notes, and
+                accountability updates share one public record.
+            </p>
+        </div>
+        <div class="content-grid">
+            {latestSignals.map((signal) => (
+                <ContentCard
+                    eyebrow={`${signal.data.kind.replaceAll("-", " ")}${signal.data.evidenceClass ? ` / ${signal.data.evidenceClass}` : ""}`}
+                    title={signal.data.title}
+                    description={signal.data.description}
+                    href={`/signals/${signal.id.replace(/\.md$/, "")}`}
+                    linkLabel="Read the signal"
+                />
+            ))}
+        </div>
+    </section>
 
-  <section class="section section-signal" aria-labelledby="join-title"><div class="shell statement-section"><div><p class="eyebrow">The invitation</p></div><div><h2 id="join-title">Choose one capability Canada must build and renew.</h2><p class="lead">Contribute evidence, capital, institutional capacity, policy action, operating knowledge, regional leadership, or independent evaluation.</p><a class="button button-dark" href="/join">Find your role</a></div></div></section>
+    <section class="section section-signal" aria-labelledby="join-title">
+        <div class="shell statement-section">
+            <div>
+                <p class="eyebrow">The invitation</p>
+            </div>
+            <div>
+                <h2 id="join-title">
+                    Choose one capability Canada must build and renew.
+                </h2>
+                <p class="lead">
+                    Contribute evidence, capital, institutional capacity, policy
+                    action, operating knowledge, regional leadership, or
+                    independent evaluation.
+                </p>
+                <a class="button button-dark" href="/join">
+                    Find your role
+                </a>
+            </div>
+        </div>
+    </section>
 </BaseLayout>

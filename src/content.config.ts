@@ -23,11 +23,13 @@ const events = defineCollection({
     location: z.string().optional(),
     time: z.string().optional(),
     rsvp: z.string().optional(),
-    speakers: z.array(z.object({
+    guests: z.array(z.object({
       name: z.string(),
       institution: z.string(),
       expertise: z.string(),
-      bio: z.string()
+      bio: z.string(),
+      group: z.enum(['governance', 'academic', 'industry']),
+      participation: z.enum(['remote']).optional()
     })).default([]),
     itinerary: z.array(z.object({
       time: z.string(),

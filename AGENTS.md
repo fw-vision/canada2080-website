@@ -12,7 +12,7 @@ Before changing positioning, evidence claims, missions, or public copy, read `..
 
 ## Current focus
 
-Public launch and kickoff scheduling. The kickoff date is being finalized, with October 3 or 4, 2026 under consideration. Publicly list Erin Trochim, Kimberly Yazzie, Barry Wylant, and Larry Smith only as **Invited Speakers**. Do not imply attendance or endorsement. Final names, titles, biographies, photographs, speaking points, availability, and remote arrangements require direct confirmation.
+Public launch and kickoff scheduling. The exact kickoff date is being finalized, with October 3 or 4, 2026 under consideration. Publicly use **Invited guests** rather than assuming speaking roles. Erin Trochim, Kimberly Yazzie, Barry Wylant, and Cedric Tai are expected to join remotely. Invitation or participation does not imply endorsement. Final names, titles, biographies, photographs, speaking roles, and other arrangements require direct confirmation.
 
 ## Tech stack
 

@@ -13,7 +13,7 @@ Public website for **Canada2080**, a long-horizon initiative exploring how Canad
 | Missions | Six linked mission fields with national common services |
 | Signals | Research, announcements, interpretations, event records, field notes, and accountability updates |
 | Events | Kickoffs, salons, working summits, conferences, and public records |
-| Kickoff | Date-flexible 2026 programme and Invited Speakers list |
+| Kickoff | Date-flexible 2026 programme and invited guest list |
 | About | Initiative scope, research provenance, and publication standards |
 | Join | Contribution roles and optional intent capture |
 

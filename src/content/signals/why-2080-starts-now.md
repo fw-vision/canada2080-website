@@ -21,7 +21,7 @@ Canada2080 will make its preferred trajectory inspectable. The website publishes
 
 A small kickoff release will bring a cross-sector group together to test the agenda. Saturday, October 3 and Sunday, October 4, 2026 are under consideration, with the final date and time being determined through invited-speaker and VIP availability.
 
-The two-hour format combines networking, a focused one-hour programme, invited academic perspectives, and commitment-focused follow-up. Names are listed as invited, not confirmed, and participation does not imply endorsement.
+The 140-minute format combines arrival networking, an 80-minute programme, invited academic, industry, and governance perspectives, a possible panel, and commitment-focused follow-up. People are listed as invited guests rather than assumed speakers, and participation does not imply endorsement.
 
 ## What follows
 

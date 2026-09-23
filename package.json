@@ -12,7 +12,7 @@
     "preview": "astro preview"
   },
   "engines": {
-    "node": ">=20.18.0"
+    "node": ">=22.13.0"
   },
   "devDependencies": {
     "astro": "^5.13.5",

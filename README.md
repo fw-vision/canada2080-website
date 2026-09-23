@@ -35,7 +35,7 @@ Architecture decisions live in `docs/decisions/`.
 
 ## Local setup and validation
 
-**Requirements:** Bun and Node.js 20.18 or newer.
+**Requirements:** Bun and Node.js 22.13 or newer. The Node requirement aligns with the pinned pnpm 11.5.2 toolchain used in CI.
 
 ```bash
 bun install

@@ -22,7 +22,7 @@ Public launch and kickoff scheduling. The exact kickoff date is being finalized,
 | Language | TypeScript strict | `docs/decisions/0001-site-architecture.md` |
 | Styling | Vanilla CSS and design tokens | `docs/decisions/0001-site-architecture.md` |
 | Content | Astro Content Collections, Markdown | `docs/decisions/0001-site-architecture.md` |
-| Deployment | GitHub Actions to GitHub Pages | `docs/decisions/0001-site-architecture.md` |
+| Deployment | GitHub Actions to GitHub Pages, Node.js 22.13+ | `docs/decisions/0001-site-architecture.md` |
 | Intent capture | Optional Google Apps Script relay to restricted Sheet | `docs/decisions/0002-use-google-apps-script-for-intent-capture.md` |
 
 ## Working agreements

@@ -1,5 +1,5 @@
 ---
-title: "Canada2080: The Capability We Choose to Build"
+title: "Canada2080: A future of abundance and resilience"
 description: "A small kickoff release and founding conversation for Canada's long-horizon capability agenda. The exact date and time remain to be finalized."
 dateLabel: "Coming soon · exact date being finalized"
 candidateDates:

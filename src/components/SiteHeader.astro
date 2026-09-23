@@ -6,11 +6,7 @@ import Canada2080Wordmark from './Canada2080Wordmark.astro';
 <header class="site-header">
   <div class="shell header-inner">
     <Canada2080Wordmark variant="year" tone="nav" />
-    <nav aria-label="Primary navigation">
-      <ul class="nav-list">
-        {navigation.map((item) => <li><a href={item.href}>{item.label}</a></li>)}
-      </ul>
-    </nav>
-    <a class="header-action" href="/events/2026-kickoff">September 28</a>
+    <nav aria-label="Primary navigation"><ul class="nav-list">{navigation.map((item) => <li><a href={item.href}>{item.label}</a></li>)}</ul></nav>
+    <a class="header-action" href="/events/2026-kickoff">Kickoff soon</a>
   </div>
 </header>

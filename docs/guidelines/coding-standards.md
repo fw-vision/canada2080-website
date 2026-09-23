@@ -22,7 +22,7 @@
 - Add an evidence label when a statement makes an empirical, predictive, or normative proposition.
 - Use `Verified fact` only when a named source is present and has been checked.
 - State conditions alongside a `Qualified claim`; state assumptions alongside a `Scenario`.
-- Attribute the Five Canadian Systemic Gaps to Francis Wang's 2025 DDes research proposal, *Foresight-Driven Innovation*.
+- Attribute the four Canadian systemic Gaps to Francis Wang's research into Canadian sustainable innovation, preserving the 2025 *Foresight-Driven Innovation* proposal as the framework's origin.
 - Do not include unreviewed personal information, partner names, endorsements, images, Indigenous knowledge, or territorial material.
 
 ## Content collections

@@ -63,14 +63,17 @@ const first = captions[0];
   </div>
 </section>
 
-<script is:inline define:vars={{ captions }}>
+<script is:inline type="application/json" id="hero-captions" set:html={JSON.stringify(captions)}></script>
+<script>
   const slides = Array.from(document.querySelectorAll('[data-hero-slide]'));
   const subjectEl = document.querySelector('[data-hero-subject]');
   const placeEl = document.querySelector('[data-hero-place]');
   const photoEl = document.querySelector('[data-hero-photo]');
+  const captionsElement = document.querySelector('#hero-captions');
+  const captionData = captionsElement?.textContent ? JSON.parse(captionsElement.textContent) : [];
 
-  function setCaption(index) {
-    const caption = captions[index];
+  function setCaption(index: number) {
+    const caption = captionData[index];
     if (!caption) return;
     if (subjectEl) subjectEl.textContent = caption.subject;
     if (placeEl) placeEl.textContent = caption.place;

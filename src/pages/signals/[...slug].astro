@@ -1,0 +1,30 @@
+---
+import { getCollection, render } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import EvidenceLabel from '../../components/EvidenceLabel.astro';
+
+interface Props { entry: CollectionEntry<'signals'>; }
+
+export async function getStaticPaths() {
+  const entries = await getCollection('signals', ({ data }) => data.status === 'published' && !data.draft);
+  return entries.map((entry) => ({ params: { slug: entry.id.replace(/\.md$/, '') }, props: { entry } }));
+}
+
+const { entry } = Astro.props as Props;
+const { Content } = await render(entry);
+---
+
+<BaseLayout title={`${entry.data.title} | Canada2080`} description={entry.data.description}>
+  <article class="article shell">
+    <header class="article-header">
+      <p class="eyebrow">Signal / {entry.data.kind.replaceAll('-', ' ')}</p>
+      {entry.data.evidenceClass && <EvidenceLabel label={entry.data.evidenceClass} />}
+      <h1>{entry.data.title}</h1>
+      <p class="article-deck">{entry.data.description}</p>
+      <p class="entry-date">Published {entry.data.publishedAt.toLocaleDateString('en-CA', { year: 'numeric', month: 'long', day: 'numeric' })} by {entry.data.author}</p>
+    </header>
+    <div class="article-body"><Content /></div>
+    {entry.data.sources.length > 0 && <footer class="article-sources"><h2>Sources</h2><ul>{entry.data.sources.map((source) => <li><a href={source.url}>{source.citation}</a></li>)}</ul></footer>}
+  </article>
+</BaseLayout>

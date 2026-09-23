@@ -17,9 +17,10 @@ flowchart TD
 
 | Route | Content role | Primary evidence treatment |
 |---|---|---|
-| `/` | Permanent mission, trajectory, Five Gaps, missions, featured kickoff, research, journal, and participation | Mixed labels in context |
+| `/` | Permanent mission, trajectory, four Gaps, missions, featured kickoff, research, journal, and participation | Mixed labels in context |
 | `/trajectory/` | Preferred 2026-2080 path, near-term gates, and offramps | Aspirations, scenarios, and warning signals |
-| `/five-gaps/` | Problem definitions and systemic feedback loop | Verified and qualified claims |
+| `/innovation-gaps/` | Cited problem analyses, highlighted figures, and systemic feedback loop | Verified and qualified claims |
+| `/five-gaps/` | Permanent compatibility redirect to `/innovation-gaps/` | Not applicable |
 | `/missions/` | Six regional missions and common services | Aspirations and hypotheses |
 | `/research/` | Research index | Entry-specific metadata |
 | `/research/[slug]/` | Individual research entry | Entry-specific metadata and sources |

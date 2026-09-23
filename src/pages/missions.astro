@@ -1,12 +1,156 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import EvidenceLabel from '../components/EvidenceLabel.astro';
-import { missions } from '../data/site';
+
+const missionBriefs = [
+  {
+    number: '01',
+    slug: 'sovereign-energy-and-compute',
+    title: 'Sovereign energy and compute',
+    mandate: 'Canada will secure the reliable low-carbon power, grid capacity, storage, compute access, cyber resilience, and operating capability required by a modern economy. Electricity and compute are linked public-interest foundations for research, production, services, and regional resilience.',
+    priorities: [
+      ['Clean firm capacity', 'Develop reliable low-carbon generation and storage for essential systems, strategic production, and climate-ready communities.'],
+      ['Grid connection and operation', 'Improve connections, transmission, system flexibility, maintenance, demand response, and repair.'],
+      ['Secure compute', 'Build Canadian-accessible compute, cooling, networks, hardware access, and cyber operations for priority public-interest workloads.'],
+      ['Resilient control', 'Retain the people, data rights, continuity arrangements, and operating knowledge required to govern and improve essential systems.']
+    ],
+    nearTerm: 'Select demonstrations that connect a lead user’s electricity and compute requirements with an operating owner, financing path, workforce plan, and rights framework. Establish public baselines for connection time, reliable capacity, secure-compute use, recovery performance, and control rights before infrastructure expansion becomes the default measure of progress.',
+    measures: ['Connection time and reliable clean capacity', 'Secure-compute use and service continuity', 'Domestic operations, maintenance, and repair capacity', 'Decision rights over data, operations, and reinvestment'],
+    risks: ['Grid and compute bottlenecks', 'Capacity without operating control or cyber resilience', 'Projects without demand, lifecycle economics, or public-return terms'],
+    links: [['Advanced manufacturing and materials', 'requires reliable power and secure industrial operations.'], ['Trusted digital and emerging technology', 'depends on secure compute, communications, and resilient energy.']]
+  },
+  {
+    number: '02',
+    slug: 'food-water-and-living-systems',
+    title: 'Food, water, and living systems',
+    mandate: 'Canada will strengthen the food, water, ecological, and biological systems that sustain communities, production, and climate adaptation. This mission connects resilient crops, processing, facility agriculture, water systems, soil health, ecological infrastructure, and nature-informed design to regional operating capability.',
+    priorities: [
+      ['Food production and processing', 'Expand resilient production, processing capacity, first-customer pathways, and supply-chain learning.'],
+      ['Water stewardship', 'Strengthen water systems, monitoring, maintenance, governance, and climate-adjusted service reliability.'],
+      ['Living systems', 'Integrate soil health, ecological infrastructure, and regenerative capacity into regional development.'],
+      ['Biological capability', 'Connect applied research, testing, standards, and operating knowledge to practical food and environmental outcomes.']
+    ],
+    nearTerm: 'Choose regional demonstrations with a defined local need, lead user, operating partner, and public measure. Connect food, water, and ecological investments to energy, housing, health, and workforce capacity so that each project strengthens a complete regional system rather than a single isolated asset.',
+    measures: ['Food and water continuity through disruption', 'Domestic processing and supplier depth', 'Affordability and access', 'Soil, water, ecological, and resilience outcomes'],
+    risks: ['Production that exceeds water, energy, or ecological capacity', 'Output measures that omit affordability and local benefit', 'Governance that begins after major project decisions are fixed'],
+    links: [['Climate-ready regions and managed growth', 'relies on reliable food, water, adaptation, and local services.'], ['Human capability and institutional learning', 'supplies the health, skills, and measurement capacity for delivery.']]
+  },
+  {
+    number: '03',
+    slug: 'advanced-manufacturing-and-materials',
+    title: 'Advanced manufacturing and materials',
+    mandate: 'Canada will build selected production capabilities that convert research, materials, and design into repairable goods, supplier networks, and retained learning. Success means operating depth: the ability to make, test, improve, maintain, and renew systems that matter.',
+    priorities: [
+      ['Pilot-to-production conversion', 'Build shared testbeds, pilot lines, standards support, first customers, and disciplined routes into production.'],
+      ['Material stewardship', 'Develop processing, recycling, remediation, traceability, and lifecycle responsibility for strategic materials.'],
+      ['Repair and supplier depth', 'Grow domestic component, packaging, testing, maintenance, repair, and supplier capability.'],
+      ['Strategic production terms', 'Attach decision rights, learning, public return, and reinvestment conditions to public and patient capital.']
+    ],
+    nearTerm: 'Choose a small number of demonstrations with a buyer, owner, financing path, workforce plan, and credible demand. Use public procurement and anchor customers to create disciplined early markets, then measure whether pilots become production, domestic suppliers deepen, and operating knowledge remains in Canada.',
+    measures: ['Pilot-to-production time and first-customer conversion', 'Domestic production, repair, and supplier capacity', 'Ownership, IP, data, and operating rights', 'Follow-on finance, revenue, and reinvestment'],
+    risks: ['Build-first economics without buyers or operators', 'Investment that moves learning and decision rights abroad', 'Concentration in a few facilities, firms, ports, or suppliers'],
+    links: [['Sovereign energy and compute', 'provides power and secure digital operations.'], ['Human capability and institutional learning', 'develops the operators, trades, managers, and founders who make production durable.']]
+  },
+  {
+    number: '04',
+    slug: 'trusted-digital-and-emerging-technology',
+    title: 'Trusted digital and emerging technology',
+    mandate: 'Canada will develop trusted digital capacity through data stewardship, identity, communications, AI assurance, quantum readiness, and technology-option preservation. The mission protects strategic choice while sustaining trusted international exchange and interoperability.',
+    priorities: [
+      ['Data and decision rights', 'Clarify stewardship, access, privacy, portability, continuity, and public-interest conditions for strategic data.'],
+      ['Trusted communications and identity', 'Strengthen secure communications, identity systems, network resilience, and continuity planning.'],
+      ['AI assurance', 'Build practical testing, accountability, cyber operations, and safe deployment capacity for consequential systems.'],
+      ['Option preservation', 'Maintain research, skills, standards, test capacity, and supplier choices as technologies evolve.']
+    ],
+    nearTerm: 'Identify public services, regional operations, and strategic producers that require trustworthy digital capacity. Establish common support for secure compute, standards, testing, data governance, procurement, and cyber recovery. Emerging technologies should advance through independently measured utility and scheduled review points rather than fixed maturity promises.',
+    measures: ['Decision rights and continuity for priority data', 'Network resilience and cyber-recovery performance', 'Adoption of assurance, testing, and standards', 'Technical and governance capability retained in Canada'],
+    risks: ['Concentrated clouds, hardware channels, or network dependencies', 'Technology branding that outruns public outcomes', 'Unclear rights over data, code, model weights, and operations'],
+    links: [['Sovereign energy and compute', 'supplies the physical foundation for digital capacity.'], ['Human capability and institutional learning', 'develops the talent and institutions required for assurance and continuity.']]
+  },
+  {
+    number: '05',
+    slug: 'climate-ready-regions-and-managed-growth',
+    title: 'Climate-ready regions and managed growth',
+    mandate: 'Canada will prepare regions for climate adaptation, housing, mobility, services, meaningful work, and resilient local systems. Managed growth must align infrastructure capacity, affordability, ecological limits, economic purpose, and rights-respecting governance.',
+    priorities: [
+      ['Climate-ready services', 'Build reliable housing, water, energy, transport, health, education, and communications capacity.'],
+      ['Regional operating systems', 'Strengthen logistics, connectivity, observation, emergency response, climate services, and remote-community resilience.'],
+      ['Rights-respecting delivery', 'Establish early governance, local authority, benefit sharing, labour standards, affordability, and ecological safeguards.'],
+      ['Managed growth capacity', 'Connect lawful pathways, credential recognition, meaningful work, and service planning to demonstrated carrying capacity.']
+    ],
+    nearTerm: 'Develop regional demonstrations around existing needs, local authority, service plans, and measurable public outcomes. Map constraints across housing, energy, water, transport, health, education, climate safety, and workforce opportunity before making major growth or investment-attraction commitments.',
+    measures: ['Essential-service capacity relative to planned demand', 'Continuity, recovery time, and adaptation performance', 'Affordability, benefit sharing, and rights-respecting governance', 'Local employment, operations, and reinvestment'],
+    risks: ['Growth that outruns services and affordability', 'One regional model imposed across diverse places', 'Infrastructure without early rights-holder and community participation'],
+    links: [['Food, water, and living systems', 'provides essential supply and ecological resilience.'], ['Sovereign energy and compute', 'supports service continuity, communications, and regional operations.']]
+  },
+  {
+    number: '06',
+    slug: 'human-capability-and-institutional-learning',
+    title: 'Human capability and institutional learning',
+    mandate: 'Canada will build the people, institutions, health-production capacity, and learning systems required to sustain strategic capability across generations. People need credible pathways to enter, advance, operate, lead, and renew the systems Canada depends on.',
+    priorities: [
+      ['Health production and care', 'Strengthen biomanufacturing, clinical networks, public-interest IP, prevention, and community-centred care platforms.'],
+      ['Workforce pathways', 'Convert paid work-integrated learning, newcomer skills, and return pathways into durable technical, trades, managerial, and entrepreneurial roles.'],
+      ['Institutional learning', 'Connect research, testbeds, first users, production, operating feedback, and reinvestment.'],
+      ['Public measurement', 'Build transparent mission measures, accountable sponsors, annual review, and cross-region learning.']
+    ],
+    nearTerm: 'Form mission working groups that bring research, institutional, capital, policy, and operating partners into measurable delivery. Establish demonstrations with a demand path, rights framework, operating partner, and workforce plan, then track whether placements become meaningful roles and whether institutions retain learning from operation.',
+    measures: ['Strategic-field placement and advancement', 'Paid work-integrated learning converted into durable roles', 'Health-production and clinical-network capacity', 'Mission milestones, accountable ownership, and public reporting'],
+    risks: ['Talent inputs without roles, advancement, or housing', 'Events and announcements without accountable follow-through', 'Fragmented programmes without shared facilities or learning loops'],
+    links: [['Advanced manufacturing and materials', 'requires skilled operators and production learning.'], ['Trusted digital and emerging technology', 'requires technical talent, public governance, and institutional continuity.']]
+  }
+] as const;
 ---
 
-<BaseLayout title="Missions | Canada2080" description="Six regional missions and national common services for Canadian capability.">
-  <section class="page-hero shell"><p class="eyebrow">Strategic response / 02</p><h1>Missions</h1><p>Six regional missions create a public frame for connecting evidence, long-horizon capital, institutions, demand, infrastructure, and accountability.</p></section>
-  <section class="section shell"><div class="reading-column wide-copy"><EvidenceLabel label="Aspiration" /><p>The mission portfolio is a proposed direction, not a forecast or a commitment by any named organisation. Delivery should be regional and differentiated, with common services that increase learning and public value.</p></div></section>
-  <section class="section shell"><ol class="mission-detail-list">{missions.map(([number, title, summary]) => <li><span>{number}</span><h2>{title}</h2><p>{summary}</p></li>)}</ol></section>
-  <section class="section section-inverse"><div class="shell split-section"><div><p class="eyebrow">National common services</p><h2>Build the conditions that let regional work compound.</h2></div><div class="reading-column"><p>Patient capital, standards, procurement, secure compute, export support, data governance, and measurement are common services proposed across the mission portfolio.</p><p>Every strategic project should clarify additionality, control rights, demand, local learning, infrastructure capacity, trusted partners, public return, Indigenous rights, labour standards, affordability, and ecological limits.</p></div></div></section>
+<BaseLayout title="Missions | Canada2080" description="Six connected missions for building Canadian capability, resilience, strategic choice, and trusted global contribution.">
+  <section class="page-hero page-hero-dark"><div class="shell"><p class="eyebrow">Strategic response / 02</p><h1>Six missions. One capability portfolio.</h1><p>Each mission connects a public need to the infrastructure, ownership, skilled work, demand, learning, and reinvestment required to deliver it.</p></div></section>
+
+  <section class="section shell statement-section" aria-labelledby="portfolio-title">
+    <div><p class="eyebrow">The portfolio</p><EvidenceLabel label="Aspiration" /></div>
+    <div><h2 id="portfolio-title">Build complete systems that Canada can operate and renew.</h2><p class="lead">Canada2080 organizes six connected mission fields around capabilities that must endure beyond a single project, technology, company, or political cycle.</p><p><strong>Economic sovereignty</strong> means strategic choice within trusted international exchange. Canada will retain meaningful decision rights, operating knowledge, repair capacity, and public value in selected systems while working through diverse partnerships.</p></div>
+  </section>
+
+
+  <section class="shell" aria-label="Canada2080 mission briefs">
+    <ol class="mission-brief-list">
+      {missionBriefs.map((mission) => (
+        <li id={mission.slug} class="mission-brief">
+          <header class="mission-brief-header">
+            <span>{mission.number}</span>
+            <div><p class="eyebrow">Mission {mission.number}</p><h2>{mission.title}</h2></div>
+            <p>{mission.mandate}</p>
+          </header>
+
+          <div class="mission-brief-body">
+            <section>
+              <h3>Capability priorities</h3>
+              <ul class="mission-priority-list">{mission.priorities.map(([title, description]) => <li><strong>{title}</strong><p>{description}</p></li>)}</ul>
+            </section>
+            <div class="mission-brief-side">
+              <section><h3>Near-term agenda</h3><p>{mission.nearTerm}</p></section>
+              <section><h3>Measure progress</h3><ul>{mission.measures.map((measure) => <li>{measure}</li>)}</ul></section>
+              <section><h3>Conditions to avoid</h3><ul>{mission.risks.map((risk) => <li>{risk}</li>)}</ul></section>
+              <section><h3>Connected missions</h3><ul class="mission-links">{mission.links.map(([title, relationship]) => <li><strong>{title}</strong> {relationship}</li>)}</ul></section>
+            </div>
+          </div>
+        </li>
+      ))}
+    </ol>
+  </section>
+
+  <section class="section section-inverse"><div class="shell split-section"><div><p class="eyebrow">One connected system</p><h2>No mission succeeds alone.</h2></div><div class="reading-column"><p>Energy and compute support sensing, coordination, research, and production. Food, water, health, housing, and ecological systems determine whether communities remain viable. Manufacturing and skilled work turn knowledge into repairable capability.</p><p>Canada2080 will test whether capable local systems can form stronger regional and national networks without creating a single point of failure. Service continuity, recovery time, affordability, ecological performance, cyber resilience, and distributional impact will determine what deserves to scale.</p></div></div></section>
+
+  <section class="section shell" aria-labelledby="common-services-title">
+    <div class="section-heading"><div><p class="eyebrow">National common services</p><h2 id="common-services-title">Build shared conditions for regional missions to compound.</h2></div><p>Every mission needs common services that lower repeated barriers, preserve public accountability, and carry learning between regions.</p></div>
+    <ul class="common-services-grid">
+      <li><span>01</span><h3>Patient capital</h3><p>Demonstration finance, follow-on capital, milestone discipline, and explicit public-return terms.</p></li>
+      <li><span>02</span><h3>Procurement and standards</h3><p>First customers, anchor demand, approvals support, testing, assurance, and standards development.</p></li>
+      <li><span>03</span><h3>Secure digital capacity</h3><p>Compute, cyber resilience, data stewardship, interoperability, and continuity arrangements.</p></li>
+      <li><span>04</span><h3>Workforce and facilities</h3><p>Testbeds, pilot lines, shared facilities, work-integrated learning, and durable career pathways.</p></li>
+      <li><span>05</span><h3>Trusted exchange</h3><p>Export support and diversified supply relationships that preserve Canadian strategic choice.</p></li>
+      <li><span>06</span><h3>Public measurement</h3><p>Common methods for control, production, talent, public value, resilience, and reinvestment.</p></li>
+    </ul>
+  </section>
+
+  <section class="section section-signal"><div class="shell statement-section"><div><p class="eyebrow">The operating test</p></div><div><h2>Every mission must cross from intention to capability.</h2><p class="lead">A credible project identifies its buyer, owner, rights framework, operating model, infrastructure needs, workforce path, financing, public return, and measures before it asks to scale.</p><a class="button button-dark" href="/signals">Track the signals affecting these missions</a></div></div></section>
 </BaseLayout>

@@ -1,9 +1,14 @@
 ---
 /**
  * Vectorized 2080 wordmark from the approved lockup.
- * hero/inverse: white digits, red leaf in the first zero
- * default/nav: red digits, transparent leaf window for light surfaces
+ * hero/inverse: white digits, red leaf in the first zero (inlined for large-display sharpness)
+ * default/nav: red digits, snow leaf window for light surfaces
  */
+// @ts-expect-error The build runtime provides this Node built-in; this project does not ship Node typings.
+import fs from 'node:fs';
+// @ts-expect-error The build runtime provides this Node built-in; this project does not ship Node typings.
+import path from 'node:path';
+
 interface Props {
   tone?: 'hero' | 'inverse' | 'default' | 'nav';
   class?: string;
@@ -11,25 +16,56 @@ interface Props {
 
 const { tone = 'default', class: className } = Astro.props;
 
-const src =
+const isHero = tone === 'hero' || tone === 'inverse';
+const fileName =
   tone === 'nav' || tone === 'default'
-    ? '/brand/2080-wordmark-nav.svg'
-    : '/brand/2080-wordmark.svg';
+    ? '2080-wordmark-nav.svg'
+    : '2080-wordmark.svg';
+const src = `/brand/${fileName}`;
+
+// @ts-expect-error Astro builds run in Node; only this build-time global is used.
+const brandDir = path.join(process.cwd(), 'public', 'brand');
+const inlineSvg = isHero
+  ? fs
+      .readFileSync(path.join(brandDir, fileName), 'utf8')
+      .replace(/<\?xml[^>]*>\s*/i, '')
+      .replace(/\sshape-rendering="[^"]*"/gi, '')
+      .replace(
+        /<svg\b([^>]*)>/i,
+        '<svg$1 shape-rendering="geometricPrecision" focusable="false" aria-hidden="true">',
+      )
+  : null;
 ---
 
-<img
-  class:list={['year-wordmark', `year-wordmark-${tone}`, className]}
-  src={src}
-  alt=""
-  width="590"
-  height="141"
-  decoding="async"
-/>
+{
+  isHero ? (
+    <span
+      class:list={['year-wordmark', 'year-wordmark-inline', `year-wordmark-${tone}`, className]}
+      set:html={inlineSvg}
+    />
+  ) : (
+    <img
+      class:list={['year-wordmark', `year-wordmark-${tone}`, className]}
+      src={src}
+      alt=""
+      width="2400"
+      height="595"
+      decoding="async"
+    />
+  )
+}
 
 <style>
   .year-wordmark {
     display: block;
     width: 100%;
     height: auto;
+  }
+
+  .year-wordmark-inline :global(svg) {
+    display: block;
+    width: 100%;
+    height: auto;
+    overflow: visible;
   }
 </style>

@@ -9,28 +9,15 @@ const evidenceClass = z.enum([
   'Research needed'
 ]);
 
-const research = defineCollection({
-  type: 'content',
-  schema: z.object({
-    title: z.string(),
-    description: z.string(),
-    publishedAt: z.coerce.date(),
-    updatedAt: z.coerce.date().optional(),
-    evidenceClass,
-    status: z.enum(['draft', 'published']),
-    draft: z.boolean().default(true),
-    sources: z.array(z.string()).min(1),
-    tags: z.array(z.string()).default([])
-  })
-});
-
 const events = defineCollection({
   type: 'content',
   schema: z.object({
     title: z.string(),
     description: z.string(),
-    date: z.coerce.date(),
-    status: z.enum(['announced', 'registration-open', 'full', 'completed', 'cancelled']),
+    dateLabel: z.string(),
+    candidateDates: z.array(z.string()).default([]),
+    sortDate: z.coerce.date(),
+    status: z.enum(['date-finalizing', 'registration-open', 'full', 'completed', 'cancelled']),
     format: z.string(),
     duration: z.string(),
     location: z.string().optional(),
@@ -39,8 +26,8 @@ const events = defineCollection({
     speakers: z.array(z.object({
       name: z.string(),
       institution: z.string(),
-      lane: z.string(),
-      status: z.enum(['planned', 'invited', 'confirmed'])
+      expertise: z.string(),
+      bio: z.string()
     })).default([]),
     itinerary: z.array(z.object({
       time: z.string(),
@@ -51,18 +38,25 @@ const events = defineCollection({
   })
 });
 
-const journal = defineCollection({
+const signals = defineCollection({
   type: 'content',
   schema: z.object({
     title: z.string(),
     description: z.string(),
     publishedAt: z.coerce.date(),
-    type: z.enum(['announcement', 'event-record', 'reflection', 'field-note', 'interview', 'research-interpretation', 'accountability-update', 'cross-post']),
-    author: z.string(),
+    updatedAt: z.coerce.date().optional(),
+    kind: z.enum(['research', 'announcement', 'event-record', 'reflection', 'field-note', 'interview', 'accountability-update', 'cross-post', 'commentary']),
+    author: z.string().default('Canada2080'),
+    evidenceClass: evidenceClass.optional(),
+    status: z.enum(['draft', 'published']),
     draft: z.boolean().default(true),
+    sources: z.array(z.object({
+      citation: z.string(),
+      url: z.string().url()
+    })).default([]),
     tags: z.array(z.string()).default([]),
     canonicalUrl: z.string().url().optional()
   })
 });
 
-export const collections = { research, events, journal };
+export const collections = { events, signals };

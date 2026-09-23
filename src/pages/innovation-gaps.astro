@@ -1,0 +1,132 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import EvidenceLabel from '../components/EvidenceLabel.astro';
+
+const gapAnalyses = [
+  {
+    number: '01',
+    slug: 'commercialization-and-scale-up',
+    title: 'Commercialization and scale-up',
+    deck: 'Canada produces strong research, yet too few discoveries travel through the full system of adoption, first customers, production, suppliers, exports, and reinvestment.',
+    metric: '1.81%',
+    metricLabel: 'of GDP invested in R&D',
+    metricYear: 'Canada, 2022',
+    metricContext: 'The OECD average was 2.73%. This is an input measure, not a commercialization rate.',
+    body: [
+      { text: 'Canada’s problem begins after discovery. Statistics Canada recorded $51.7 billion in gross domestic expenditure on research and development in 2022, including $30.4 billion performed by businesses and $18.1 billion performed by higher-education institutions. Canada’s R&D intensity was 1.81% of GDP, compared with an OECD average of 2.73%.', refs: ['1'] },
+      { text: 'Research spending shows the scale of the input. It does not show how often an invention reaches a customer, how quickly a pilot becomes production, whether a firm survives scale-up, or where later returns are reinvested. The Council of Canadian Academies describes higher education as a Canadian strength while identifying low private-sector R&D, lagging technology adoption, a shortage of large innovative firms, and persistent barriers to scaling start-ups and retaining intellectual property.', refs: ['2', '3'] },
+      { text: 'The resulting gap is a missing conversion system. Commercialization requires more than forming a start-up or filing a patent. It depends on validation, regulation, standards, procurement, growth capital, experienced operators, production facilities, supplier development, export channels, and the capacity to finance the next generation of work.', refs: [] },
+      { text: 'This matters because firms that reach operating scale become places where technical judgment, customer knowledge, manufacturing learning, management capability, and subsequent R&D accumulate. Canada has no integrated public series that follows supported research through pilots, first sales, domestic production, export survival, and reinvestment. That missing outcome record limits the country’s ability to see exactly where conversion fails.', refs: [] }
+    ],
+    supporting: ['$51.7B total Canadian R&D in 2022', '$30.4B performed by businesses', '$18.1B performed by higher education'],
+    unknown: 'A national, linked measure of pilot-to-production conversion, first-customer adoption, scale-up survival, and domestic reinvestment.'
+  },
+  {
+    number: '02',
+    slug: 'talent-retention-and-domestic-opportunity',
+    title: 'Talent retention and domestic opportunity',
+    deck: 'The central question is whether Canada offers enough demanding work for people to apply advanced capability, progress into leadership, return, and build from here.',
+    metric: '46%',
+    metricLabel: 'of a defined applicant group',
+    metricYear: 'U.S. labour certification applicants, 2024',
+    metricContext: 'Canadian citizens in the studied group working in computer, mathematical, architecture, or engineering occupations.',
+    body: [
+      { text: 'Talent moves. People study abroad, join international teams, gain experience, return, invest, and create cross-border networks. Canada’s concern is the quality and depth of the domestic opportunity structure available across a full career, from early work through technical leadership, operations, management, and firm creation.', refs: [] },
+      { text: 'Statistics Canada found that, in 2024, 46% of Canadian citizens applying for U.S. labour certification for an employer-sponsored permanent-residency pathway worked in computer and mathematical occupations or architecture and engineering occupations. This is a real signal from a narrow population. It does not represent all Canadian workers in the United States, all emigrants, all Canadian graduates, or everyone who ultimately received permanent residency.', refs: ['5'] },
+      { text: 'The domestic side is equally important. Businesses performed $30.4 billion in R&D in Canada in 2022, while higher-education institutions performed $18.1 billion. Business R&D is one setting where scientists, engineers, product teams, operators, and managers can turn knowledge into products and organizations. It remains an opportunity-side proxy rather than a retention rate or job count.', refs: ['1'] },
+      { text: 'The gap matters to Canadian-born talent, skilled newcomers, researchers, founders, trades, and employers. A country can educate and attract capable people while offering too few roles with sufficient equipment, capital, customers, authority, compensation, and advancement. Canada still lacks a linked national series that follows technical graduates through occupation, country of work, duration abroad, return, and later value creation. Public discussion must keep that measurement gap visible.', refs: [] }
+    ],
+    supporting: ['2,459 people in the studied 2024 applicant group', '60% of that group were foreign-born Canadian citizens', '$30.4B in business-performed R&D in 2022'],
+    unknown: 'A national, return-aware technical-talent series that distinguishes employment, temporary mobility, permanent migration, and beneficial circulation.'
+  },
+  {
+    number: '03',
+    slug: 'ip-ownership-and-decision-rights',
+    title: 'IP ownership and decision rights',
+    deck: 'Canadian activity creates strategic capability only when the rights to use, govern, improve, finance, and redirect important systems remain clear and durable.',
+    metric: '43.5%',
+    metricLabel: 'of manufacturing assets',
+    metricYear: 'under foreign control in Canada, 2024',
+    metricContext: 'An asset-control indicator derived from enterprise financial and ownership data. It is not an IP ownership rate.',
+    body: [
+      { text: 'Statistics Canada reports that foreign-controlled enterprises held 43.5% of assets in Canadian manufacturing in 2024. Manufacturing was among the non-financial industries with the largest foreign-controlled asset shares, alongside wholesale trade at 48.9%. Across the corporate economy, the foreign-controlled share was 13.9%.', refs: ['6'] },
+      { text: 'These figures measure corporate control of assets under the Corporations Returns Act. They do not show who owns a patent, holds an exclusive licence, controls source code, possesses encryption keys, directs a product roadmap, or decides where future R&D and production will occur. A foreign-controlled firm can create substantial Canadian employment, production, exports, training, and research. A Canadian-controlled firm can also transfer critical rights abroad.', refs: [] },
+      { text: 'The wider concern remains legitimate. The Council of Canadian Academies identifies retaining intellectual property and scaling innovative firms as persistent Canadian challenges. Ownership and governance arrangements may influence where capital allocation, technical direction, operating authority, customer relationships, and reinvestment reside. The effect depends on the actual contracts, rights, capabilities, and commitments in each case.', refs: ['2', '3'] },
+      { text: 'This gap therefore concerns decision rights and learning loops. Canada needs to know whether organizations here can continue using and improving strategically important assets when ownership, markets, technologies, or geopolitical conditions change. No public economy-wide dataset currently joins corporate control with patent assignment, licensing, data rights, software control, trade secrets, governance provisions, and post-acquisition commitments.', refs: [] }
+    ],
+    supporting: ['$2.6T in assets under foreign control across the corporate economy', '48.9% foreign-controlled share in wholesale trade', '13.9% foreign-controlled share across all corporate industries'],
+    unknown: 'An integrated control-rights dataset covering patents, licences, data, software, standards, governance, operating authority, and reinvestment.'
+  },
+  {
+    number: '04',
+    slug: 'long-term-investment-and-risk-capacity',
+    title: 'Long-term investment and risk capacity',
+    deck: 'Canada’s productive capacity has not compounded quickly enough through capital, adoption, infrastructure, management, skills, demand, and institutional continuity.',
+    metric: '71%',
+    metricLabel: 'of the U.S. productivity level',
+    metricYear: 'Canada, 2022',
+    metricContext: 'Labour productivity measured as output per hour worked. It is an outcome indicator, not a direct measure of patient capital.',
+    body: [
+      { text: 'Bank of Canada Senior Deputy Governor Carolyn Rogers reported that Canadian labour productivity was 71% of the United States level in 2022, down from 88% in 1984. Productivity shapes the capacity to raise wages, support public services, improve living standards, and absorb future shocks.', refs: ['7'] },
+      { text: 'The figure is broad by design. Labour productivity reflects capital intensity, technology adoption, management, infrastructure, skills, competition, industrial composition, and policy conditions. It cannot establish that patient capital alone caused the gap. The Council of Canadian Academies adds compatible evidence: private-sector R&D remains low relative to peers, technology adoption lags, and incomplete or dated measures complicate decisions in a changing innovation system.', refs: ['2', '3'] },
+      { text: 'The investment problem is therefore about compounding capability over time. Long development cycles in energy, advanced manufacturing, infrastructure, health production, and deep technology require financing that can survive technical, regulatory, construction, and market uncertainty. Productive capital must also meet operating organizations, skilled people, credible demand, and institutions able to learn from deployment.', refs: [] },
+      { text: 'Current public data do not provide one national measure of patient capital across venture follow-on finance, growth equity, project finance, duration, manufacturing investment, and control conditions. Productivity is the strongest visible outcome signal, but it leaves the causal composition unresolved. That uncertainty is a reason for more precise measurement rather than a licence to reduce the problem to national culture or risk appetite.', refs: [] }
+    ],
+    supporting: ['88% of the U.S. level in 1984', 'Weak business investment identified by the Bank of Canada', 'Low private-sector R&D and technology adoption identified by the CCA'],
+    unknown: 'A public patient-capital series that measures duration, follow-on capacity, project finance, manufacturing tolerance, and retained control conditions.'
+  }
+] as const;
+
+const references = [
+  ['1', 'Statistics Canada, “Gross domestic expenditures on research and development, 2022 (final), 2023 (preliminary) and 2024 (intentions),” The Daily, Dec. 3, 2024.', 'https://www150.statcan.gc.ca/n1/daily-quotidien/241203/dq241203c-eng.htm'],
+  ['2', 'Council of Canadian Academies, The State of Science, Technology, and Innovation in Canada 2025, Nov. 18, 2025.', 'https://cca-reports.ca/reports/the-state-of-science-and-technology-and-innovation-in-canada/'],
+  ['3', 'Council of Canadian Academies, “Canada’s innovation performance continues to decline at a time of unprecedented change,” Nov. 18, 2025.', 'https://cca-reports.ca/canadas-innovation-performance-continues-to-decline-at-a-time-of-unprecedented-change/'],
+  ['4', 'Statistics Canada, “Gross domestic expenditures on research and development, by science type and by funder and performer sector,” Table 27-10-0273-01.', 'https://doi.org/10.25318/2710027301-eng'],
+  ['5', 'F. Hou, M. Yang, and Y. Lu, “Recent trends in immigration from Canada to the United States,” Economic and Social Reports, Statistics Canada, Jul. 23, 2025.', 'https://doi.org/10.25318/36280001202500700006-eng'],
+  ['6', 'Statistics Canada, “Foreign control in the Canadian economy, 2024,” The Daily, Jun. 24, 2026.', 'https://www150.statcan.gc.ca/n1/daily-quotidien/260624/dq260624a-eng.htm'],
+  ['7', 'C. Rogers, “Time to break the glass: Fixing Canada’s productivity problem,” Bank of Canada, Mar. 26, 2024.', 'https://www.bankofcanada.ca/2024/03/remarks-2024-03-26/'],
+  ['8', 'Bank of Canada, Monetary Policy Report, Apr. 2024.', 'https://www.bankofcanada.ca/publications/mpr/mpr-2024-04-10/']
+] as const;
+---
+
+<BaseLayout title="Innovation Gaps | Canada2080" description="Four evidence-backed innovation gaps between Canadian research strength and enduring domestic capability.">
+  <section class="page-hero page-hero-dark innovation-gap-hero"><div class="shell"><div><p class="eyebrow">Problem space / 01</p><h1>Canada’s innovation gaps</h1><p>Four connected problems limit how consistently Canadian research, talent, rights, and investment become durable capability.</p></div><dl class="innovation-gap-hero-facts"><div><dt>Framework</dt><dd>Four connected gaps</dd></div><div><dt>Evidence base</dt><dd>Official and institutional sources</dd></div><div><dt>Reading method</dt><dd>Figure, context, limitation</dd></div></dl></div></section>
+
+  <section class="section shell innovation-gap-diagnosis" aria-labelledby="diagnosis-title">
+    <div class="innovation-gap-diagnosis-heading"><p class="eyebrow">The diagnosis</p><EvidenceLabel label="Qualified claim" /><h2 id="diagnosis-title">Strong research.<br />Weak conversion systems.</h2></div>
+    <div class="innovation-gap-diagnosis-copy"><p class="lead">Francis Wang’s research into Canadian sustainable innovation identifies four structural gaps between knowledge and enduring domestic capability.</p><p>Official statistics and the Council of Canadian Academies support the broad diagnosis: Canada has meaningful research and higher-education strengths while business R&D, technology adoption, scale-up, IP retention, and long-run productivity remain weaker than the country’s potential. <a href="#ref-1">[1]</a> <a href="#ref-2">[2]</a></p><p>The four gaps form a systems hypothesis rather than a proven single causal chain. Each figure below is defined narrowly, paired with its limits, and treated as one signal within a larger problem.</p></div>
+    <figure class="innovation-gap-process" aria-labelledby="capability-cycle-title"><figcaption id="capability-cycle-title">The capability cycle</figcaption><ol><li><span>01</span><strong>Research and talent</strong></li><li><span>02</span><strong>Conversion and scale</strong></li><li><span>03</span><strong>Control and learning</strong></li><li><span>04</span><strong>Reinvestment</strong></li></ol></figure>
+  </section>
+
+  <nav class="section shell innovation-gap-index" aria-label="Innovation gap index">
+    <p class="eyebrow">Explore the problem space</p>
+    <ol>{gapAnalyses.map((gap) => <li><a href={`#${gap.slug}`}><span>{gap.number}</span><strong>{gap.title}</strong><em>{gap.metric}</em><small>{gap.metricLabel}</small></a></li>)}</ol>
+  </nav>
+
+  <main class="innovation-gap-articles shell">
+    {gapAnalyses.map((gap) => (
+      <article id={gap.slug} class="innovation-gap-article">
+        <header class="innovation-gap-header"><div class="innovation-gap-number"><span>{gap.number}</span><i aria-hidden="true"></i></div><div><p class="eyebrow">Innovation gap {gap.number}</p><h2>{gap.title}</h2><p class="innovation-gap-deck">{gap.deck}</p></div></header>
+        <div class="innovation-gap-layout">
+          <div class="innovation-gap-copy"><p class="innovation-gap-thesis">{gap.body[0].text} {gap.body[0].refs.map((ref) => <a href={`#ref-${ref}`}>[{ref}]</a>)}</p>{gap.body.slice(1).map((paragraph) => <p>{paragraph.text} {paragraph.refs.map((ref) => <a href={`#ref-${ref}`}>[{ref}]</a>)}</p>)}</div>
+          <aside class="innovation-gap-metric" aria-label={`Highlighted figure for ${gap.title}`}>
+            <p class="eyebrow">Highlighted figure</p>
+            <strong>{gap.metric}</strong>
+            <h3>{gap.metricLabel}</h3>
+            <p class="innovation-gap-year">{gap.metricYear}</p>
+            <p>{gap.metricContext}</p>
+            <div class="innovation-gap-facts"><h3>Supporting evidence</h3><ul>{gap.supporting.map((fact) => <li>{fact}</li>)}</ul></div>
+            <div class="innovation-gap-unknown"><h3>What remains unknown</h3><p>{gap.unknown}</p></div>
+          </aside>
+        </div>
+      </article>
+    ))}
+  </main>
+
+  <section class="section section-inverse"><div class="shell split-section"><div><p class="eyebrow">The connected consequence</p><h2>Capability weakens when learning loops break.</h2></div><div class="reading-column"><p>Thin conversion pathways reduce the number of firms and operating environments able to scale. Limited domestic opportunity constrains where people can apply and deepen capability. Unclear decision rights can move technical direction and reinvestment away from Canadian institutions. Short or fragmented investment cycles leave productive systems incomplete.</p><p>Coordination cuts across all four gaps. Research, infrastructure, procurement, skills, rights, finance, and regional delivery must be measured together if Canada is to understand where capability stops compounding.</p><a class="text-link text-link-light" href="/missions">See the missions responding to these gaps <span aria-hidden="true">↗</span></a></div></div></section>
+
+  <section class="section shell innovation-gap-references" aria-labelledby="references-title">
+    <div class="section-heading"><div><p class="eyebrow">Evidence record</p><h2 id="references-title">References</h2></div><p>Figures and institutional findings are cited in IEEE style. Links lead to the source record.</p></div>
+    <ul>{references.map(([number, citation, url]) => <li id={`ref-${number}`}><span>[{number}]</span><a href={url}>{citation}</a></li>)}</ul>
+  </section>
+</BaseLayout>

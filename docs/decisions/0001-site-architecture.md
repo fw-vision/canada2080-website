@@ -23,7 +23,7 @@ The site configuration uses `site: 'https://canada2080.org'` and `base: '/'`. Th
 - Pro: Delivers static HTML by default, has first-class Markdown content collections, and keeps JavaScript close to zero.
 - Pro: Supports long-form editorial routes and future interactive islands without imposing a framework dependency.
 - Pro: Fits GitHub Pages and has minimal operational cost.
-- Con: Dynamic forms and personalised features will need an external provider or a later backend decision.
+- Con: Dynamic forms and personalized features will need an external provider or a later backend decision.
 
 ### Option B: Next.js application
 
@@ -49,7 +49,7 @@ The site configuration uses `site: 'https://canada2080.org'` and `base: '/'`. Th
 
 - The Join page cannot submit information until a reviewed third-party form or backend is selected.
 - Editors must commit Markdown changes through the repository until a CMS is deliberately added.
-- Interactive visualisations require a new dependency decision or a small isolated client island.
+- Interactive visualizations require a new dependency decision or a small isolated client island.
 
 ### Neutral
 

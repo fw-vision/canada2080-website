@@ -1,9 +1,31 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+const formEndpoint = import.meta.env.PUBLIC_INTENT_FORM_ENDPOINT;
 ---
 
-<BaseLayout title="Join | Canada2080" description="Ways investors, institutions, and policy leaders can contribute to Canada2080.">
-  <section class="page-hero shell"><p class="eyebrow">Participation / 05</p><h1>Join the work</h1><p>Canada2080 is building a public research and coalition programme. Choose a specific capability and contribute what moves it forward.</p></section>
-  <section class="section shell"><div class="participation-grid"><article><p class="eyebrow">For investors</p><h2>Finance a capability gap.</h2><p>Support demonstrations, production, suppliers, and retained control rights. Attach measurable public-return terms.</p></article><article><p class="eyebrow">For institutions</p><h2>Operate a bridge.</h2><p>Host a testbed, first customer, programme, work-integrated learning pathway, or measurement function.</p></article><article><p class="eyebrow">For policy leaders</p><h2>Remove one bottleneck.</h2><p>Assign an accountable owner for a mission, approval, procurement, infrastructure, or public-service constraint.</p></article></div></section>
-  <section class="section section-inverse"><div class="shell split-section"><div><p class="eyebrow">Contact route</p><h2>Participation channels are under review.</h2></div><div class="reading-column"><p>Launch MVP does not collect personal information. A reviewed contact and privacy process will be published before public submissions open.</p><p>Until then, follow the research programme and return to this page for an approved contact route.</p>        <a class="button button-light" href="/research">Read current research</a></div></div></section>
+<BaseLayout title="Join | Canada2080" description="Find your role in Canada's long-horizon capability agenda and express interest in Canada2080 updates.">
+  <section class="page-hero shell"><p class="eyebrow">Participation / 05</p><h1>Find your role</h1><p>Choose a capability or contribution lane and help Canada2080 turn long-horizon ambition into inspectable work.</p></section>
+  <section class="section shell"><div class="participation-grid"><article><p class="eyebrow">For investors and bankers</p><h2>Finance a capability gap.</h2><p>Test patient capital, demonstration finance, first-production risk, control terms, and measurable public return.</p></article><article><p class="eyebrow">For institutions</p><h2>Operate a bridge.</h2><p>Host a testbed, first customer, work-integrated learning pathway, research programme, or measurement function.</p></article><article><p class="eyebrow">For policy leaders</p><h2>Remove one bottleneck.</h2><p>Clarify procurement, approvals, infrastructure, lawful pathways, public services, or accountable mission ownership.</p></article><article><p class="eyebrow">For researchers</p><h2>Strengthen the evidence.</h2><p>Challenge assumptions, improve metrics, test precision resilience, and make uncertainty visible.</p></article><article><p class="eyebrow">For operators</p><h2>Make capability work.</h2><p>Connect prototypes to manufacturing, supply, maintenance, repair, adoption, and resilient service delivery.</p></article><article><p class="eyebrow">For communities</p><h2>Define legitimate value.</h2><p>Bring regional knowledge, rights, affordability, ecological realities, and intergenerational outcomes into the work.</p></article></div></section>
+
+  <section class="section section-inverse"><div class="shell split-section"><div><p class="eyebrow">Join the movement</p><h2>Express your intent.</h2></div><div class="reading-column">
+    {formEndpoint ? (
+      <>
+        <p>Share the minimum information needed for Canada2080 to send updates and understand how you may wish to contribute. This is not an event RSVP, attendance confirmation, investment offer, or public endorsement.</p>
+        <form class="intent-form" action={formEndpoint} method="post" target="intent-response">
+          <label>Name <input name="name" type="text" required maxlength="120" autocomplete="name" /></label>
+          <label>Email <input name="email" type="email" required maxlength="254" autocomplete="email" /></label>
+          <label>Organization <span>(optional)</span><input name="organization" type="text" maxlength="160" autocomplete="organization" /></label>
+          <label>Contribution role <select name="role" required><option value="">Choose one</option><option>Evidence and research</option><option>Capital and finance</option><option>Institutional capacity</option><option>Policy and public leadership</option><option>Operations and manufacturing</option><option>Regional and community leadership</option><option>Independent measurement</option></select></label>
+          <label>What would you like to contribute? <span>(optional)</span><textarea name="note" maxlength="800" rows="5"></textarea></label>
+          <label class="honeypot" aria-hidden="true">Website <input name="website" type="text" tabindex="-1" autocomplete="off" /></label>
+          <label class="consent"><input name="consent" type="checkbox" value="yes" required /> <span>I consent to Canada2080 using this information to contact me about the initiative and related events. I can request deletion or unsubscribe from future updates.</span></label>
+          <button class="button button-signal" type="submit">Share my intent</button>
+        </form>
+        <iframe class="intent-response" name="intent-response" title="Intent form response"></iframe>
+        <p class="form-note">Submissions are relayed through Google Apps Script to a restricted Google Sheet. Do not submit sensitive personal, political, financial, accessibility, or identity information.</p>
+      </>
+    ) : (
+      <><p>The lightweight intent route is being finalized. It will use a reviewed Google Apps Script relay and restricted Google Sheet, collect only essential contact and role information, and remain separate from event attendance confirmation.</p><p>No personal information is collected on this page until that endpoint and its privacy controls are configured.</p><a class="button button-light" href="/signals">Follow current signals</a></>
+    )}
+  </div></div></section>
 </BaseLayout>

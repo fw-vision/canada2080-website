@@ -1,0 +1,162 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import EvidenceLabel from '../components/EvidenceLabel.astro';
+
+const advantages = [
+  {
+    number: '01',
+    title: 'Freshwater systems',
+    metric: '7% of renewable supply',
+    copy: 'Canada has about 7% of the world’s renewable freshwater supply. That water is unevenly distributed, seasonal, climate-sensitive, shared, and governed at the watershed level.',
+    href: 'https://www.canada.ca/en/environment-climate-change/services/environmental-indicators/water-quantity-canadian-rivers.html',
+    source: 'Environment and Climate Change Canada'
+  },
+  {
+    number: '02',
+    title: 'Land and food',
+    metric: '189,874 farms',
+    copy: 'Canada has substantial agricultural capacity and a major agri-food economy. Resilience still depends on soil, water, labour, inputs, processing, transport, affordability, and climate adaptation.',
+    href: 'https://www.statcan.gc.ca/en/census-agriculture',
+    source: '2021 Census of Agriculture'
+  },
+  {
+    number: '03',
+    title: 'Forests and biomaterials',
+    metric: '362M hectares',
+    copy: 'Canada contains about 9% of the world’s forests. Their value depends on rights, biodiversity, carbon, wildfire resilience, community benefit, and long renewal cycles.',
+    href: 'https://natural-resources.canada.ca/our-natural-resources/forests/state-canadas-forests-report/16496',
+    source: 'Natural Resources Canada'
+  },
+  {
+    number: '04',
+    title: 'Clean electricity',
+    metric: '75% clean generation',
+    copy: 'In 2019, hydro, nuclear, wind, and solar generated three-quarters of Canada’s electricity. Provincial differences, transmission, connections, drought, wildfire, and affordability still govern what can be built.',
+    href: 'https://www.canada.ca/en/campaign/critical-minerals-in-canada/canadian-critical-minerals-strategy.html',
+    source: 'Canadian Critical Minerals Strategy'
+  },
+  {
+    number: '05',
+    title: 'Mineral potential',
+    metric: '31 critical minerals',
+    copy: 'Canada has minerals needed by modern energy, digital, defence, and industrial systems. Deposits become strategic capability only through viable processing, manufacturing, customers, repair, recycling, and retained learning.',
+    href: 'https://www.canada.ca/en/campaign/critical-minerals-in-canada/canadian-critical-minerals-strategy.html',
+    source: 'Canadian Critical Minerals Strategy'
+  }
+];
+
+const chain = [
+  'Rights, title, consent, and benefit sharing',
+  'Climate, water, biodiversity, and land stewardship',
+  'Responsible cultivation or extraction',
+  'Processing, refining, and quality assurance',
+  'Components, products, and industrial services',
+  'Lead users, procurement, deployment, and exports',
+  'Operation, maintenance, cyber security, and repair',
+  'Reuse, recovery, recycling, and ecosystem renewal',
+  'Canadian learning, decision rights, skilled work, and reinvestment'
+];
+
+const opportunityFields = [
+  ['Critical minerals and batteries', 'Connect responsible mineral development to processing, battery-material niches, competitive manufacturing, battery management, repair, recycling, and trusted export.'],
+  ['Forest biomaterials', 'Turn responsibly governed fibre into engineered wood, mass timber, advanced materials, construction systems, reuse, and verified climate performance.'],
+  ['Agri-food systems', 'Join soil and water stewardship to processing, cold chains, precision tools, food manufacturing, waste reduction, affordable access, and exports.'],
+  ['Clean power and compute', 'Plan generation, transmission, storage, secure compute, cooling, cyber operations, industrial users, and local service capability as one system.'],
+  ['Water and climate technology', 'Build watershed intelligence, treatment, industrial reuse, flood and drought tools, adaptation engineering, and services that can travel.']
+];
+---
+
+<BaseLayout title="Canada's Natural Advantages | Canada2080" description="Canada has freshwater, forests, farmland, minerals, and clean electricity. Canada2080 explores how selected advantages can become resilient, Canadian-governed value chains.">
+  <section class="page-hero page-hero-dark natural-advantage-hero">
+    <div class="shell">
+      <p class="eyebrow">National opportunity / Complete value chains</p>
+      <h1>Natural advantage is only the beginning.</h1>
+      <p>Canada begins with resources that a changing world will need. Our opportunity is to transform selected endowments into complete, rights-respecting capabilities that Canada can govern, improve, repair, and renew.</p>
+      <EvidenceLabel label="Qualified claim" />
+    </div>
+  </section>
+
+  <section class="section shell statement-section natural-advantage-proposition">
+    <div><p class="eyebrow">The proposition</p></div>
+    <div>
+      <h2>Canada can build for the world's resilient future.</h2>
+      <p class="lead">Major freshwater systems, agricultural capacity, forests, mineral potential, clean electricity, technical talent, and access to allied markets give Canada a substantial starting position.</p>
+      <p>A lake is not a water strategy. A mineral deposit is not a battery industry. A forest is not a biomaterials sector. Clean electricity alone is not a competitive manufacturing base. A cooler geography is not a promise of climate safety.</p>
+      <p>Endowment becomes advantage through stewardship, infrastructure, productive firms, skilled work, public legitimacy, and the ability to retain operating knowledge and decision rights.</p>
+    </div>
+  </section>
+
+  <section class="section section-horizon natural-advantage-foundations">
+    <div class="shell">
+      <div class="section-heading">
+        <div><p class="eyebrow">The starting position</p><h2>Five natural and industrial foundations.</h2></div>
+        <p>Each foundation is real. Each also carries regional limits, climate risks, rights, infrastructure needs, and responsibilities that determine whether it becomes a durable advantage.</p>
+      </div>
+      <ol class="advantage-grid">
+        {advantages.map((advantage) => (
+          <li>
+            <span>{advantage.number}</span>
+            <p class="advantage-metric">{advantage.metric}</p>
+            <h3>{advantage.title}</h3>
+            <p>{advantage.copy}</p>
+            <a href={advantage.href}>{advantage.source} ↗</a>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <section class="section shell split-section natural-advantage-climate">
+    <div><p class="eyebrow">A changing climate</p><h2>Relative advantage demands absolute preparedness.</h2></div>
+    <div class="reading-column">
+      <p>Water stress, heat, crop disruption, and energy insecurity are growing global concerns. Canada can become a more important source of resilient systems, food, materials, clean power, and climate expertise.</p>
+      <p>Canada is also exposed. Wildfire, flood, drought, heat, coastal risk, and permafrost thaw already shape safety and costs. Northern geography does not make land empty, development cheap, or communities climate-safe. Rights, services, infrastructure, local ownership, and climate-adjusted economics come first.</p>
+      <p>The credible advantage is Canada's capacity to prepare, adapt, and build systems that recover and improve under pressure.</p>
+      <div class="source-row"><a href="https://changingclimate.ca/national-issues/">Canada in a Changing Climate ↗</a><a href="https://www.ipcc.ch/report/ar6/wg2/">IPCC impacts and adaptation ↗</a></div>
+    </div>
+  </section>
+
+  <section class="section section-dark natural-advantage-chain">
+    <div class="shell">
+      <div class="section-heading">
+        <div><p class="eyebrow">From extraction to capability</p><h2>Build the whole chain.</h2></div>
+        <p>The strategic unit is the complete learning and value chain. Every link must be viable, rights-respecting, climate-adapted, and connected to the next.</p>
+      </div>
+      <ol class="value-chain">
+        {chain.map((step, index) => <li><span>{String(index + 1).padStart(2, '0')}</span><strong>{step}</strong></li>)}
+      </ol>
+      <p class="chain-caption">The final link feeds the first. Reinvestment renews stewardship, infrastructure, research, suppliers, and the next generation of capability.</p>
+    </div>
+  </section>
+
+  <section class="section shell natural-advantage-opportunities">
+    <div class="section-heading">
+      <div><p class="eyebrow">Where Canada can choose depth</p><h2>Five complete-chain opportunities.</h2></div>
+      <p>Canada should select fields where resources, clean power, research, rights-holder partnership, labour, a lead market, capital, and export demand can converge.</p>
+    </div>
+    <ol class="opportunity-list">
+      {opportunityFields.map(([title, summary], index) => <li><span>0{index + 1}</span><div><h3>{title}</h3><p>{summary}</p></div></li>)}
+    </ol>
+  </section>
+
+  <section class="section section-horizon natural-advantage-sovereignty">
+    <div class="shell split-section">
+      <div><p class="eyebrow">Selective sovereignty</p><h2>Build here. Trade with allies. Keep the capacity to choose.</h2></div>
+      <div class="reading-column">
+        <p>Canada does not need to make everything alone. Advanced economies depend on trusted trade, shared standards, foreign expertise, investment, and allied supply.</p>
+        <p>Economic sovereignty means maintaining meaningful control in selected essential systems: the ability to create, finance, govern, operate, repair, improve, and renew them from Canada. Strong partnerships expand that choice when Canadian learning, supplier depth, data, rights, and public value remain durable.</p>
+        <a class="button button-dark" href="/trajectory">See how the trajectory compounds capability</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section shell statement-section natural-advantage-ambition">
+    <div><p class="eyebrow">The 2080 ambition</p><EvidenceLabel label="Aspiration" /></div>
+    <div>
+      <h2>Canada can help build the future the world will need.</h2>
+      <p class="lead">By 2080, Canada can aspire to be a leading contributor to global resilience through complete systems that create public value, retain learning, withstand shocks, and trade fairly with trusted partners.</p>
+      <p>That future will be earned through disciplined building. Choose one chain. Name the rights framework, lead user, power and water plan, processing or service niche, ownership conditions, workforce path, repair model, and measures. Then build the smallest credible version and make every return strengthen the next.</p>
+      <a class="button button-signal" href="/join">Find your role</a>
+    </div>
+  </section>
+</BaseLayout>

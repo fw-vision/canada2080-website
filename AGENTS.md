@@ -1,20 +1,20 @@
 # Canada2080 - Project Context
 
-> This file is read by AI coding agents on every session to bootstrap project context. Keep it concise and current. Update a stale fact in the same pull request that proves it stale.
+> Read by coding agents on every session. Update a stale fact in the same change that proves it stale.
 
 ## What this project is
 
-Canada2080 is a public national initiative for investors, institutions, and policy leaders building Canadian-controlled capability for a changing planet. The site introduces Francis Wang's Five Canadian Systemic Gaps, six regional missions, and an evidence-led public research programme.
+Canada2080 is a public long-horizon initiative for investors, institutions, policy leaders, researchers, operators, and communities building Canadian-controlled capability for a changing planet. The site introduces Francis Wang's four Canadian systemic Gaps, six mission fields, a preferred 2080 trajectory, events, and an evidence-led Signals record.
 
 ## Canonical context
 
-Before changing positioning, evidence claims, missions, or public copy, read `../../../04_Execute/Canada2080/README.md` and the relevant files it routes to. The website repository remains authoritative for implementation and deployment.
+Before changing positioning, evidence claims, missions, or public copy, read `../../../04_Execute/Canada2080/README.md` and its routed files. The website repository is authoritative for implementation and deployment.
 
 ## Current focus
 
-Public launch. Deliver an accessible, static advocacy, research, events, and journal platform with the September 28, 2026 kickoff as featured content. CMS integration, first-party RSVP processing, mailing-list delivery, analytics, and bilingual publishing remain out of scope until a separately accepted decision.
+Public launch and kickoff scheduling. The kickoff date is being finalized, with October 3 or 4, 2026 under consideration. Publicly list Erin Trochim, Kimberly Yazzie, Barry Wylant, and Larry Smith only as **Invited Speakers**. Do not imply attendance or endorsement. Final names, titles, biographies, photographs, speaking points, availability, and remote arrangements require direct confirmation.
 
-## Tech stack (locked)
+## Tech stack
 
 | Concern | Choice | Reference |
 |---|---|---|
@@ -23,62 +23,66 @@ Public launch. Deliver an accessible, static advocacy, research, events, and jou
 | Styling | Vanilla CSS and design tokens | `docs/decisions/0001-site-architecture.md` |
 | Content | Astro Content Collections, Markdown | `docs/decisions/0001-site-architecture.md` |
 | Deployment | GitHub Actions to GitHub Pages | `docs/decisions/0001-site-architecture.md` |
+| Intent capture | Optional Google Apps Script relay to restricted Sheet | `docs/decisions/0002-use-google-apps-script-for-intent-capture.md` |
 
 ## Working agreements
 
 ### Code
 
-- Prefer Astro components and static HTML. Add client-side JavaScript only when a user task requires it.
+- Prefer Astro components and static HTML. Add client-side JavaScript only when required.
 - Use CSS custom properties from `src/styles/global.css`; do not add a CSS framework for ordinary layout work.
 - Keep components presentational and pages responsible for launch copy.
-- Preserve the site URL `https://canada2080.org` and the Astro base path `/`.
-- Use Canadian English in public copy. Do not use em dashes.
+- Preserve `https://canada2080.org` and base path `/`.
+- Use Canadian English with the `-ize`/`-ization` convention, including `commercialize`, `organization`, `standardize`, and `civilization`. Retain Canadian forms such as `colour`, `centre`, `labour`, and `programme`. Do not use em dashes.
 
 ### Claims and evidence
 
-- Mark public substantive claims as **Verified fact**, **Qualified claim**, **Scenario**, **Hypothesis**, or **Aspiration** where relevant.
-- Attribute the Five Canadian Systemic Gaps to Francis Wang's 2025 DDes proposal, *Foresight-Driven Innovation*.
+- Preserve the homepage hero lockup exactly: **Actualizing an abundant, resilient, sustainable, and sovereign future for Canada.** Follow it with the declaration that by 2080 Canada **will** become one of the world's major economic powers, with the capability to surpass the United States through sovereign industry, research, capital, and public value built at home.
+- State Canada2080's chosen direction and commitments with conviction. Reserve conditional language for empirical uncertainty, scenarios, and claims that depend on external evidence.
+- Keep public substantive claims attributable and appropriately qualified, but do not clutter the Gaps metric column with visible evidence-class labels.
+- Attribute the four Gaps publicly as part of **Francis Wang's research into Canadian sustainable innovation**. Preserve the 2025 proposal provenance in About and source records.
+- Never publish the 66% graduate or 73% taxpayer-funded IP figures without reproducible upstream evidence.
 - Never turn climate exposure estimates into displacement, migration, or Canada-destination claims.
-- Treat Indigenous rights, authorities, knowledge, images, data, and territorial references as requiring appropriate consent and protocol.
-- The launch line is "Actualizing an abundant, resilient, sustainable, and sovereign future for Canada". The 2080 horizon remains an aspiration and decision boundary, not a forecast.
-- Present academic contributors as independent perspectives. Participation does not imply endorsement.
+- The approved climate line is that 2.1 to 3.7 billion people could be exposed to unprecedented heat or conditions outside a historical human temperature niche under specified late-century scenarios. State that this is not a displacement forecast.
+- Treat precision resilience as a working hypothesis attributed to Francis Wang and Barry Wylant.
+- Treat quantum timing, global leadership, and Type I civilization as scenarios or aspirations, not forecasts.
+- Indigenous rights, authorities, knowledge, images, data, and territorial references require appropriate consent and protocol.
+
+### Content model
+
+- `src/content/signals/` combines research and the former journal into one public record.
+- Keep `/research/` and `/journal/` redirects for backwards compatibility.
+- Put event Markdown in `src/content/events/`.
+- Never publish private email, attendee, venue, meeting-link, or availability data.
 
 ### Development and testing
 
-- Interactive development uses `bun run dev`, which binds Astro to `0.0.0.0` for access from trusted Tailnet devices.
-- Reach this dev box at `http://100.71.170.90:4321` or through its MagicDNS name and port `4321`.
-- Treat the persistent dev server as a user-managed runtime process. Do not use it as automated verification.
-- Run `pnpm run check` and `pnpm run build` before handoff. Both commands terminate.
-- Add tests only when introducing non-trivial logic or client-side behaviour.
-- Binding to `0.0.0.0` listens on every host interface. Preserve host firewall controls and never enable public Funnel access without explicit approval.
+- Interactive development uses `bun run dev`, binding Astro to `0.0.0.0` for trusted Tailnet access.
+- Reach this dev box at `http://100.71.170.90:4321` or its MagicDNS name on port `4321`.
+- The persistent dev server is user-managed and is not automated verification.
+- Run `bun run check` and `bun run build` before handoff.
+- Preserve firewall controls and never enable public Funnel access without explicit approval.
 
-### Documentation
+### Intent capture
 
-- **Architecture decisions**: `docs/decisions/` (numbered ADRs; accepted records are immutable)
-- **Living conventions**: `docs/guidelines/` (update in place)
-- **Implementation plans**: `docs/plans/` (move completed work to `_archive/`)
-- **Session scratch work**: `.opencode/plans/` (git-ignored)
+- Render the intent form only when `PUBLIC_INTENT_FORM_ENDPOINT` is configured.
+- Store `SHEET_ID` only in Apps Script properties, never in this repository.
+- Collect the minimum stated fields and keep general intent separate from event RSVP or attendance confirmation.
+- Do not add analytics, advertising pixels, or additional processors without a reviewed decision.
 
-## File conventions
+## Documentation
 
-- Use PascalCase for Astro components and kebab-case for route files and content slugs.
-- Put shared view components in `src/components/`, layouts in `src/layouts/`, and site data in `src/data/`.
-- Put research Markdown in `src/content/research/`. Every entry needs an evidence class and source list.
-- Put event Markdown in `src/content/events/` and journal Markdown in `src/content/journal/`.
-- Put public static assets in `public/`. Do not add proprietary reference-site assets.
+- Architecture decisions: `docs/decisions/`
+- Integration runbooks: `docs/integrations/`
+- Living conventions: `docs/guidelines/`
+- Implementation plans: `docs/plans/`
 
-## Out of scope
+## Reading order
 
-- A claim that Canada will receive a predetermined climate-displaced population
-- A single-city model for Canada or an unqualified Waterloo causal story
-- Partner endorsements, investment offers, private discussions, personal data, or unreviewed imagery
-- CMS, authentication, analytics, database, newsletter provider integration, and first-party RSVP processing
-
-## Reading order for new contributors
-
-1. `README.md` - purpose, setup, and delivery model
-2. This file (`AGENTS.md`) - working agreements
-3. `DESIGN.md` - visual system and accessibility baseline
-4. `docs/guidelines/coding-standards.md` - current implementation conventions
-5. `docs/decisions/0001-site-architecture.md` - stack and deployment rationale
-6. `docs/architecture/overview.md` - site shape and content flow
+1. `README.md`
+2. `AGENTS.md`
+3. `DESIGN.md`
+4. `docs/guidelines/coding-standards.md`
+5. `docs/decisions/0001-site-architecture.md`
+6. `docs/decisions/0002-use-google-apps-script-for-intent-capture.md`
+7. `docs/architecture/overview.md`

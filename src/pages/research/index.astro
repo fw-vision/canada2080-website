@@ -1,15 +1,3 @@
 ---
-import { getCollection } from 'astro:content';
-import BaseLayout from '../../layouts/BaseLayout.astro';
-import EvidenceLabel from '../../components/EvidenceLabel.astro';
-import type { CollectionEntry } from 'astro:content';
-
-const entries = (await getCollection('research', (item: { data: { status: string, draft: boolean } }) => item.data.status === 'published' && !item.data.draft))
-  .sort((a: CollectionEntry<'research'>, b: CollectionEntry<'research'>) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime());
+return Astro.redirect('/signals', 301);
 ---
-
-<BaseLayout title="Research | Canada2080" description="Canada2080 public research, evidence classifications, scenarios, and open questions.">
-  <section class="page-hero shell"><p class="eyebrow">Public research / 03</p><h1>Research</h1><p>A growing public record of evidence, conditions, scenarios, hypotheses, and open questions that inform Canada2080.</p></section>
-  <section class="section shell split-section"><div><p class="eyebrow">Editorial method</p><h2>Readers should be able to see what kind of statement they are reading.</h2></div><div class="reading-column"><p>Research entries distinguish verified facts from qualified claims, scenarios, hypotheses, aspirations, and research needed. Publication requires sources and an evidence class.</p></div></section>
-  <section class="section shell" aria-labelledby="research-list-title"><h2 id="research-list-title" class="sr-only">Research entries</h2><div class="research-list">{entries.map((entry: CollectionEntry<'research'>) => <article><div><EvidenceLabel label={entry.data.evidenceClass} /><p class="entry-date">{entry.data.publishedAt.toLocaleDateString('en-CA', { year: 'numeric', month: 'long', day: 'numeric' })}</p></div><div><h2><a href={`/research/${entry.id.replace(/\.md$/, '')}`}>{entry.data.title}</a></h2><p>{entry.data.description}</p><a class="text-link" href={`/research/${entry.id.replace(/\.md$/, '')}`}>Read entry <span aria-hidden="true">↗</span></a></div></article>)}</div></section>
-</BaseLayout>

@@ -1,0 +1,28 @@
+---
+import { getCollection } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import EvidenceLabel from '../../components/EvidenceLabel.astro';
+
+const entries = (await getCollection('signals', ({ data }) => data.status === 'published' && !data.draft))
+  .sort((a, b) => b.data.publishedAt.getTime() - a.data.publishedAt.getTime());
+---
+
+<BaseLayout title="Signals | Canada2080" description="Original Canada2080 posts, source-backed research, and commentary on the events shaping Canadian capability.">
+  <section class="page-hero page-hero-dark"><div class="shell"><p class="eyebrow">Public record / 03</p><h1>Signals</h1><p>Relevant developments and emerging signals that affect Canada2080’s missions.</p></div></section>
+  <section class="section shell split-section"><div><p class="eyebrow">Editorial method</p><h2>Track what is changing and what each mission requires next.</h2></div><div class="reading-column"><p>Signals combines original Canada2080 positions, source-backed research, and commentary on events, policies, technologies, and public decisions. Each entry identifies whether it is a commitment, a verified fact, a qualified claim, a scenario, or a hypothesis.</p><p>Signals can change the trajectory. A development does not become a fact merely because it supports a preferred future, and a commentary does not imply endorsement of every source it examines.</p></div></section>
+  <section class="section shell" aria-labelledby="signal-list-title">
+    <h2 id="signal-list-title" class="sr-only">Signal entries</h2>
+    <div class="research-list">
+      {entries.map((entry: CollectionEntry<'signals'>) => (
+        <article>
+          <div>
+            {entry.data.evidenceClass && <EvidenceLabel label={entry.data.evidenceClass} />}
+            <p class="entry-date">{entry.data.kind.replaceAll('-', ' ')}<br />{entry.data.publishedAt.toLocaleDateString('en-CA', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
+          </div>
+          <div><h2><a href={`/signals/${entry.id.replace(/\.md$/, '')}`}>{entry.data.title}</a></h2><p>{entry.data.description}</p><a class="text-link" href={`/signals/${entry.id.replace(/\.md$/, '')}`}>Read signal <span aria-hidden="true">↗</span></a></div>
+        </article>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

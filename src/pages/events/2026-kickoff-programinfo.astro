@@ -15,8 +15,23 @@
   </head>
   <body>
     <main class="deck" aria-label="Canada2080 kickoff invitation cards">
-      <div class="card-slot">
-        <article class="card card-cover" aria-labelledby="cover-title">
+      <header class="deck-toolbar">
+        <div class="deck-toolbar-copy">
+          <p class="deck-toolbar-title">Canada2080 kickoff cards</p>
+          <p class="deck-toolbar-note">1080 × 1080 PNGs for sharing and print.</p>
+        </div>
+        <button type="button" class="deck-download-all" data-download-all>
+          Download all four
+        </button>
+      </header>
+
+      <figure class="card-figure">
+        <div class="card-slot">
+          <article
+            class="card card-cover"
+            aria-labelledby="cover-title"
+            data-card-file="canada2080-kickoff-01-cover.png"
+          >
           <div class="cover-media" aria-hidden="true">
             <img
               class="cover-photo"
@@ -91,10 +106,52 @@
             </footer>
           </div>
         </article>
-      </div>
+        </div>
+        <figcaption class="card-actions">
+          <span class="card-label">01 · Cover</span>
+          <button type="button" class="card-download" data-download-card>Download PNG</button>
+        </figcaption>
+      </figure>
 
-      <div class="card-slot">
-        <article class="card card-guests" aria-labelledby="guests-title">
+      <figure class="card-figure">
+        <div class="card-slot">
+          <article
+            class="card card-tripartite"
+            aria-labelledby="tripartite-title"
+            data-card-file="canada2080-kickoff-02-tripartite.png"
+          >
+          <header class="card-topline">
+            <img class="topline-wordmark topline-wordmark-ink" src="/brand/2080-wordmark-ink.svg" alt="Canada2080" width="894" height="221" />
+            <p class="card-kicker">Tripartite Ecosystem Model</p>
+          </header>
+          <div class="tripartite-card-main">
+            <h2 id="tripartite-title">Innovation moves where Governance, Education, and Industry meet.</h2>
+            <div class="tripartite-card-map" role="img" aria-label="Governance, Education, and Industry connected through a shared field of capability and public value">
+              <svg class="tripartite-card-lines" viewBox="0 0 860 520" aria-hidden="true" focusable="false">
+                <path d="M430 85 L430 260 M120 440 L430 260 M740 440 L430 260" />
+              </svg>
+              <div class="tripartite-card-node tripartite-card-governance"><span>01</span><strong>Governance</strong><small>Public purpose<br />Policy<br />Trust</small></div>
+              <div class="tripartite-card-node tripartite-card-education"><span>02</span><strong>Education</strong><small>Research<br />Talent<br />Learning</small></div>
+              <div class="tripartite-card-node tripartite-card-industry"><span>03</span><strong>Industry</strong><small>Demand<br />Production<br />Capital</small></div>
+              <div class="tripartite-card-centre"><span>Shared field</span><strong>Capability in motion</strong><small>Public value built together</small></div>
+            </div>
+          </div>
+          <footer class="tripartite-card-footer">Each sphere contributes a distinct capacity. Durable innovation emerges where their responsibilities connect.</footer>
+        </article>
+        </div>
+        <figcaption class="card-actions">
+          <span class="card-label">02 · Tripartite model</span>
+          <button type="button" class="card-download" data-download-card>Download PNG</button>
+        </figcaption>
+      </figure>
+
+      <figure class="card-figure">
+        <div class="card-slot">
+          <article
+            class="card card-guests"
+            aria-labelledby="guests-title"
+            data-card-file="canada2080-kickoff-03-guests.png"
+          >
           <header class="card-topline">
             <img
               class="topline-wordmark topline-wordmark-ink"
@@ -159,10 +216,20 @@
             role, or endorsement.
           </footer>
         </article>
-      </div>
+        </div>
+        <figcaption class="card-actions">
+          <span class="card-label">03 · Invited guests</span>
+          <button type="button" class="card-download" data-download-card>Download PNG</button>
+        </figcaption>
+      </figure>
 
-      <div class="card-slot">
-        <article class="card card-itinerary" aria-labelledby="itinerary-title">
+      <figure class="card-figure">
+        <div class="card-slot">
+          <article
+            class="card card-itinerary"
+            aria-labelledby="itinerary-title"
+            data-card-file="canada2080-kickoff-04-itinerary.png"
+          >
           <header class="card-topline card-topline-dark">
             <img
               class="topline-wordmark topline-wordmark-inverse"
@@ -229,8 +296,121 @@
             </div>
           </footer>
         </article>
-      </div>
+        </div>
+        <figcaption class="card-actions">
+          <span class="card-label">04 · Itinerary</span>
+          <button type="button" class="card-download" data-download-card>Download PNG</button>
+        </figcaption>
+      </figure>
     </main>
+
+    <script>
+      import { toPng } from "html-to-image";
+
+      const CARD_SIZE = 1080;
+
+      function sleep(ms: number) {
+        return new Promise((resolve) => setTimeout(resolve, ms));
+      }
+
+      async function exportCard(card: HTMLElement, filename: string) {
+        const slot = card.closest(".card-slot") as HTMLElement | null;
+        if (!slot) return;
+
+        const previous = {
+          slotWidth: slot.style.width,
+          slotHeight: slot.style.height,
+          cardTransform: card.style.transform,
+        };
+
+        slot.style.width = `${CARD_SIZE}px`;
+        slot.style.height = `${CARD_SIZE}px`;
+        card.style.transform = "none";
+
+        await sleep(50);
+
+        try {
+          const dataUrl = await toPng(card, {
+            width: CARD_SIZE,
+            height: CARD_SIZE,
+            pixelRatio: 1,
+            cacheBust: true,
+            style: {
+              transform: "none",
+              transformOrigin: "top left",
+            },
+          });
+
+          const link = document.createElement("a");
+          link.download = filename;
+          link.href = dataUrl;
+          link.click();
+        } finally {
+          slot.style.width = previous.slotWidth;
+          slot.style.height = previous.slotHeight;
+          card.style.transform = previous.cardTransform;
+        }
+      }
+
+      async function downloadOne(button: HTMLButtonElement) {
+        const figure = button.closest(".card-figure");
+        const card = figure?.querySelector<HTMLElement>(".card[data-card-file]");
+        const filename = card?.dataset.cardFile;
+        if (!card || !filename) return;
+
+        const label = button.textContent;
+        button.disabled = true;
+        button.textContent = "Preparing…";
+        try {
+          await exportCard(card, filename);
+        } catch (error) {
+          console.error(error);
+          button.textContent = "Try again";
+          await sleep(1200);
+        } finally {
+          button.disabled = false;
+          button.textContent = label || "Download PNG";
+        }
+      }
+
+      async function downloadAll(button: HTMLButtonElement) {
+        const cards = [
+          ...document.querySelectorAll<HTMLElement>(".card[data-card-file]"),
+        ];
+        const label = button.textContent;
+        button.disabled = true;
+
+        try {
+          for (let index = 0; index < cards.length; index += 1) {
+            const card = cards[index];
+            const filename = card.dataset.cardFile;
+            if (!filename) continue;
+            button.textContent = `Saving ${index + 1} of ${cards.length}…`;
+            await exportCard(card, filename);
+            await sleep(350);
+          }
+        } catch (error) {
+          console.error(error);
+          button.textContent = "Try again";
+          await sleep(1200);
+        } finally {
+          button.disabled = false;
+          button.textContent = label || "Download all four";
+        }
+      }
+
+      document.querySelectorAll<HTMLButtonElement>("[data-download-card]").forEach((button) => {
+        button.addEventListener("click", () => {
+          void downloadOne(button);
+        });
+      });
+
+      document.querySelectorAll<HTMLButtonElement>("[data-download-all]").forEach((button) => {
+        button.addEventListener("click", () => {
+          void downloadAll(button);
+        });
+      });
+    </script>
   </body>
 </html>
 
@@ -275,11 +455,78 @@
     padding: clamp(1rem, 3vw, 2.5rem) 1rem;
   }
 
-  .card-slot {
+  .deck-toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: end;
+    justify-content: space-between;
+    gap: 1rem 1.5rem;
     width: var(--preview-size);
+  }
+
+  .deck-toolbar-title {
+    margin: 0 0 0.25rem;
+    font: 900 1.15rem/1.2 var(--display);
+    letter-spacing: -0.03em;
+  }
+
+  .deck-toolbar-note {
+    margin: 0;
+    color: #496069;
+    font: 600 0.92rem/1.35 var(--body);
+  }
+
+  .deck-download-all,
+  .card-download {
+    appearance: none;
+    border: 1px solid var(--ink);
+    background: var(--snow);
+    color: var(--ink);
+    cursor: pointer;
+    font: 700 0.82rem/1 var(--mono);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 0.85rem 1rem;
+  }
+
+  .deck-download-all:hover,
+  .card-download:hover {
+    background: var(--ink);
+    color: var(--snow);
+  }
+
+  .deck-download-all:disabled,
+  .card-download:disabled {
+    cursor: wait;
+    opacity: 0.7;
+  }
+
+  .card-figure {
+    display: grid;
+    gap: 0.75rem;
+    width: var(--preview-size);
+    margin: 0;
+  }
+
+  .card-slot {
+    width: 100%;
     height: var(--preview-size);
     overflow: hidden;
     box-shadow: 0 1rem 2.5rem rgb(7 31 38 / 16%);
+  }
+
+  .card-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .card-label {
+    color: #496069;
+    font: 700 0.78rem/1.2 var(--mono);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
   }
 
   .card {
@@ -719,6 +966,16 @@
       gap: 0;
     }
 
+    .deck-toolbar,
+    .card-actions {
+      display: none !important;
+    }
+
+    .card-figure {
+      width: 1080px;
+      margin: 0;
+    }
+
     .card-slot {
       width: 1080px;
       height: 1080px;
@@ -733,9 +990,114 @@
       page-break-after: always;
     }
 
-    .card:last-child {
+    .card-figure:last-child .card {
       break-after: auto;
       page-break-after: auto;
     }
+  }
+
+  /* —— Tripartite Ecosystem Model —— */
+  .card-tripartite {
+    color: var(--ink);
+    background: var(--snow);
+  }
+
+  .tripartite-card-main {
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+
+  .tripartite-card-main h2 {
+    margin: 0 0 28px;
+    max-width: 15em;
+    font: 900 44px/1.1 var(--display);
+    letter-spacing: -0.01em;
+  }
+
+  .tripartite-card-map {
+    position: relative;
+    width: 860px;
+    height: 520px;
+    margin: 0 auto;
+  }
+
+  .tripartite-card-lines {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+    pointer-events: none;
+  }
+
+  .tripartite-card-lines path {
+    fill: none;
+    stroke: var(--ink);
+    stroke-width: 1.5;
+  }
+
+  .tripartite-card-node,
+  .tripartite-card-centre {
+    position: absolute;
+    z-index: 1;
+    display: grid;
+    gap: 6px;
+    border: 1px solid var(--ink);
+    background: var(--snow);
+  }
+
+  .tripartite-card-node {
+    width: 240px;
+    padding: 18px 20px;
+  }
+
+  .tripartite-card-node > span,
+  .tripartite-card-centre > span {
+    color: var(--signal);
+    font: 700 15px/1 var(--mono);
+    letter-spacing: 0.08em;
+  }
+
+  .tripartite-card-node strong,
+  .tripartite-card-centre strong {
+    font: 900 28px/1.05 var(--display);
+    letter-spacing: -0.04em;
+  }
+
+  .tripartite-card-node small,
+  .tripartite-card-centre small {
+    color: #496069;
+    font: 600 16px/1.3 var(--body);
+  }
+
+  .tripartite-card-governance {
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .tripartite-card-education { bottom: 0; left: 0; }
+  .tripartite-card-industry { right: 0; bottom: 0; }
+
+  .tripartite-card-centre {
+    top: 50%;
+    left: 50%;
+    width: 280px;
+    padding: 22px 20px;
+    background: var(--ink);
+    color: var(--snow);
+    text-align: center;
+    transform: translate(-50%, -50%);
+  }
+
+  .tripartite-card-centre > span { color: var(--signal); }
+  .tripartite-card-centre small { color: #c5d0d3; }
+
+  .tripartite-card-footer {
+    margin: 0;
+    padding-top: 20px;
+    border-top: 1px solid var(--ink);
+    color: #496069;
+    font: 600 17px/1.4 var(--body);
   }
 </style>

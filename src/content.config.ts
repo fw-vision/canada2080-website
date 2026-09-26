@@ -17,7 +17,7 @@ const events = defineCollection({
     dateLabel: z.string(),
     candidateDates: z.array(z.string()).default([]),
     sortDate: z.coerce.date(),
-    status: z.enum(['date-finalizing', 'registration-open', 'full', 'completed', 'cancelled']),
+    status: z.enum(['date-finalizing', 'scheduled', 'registration-open', 'full', 'completed', 'cancelled']),
     format: z.string(),
     duration: z.string(),
     location: z.string().optional(),

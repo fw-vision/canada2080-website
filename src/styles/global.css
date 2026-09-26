@@ -559,3 +559,81 @@ ol, ul { margin: 0; padding: 0; }
   .hero-slide.is-active { transform: none; }
   .hero-brand { animation: none; }
 }
+
+.button-invitation {
+  display: inline-flex !important;
+  width: auto !important;
+  min-height: 2.9rem;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--snow);
+  background: transparent;
+  color: var(--snow);
+  padding: 1rem 1.4rem;
+  white-space: nowrap;
+}
+.button-invitation:hover {
+  background: var(--snow);
+  color: var(--signal);
+  border-color: var(--snow);
+}
+.section-signal .action-row {
+  align-items: center;
+  gap: 1.75rem;
+}
+.section-signal .text-link-light {
+  color: var(--snow);
+  text-decoration: underline;
+  text-underline-offset: 0.22em;
+}
+.section-signal .text-link-light:hover {
+  color: var(--ink);
+}
+.section-signal .button-invitation:hover {
+  color: var(--signal);
+}
+
+.section-signal .button-invitation {
+  display: inline-flex !important;
+  width: auto !important;
+  min-width: 13.5rem;
+  min-height: 3.15rem;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  border: 2px solid var(--snow) !important;
+  background: transparent !important;
+  color: var(--snow) !important;
+  padding: 0.95rem 1.35rem;
+  white-space: nowrap;
+}
+
+.section-signal .button-invitation:hover,
+.section-signal .button-invitation:focus-visible {
+  background: var(--snow) !important;
+  color: var(--signal) !important;
+}
+
+
+.section-signal .event-invitation-cta {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  min-height: 3.15rem;
+  padding: 0.95rem 1.35rem;
+  border: 2px solid var(--snow);
+  background: transparent;
+  color: var(--snow);
+  font: 700 0.69rem/1 var(--mono);
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.section-signal .event-invitation-cta:hover,
+.section-signal .event-invitation-cta:focus-visible {
+  background: var(--snow);
+  color: var(--signal);
+}

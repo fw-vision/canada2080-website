@@ -12,7 +12,7 @@ Before changing positioning, evidence claims, missions, or public copy, read `..
 
 ## Current focus
 
-Public launch and kickoff scheduling. The exact kickoff date is being finalized, with October 3 or 4, 2026 under consideration. Publicly use **Invited guests** rather than assuming speaking roles. Erin Trochim, Kimberly Yazzie, Barry Wylant, and Cedric Tai are expected to join remotely. Invitation or participation does not imply endorsement. Final names, titles, biographies, photographs, speaking roles, and other arrangements require direct confirmation.
+Public launch and kickoff scheduling. The kickoff is Sunday, October 4, 2026, at the Hilton Toronto/Markham Suites Conference Centre & Spa, Markham Ballroom, with in-person and online attendance available. The final start time will be announced Sunday evening or Monday. Publicly use **Invited guests** rather than assuming speaking roles, except where a contributor has directly confirmed a role. Invitation or participation does not imply endorsement. Final names, titles, biographies, photographs, speaking roles, and other arrangements require direct confirmation.
 
 ## Tech stack
 

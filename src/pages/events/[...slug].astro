@@ -22,9 +22,12 @@ const { Content } = await render(entry);
 const statusLabel = entry.data.status.replaceAll("-", " ");
 const eventTitle = entry.data.title.replace(/^Canada2080:\s*/, "");
 const guestGroups = [
-    { id: "governance", title: "Public leaders" },
-    { id: "academic", title: "Academic professors" },
-    { id: "industry", title: "Industry professionals" },
+    { id: "governance", title: "Public leaders and public servants" },
+    { id: "academic", title: "Academic and research leaders" },
+    {
+        id: "industry",
+        title: "Industry, infrastructure, and innovation leaders",
+    },
 ] as const;
 ---
 
@@ -184,18 +187,27 @@ const guestGroups = [
         <section class="section section-signal">
             <div class="shell statement-section">
                 <div>
-                    <p class="eyebrow">Availability first</p>
+                    <p class="eyebrow">Participation and contribution</p>
                 </div>
                 <div>
-                    <h2>Help finalize the room and schedule.</h2>
+                    <h2>Join the founding conversation.</h2>
                     <p class="lead">
-                        The first invitation wave will ask potential guests
-                        whether October 3 or 4 works, which times they can
-                        accommodate, and how they might contribute.
+                        Guests may indicate whether they prefer to join in
+                        person or online, share final-time constraints, and
+                        express interest in a short perspective, discussion, or
+                        recorded message.
                     </p>
-                    <a class="button button-dark" href="/join">
-                        Find your role
-                    </a>
+                    <div class="action-row">
+                        <a
+                            class="event-invitation-cta"
+                            href="/events/2026-kickoff-programinfo"
+                        >
+                            View invitation cards
+                        </a>
+                        <a class="text-link text-link-light" href="/join">
+                            Find your role
+                        </a>
+                    </div>
                 </div>
             </div>
         </section>

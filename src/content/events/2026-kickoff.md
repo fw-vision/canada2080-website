@@ -1,104 +1,188 @@
 ---
 title: "Canada2080: A future of abundance and resilience"
-description: "A small kickoff release and founding conversation for Canada's long-horizon capability agenda. The exact date and time remain to be finalized."
-dateLabel: "Coming soon · exact date being finalized"
-candidateDates:
-  - "Saturday, October 3, 2026"
-  - "Sunday, October 4, 2026"
-sortDate: 2026-10-03
-status: date-finalizing
+description: "A small kickoff release and founding conversation for Canada's long-horizon capability agenda on Sunday, October 4, 2026. The final start time will be announced Sunday evening or Monday."
+dateLabel: "Sunday, October 4, 2026"
+candidateDates: []
+sortDate: 2026-10-04
+status: scheduled
+location: "Hilton Toronto/Markham Suites Conference Centre & Spa, Markham Ballroom, 8500 Warden Ave., Markham, ON L6G 1A5. In person and online attendance available."
+time: "To be announced Sunday evening or Monday"
 format: "Invitation-led kickoff release and founding conversation"
 duration: "Two hours 20 minutes: 30 minutes of arrival networking, an 80-minute programme, and 30 minutes of commitment-focused networking"
 guests:
   - name: "Frank Scarpitti"
     institution: "City of Markham"
     expertise: "Mayor of Markham"
-    bio: "Markham's mayor and a long-serving municipal leader. His participation and public role in the programme remain subject to direct confirmation."
-    group: "governance"
+    bio: "Markham mayor and long-serving municipal leader. Participation and public role remain subject to direct confirmation."
+    group: governance
   - name: "Alan Ho"
     institution: "City of Markham"
-    expertise: "Regional Councillor and Chair, Culture and Economic Development Committee"
-    bio: "A municipal leader working at the intersection of regional government, culture, and economic development. His current title and participation will be confirmed directly before the event."
-    group: "governance"
-  - name: "Erin Trochim"
-    institution: "University of Alaska Fairbanks"
-    expertise: "Geospatial AI, remote sensing, and applied data research"
-    bio: "Her work connects geospatial artificial intelligence, remote sensing, and applied data research, contributing a place-aware perspective on evidence and resilient capability."
-    group: "academic"
-    participation: "remote"
-  - name: "Kimberly Yazzie"
-    institution: "University of British Columbia"
-    expertise: "Knowledge management and data governance"
-    bio: "Her work brings a governance perspective to how knowledge and data are stewarded. Final biographical wording remains subject to her direct confirmation."
-    group: "academic"
-    participation: "remote"
+    expertise: "Regional government, culture, and economic development"
+    bio: "Municipal leader working at the intersection of regional government, culture, and economic development. Current title and participation remain subject to direct confirmation."
+    group: governance
+  - name: "Shaun Chen"
+    institution: "Public service and policy"
+    expertise: "Public-service perspective"
+    bio: "Invited for a public-service and policy perspective. Current role, participation, and public biography remain subject to direct confirmation."
+    group: governance
   - name: "Barry Wylant"
     institution: "University of Calgary"
     expertise: "Design research, systems thinking, and visual strategy"
-    bio: "A design researcher whose work helps people understand and communicate complex systems, with relevance to moving long-horizon innovation from concept towards practice."
-    group: "academic"
-    participation: "remote"
+    bio: "Design researcher whose work helps make complex systems legible and actionable."
+    group: academic
   - name: "Larry Smith"
     institution: "University of Waterloo"
-    expertise: "Economics, entrepreneurship, talent, and Canadian innovation"
-    bio: "An economist whose teaching and public work examine ambition, entrepreneurship, domestic opportunity, and the conditions that help ideas become meaningful work and enterprise."
-    group: "academic"
-  - name: "Sudarshana Bhattacharya"
-    institution: "Gartner"
-    expertise: "Banking data, analytics, generative AI, and AI and machine learning"
-    bio: "A Gartner Senior Director Analyst whose work covers banking data and analytics. She previously spent 11 years at TD Bank in advanced analytics and modelling."
-    group: "industry"
-  - name: "Dr. Joaquin “Jay” Gonzalez"
+    expertise: "Entrepreneurship, talent, and Canadian innovation"
+    bio: "Economist and entrepreneurship educator exploring ambition, domestic opportunity, and the conditions that help ideas become meaningful work and enterprise."
+    group: academic
+  - name: "Dr Joaquin “Jay” Gonzalez"
     institution: "Golden Gate University"
     expertise: "Global education, public administration, and international programmes"
-    bio: "Vice Provost for Global Education and Founding Dean of GGU Worldwide at Golden Gate University."
-    group: "academic"
-  - name: "Himanshu Joshi"
-    institution: "Artificial intelligence and project delivery"
-    expertise: "AI project and programme management"
-    bio: "An AI project-management professional with experience at the Vector Institute. His current affiliation will be confirmed directly before the event."
-    group: "industry"
-  - name: "Pyn Lim"
-    institution: "ECAMS"
-    expertise: "Artificial intelligence in health and aesthetic medicine"
-    bio: "Founder and leader of ECAMS, an education institution in aesthetic medicine and surgery, with a stated interest in responsible artificial intelligence and initiating sovereign-AI movements in Ireland."
-    group: "industry"
-  - name: "Krysta Traianovski"
-    institution: "Velocity, University of Waterloo"
-    expertise: "Founder development and early-stage entrepreneurship"
-    bio: "Associate Director of Founder Development at Velocity, supporting early-stage founders and entrepreneurship programming."
-    group: "industry"
-  - name: "Charles Chan"
-    institution: "Tripleview / ADG"
-    expertise: "Software engineering, product development, and technology delivery"
-    bio: "Vice President of Research and Development at ADG, leading software engineering and delivery across Tripleview products."
-    group: "industry"
-  - name: "Cedric Tai"
-    institution: "SWTCH Energy"
-    expertise: "Strategic initiatives and transportation electrification"
-    bio: "Works on strategic initiatives connected to electric-vehicle charging and grid decarbonization. His current title and biography will be confirmed directly before the event."
-    group: "industry"
-    participation: "remote"
+    bio: "Academic and global-education leader. Current title and participation remain subject to direct confirmation."
+    group: academic
   - name: "Greg Hart"
     institution: "Future Fit Cities / InceptionU"
     expertise: "Future-ready cities, strategic design, and applied learning"
-    bio: "CEO and Founding Partner at Future Fit Cities and a Founding Partner at InceptionU. His current titles and biography will be confirmed directly before the event."
-    group: "industry"
+    bio: "Systems-design and future-ready-cities practitioner. Current titles and participation remain subject to direct confirmation."
+    group: academic
+  - name: "Erin Trochim"
+    institution: "University of Alaska Fairbanks"
+    expertise: "Geospatial AI, remote sensing, and applied data research"
+    bio: "Researcher bringing a place-aware perspective on evidence, federated knowledge, and resilient capability."
+    group: academic
+    participation: remote
+  - name: "Kimberly Yazzie"
+    institution: "Knowledge management and data governance"
+    expertise: "Data governance, consent, and community benefit"
+    bio: "Knowledge-governance practitioner contributing an approved perspective on data stewardship and accountable systems."
+    group: academic
+    participation: remote
+  - name: "Jeff Clune"
+    institution: "University of British Columbia / Vector Institute / Recursive"
+    expertise: "Frontier AI research, AI safety, and research commercialization"
+    bio: "Computer-science professor, Canada CIFAR AI Chair, Vector Institute faculty member, and Recursive co-founder."
+    group: academic
+  - name: "Dr Marc Hurwitz"
+    institution: "University of Waterloo / FliP University"
+    expertise: "Leadership, followership, entrepreneurship, and systems thinking"
+    bio: "Professor and organizational-development practitioner focused on collaborative systems and long-term institutional capacity."
+    group: academic
+  - name: "Matti Siemiatycki"
+    institution: "University of Toronto"
+    expertise: "Infrastructure planning, city building, and mixed-use development"
+    bio: "Infrastructure and city-building scholar whose current title and participation remain subject to direct confirmation."
+    group: academic
+  - name: "Jake Dunagan"
+    institution: "Institute for the Future / University of Texas at Austin"
+    expertise: "Experiential futures, governance design, and social invention"
+    bio: "Director of the Governance Futures Lab and experiential-futures educator."
+    group: academic
+  - name: "Jacques Barcia"
+    institution: "Institute for the Future / Centre for Postnormal Policy and Futures Studies"
+    expertise: "Futures narrative, scenario building, and weak-signal interpretation"
+    bio: "Futurist, storyteller, educator, and research fellow working across futures and public imagination."
+    group: academic
+  - name: "Victor Cui"
+    institution: "University of Waterloo"
+    expertise: "Global strategy and innovation"
+    bio: "Invited for a global-strategy and innovation perspective. Current title and participation remain subject to direct confirmation."
+    group: academic
+  - name: "Horatio M. Morgan"
+    institution: "University of Waterloo"
+    expertise: "Intellectual property, strategic value, and asymmetric advantage"
+    bio: "Invited for a perspective on IP, decision rights, and strategic value capture. Current title and participation remain subject to direct confirmation."
+    group: academic
+  - name: "Dr David J. Finch"
+    institution: "Mount Royal University / The Productivity Project"
+    expertise: "Human capital, productivity, learning systems, and labour-market strategy"
+    bio: "Professor and research director focused on human capability, productivity, learning, and long-term prosperity."
+    group: academic
+  - name: "David Rose"
+    institution: "Conrad School of Entrepreneurship and Business"
+    expertise: "Entrepreneurship education and venture creation"
+    bio: "Entrepreneur in Residence with experience in entrepreneurship education, venture creation, and founder pathways."
+    group: academic
+  - name: "Dr Simon Raby"
+    institution: "Company growth and scale-up practice"
+    expertise: "SME scale-up, leadership, and operating capability"
+    bio: "Invited for a company-growth and scaling perspective. Current role and participation remain subject to direct confirmation."
+    group: academic
+  - name: "Roopa Reddy"
+    institution: "Entrepreneurship education"
+    expertise: "Problem-first entrepreneurship"
+    bio: "Invited for a problem-first entrepreneurship perspective. Current affiliation and participation remain subject to direct confirmation."
+    group: academic
+  - name: "Pyn Lim"
+    institution: "ECAMS"
+    expertise: "Governed AI, professional education, and health-adjacent knowledge systems"
+    bio: "Founder and education leader contributing a planned perspective on governed knowledge systems and professional AI adoption."
+    group: industry
+  - name: "Himanshu Joshi"
+    institution: "AI project delivery"
+    expertise: "AI implementation and programme management"
+    bio: "AI project-delivery practitioner expected to attend. Current affiliation and any speaking role remain subject to direct confirmation."
+    group: industry
+  - name: "Yulia Korobkova"
+    institution: "Data-centre architecture and infrastructure"
+    expertise: "Data-centre design, compute infrastructure, and long-term optionality"
+    bio: "Priority prospective contributor on resilient compute infrastructure. Current title and participation remain subject to direct confirmation."
+    group: industry
   - name: "Diarmuid Nash"
     institution: "Moriyama Teshima Architects"
     expertise: "Architecture, public institutions, and cultural projects"
-    bio: "A partner at Moriyama Teshima Architects whose work includes complex public and cultural projects."
-    group: "industry"
+    bio: "Architect with experience in complex public and cultural projects. Participation remains subject to direct confirmation."
+    group: industry
   - name: "Michael Donaldson"
-    institution: "Design Workshop Architects / Future Workshop"
-    expertise: "Architecture, urban design, and future-oriented practice"
-    bio: "Principal at Design Workshop Architects and Founding Director at Future Workshop. His current titles and biography will be confirmed directly before the event."
-    group: "industry"
-  - name: "Yulia Korobkova"
-    institution: "Corgan"
-    expertise: "Data-centre architecture and studio leadership"
-    bio: "Vice President and Data Center Studio Leader at Corgan. Her current title and biography will be confirmed directly before the event."
-    group: "industry"
+    institution: "Architecture and urban design"
+    expertise: "Mixed-use neighbourhood development and future-oriented practice"
+    bio: "Invited for a place-making and mixed-use-development perspective. Current title and participation remain subject to direct confirmation."
+    group: industry
+  - name: "Adrian Conrad"
+    institution: "The Cora Group Inc."
+    expertise: "Commercial real estate, development, and place-based investment"
+    bio: "Chief Operating Officer of The Cora Group, invited for a Kitchener-Waterloo real-estate and long-term-development perspective."
+    group: industry
+  - name: "Sudarshana Bhattacharya"
+    institution: "Gartner"
+    expertise: "Banking data, analytics, generative AI, and AI and machine learning"
+    bio: "Senior Director Analyst working across banking data, analytics, and AI. Participation remains subject to direct confirmation."
+    group: industry
+  - name: "Cedric Tai"
+    institution: "SWTCH Energy"
+    expertise: "Transportation electrification and grid decarbonization"
+    bio: "Invited for a perspective on EV charging, distributed energy, and grid capability. Current title and participation remain subject to direct confirmation."
+    group: industry
+    participation: remote
+  - name: "Koreen Brennan"
+    institution: "Permaculture Institute of North America / Disaster Resilience Initiative"
+    expertise: "Regenerative systems, disaster resilience, and community capacity"
+    bio: "Permaculture and resilience leader focused on deliberately building regenerative long-term solutions."
+    group: industry
+  - name: "Jesse Tack"
+    institution: "Landscape Solver / Permaculture Institute of North America"
+    expertise: "Permaculture design, legacy forests, and regenerative landscapes"
+    bio: "Regenerative landscape and permaculture practitioner focused on complex, resilient living systems."
+    group: industry
+  - name: "Krysta Traianovski"
+    institution: "Velocity, University of Waterloo"
+    expertise: "Founder development and early-stage entrepreneurship"
+    bio: "Founder-development leader supporting early-stage entrepreneurs and venture pathways."
+    group: industry
+  - name: "Charles Chan"
+    institution: "Technology delivery and infrastructure"
+    expertise: "Software engineering, product development, and operating capability"
+    bio: "Invited for a technology-delivery perspective. Current employer, title, and participation remain subject to direct confirmation."
+    group: industry
+  - name: "Harry Gandhi"
+    institution: "Deep-tech investment"
+    expertise: "Research commercialization and patient capital"
+    bio: "Invited for a deep-tech investment and commercialization perspective. Current title and participation remain subject to direct confirmation."
+    group: industry
+  - name: "Sefunmi Osinaike"
+    institution: "Co.Lab"
+    expertise: "Experiential learning, talent pathways, and venture experience"
+    bio: "Co-founder focused on helping professionals build real-world experience and opportunity."
+    group: industry
 itinerary:
   - time: "30 minutes before"
     title: "Arrival and networking"
@@ -128,7 +212,7 @@ draft: false
 
 Canada2080 will introduce a public long-horizon agenda for building the economic sovereignty, strategic capability, and public value Canada may need by 2080. The conversation begins with Canada's strong research and educational foundation, examines Francis Wang's four Canadian systemic Gaps, and moves towards a preferred trajectory, its failure paths, precision resilience, and practical next steps.
 
-The kickoff is designed for a small cross-sector room of public leaders, investors, bankers, researchers, institutions, operators, community leaders, and selected media. Responses to the first invitations will help determine the exact date, time, guest list, panel format, and wider programme.
+The kickoff is designed for a small cross-sector room of public leaders, investors, bankers, researchers, institutions, operators, community leaders, and selected media. The date and venue are confirmed. Responses will help finalize the start time, attendance mode, guest list, panel format, and wider programme.
 
 ## Programme throughline
 
@@ -136,7 +220,7 @@ Canada has the research foundation to lead, but leadership depends on whether kn
 
 ## Date and participation
 
-The exact date remains to be finalized, with Saturday, October 3 and Sunday, October 4 under consideration to support in-person attendance. The public programme is available now so invited guests can assess the purpose and format before indicating their availability.
+The gathering takes place on **Sunday, October 4, 2026** at the **Hilton Toronto/Markham Suites Conference Centre & Spa, Markham Ballroom**, 8500 Warden Ave., Markham, ON L6G 1A5. Guests may join in person or online. The final start time will be announced Sunday evening or Monday.
 
 ## The tripartite innovation ecosystem
 
@@ -144,10 +228,7 @@ Francis Wang's Tripartite Ecosystem Model maps innovation through three connecte
 
 The kickoff reflects this model through invited academic, industry, and governance perspectives. A possible 20-minute panel or moderated conversation will be finalized only after participants and roles are confirmed. The purpose is not ceremonial representation. It is to test whether the Canada2080 trajectory can connect research, demand, implementation, legitimacy, and long-term stewardship.
 
-## Invited guests
+The people listed are invited guests, not assumed endorsers. Pyn Lim, Kimberly Yazzie, and Erin Trochim are planned contributors, subject to final confirmation of their topic, format, biography, and recording terms. Larry Smith is expected to provide a recorded message, subject to direct confirmation. Other participation and programme roles remain subject to direct confirmation.
 
-The people listed are invited guests, not confirmed speakers or endorsers. Erin Trochim, Kimberly Yazzie, Barry Wylant, and Cedric Tai will join remotely. A remote or in-person guest may participate in the perspective segment or possible panel only after the role, topic, biography, and format are confirmed directly.
 
-## Access and logistics
-
-Time, venue, accessibility information, recording policy, and private arrival or connection details will be issued after availability is reviewed and the event schedule is finalized.
+The venue is confirmed. The final start time, accessibility information, recording policy, and private arrival or connection details will be issued directly to confirmed participants.

@@ -637,3 +637,26 @@ ol, ul { margin: 0; padding: 0; }
   background: var(--snow);
   color: var(--signal);
 }
+
+.guest-group > h3 .guest-sphere,
+.guest-group > h3 .guest-group-title {
+  display: block;
+}
+
+.guest-group > h3 .guest-sphere {
+  margin-bottom: 0.3rem;
+}
+
+.guest-group > h3 .guest-group-title {
+  max-width: 15rem;
+}
+
+/* Keep the Tripartite sphere and descriptor on distinct authored lines. */
+.guest-group > h3 .guest-sphere {
+  display: block !important;
+  width: 100%;
+}
+
+.guest-group > h3 .guest-group-title {
+  display: block !important;
+}

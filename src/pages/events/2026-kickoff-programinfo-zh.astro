@@ -97,11 +97,13 @@
 
           <div class="guests-cluster">
             <div class="guests-main">
-              <h2 id="guests-title">汇聚多方视角，<br />
-                共建加拿大未来。</h2>
+              <h2 id="guests-title">
+                <span>治理、教育与产业，</span>
+                <span class="guests-title-final">共同建设加拿大未来。</span>
+              </h2>
               <div class="guest-columns">
                 <section aria-labelledby="guests-public">
-                  <h3 id="guests-public">公共领导者</h3>
+                  <h3 id="guests-public">治理<br />市政领导者</h3>
                   <ul>
                     <li>Frank Scarpitti</li>
                     <li>Alan Ho</li>
@@ -109,7 +111,7 @@
                   </ul>
                 </section>
                 <section aria-labelledby="guests-research">
-                  <h3 id="guests-research">研究、前瞻与教育界</h3>
+                  <h3 id="guests-research">教育<br />科研领导者</h3>
                   <ul>
                     <li>Barry Wylant</li>
                     <li>Larry Smith</li>
@@ -119,7 +121,7 @@
                   </ul>
                 </section>
                 <section aria-labelledby="guests-capability">
-                  <h3 id="guests-capability">产业、基建与创新</h3>
+                  <h3 id="guests-capability">产业<br />创新领导者</h3>
                   <ul>
                     <li>Pyn Lim</li>
                     <li>Himanshu Joshi</li>
@@ -132,7 +134,7 @@
             </div>
 
             <div class="guest-further">
-              <p class="guest-further-label">其他受邀嘉宾</p>
+              <p class="guest-further-label">其他受邀生态系统参与者</p>
               <p class="guest-further-names">
                 Greg Hart · Jeff Clune · Dr Marc Hurwitz · Matti Siemiatycki ·
                 Jake Dunagan · Jacques Barcia · Victor Cui · Horatio M. Morgan ·
@@ -524,11 +526,28 @@
     margin-top: 0;
   }
 
+  .card-guests {
+    padding-right: 48px;
+    padding-left: 48px;
+  }
+
   .guests-main h2 {
     margin: 0 0 36px;
-    max-width: 10em;
+    width: 100%;
+    max-width: none;
     font: 900 48px/1.18 var(--display);
     letter-spacing: 0.01em;
+  }
+
+  .guests-main h2 span {
+    display: block;
+    width: max-content;
+    white-space: nowrap;
+  }
+
+  .guests-main h2 .guests-title-final {
+    font-size: 1em;
+    letter-spacing: 0;
   }
 
   .guest-columns {
@@ -729,5 +748,26 @@
       break-after: auto;
       page-break-after: auto;
     }
+  }
+</style>
+
+<style is:global>
+  /* Card 2 uses the full 1080px card interior: the two authored lines must not auto-wrap. */
+  .card-guests .guests-main {
+    width: 984px;
+  }
+
+  .card-guests .guests-main h2 {
+    width: 984px;
+    max-width: 984px;
+  }
+
+  .card-guests .guests-main h2 span,
+  .card-guests .guests-main h2 .guests-title-final {
+    display: block;
+    width: max-content;
+    max-width: none;
+    font-size: 1em;
+    white-space: nowrap;
   }
 </style>

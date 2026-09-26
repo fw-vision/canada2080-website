@@ -22,11 +22,12 @@ const { Content } = await render(entry);
 const statusLabel = entry.data.status.replaceAll("-", " ");
 const eventTitle = entry.data.title.replace(/^Canada2080:\s*/, "");
 const guestGroups = [
-    { id: "governance", title: "Public leaders and public servants" },
-    { id: "academic", title: "Academic and research leaders" },
+    { id: "governance", sphere: "Governance:", title: "Municipal leaders" },
+    { id: "academic", sphere: "Education:", title: "Academic and research leaders" },
     {
         id: "industry",
-        title: "Industry, infrastructure, and innovation leaders",
+        sphere: "Industry:",
+        title: "Infrastructure and innovation leaders",
     },
 ] as const;
 ---
@@ -129,11 +130,11 @@ const guestGroups = [
             <div class="section-heading">
                 <div>
                     <p class="eyebrow">Invited guests</p>
-                    <h2>People across the innovation ecosystem.</h2>
+                    <h2>Governance, education, and industry in one room.</h2>
                 </div>
                 <p>
-                    The list brings public, academic, research, and industry
-                    experience into one room. An invitation or attendance does
+                    The Tripartite Ecosystem brings Governance, Education, and
+                    Industry into one conversation. An invitation or attendance does
                     not imply endorsement or a speaking role. Guest details and
                     programme roles remain subject to direct confirmation unless
                     noted as remote.
@@ -151,7 +152,8 @@ const guestGroups = [
                                 aria-labelledby={`guest-group-${group.id}`}
                             >
                                 <h3 id={`guest-group-${group.id}`}>
-                                    {group.title}
+                                    <span class="guest-sphere">{group.sphere}</span>
+                                    <span class="guest-group-title">{group.title}</span>
                                 </h3>
                                 <ol class="guest-list">
                                     {guests.map((guest) => (

@@ -98,8 +98,8 @@
           <div class="guests-cluster">
             <div class="guests-main">
               <h2 id="guests-title">
-                <span>治理、教育与产业，</span>
-                <span class="guests-title-final">共同建设加拿大未来。</span>
+                <span class="guests-title-line">治理、教育与产业，</span>
+                <span class="guests-title-line guests-title-final">共同建设加拿大未来。</span>
               </h2>
               <div class="guest-columns">
                 <section aria-labelledby="guests-public">
@@ -533,8 +533,8 @@
 
   .guests-main h2 {
     margin: 0 0 36px;
-    width: 100%;
-    max-width: none;
+    width: 984px;
+    max-width: 984px;
     font: 900 48px/1.18 var(--display);
     letter-spacing: 0.01em;
   }
@@ -542,6 +542,7 @@
   .guests-main h2 span {
     display: block;
     width: max-content;
+    max-width: none;
     white-space: nowrap;
   }
 
@@ -749,25 +750,17 @@
       page-break-after: auto;
     }
   }
-</style>
 
-<style is:global>
-  /* Card 2 uses the full 1080px card interior: the two authored lines must not auto-wrap. */
-  .card-guests .guests-main {
-    width: 984px;
+  /* Card 2 title: two authored lines, never browser-wrapped. */
+  .card-guests #guests-title {
+    width: 1080px !important;
+    max-width: none !important;
   }
 
-  .card-guests .guests-main h2 {
-    width: 984px;
-    max-width: 984px;
-  }
-
-  .card-guests .guests-main h2 span,
-  .card-guests .guests-main h2 .guests-title-final {
-    display: block;
-    width: max-content;
-    max-width: none;
-    font-size: 1em;
-    white-space: nowrap;
+  .card-guests #guests-title .guests-title-line {
+    display: block !important;
+    width: 1080px !important;
+    max-width: none !important;
+    white-space: nowrap !important;
   }
 </style>

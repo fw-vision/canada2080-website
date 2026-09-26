@@ -152,8 +152,8 @@ const guestGroups = [
                                 aria-labelledby={`guest-group-${group.id}`}
                             >
                                 <h3 id={`guest-group-${group.id}`}>
-                                    <span class="guest-sphere">{group.sphere}</span>
-                                    <span class="guest-group-title">{group.title}</span>
+                                    {group.sphere}<br />
+                                    {group.title}
                                 </h3>
                                 <ol class="guest-list">
                                     {guests.map((guest) => (

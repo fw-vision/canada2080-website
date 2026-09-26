@@ -11,6 +11,9 @@ importers:
       '@astrojs/check':
         specifier: 0.9.6
         version: 0.9.6(prettier@3.9.6)(typescript@5.9.3)
+      html-to-image:
+        specifier: ^1.11.13
+        version: 1.11.13
     devDependencies:
       astro:
         specifier: ^5.13.5
@@ -1158,6 +1161,9 @@ packages:
 
   html-escaper@3.0.3:
     resolution: {integrity: sha512-RuMffC89BOWQoY0WKGpIhn5gX3iI54O6nRA0yC124NYVtzjmFWBIiFd8M0x+ZdX0P9R4lADg1mgP8C7PxGOWuQ==}
+
+  html-to-image@1.11.13:
+    resolution: {integrity: sha512-cuOPoI7WApyhBElTTb9oqsawRvZ0rHhaHwghRLlTuffoD1B2aDemlCruLeZrUIIdvG7gs9xeELEPm6PhuASqrg==}
 
   html-void-elements@3.0.0:
     resolution: {integrity: sha512-bEqo66MRXsUGxWHV5IP0PUiAWwoEjba4VCzg0LjFJBpchPaTfyfCKTG6bc5F8ucKec3q5y6qOdGyYTSBEvhCrg==}
@@ -3076,6 +3082,8 @@ snapshots:
       space-separated-tokens: 2.0.2
 
   html-escaper@3.0.3: {}
+
+  html-to-image@1.11.13: {}
 
   html-void-elements@3.0.0: {}
 

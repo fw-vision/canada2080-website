@@ -318,8 +318,8 @@
           >
             <header class="card-topline">
               <img
-                class="topline-wordmark topline-wordmark-ink"
-                src="/brand/2080-wordmark-ink.svg"
+                class="topline-wordmark topline-wordmark-inverse"
+                src="/brand/2080-wordmark.svg"
                 alt="Canada2080"
                 width="894"
                 height="221"
@@ -405,9 +405,7 @@
 
         try {
           await waitForCardAssets(card);
-          const backgroundColor = card.classList.contains("card-rsvp")
-            ? "#071f26"
-            : getComputedStyle(card).backgroundColor;
+          const backgroundColor = getComputedStyle(card).backgroundColor;
           const blob = await toBlob(card, {
             width: CARD_SIZE,
             height: CARD_SIZE,
@@ -644,8 +642,8 @@
   }
 
   .card-rsvp {
-    color: var(--ink);
-    background: var(--snow);
+    color: var(--snow);
+    background: var(--ink);
   }
 
   .meta,
@@ -955,7 +953,6 @@
 
   .rsvp-main h2 {
     margin: 20px 0 24px;
-    color: #071f26;
     max-width: 10ch;
     font: 900 60px/0.95 var(--display);
     letter-spacing: -0.065em;
@@ -963,13 +960,13 @@
 
   .rsvp-main p:not(.rsvp-eyebrow):not(.rsvp-url) {
     margin: 0;
-    color: #071f26 !important;
+    color: #c5d0d3;
     font: 700 22px/1.38 var(--body);
   }
 
   .rsvp-instruction {
     margin-top: 28px !important;
-    color: var(--ink) !important;
+    color: var(--snow) !important;
   }
 
   .rsvp-url { margin-top: 14px; }
@@ -984,8 +981,8 @@
 
   .rsvp-footer {
     padding-top: 24px;
-    border-top: 1px solid rgb(7 31 38 / 22%);
-    color: #071f26;
+    border-top: 1px solid rgb(143 166 173 / 55%);
+    color: var(--lake);
     font: 700 16px/1.35 var(--mono);
     letter-spacing: 0.04em;
   }

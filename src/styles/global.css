@@ -345,11 +345,74 @@ ol, ul { margin: 0; padding: 0; }
 .mission-grid h3 { margin: 1.5rem 0 0.75rem; }
 .mission-grid p { color: #cbd6d7; font-size: 0.95rem; }
 
-.event-feature { display: grid; grid-template-columns: minmax(12rem, 0.55fr) minmax(0, 1.45fr); gap: clamp(2rem, 6vw, 6rem); align-items: center; }
-.event-date { display: grid; place-items: center; aspect-ratio: 1; border: 2px solid var(--ink); background: var(--signal); color: var(--white); }
-.event-date span { font: 700 0.8rem var(--mono); letter-spacing: 0.16em; }
-.event-date strong { font: 900 clamp(4.5rem, 12vw, 9rem)/0.8 var(--display); letter-spacing: -0.1em; }
-.event-date-flexible strong { font-size: clamp(2.2rem, 7vw, 5rem); letter-spacing: -0.06em; }
+.event-feature {
+  display: grid;
+  grid-template-columns: minmax(16rem, 20rem) minmax(0, 1fr);
+  gap: clamp(2rem, 4.5vw, 4rem);
+  align-items: start;
+  padding-top: clamp(2.75rem, 5vw, 4.5rem);
+  padding-bottom: clamp(2.75rem, 5vw, 4.5rem);
+}
+.event-date {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  align-items: center;
+  justify-items: center;
+  box-sizing: border-box;
+  width: 100%;
+  aspect-ratio: 1;
+  padding: 10% 9%;
+  border: 2px solid var(--ink);
+  background: var(--signal);
+  color: var(--white);
+}
+.event-date-weekday,
+.event-date-month {
+  display: block;
+  width: 100%;
+  text-align: center;
+  font: 700 clamp(1.2rem, 2vw, 1.45rem)/1 var(--mono);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.event-date-weekday { align-self: start; }
+.event-date-month { align-self: end; letter-spacing: 0.08em; }
+.event-date-day {
+  display: block;
+  width: 100%;
+  align-self: center;
+  margin-block: 0.15em;
+  text-align: center;
+  font: 900 clamp(5rem, 10vw, 7.5rem)/0.86 var(--display);
+  letter-spacing: 0.12em;
+  transform: translateX(0.04em);
+}
+.event-date-flexible .event-date-day { font-size: clamp(2.2rem, 7vw, 5rem); letter-spacing: 0.04em; }
+.event-feature-copy {
+  display: grid;
+  gap: 0;
+  min-width: 0;
+}
+.event-feature-copy .eyebrow { margin-bottom: 0.7rem; color: #44565b; }
+.event-feature-copy h2 {
+  max-width: 22ch;
+  margin: 0 0 0.85rem;
+  font-size: clamp(1.85rem, 3.2vw, 3rem);
+  line-height: 0.98;
+}
+.event-feature-copy .lead {
+  max-width: 46rem;
+  margin: 0 0 0.75rem;
+  color: var(--ink);
+}
+.event-feature-detail {
+  max-width: 46rem;
+  margin: 0;
+  color: #44565b;
+  font-size: clamp(0.95rem, 1.15vw, 1.05rem);
+  line-height: 1.5;
+}
+.event-feature-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 0.85rem 1.1rem; margin-top: 1.35rem; }
 .content-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1px; margin-top: 2.5rem; background: var(--ink); border: 1px solid var(--ink); }
 .content-grid-single { grid-template-columns: 1fr; }
 .content-card { min-height: 0; padding: clamp(1.35rem, 3vw, 2.25rem); background: var(--snow); }
@@ -547,7 +610,7 @@ ol, ul { margin: 0; padding: 0; }
   .mission-brief-body { margin-left: 0; }
   .mission-priority-list li { min-height: auto; }
   .common-services-grid li { min-height: auto; }
-  .event-date { width: min(100%, 22rem); }
+  .event-date { width: min(100%, 18rem); }
   .event-facts div { grid-template-columns: 1fr; gap: 0.35rem; }
   .event-title-wordmark { width: clamp(8rem, 42vw, 13rem); }
   .tripartite-map { display: grid; grid-template-columns: 1fr; gap: 0.75rem; min-height: 0; }

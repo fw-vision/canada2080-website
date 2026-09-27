@@ -51,6 +51,18 @@ const guestGroups = [
                         <span class="event-title-text">{eventTitle}</span>
                     </h1>
                     <p>{entry.data.description}</p>
+                    {entry.data.rsvp && (
+                        <div class="action-row">
+                            <a
+                                class="button button-signal"
+                                href={entry.data.rsvp}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                RSVP on Luma
+                            </a>
+                        </div>
+                    )}
                 </div>
                 <dl class="event-facts">
                     <div>
@@ -74,13 +86,47 @@ const guestGroups = [
                     {entry.data.time && (
                         <div>
                             <dt>Time</dt>
-                            <dd>{entry.data.time}</dd>
+                            <dd>
+                                {entry.data.arrivalTime && (
+                                    <span>{entry.data.arrivalTime}</span>
+                                )}
+                                {entry.data.programmeTime && (
+                                    <span>{entry.data.programmeTime}</span>
+                                )}
+                                {!entry.data.arrivalTime &&
+                                    !entry.data.programmeTime && (
+                                        <span>{entry.data.time}</span>
+                                    )}
+                            </dd>
+                        </div>
+                    )}
+                    {entry.data.onlineAttendance && (
+                        <div>
+                            <dt>Remote</dt>
+                            <dd>{entry.data.onlineAttendance}</dd>
                         </div>
                     )}
                     {entry.data.location && (
                         <div>
                             <dt>Location</dt>
-                            <dd>{entry.data.location}</dd>
+                            <dd>
+                                <span>{entry.data.location}</span>
+                                {entry.data.locationAddress && (
+                                    <span class="event-address">
+                                        {entry.data.locationAddress}
+                                    </span>
+                                )}
+                                {entry.data.mapUrl && (
+                                    <a
+                                        class="event-map-link"
+                                        href={entry.data.mapUrl}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                    >
+                                        Open in Google Maps
+                                    </a>
+                                )}
+                            </dd>
                         </div>
                     )}
                 </dl>
@@ -101,17 +147,17 @@ const guestGroups = [
             <div class="shell">
                 <div class="section-heading">
                     <div>
-                        <p class="eyebrow">140-minute format</p>
+                        <p class="eyebrow">150-minute format</p>
                         <h2>
-                            An 80-minute programme between two periods of
+                            A 90-minute programme between two periods of
                             connection.
                         </h2>
                     </div>
                     <p>
-                        The programme sequence is set at 80 minutes. The
-                        possible panel, exact start time, and private logistics
-                        will be finalized after availability and participation
-                        are confirmed.
+                        Guest arrival begins at 12:30 p.m., and the
+                        programme begins at 1:00 p.m. sharp. The possible panel
+                        structure and private logistics will be confirmed with
+                        participants.
                     </p>
                 </div>
                 <ol class="event-itinerary">
@@ -195,9 +241,8 @@ const guestGroups = [
                     <h2>Join the founding conversation.</h2>
                     <p class="lead">
                         Guests may indicate whether they prefer to join in
-                        person or online, share final-time constraints, and
-                        express interest in a short perspective, discussion, or
-                        recorded message.
+                        person or online, and express interest in a short
+                        perspective, discussion panel, or recorded message.
                     </p>
                     <div class="action-row">
                         <a

@@ -1,14 +1,20 @@
 ---
 title: "Canada2080: A future of abundance and resilience"
-description: "A small kickoff release and founding conversation for Canada's long-horizon capability agenda on Sunday, October 4, 2026. The final start time will be announced Sunday evening or Monday."
+description: "A small kickoff release and founding conversation for Canada's long-horizon capability agenda on Sunday, October 4, 2026. Guest arrival begins at 12:30 p.m. and the programme begins at 1:00 p.m."
 dateLabel: "Sunday, October 4, 2026"
 candidateDates: []
 sortDate: 2026-10-04
 status: scheduled
-location: "Hilton Toronto/Markham Suites Conference Centre & Spa, Markham Ballroom, 8500 Warden Ave., Markham, ON L6G 1A5. In person and online attendance available."
-time: "To be announced Sunday evening or Monday"
+location: "Markham Ballroom · Hilton Toronto/Markham Suites Conference Centre & Spa"
+locationAddress: "8500 Warden Ave., Markham, ON L6G 1A5"
+mapUrl: "https://www.google.com/maps/search/?api=1&query=Hilton+Toronto%2FMarkham+Suites+Conference+Centre+%26+Spa%2C+8500+Warden+Ave.%2C+Markham%2C+ON+L6G+1A5"
+time: "Guest arrival 12:30 p.m. · Programme begins 1:00 p.m."
+arrivalTime: "Guest arrival: 12:30 p.m."
+programmeTime: "Programme begins: 1:00 p.m."
+onlineAttendance: "Online: Google Meet"
+rsvp: "https://luma.com/w7g9hjb7"
 format: "Invitation-led kickoff release and founding conversation"
-duration: "Two hours 20 minutes: 30 minutes of arrival networking, an 80-minute programme, and 30 minutes of commitment-focused networking"
+duration: "150 minutes"
 guests:
   - name: "Frank Scarpitti"
     institution: "City of Markham"
@@ -184,25 +190,25 @@ guests:
     bio: "Co-founder focused on helping professionals build real-world experience and opportunity."
     group: industry
 itinerary:
-  - time: "30 minutes before"
+  - time: "12:30 p.m."
     title: "Arrival and networking"
     duration: "30 minutes"
-  - time: "00:00"
+  - time: "1:00 p.m."
     title: "Opening address: the 2020–2080 trajectory and precision resilience"
     duration: "20 minutes"
-  - time: "00:20"
+  - time: "1:20 p.m."
     title: "Invited academic, industry, and governance perspectives"
-    duration: "15 minutes"
-  - time: "00:35"
+    duration: "25 minutes"
+  - time: "1:45 p.m."
     title: "Possible speaker panel or moderated conversation"
     duration: "20 minutes"
-  - time: "00:55"
+  - time: "2:05 p.m."
     title: "Possible roles and calls to capital, institutions, and policy leaders"
     duration: "10 minutes"
-  - time: "01:05"
+  - time: "2:15 p.m."
     title: "Closing invitation: choose what Canada will build"
     duration: "15 minutes"
-  - time: "After the programme"
+  - time: "2:30 p.m."
     title: "Commitment-focused networking"
     duration: "30 minutes"
 draft: false
@@ -212,7 +218,7 @@ draft: false
 
 Canada2080 will introduce a public long-horizon agenda for building the economic sovereignty, strategic capability, and public value Canada may need by 2080. The conversation begins with Canada's strong research and educational foundation, examines Francis Wang's four Canadian systemic Gaps, and moves towards a preferred trajectory, its failure paths, precision resilience, and practical next steps.
 
-The kickoff is designed for a small cross-sector room of public leaders, investors, bankers, researchers, institutions, operators, community leaders, and selected media. The date and venue are confirmed. Responses will help finalize the start time, attendance mode, guest list, panel format, and wider programme.
+The kickoff is designed for a small cross-sector room of public leaders, investors, bankers, researchers, institutions, operators, community leaders, and selected media. The date, venue, and schedule are confirmed: guests may arrive from 12:30 p.m., and the programme begins at 1:00 p.m. Responses will help confirm attendance mode, guest participation, panel format, and the wider programme.
 
 ## Programme throughline
 
@@ -220,15 +226,15 @@ Canada has the research foundation to lead, but leadership depends on whether kn
 
 ## Date and participation
 
-The gathering takes place on **Sunday, October 4, 2026** at the **Hilton Toronto/Markham Suites Conference Centre & Spa, Markham Ballroom**, 8500 Warden Ave., Markham, ON L6G 1A5. Guests may join in person or online. The final start time will be announced Sunday evening or Monday.
+The gathering takes place on **Sunday, October 4, 2026** at the **Hilton Toronto/Markham Suites Conference Centre & Spa, Markham Ballroom**, 8500 Warden Ave., Markham, ON L6G 1A5. Guests may join in person or online. Guest arrival begins at **12:30 p.m.**, and the programme begins at **1:00 p.m. sharp**.
 
 ## The tripartite innovation ecosystem
 
 Francis Wang's Tripartite Ecosystem Model maps innovation through three connected spheres: education, industry, and governance. Education contributes research, talent, and learning. Industry contributes demand, production, operating knowledge, and capital. Governance contributes public purpose, policy, trust, and continuity. The critical field is their intersection, where distinct incentives and resources can be coordinated into complete capability and public value.
 
-The kickoff reflects this model through invited academic, industry, and governance perspectives. A possible 20-minute panel or moderated conversation will be finalized only after participants and roles are confirmed. The purpose is not ceremonial representation. It is to test whether the Canada2080 trajectory can connect research, demand, implementation, legitimacy, and long-term stewardship.
+The kickoff reflects this model through a 25-minute invited-perspectives segment from academic, industry, and governance contributors. A possible 20-minute panel or moderated conversation will be finalized only after participants and roles are confirmed. The purpose is not ceremonial representation. It is to test whether the Canada2080 trajectory can connect research, demand, implementation, legitimacy, and long-term stewardship.
 
 The people listed are invited guests, not assumed endorsers. Pyn Lim, Kimberly Yazzie, and Erin Trochim are planned contributors, subject to final confirmation of their topic, format, biography, and recording terms. Larry Smith is expected to provide a recorded message, subject to direct confirmation. Other participation and programme roles remain subject to direct confirmation.
 
 
-The venue is confirmed. The final start time, accessibility information, recording policy, and private arrival or connection details will be issued directly to confirmed participants.
+The venue and schedule are confirmed. Accessibility information, recording policy, and private arrival or connection details will be issued directly to confirmed participants.

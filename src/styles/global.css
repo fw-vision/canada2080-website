@@ -370,6 +370,10 @@ ol, ul { margin: 0; padding: 0; }
 .event-facts div { display: grid; grid-template-columns: 7.5rem 1fr; gap: 1.25rem; padding: 1.25rem 0; border-bottom: 1px solid var(--lake); }
 .event-facts dt { padding-top: 0.2rem; color: var(--horizon); font: 700 0.75rem/1.35 var(--mono); letter-spacing: 0.09em; text-transform: uppercase; }
 .event-facts dd { color: var(--snow); font-size: clamp(1rem, 1.25vw, 1.2rem); line-height: 1.5; }
+.event-facts dd > span { display: block; }
+.event-address { margin-top: 0.25rem; color: #cbd6d7; }
+.event-map-link { display: inline-block; margin-top: 0.6rem; color: var(--horizon); font: 700 0.75rem/1.35 var(--mono); letter-spacing: 0.06em; text-decoration-thickness: 1px; text-underline-offset: 0.2em; text-transform: uppercase; }
+.event-map-link:hover { color: var(--snow); }
 .event-body { padding-top: 3rem; padding-bottom: 3rem; }
 .event-itinerary { list-style: none; margin-top: 4rem; border-top: 2px solid var(--ink); }
 .event-itinerary li { display: grid; grid-template-columns: 11rem minmax(0, 1fr) 8rem; gap: 1.5rem; align-items: baseline; padding: 1.5rem 0; border-bottom: 1px solid rgb(7 31 38 / 45%); }

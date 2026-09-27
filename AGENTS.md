@@ -12,7 +12,7 @@ Before changing positioning, evidence claims, missions, or public copy, read `..
 
 ## Current focus
 
-Public launch and kickoff scheduling. The kickoff is Sunday, October 4, 2026, at the Hilton Toronto/Markham Suites Conference Centre & Spa, Markham Ballroom, with in-person and online attendance available. The final start time will be announced Sunday evening or Monday. Publicly use **Invited guests** rather than assuming speaking roles, except where a contributor has directly confirmed a role. Invitation or participation does not imply endorsement. Final names, titles, biographies, photographs, speaking roles, and other arrangements require direct confirmation.
+Public launch and kickoff scheduling. The kickoff is Sunday, October 4, 2026, at the Hilton Toronto/Markham Suites Conference Centre & Spa, Markham Ballroom, with in-person and online attendance available. Guest arrival begins at 12:30 p.m., and the programme begins at 1:00 p.m. sharp. Publicly use **Invited guests** rather than assuming speaking roles, except where a contributor has directly confirmed a role. Invitation or participation does not imply endorsement. Final names, titles, biographies, photographs, speaking roles, and other arrangements require direct confirmation.
 
 ## Tech stack
 

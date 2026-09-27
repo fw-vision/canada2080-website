@@ -21,7 +21,7 @@
           <p class="deck-toolbar-note">1080 × 1080 PNGs for sharing and print.</p>
         </div>
         <button type="button" class="deck-download-all" data-download-all>
-          Download all four
+          Download all five
         </button>
       </header>
 
@@ -87,7 +87,13 @@
                   <span class="meta">Attendance</span>
                   <strong>In person and online.</strong>
                   <strong class="cover-detail-sub"
-                    >Start time announced Sunday evening or Monday.</strong
+                    >Guest arrival: 12:30 p.m.</strong
+                  >
+                  <strong class="cover-detail-sub"
+                    >Programme begins: 1:00 p.m.</strong
+                  >
+                  <strong class="cover-detail-sub"
+                    >Online: Google Meet</strong
                   >
                 </div>
               </div>
@@ -242,44 +248,44 @@
           </header>
 
           <div class="itinerary-main">
-            <p class="itinerary-label">140-minute founding conversation</p>
+            <p class="itinerary-label">150-minute founding conversation</p>
             <h2 id="itinerary-title">Choose what Canada will build.</h2>
             <ol class="timeline">
               <li>
-                <time>T−30</time>
+                <time>12:30 p.m.</time>
                 <span>Arrival and networking</span>
               </li>
               <li>
-                <time>T+00</time>
+                <time>1:00 p.m.</time>
                 <span
                   >Opening address: the 2020–2080 trajectory and precision
                   resilience</span
                 >
               </li>
               <li>
-                <time>T+20</time>
+                <time>1:20 p.m.</time>
                 <span
                   >Invited academic, industry, and governance
                   perspectives</span
                 >
               </li>
               <li>
-                <time>T+35</time>
+                <time>1:45 p.m.</time>
                 <span>Speaker panel or moderated conversation</span>
               </li>
               <li>
-                <time>T+55</time>
+                <time>2:05 p.m.</time>
                 <span
                   >Roles and calls to capital, institutions, and policy
                   leaders</span
                 >
               </li>
               <li>
-                <time>T+65</time>
+                <time>2:15 p.m.</time>
                 <span>Closing invitation: choose what Canada will build</span>
               </li>
               <li>
-                <time>T+80</time>
+                <time>2:30 p.m.</time>
                 <span>Commitment-focused networking</span>
               </li>
             </ol>
@@ -291,7 +297,7 @@
               panels. A second panel would extend the programme.
             </p>
             <div class="itinerary-meta">
-              <p>Detail time to be announced</p>
+              <p>Guest arrival 12:30 p.m. · Programme begins 1:00 p.m.</p>
               <p>canada2080.org</p>
             </div>
           </footer>
@@ -302,10 +308,59 @@
           <button type="button" class="card-download" data-download-card>Download PNG</button>
         </figcaption>
       </figure>
+
+      <figure class="card-figure">
+        <div class="card-slot">
+          <article
+            class="card card-rsvp"
+            aria-labelledby="rsvp-title"
+            data-card-file="canada2080-kickoff-05-rsvp.png"
+          >
+            <header class="card-topline">
+              <img
+                class="topline-wordmark topline-wordmark-inverse"
+                src="/brand/2080-wordmark.svg"
+                alt="Canada2080"
+                width="894"
+                height="221"
+              />
+              <p class="card-kicker">RSVP</p>
+            </header>
+            <div class="rsvp-main">
+              <div class="rsvp-copy">
+                <p class="rsvp-eyebrow">Sunday, 4 October 2026</p>
+                <h2 id="rsvp-title">Join the founding conversation.</h2>
+                <p>
+                  Markham Ballroom · Hilton Toronto/Markham<br />
+                  Guest arrival: 12:30 p.m.<br />
+                  Programme begins: 1:00 p.m.<br />
+                  Online: Google Meet
+                </p>
+                <p class="rsvp-instruction">Scan the code to RSVP on Luma.</p>
+                <p class="rsvp-url">luma.com/w7g9hjb7</p>
+              </div>
+              <img
+                class="rsvp-qr"
+                src="/images/canada2080-kickoff-rsvp-qr.png"
+                alt="QR code linking to the Canada2080 kickoff RSVP on Luma"
+                width="440"
+                height="440"
+              />
+            </div>
+            <footer class="rsvp-footer">
+              In person and online attendance available.
+            </footer>
+          </article>
+        </div>
+        <figcaption class="card-actions">
+          <span class="card-label">05 · RSVP</span>
+          <button type="button" class="card-download" data-download-card>Download PNG</button>
+        </figcaption>
+      </figure>
     </main>
 
     <script>
-      import { toPng } from "html-to-image";
+      import { toBlob } from "html-to-image";
 
       const CARD_SIZE = 1080;
 
@@ -313,9 +368,30 @@
         return new Promise((resolve) => setTimeout(resolve, ms));
       }
 
+      async function waitForCardAssets(card: HTMLElement) {
+        await document.fonts?.ready;
+
+        await Promise.all(
+          [...card.querySelectorAll<HTMLImageElement>("img")].map(async (image) => {
+            if (!image.complete) {
+              await new Promise<void>((resolve, reject) => {
+                image.addEventListener("load", () => resolve(), { once: true });
+                image.addEventListener("error", () => reject(new Error(`Could not load ${image.src}`)), { once: true });
+              });
+            }
+            if (!image.naturalWidth) {
+              throw new Error(`Could not load ${image.src}`);
+            }
+            await image.decode?.().catch(() => undefined);
+          }),
+        );
+
+        await new Promise<void>((resolve) => requestAnimationFrame(() => resolve()));
+      }
+
       async function exportCard(card: HTMLElement, filename: string) {
         const slot = card.closest(".card-slot") as HTMLElement | null;
-        if (!slot) return;
+        if (!slot) throw new Error("Card is missing its export slot");
 
         const previous = {
           slotWidth: slot.style.width,
@@ -327,24 +403,35 @@
         slot.style.height = `${CARD_SIZE}px`;
         card.style.transform = "none";
 
-        await sleep(50);
-
         try {
-          const dataUrl = await toPng(card, {
+          await waitForCardAssets(card);
+          const backgroundColor = card.classList.contains("card-rsvp")
+            ? "#071f26"
+            : getComputedStyle(card).backgroundColor;
+          const blob = await toBlob(card, {
             width: CARD_SIZE,
             height: CARD_SIZE,
             pixelRatio: 1,
-            cacheBust: true,
+            backgroundColor,
+            skipFonts: true,
+            cacheBust: false,
             style: {
+              background: backgroundColor,
+              backgroundColor,
               transform: "none",
               transformOrigin: "top left",
             },
           });
+          if (!blob) throw new Error("Could not render PNG");
 
+          const url = URL.createObjectURL(blob);
           const link = document.createElement("a");
           link.download = filename;
-          link.href = dataUrl;
+          link.href = url;
+          document.body.append(link);
           link.click();
+          link.remove();
+          window.setTimeout(() => URL.revokeObjectURL(url), 0);
         } finally {
           slot.style.width = previous.slotWidth;
           slot.style.height = previous.slotHeight;
@@ -395,7 +482,7 @@
           await sleep(1200);
         } finally {
           button.disabled = false;
-          button.textContent = label || "Download all four";
+          button.textContent = label || "Download all five";
         }
       }
 
@@ -554,6 +641,11 @@
   .card-guests {
     color: var(--ink);
     background: var(--snow);
+  }
+
+  .card-rsvp {
+    color: var(--snow);
+    background: var(--ink);
   }
 
   .meta,
@@ -840,6 +932,61 @@
     border-top: 1px solid var(--ink);
     font: 700 14px/1.35 var(--body);
     max-width: none;
+  }
+
+  /* —— RSVP —— */
+  .rsvp-main {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 440px;
+    gap: 40px;
+    align-items: center;
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+
+  .rsvp-eyebrow,
+  .rsvp-url {
+    margin: 0;
+    color: var(--signal);
+    font: 700 17px/1.35 var(--mono);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .rsvp-main h2 {
+    margin: 20px 0 24px;
+    max-width: 10ch;
+    font: 900 60px/0.95 var(--display);
+    letter-spacing: -0.065em;
+  }
+
+  .rsvp-main p:not(.rsvp-eyebrow):not(.rsvp-url) {
+    margin: 0;
+    color: #c5d0d3;
+    font: 700 22px/1.38 var(--body);
+  }
+
+  .rsvp-instruction {
+    margin-top: 28px !important;
+    color: var(--snow) !important;
+  }
+
+  .rsvp-url { margin-top: 14px; }
+
+  .rsvp-qr {
+    display: block;
+    width: 440px;
+    height: 440px;
+    padding: 18px;
+    background: var(--snow);
+  }
+
+  .rsvp-footer {
+    padding-top: 24px;
+    border-top: 1px solid rgb(143 166 173 / 55%);
+    color: var(--lake);
+    font: 700 16px/1.35 var(--mono);
+    letter-spacing: 0.04em;
   }
 
   /* —— Itinerary —— */

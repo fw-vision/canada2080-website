@@ -21,7 +21,12 @@ const events = defineCollection({
     format: z.string(),
     duration: z.string(),
     location: z.string().optional(),
+    locationAddress: z.string().optional(),
+    mapUrl: z.string().url().optional(),
     time: z.string().optional(),
+    arrivalTime: z.string().optional(),
+    programmeTime: z.string().optional(),
+    onlineAttendance: z.string().optional(),
     rsvp: z.string().optional(),
     guests: z.array(z.object({
       name: z.string(),

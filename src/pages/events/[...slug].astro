@@ -164,7 +164,14 @@ const guestGroups = [
                     {entry.data.itinerary.map((item) => (
                         <li>
                             <span>{item.time}</span>
-                            <h3>{item.title}</h3>
+                            <div>
+                                <h3>{item.title}</h3>
+                                {item.description && (
+                                    <p class="event-itinerary-description">
+                                        {item.description}
+                                    </p>
+                                )}
+                            </div>
                             <p>{item.duration}</p>
                         </li>
                     ))}

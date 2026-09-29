@@ -440,8 +440,9 @@ ol, ul { margin: 0; padding: 0; }
 .event-body { padding-top: 3rem; padding-bottom: 3rem; }
 .event-itinerary { list-style: none; margin-top: 4rem; border-top: 2px solid var(--ink); }
 .event-itinerary li { display: grid; grid-template-columns: 11rem minmax(0, 1fr) 8rem; gap: 1.5rem; align-items: baseline; padding: 1.5rem 0; border-bottom: 1px solid rgb(7 31 38 / 45%); }
-.event-itinerary span, .event-itinerary p { font: 700 0.68rem var(--mono); text-transform: uppercase; }
+.event-itinerary span, .event-itinerary > li > p { font: 700 0.68rem var(--mono); text-transform: uppercase; }
 .event-itinerary h3 { margin: 0; }
+.event-itinerary .event-itinerary-description { max-width: 56rem; margin: 0.55rem 0 0; color: #44565b; font: 400 0.95rem/1.5 var(--sans); text-transform: none; }
 .tripartite-ecosystem { display: grid; grid-template-columns: minmax(17rem, 0.65fr) minmax(30rem, 1.35fr); gap: clamp(3rem, 7vw, 7rem); margin: 0; align-items: center; }
 .tripartite-ecosystem figcaption h2 { max-width: 13ch; }
 .tripartite-ecosystem figcaption > p:last-child { color: #44565b; }

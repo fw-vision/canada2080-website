@@ -173,7 +173,7 @@
                   <h3 id="guests-research">教育<br />科研领导者</h3>
                   <ul>
                     <li>Barry Wylant</li>
-                    <li>Larry Smith</li>
+                    <li>Greg Hart</li>
                     <li>Prof Jay Gonzalez</li>
                     <li>Erin Trochim</li>
                     <li>Kimberly Yazzie</li>
@@ -186,7 +186,7 @@
                     <li>Himanshu Joshi</li>
                     <li>Yulia Korobkova</li>
                     <li>Diarmuid Nash</li>
-                    <li>Michael Donaldson</li>
+                    <li>Sudarshana Bhattacharya</li>
                   </ul>
                 </section>
               </div>
@@ -195,12 +195,11 @@
             <div class="guest-further">
               <p class="guest-further-label">其他受邀生态系统参与者</p>
               <p class="guest-further-names">
-                Greg Hart · Jeff Clune · Dr Marc Hurwitz · Matti Siemiatycki ·
-                Jake Dunagan · Jacques Barcia · Victor Cui · Horatio M. Morgan ·
-                Dr David J. Finch · David Rose · Dr Simon Raby · Roopa Reddy ·
-                Adrian Conrad · Sudarshana Bhattacharya · Cedric Tai · Koreen
-                Brennan · Jesse Tack · Krysta Traianovski · Charles Chan · Harry
-                Gandhi · Sefunmi Osinaike
+                Jeff Clune · Dr Marc Hurwitz · Matti Siemiatycki · Victor Cui ·
+                Horatio M. Morgan · Dr David J. Finch · David Rose · Dr Simon
+                Raby · Roopa Reddy · Adrian Conrad · Michael Donaldson · Cedric
+                Tai · Krysta Traianovski · Charles Chan · Harry Gandhi · Sefunmi
+                Osinaike
               </p>
             </div>
           </div>
@@ -235,7 +234,7 @@
           </header>
 
           <div class="itinerary-main">
-            <p class="itinerary-label">150分钟启动对话与行动交流</p>
+            <p class="itinerary-label">150分钟公开启动活动</p>
             <h2 id="itinerary-title">共同选择加拿大<br />
               要建设的未来。</h2>
             <ol class="timeline">
@@ -245,34 +244,46 @@
               </li>
               <li>
                 <time>13:00</time>
-                <span>开场：2020–2080发展轨迹与精准韧性</span>
+                <span>主持开场与议程介绍</span>
               </li>
               <li>
-                <time>13:20</time>
-                <span>学术、产业与公共治理的视角</span>
+                <time>13:05</time>
+                <span>市政欢迎致辞</span>
               </li>
               <li>
-                <time>13:45</time>
-                <span>嘉宾圆桌或主持对话（待确认）</span>
+                <time>13:15</time>
+                <span>Canada2080：长期挑战</span>
               </li>
               <li>
-                <time>14:05</time>
-                <span>面向资本、机构与政策领导者的行动邀请</span>
+                <time>13:25</time>
+                <span>专题观点：当前投资议题</span>
+              </li>
+              <li>
+                <time>13:35</time>
+                <span>专题一：主权 AI 与私有算力</span>
+              </li>
+              <li>
+                <time>13:50</time>
+                <span>专题观点：从基础设施到能力建设</span>
+              </li>
+              <li>
+                <time>14:00</time>
+                <span>专题二：制造、人才与长期增长</span>
               </li>
               <li>
                 <time>14:15</time>
-                <span>结束邀请：共同选择加拿大要建设的未来</span>
+                <span>总结与行动邀请</span>
               </li>
               <li>
                 <time>14:30</time>
-                <span>围绕下一步行动的交流</span>
+                <span>交流与后续对接</span>
               </li>
             </ol>
           </div>
 
           <footer class="itinerary-footer">
             <p class="itinerary-note">
-              圆桌、短讲与录制内容将以最终确认版本为准。
+              贡献者与讨论主题将在确认后公布。
             </p>
             <div class="itinerary-meta">
               <p>12:30 入场签到 · 13:00 准时开始</p>
@@ -338,140 +349,14 @@
     </main>
 
     <script>
-      import { toBlob } from "html-to-image";
+      import { bindCardExportControls } from "../../lib/export-card-image";
 
-      const CARD_SIZE = 1080;
-
-      function sleep(ms: number) {
-        return new Promise((resolve) => setTimeout(resolve, ms));
-      }
-
-      async function waitForCardAssets(card: HTMLElement) {
-        await document.fonts?.ready;
-
-        await Promise.all(
-          [...card.querySelectorAll<HTMLImageElement>("img")].map(async (image) => {
-            if (!image.complete) {
-              await new Promise<void>((resolve, reject) => {
-                image.addEventListener("load", () => resolve(), { once: true });
-                image.addEventListener("error", () => reject(new Error(`Could not load ${image.src}`)), { once: true });
-              });
-            }
-            if (!image.naturalWidth) {
-              throw new Error(`Could not load ${image.src}`);
-            }
-            await image.decode?.().catch(() => undefined);
-          }),
-        );
-
-        await new Promise<void>((resolve) => requestAnimationFrame(() => resolve()));
-      }
-
-      async function exportCard(card: HTMLElement, filename: string) {
-        const slot = card.closest(".card-slot") as HTMLElement | null;
-        if (!slot) throw new Error("Card is missing its export slot");
-
-        const previous = {
-          slotWidth: slot.style.width,
-          slotHeight: slot.style.height,
-          cardTransform: card.style.transform,
-        };
-
-        slot.style.width = `${CARD_SIZE}px`;
-        slot.style.height = `${CARD_SIZE}px`;
-        card.style.transform = "none";
-
-        try {
-          await waitForCardAssets(card);
-          const backgroundColor = getComputedStyle(card).backgroundColor;
-          const blob = await toBlob(card, {
-            width: CARD_SIZE,
-            height: CARD_SIZE,
-            pixelRatio: 1,
-            backgroundColor,
-            skipFonts: true,
-            cacheBust: false,
-            style: {
-              background: backgroundColor,
-              backgroundColor,
-              transform: "none",
-              transformOrigin: "top left",
-            },
-          });
-          if (!blob) throw new Error("Could not render PNG");
-
-          const url = URL.createObjectURL(blob);
-          const link = document.createElement("a");
-          link.download = filename;
-          link.href = url;
-          document.body.append(link);
-          link.click();
-          link.remove();
-          window.setTimeout(() => URL.revokeObjectURL(url), 0);
-        } finally {
-          slot.style.width = previous.slotWidth;
-          slot.style.height = previous.slotHeight;
-          card.style.transform = previous.cardTransform;
-        }
-      }
-
-      async function downloadOne(button: HTMLButtonElement) {
-        const figure = button.closest(".card-figure");
-        const card = figure?.querySelector<HTMLElement>(".card[data-card-file]");
-        const filename = card?.dataset.cardFile;
-        if (!card || !filename) return;
-
-        const label = button.textContent;
-        button.disabled = true;
-        button.textContent = "准备中…";
-        try {
-          await exportCard(card, filename);
-        } catch (error) {
-          console.error(error);
-          button.textContent = "再试一次";
-          await sleep(1200);
-        } finally {
-          button.disabled = false;
-          button.textContent = label || "下载 PNG";
-        }
-      }
-
-      async function downloadAll(button: HTMLButtonElement) {
-        const cards = [
-          ...document.querySelectorAll<HTMLElement>(".card[data-card-file]"),
-        ];
-        const label = button.textContent;
-        button.disabled = true;
-
-        try {
-          for (let index = 0; index < cards.length; index += 1) {
-            const card = cards[index];
-            const filename = card.dataset.cardFile;
-            if (!filename) continue;
-            button.textContent = `正在保存 ${index + 1} / ${cards.length}…`;
-            await exportCard(card, filename);
-            await sleep(350);
-          }
-        } catch (error) {
-          console.error(error);
-          button.textContent = "再试一次";
-          await sleep(1200);
-        } finally {
-          button.disabled = false;
-          button.textContent = label || "下载全部五张";
-        }
-      }
-
-      document.querySelectorAll<HTMLButtonElement>("[data-download-card]").forEach((button) => {
-        button.addEventListener("click", () => {
-          void downloadOne(button);
-        });
-      });
-
-      document.querySelectorAll<HTMLButtonElement>("[data-download-all]").forEach((button) => {
-        button.addEventListener("click", () => {
-          void downloadAll(button);
-        });
+      bindCardExportControls({
+        preparing: "准备中…",
+        retry: "再试一次",
+        idleOne: "下载 PNG",
+        idleAll: "下载全部五张",
+        saving: (index, total) => `正在保存 ${index} / ${total}…`,
       });
     </script>
   </body>
@@ -1017,8 +902,10 @@
   }
 
   .timeline {
-    --time-col: 112px;
-    --rail-inset: 128px;
+    --time-col: 10rem;
+    --rail-gap: 0.7rem;
+    --title-gap: 1rem;
+    --rail-inset: calc(var(--time-col) + var(--rail-gap));
     position: relative;
     display: grid;
     gap: 22px;
@@ -1029,8 +916,8 @@
 
   .timeline::before {
     position: absolute;
-    top: 0.45em;
-    bottom: 0.45em;
+    top: 0.55em;
+    bottom: 0.55em;
     left: var(--rail-inset);
     width: 2px;
     background: var(--signal);
@@ -1041,27 +928,33 @@
     position: relative;
     display: grid;
     grid-template-columns: var(--time-col) minmax(0, 1fr);
-    column-gap: 36px;
-    align-items: baseline;
+    column-gap: calc(var(--rail-gap) + 12px + var(--title-gap));
+    align-items: center;
   }
 
   .timeline li::before {
     position: absolute;
-    top: 0.45em;
+    top: 50%;
     left: calc(var(--rail-inset) - 5px);
     width: 12px;
     height: 12px;
     border: 2px solid var(--signal);
     border-radius: 50%;
     background: var(--ink);
+    transform: translateY(-50%);
     content: "";
   }
 
   .timeline time {
+    display: block;
+    width: max-content;
     color: var(--lake);
     font: 700 24px/1.2 var(--mono);
     letter-spacing: 0.02em;
     text-align: left;
+    white-space: nowrap;
+    word-break: keep-all;
+    overflow-wrap: normal;
   }
 
   .timeline span {
@@ -1080,7 +973,7 @@
   .itinerary-note {
     margin: 0;
     color: #a8b7bb;
-    font: 600 14px/1.45 var(--body);
+    font: 600 13px/1.4 var(--body);
     max-width: none;
   }
 

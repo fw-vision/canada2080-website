@@ -39,7 +39,8 @@ const events = defineCollection({
     itinerary: z.array(z.object({
       time: z.string(),
       title: z.string(),
-      duration: z.string()
+      duration: z.string(),
+      description: z.string().optional()
     })),
     draft: z.boolean().default(true)
   })

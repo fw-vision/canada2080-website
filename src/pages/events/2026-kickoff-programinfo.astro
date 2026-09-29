@@ -185,7 +185,7 @@
                   <h3 id="guests-research">Education:<br />Research leaders</h3>
                   <ul>
                     <li>Barry Wylant</li>
-                    <li>Larry Smith</li>
+                    <li>Greg Hart</li>
                     <li>Prof Jay Gonzalez</li>
                     <li>Erin Trochim</li>
                     <li>Kimberly Yazzie</li>
@@ -198,7 +198,7 @@
                     <li>Himanshu Joshi</li>
                     <li>Yulia Korobkova</li>
                     <li>Diarmuid Nash</li>
-                    <li>Michael Donaldson</li>
+                    <li>Sudarshana Bhattacharya</li>
                   </ul>
                 </section>
               </div>
@@ -207,12 +207,11 @@
             <div class="guest-further">
               <p class="guest-further-label">Also invited</p>
               <p class="guest-further-names">
-                Greg Hart · Jeff Clune · Dr Marc Hurwitz · Matti Siemiatycki ·
-                Jake Dunagan · Jacques Barcia · Victor Cui · Horatio M. Morgan ·
-                Dr David J. Finch · David Rose · Dr Simon Raby · Roopa Reddy ·
-                Adrian Conrad · Sudarshana Bhattacharya · Cedric Tai · Koreen
-                Brennan · Jesse Tack · Krysta Traianovski · Charles Chan · Harry
-                Gandhi · Sefunmi Osinaike
+                Jeff Clune · Dr Marc Hurwitz · Matti Siemiatycki · Victor Cui ·
+                Horatio M. Morgan · Dr David J. Finch · David Rose · Dr Simon
+                Raby · Roopa Reddy · Adrian Conrad · Michael Donaldson · Cedric
+                Tai · Krysta Traianovski · Charles Chan · Harry Gandhi · Sefunmi
+                Osinaike
               </p>
             </div>
           </div>
@@ -248,53 +247,55 @@
           </header>
 
           <div class="itinerary-main">
-            <p class="itinerary-label">150-minute founding conversation</p>
+            <p class="itinerary-label">150-minute public kickoff</p>
             <h2 id="itinerary-title">Choose what Canada will build.</h2>
             <ol class="timeline">
               <li>
-                <time>12:30 p.m.</time>
+                <time>12:30&nbsp;p.m.</time>
                 <span>Arrival and networking</span>
               </li>
               <li>
-                <time>1:00 p.m.</time>
-                <span
-                  >Opening address: the 2020–2080 trajectory and precision
-                  resilience</span
-                >
+                <time>1:00&nbsp;p.m.</time>
+                <span>Welcome and programme orientation</span>
               </li>
               <li>
-                <time>1:20 p.m.</time>
-                <span
-                  >Invited academic, industry, and governance
-                  perspectives</span
-                >
+                <time>1:05&nbsp;p.m.</time>
+                <span>Civic Welcome</span>
               </li>
               <li>
-                <time>1:45 p.m.</time>
-                <span>Speaker panel or moderated conversation</span>
+                <time>1:15&nbsp;p.m.</time>
+                <span>Canada2080: the long-horizon challenge</span>
               </li>
               <li>
-                <time>2:05 p.m.</time>
-                <span
-                  >Roles and calls to capital, institutions, and policy
-                  leaders</span
-                >
+                <time>1:25&nbsp;p.m.</time>
+                <span>Featured perspectives: the immediate investment case</span>
               </li>
               <li>
-                <time>2:15 p.m.</time>
-                <span>Closing invitation: choose what Canada will build</span>
+                <time>1:35&nbsp;p.m.</time>
+                <span>Panel 1: Sovereign AI and Private Compute</span>
               </li>
               <li>
-                <time>2:30 p.m.</time>
-                <span>Commitment-focused networking</span>
+                <time>1:50&nbsp;p.m.</time>
+                <span>Featured perspectives: from infrastructure to capacity</span>
+              </li>
+              <li>
+                <time>2:00&nbsp;p.m.</time>
+                <span>Panel 2: Manufacturing, Talent and Long-Term Growth</span>
+              </li>
+              <li>
+                <time>2:15&nbsp;p.m.</time>
+                <span>Closing synthesis and invitation</span>
+              </li>
+              <li>
+                <time>2:30&nbsp;p.m.</time>
+                <span>Networking and follow-up</span>
               </li>
             </ol>
           </div>
 
           <footer class="itinerary-footer">
             <p class="itinerary-note">
-              Speaking segments may expand as guests volunteer for keynotes or
-              panels. A second panel would extend the programme.
+              Contributors and discussion topics will be announced as they are confirmed.
             </p>
             <div class="itinerary-meta">
               <p>Guest arrival 12:30 p.m. · Programme begins 1:00 p.m.</p>
@@ -360,140 +361,14 @@
     </main>
 
     <script>
-      import { toBlob } from "html-to-image";
+      import { bindCardExportControls } from "../../lib/export-card-image";
 
-      const CARD_SIZE = 1080;
-
-      function sleep(ms: number) {
-        return new Promise((resolve) => setTimeout(resolve, ms));
-      }
-
-      async function waitForCardAssets(card: HTMLElement) {
-        await document.fonts?.ready;
-
-        await Promise.all(
-          [...card.querySelectorAll<HTMLImageElement>("img")].map(async (image) => {
-            if (!image.complete) {
-              await new Promise<void>((resolve, reject) => {
-                image.addEventListener("load", () => resolve(), { once: true });
-                image.addEventListener("error", () => reject(new Error(`Could not load ${image.src}`)), { once: true });
-              });
-            }
-            if (!image.naturalWidth) {
-              throw new Error(`Could not load ${image.src}`);
-            }
-            await image.decode?.().catch(() => undefined);
-          }),
-        );
-
-        await new Promise<void>((resolve) => requestAnimationFrame(() => resolve()));
-      }
-
-      async function exportCard(card: HTMLElement, filename: string) {
-        const slot = card.closest(".card-slot") as HTMLElement | null;
-        if (!slot) throw new Error("Card is missing its export slot");
-
-        const previous = {
-          slotWidth: slot.style.width,
-          slotHeight: slot.style.height,
-          cardTransform: card.style.transform,
-        };
-
-        slot.style.width = `${CARD_SIZE}px`;
-        slot.style.height = `${CARD_SIZE}px`;
-        card.style.transform = "none";
-
-        try {
-          await waitForCardAssets(card);
-          const backgroundColor = getComputedStyle(card).backgroundColor;
-          const blob = await toBlob(card, {
-            width: CARD_SIZE,
-            height: CARD_SIZE,
-            pixelRatio: 1,
-            backgroundColor,
-            skipFonts: true,
-            cacheBust: false,
-            style: {
-              background: backgroundColor,
-              backgroundColor,
-              transform: "none",
-              transformOrigin: "top left",
-            },
-          });
-          if (!blob) throw new Error("Could not render PNG");
-
-          const url = URL.createObjectURL(blob);
-          const link = document.createElement("a");
-          link.download = filename;
-          link.href = url;
-          document.body.append(link);
-          link.click();
-          link.remove();
-          window.setTimeout(() => URL.revokeObjectURL(url), 0);
-        } finally {
-          slot.style.width = previous.slotWidth;
-          slot.style.height = previous.slotHeight;
-          card.style.transform = previous.cardTransform;
-        }
-      }
-
-      async function downloadOne(button: HTMLButtonElement) {
-        const figure = button.closest(".card-figure");
-        const card = figure?.querySelector<HTMLElement>(".card[data-card-file]");
-        const filename = card?.dataset.cardFile;
-        if (!card || !filename) return;
-
-        const label = button.textContent;
-        button.disabled = true;
-        button.textContent = "Preparing…";
-        try {
-          await exportCard(card, filename);
-        } catch (error) {
-          console.error(error);
-          button.textContent = "Try again";
-          await sleep(1200);
-        } finally {
-          button.disabled = false;
-          button.textContent = label || "Download PNG";
-        }
-      }
-
-      async function downloadAll(button: HTMLButtonElement) {
-        const cards = [
-          ...document.querySelectorAll<HTMLElement>(".card[data-card-file]"),
-        ];
-        const label = button.textContent;
-        button.disabled = true;
-
-        try {
-          for (let index = 0; index < cards.length; index += 1) {
-            const card = cards[index];
-            const filename = card.dataset.cardFile;
-            if (!filename) continue;
-            button.textContent = `Saving ${index + 1} of ${cards.length}…`;
-            await exportCard(card, filename);
-            await sleep(350);
-          }
-        } catch (error) {
-          console.error(error);
-          button.textContent = "Try again";
-          await sleep(1200);
-        } finally {
-          button.disabled = false;
-          button.textContent = label || "Download all five";
-        }
-      }
-
-      document.querySelectorAll<HTMLButtonElement>("[data-download-card]").forEach((button) => {
-        button.addEventListener("click", () => {
-          void downloadOne(button);
-        });
-      });
-
-      document.querySelectorAll<HTMLButtonElement>("[data-download-all]").forEach((button) => {
-        button.addEventListener("click", () => {
-          void downloadAll(button);
-        });
+      bindCardExportControls({
+        preparing: "Preparing…",
+        retry: "Try again",
+        idleOne: "Download PNG",
+        idleAll: "Download all five",
+        saving: (index, total) => `Saving ${index} of ${total}…`,
       });
     </script>
   </body>
@@ -1010,8 +885,10 @@
   }
 
   .timeline {
-    --time-col: 112px;
-    --rail-inset: 128px;
+    --time-col: 10rem;
+    --rail-gap: 0.7rem;
+    --title-gap: 1rem;
+    --rail-inset: calc(var(--time-col) + var(--rail-gap));
     position: relative;
     display: grid;
     gap: 22px;
@@ -1022,8 +899,8 @@
 
   .timeline::before {
     position: absolute;
-    top: 0.45em;
-    bottom: 0.45em;
+    top: 0.55em;
+    bottom: 0.55em;
     left: var(--rail-inset);
     width: 2px;
     background: var(--signal);
@@ -1034,27 +911,33 @@
     position: relative;
     display: grid;
     grid-template-columns: var(--time-col) 1fr;
-    column-gap: 36px;
-    align-items: baseline;
+    column-gap: calc(var(--rail-gap) + 12px + var(--title-gap));
+    align-items: center;
   }
 
   .timeline li::before {
     position: absolute;
-    top: 0.4em;
+    top: 50%;
     left: calc(var(--rail-inset) - 5px);
     width: 12px;
     height: 12px;
     border: 2px solid var(--signal);
     border-radius: 50%;
     background: var(--ink);
+    transform: translateY(-50%);
     content: "";
   }
 
   .timeline time {
+    display: block;
+    width: max-content;
     color: var(--lake);
     font: 700 24px/1.2 var(--mono);
     letter-spacing: 0.02em;
     text-align: left;
+    white-space: nowrap;
+    word-break: keep-all;
+    overflow-wrap: normal;
   }
 
   .timeline span {
@@ -1080,7 +963,7 @@
     display: flex;
     justify-content: space-between;
     gap: 1.5rem;
-    font: 700 14px/1.3 var(--mono);
+    font: 700 12px/1.3 var(--mono);
     letter-spacing: 0.04em;
     color: var(--lake);
   }

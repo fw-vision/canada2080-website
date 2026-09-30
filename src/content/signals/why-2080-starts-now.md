@@ -19,7 +19,7 @@ Canada2080 will make its preferred trajectory inspectable. The website publishes
 
 ## The first convening
 
-A small kickoff release will bring a cross-sector group together to test the agenda on Sunday, October 4, 2026, at the Hilton Toronto/Markham Suites Conference Centre & Spa, Markham Ballroom. Guests may join in person or online. Guest arrival begins at 12:30 p.m., and the programme begins at 1:00 p.m. sharp.
+A small kickoff release will bring a cross-sector group together to test the agenda on Sunday, October 4, 2026, at the Hilton Toronto/Markham Suites Conference Centre, Markham Ballroom. Guests may join in person or online. Guest arrival begins at 12:30 p.m., and the programme begins at 1:00 p.m. sharp.
 
 The 150-minute format combines arrival networking, a 90-minute programme, a 25-minute invited-perspectives segment from academic, industry, and governance contributors, a possible panel, and commitment-focused follow-up. People are listed as invited guests rather than assumed speakers, and participation does not imply endorsement.
 

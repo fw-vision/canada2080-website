@@ -5,9 +5,9 @@ dateLabel: "Sunday, October 4, 2026"
 candidateDates: []
 sortDate: 2026-10-04
 status: scheduled
-location: "Markham Ballroom · Hilton Toronto/Markham Suites Conference Centre & Spa"
+location: "Markham Ballroom · Hilton Toronto/Markham Suites Conference Centre"
 locationAddress: "8500 Warden Ave., Markham, ON L6G 1A5"
-mapUrl: "https://www.google.com/maps/search/?api=1&query=Hilton+Toronto%2FMarkham+Suites+Conference+Centre+%26+Spa%2C+8500+Warden+Ave.%2C+Markham%2C+ON+L6G+1A5"
+mapUrl: "https://www.google.com/maps/search/?api=1&query=Hilton+Toronto%2FMarkham+Suites+Conference+Centre%2C+8500+Warden+Ave.%2C+Markham%2C+ON+L6G+1A5"
 time: "Guest arrival 12:30 p.m. · Programme begins 1:00 p.m."
 arrivalTime: "Guest arrival: 12:30 p.m."
 programmeTime: "Programme begins: 1:00 p.m."
@@ -223,7 +223,7 @@ Canada has the research foundation to lead, but leadership depends on whether kn
 
 ## Date and participation
 
-The gathering takes place on **Sunday, October 4, 2026** at the **Hilton Toronto/Markham Suites Conference Centre & Spa, Markham Ballroom**, 8500 Warden Ave., Markham, ON L6G 1A5. Guests may join in person or online. Guest arrival begins at **12:30 p.m.**, and the programme begins at **1:00 p.m. sharp**.
+The gathering takes place on **Sunday, October 4, 2026** at the **Hilton Toronto/Markham Suites Conference Centre, Markham Ballroom**, 8500 Warden Ave., Markham, ON L6G 1A5. Guests may join in person or online. Guest arrival begins at **12:30 p.m.**, and the programme begins at **1:00 p.m. sharp**.
 
 ## The tripartite innovation ecosystem
 

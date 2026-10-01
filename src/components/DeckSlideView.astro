@@ -1,0 +1,178 @@
+---
+import YearWordmark from './YearWordmark.astro';
+import {
+  resolveImageColumns,
+  resolveSlideImages,
+  splitCaptionRails,
+  type DeckSlide,
+} from '../data/kickoffDeck';
+
+interface Props {
+  slide: DeckSlide;
+  index: number;
+  total: number;
+  active?: boolean;
+  showChrome?: boolean;
+}
+
+const { slide, index, total, active = false, showChrome = true } = Astro.props;
+const layoutClass = `deck-layout-${slide.layout}`;
+const images = resolveSlideImages(slide);
+const columns = resolveImageColumns(images.length, slide.imageColumns);
+const rails =
+  slide.captionRails ??
+  (slide.layout === 'image-mosaic' ? 'around' : 'below');
+const { above, below } = splitCaptionRails(slide.points, rails);
+const usesImageBox =
+  slide.layout === 'image-caption' || slide.layout === 'image-mosaic';
+---
+
+<section
+  class:list={['deck-slide', layoutClass, { 'is-active': active }]}
+  data-slide
+  data-layout={slide.layout}
+  data-mode={slide.reveal}
+  aria-hidden={active ? 'false' : 'true'}
+>
+  <div class="deck-wordmark" aria-hidden="true">
+    <YearWordmark tone="inverse" class="deck-wordmark-mark" />
+  </div>
+
+  <header class="deck-header">
+    <p class="deck-kicker">{slide.kicker}</p>
+    <h1 class="deck-title">{slide.title}</h1>
+    {slide.role && <p class="deck-role">{slide.role}</p>}
+    {slide.subtitle && <p class="deck-subtitle">{slide.subtitle}</p>}
+  </header>
+
+  {
+    slide.layout === 'split' && (
+      <div class="deck-frame deck-frame-split">
+        {slide.image && (
+          <figure class="deck-figure deck-figure-cover">
+            <img src={slide.image.src} alt={slide.image.alt} />
+            {(slide.image.caption || slide.image.credit) && (
+              <figcaption>
+                {slide.image.caption}
+                {slide.image.credit && (
+                  <span class="deck-credit">{slide.image.credit}</span>
+                )}
+              </figcaption>
+            )}
+          </figure>
+        )}
+        <ul class="deck-points">
+          {slide.points.map((point) => (
+            <li class="deck-point" data-point>
+              {point}
+            </li>
+          ))}
+        </ul>
+      </div>
+    )
+  }
+
+  {
+    (slide.layout === 'text' || slide.layout === 'keynote') && (
+      <div class="deck-frame deck-frame-text">
+        <ul class="deck-points deck-points-teleprompter">
+          {slide.points.map((point) => (
+            <li class="deck-point" data-point>
+              {point}
+            </li>
+          ))}
+        </ul>
+      </div>
+    )
+  }
+
+  {
+    usesImageBox && images.length > 0 && (
+      <div
+        class:list={[
+          'deck-frame',
+          'deck-frame-image-box',
+          {
+            'deck-frame-image-caption': slide.layout === 'image-caption',
+            'deck-frame-image-mosaic': slide.layout === 'image-mosaic',
+          },
+        ]}
+      >
+        {above.length > 0 && (
+          <div class="deck-caption-rail deck-caption-rail-above" aria-live="polite">
+            {above.map((point) => (
+              <p class="deck-caption-line deck-point" data-point data-rail="above">
+                {point}
+              </p>
+            ))}
+          </div>
+        )}
+
+        <div
+          class="deck-image-box"
+          style={`--deck-image-columns: ${columns};`}
+          data-image-count={images.length}
+        >
+          <div class="deck-image-grid">
+            {images.map((image) => (
+              <figure class="deck-figure deck-figure-collage">
+                <img src={image.src} alt={image.alt} />
+                <span class="deck-credit deck-credit-float">{image.credit}</span>
+              </figure>
+            ))}
+          </div>
+        </div>
+
+        {below.length > 0 && (
+          <div class="deck-caption-rail deck-caption-rail-below" aria-live="polite">
+            {below.map((point) => (
+              <p class="deck-caption-line deck-point" data-point data-rail="below">
+                {point}
+              </p>
+            ))}
+          </div>
+        )}
+      </div>
+    )
+  }
+
+  {
+    slide.layout === 'speaker-intro' && (
+      <div class="deck-frame deck-frame-speaker">
+        <ul class="deck-points deck-points-teleprompter">
+          {slide.points.map((point) => (
+            <li class="deck-point" data-point>
+              {point}
+            </li>
+          ))}
+        </ul>
+      </div>
+    )
+  }
+
+  {
+    slide.layout === 'panel-hold' && (
+      <div class="deck-frame deck-frame-panel">
+        <ul class="deck-points deck-points-teleprompter deck-points-questions">
+          {slide.points.map((point) => (
+            <li class="deck-point" data-point>
+              {point}
+            </li>
+          ))}
+        </ul>
+      </div>
+    )
+  }
+
+  {
+    showChrome && (
+      <footer class="deck-footer">
+        <p>
+          {String(index + 1).padStart(2, '0')} /{' '}
+          {String(total).padStart(2, '0')} · {slide.layout}
+        </p>
+        <p>Arrows · Page Up/Down · Space</p>
+      </footer>
+    )
+  }
+</section>

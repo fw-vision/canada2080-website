@@ -31,7 +31,7 @@ guests:
     expertise: "Public-service perspective"
     bio: "Invited for a public-service and policy perspective. Current role, participation, and public biography remain subject to direct confirmation."
     group: governance
-  - name: "Barry Wylant"
+  - name: "Dr Barry Wylant"
     institution: "University of Calgary"
     expertise: "Design research, systems thinking, and visual strategy"
     bio: "Design researcher whose work helps make complex systems legible and actionable."
@@ -47,63 +47,22 @@ guests:
     expertise: "Future-ready cities, strategic design, and applied learning"
     bio: "Systems-design and future-ready-cities practitioner. Current titles and participation remain subject to direct confirmation."
     group: academic
-  - name: "Erin Trochim"
-    institution: "University of Alaska Fairbanks"
+  - name: "Dr Erin Trochim"
+    institution: "Geospatial AI and applied data research"
     expertise: "Geospatial AI, remote sensing, and applied data research"
     bio: "Researcher bringing a place-aware perspective on evidence, federated knowledge, and resilient capability."
     group: academic
     participation: remote
-  - name: "Kimberly Yazzie"
+  - name: "Dr Kimberly Yazzie"
     institution: "Knowledge management and data governance"
     expertise: "Data governance, consent, and community benefit"
     bio: "Knowledge-governance practitioner contributing an approved perspective on data stewardship and accountable systems."
     group: academic
     participation: remote
-  - name: "Jeff Clune"
-    institution: "University of British Columbia / Vector Institute / Recursive"
-    expertise: "Frontier AI research, AI safety, and research commercialization"
-    bio: "Computer-science professor, Canada CIFAR AI Chair, Vector Institute faculty member, and Recursive co-founder."
-    group: academic
-  - name: "Dr Marc Hurwitz"
-    institution: "University of Waterloo / FliP University"
-    expertise: "Leadership, followership, entrepreneurship, and systems thinking"
-    bio: "Professor and organizational-development practitioner focused on collaborative systems and long-term institutional capacity."
-    group: academic
-  - name: "Matti Siemiatycki"
-    institution: "University of Toronto"
-    expertise: "Infrastructure planning, city building, and mixed-use development"
-    bio: "Infrastructure and city-building scholar whose current title and participation remain subject to direct confirmation."
-    group: academic
-
-  - name: "Victor Cui"
-    institution: "University of Waterloo"
-    expertise: "Global strategy and innovation"
-    bio: "Invited for a global-strategy and innovation perspective. Current title and participation remain subject to direct confirmation."
-    group: academic
   - name: "Horatio M. Morgan"
     institution: "University of Waterloo"
     expertise: "Intellectual property, strategic value, and asymmetric advantage"
     bio: "Invited for a perspective on IP, decision rights, and strategic value capture. Current title and participation remain subject to direct confirmation."
-    group: academic
-  - name: "Dr David J. Finch"
-    institution: "Mount Royal University / The Productivity Project"
-    expertise: "Human capital, productivity, learning systems, and labour-market strategy"
-    bio: "Professor and research director focused on human capability, productivity, learning, and long-term prosperity."
-    group: academic
-  - name: "David Rose"
-    institution: "Conrad School of Entrepreneurship and Business"
-    expertise: "Entrepreneurship education and venture creation"
-    bio: "Entrepreneur in Residence with experience in entrepreneurship education, venture creation, and founder pathways."
-    group: academic
-  - name: "Dr Simon Raby"
-    institution: "Company growth and scale-up practice"
-    expertise: "SME scale-up, leadership, and operating capability"
-    bio: "Invited for a company-growth and scaling perspective. Current role and participation remain subject to direct confirmation."
-    group: academic
-  - name: "Roopa Reddy"
-    institution: "Entrepreneurship education"
-    expertise: "Problem-first entrepreneurship"
-    bio: "Invited for a problem-first entrepreneurship perspective. Current affiliation and participation remain subject to direct confirmation."
     group: academic
   - name: "Pyn Lim"
     institution: "ECAMS"
@@ -125,17 +84,17 @@ guests:
     expertise: "Architecture, public institutions, and cultural projects"
     bio: "Architect with experience in complex public and cultural projects. Participation remains subject to direct confirmation."
     group: industry
-  - name: "Michael Donaldson"
-    institution: "Architecture and urban design"
-    expertise: "Mixed-use neighbourhood development and future-oriented practice"
-    bio: "Invited for a place-making and mixed-use-development perspective. Current title and participation remain subject to direct confirmation."
+  - name: "Dr Michael Donaldson"
+    institution: "DWA/Future Workshop"
+    expertise: "Architecture, Strategic Design, Designed Futures"
+    bio: "Principal Architect and Designer, invited for perspective on fostering an opportunity-enriched innovation culture, to support a resilient future."
     group: industry
   - name: "Adrian Conrad"
     institution: "The Cora Group Inc."
     expertise: "Commercial real estate, development, and place-based investment"
     bio: "Chief Operating Officer of The Cora Group, invited for a Kitchener-Waterloo real-estate and long-term-development perspective."
     group: industry
-  - name: "Sudarshana Bhattacharya"
+  - name: "Dr Sudarshana Bhattacharya"
     institution: "Gartner"
     expertise: "Banking data, analytics, generative AI, and AI and machine learning"
     bio: "Senior Director Analyst working across banking data, analytics, and AI. Participation remains subject to direct confirmation."

@@ -1,0 +1,58 @@
+---
+import '../../styles/global.css';
+import '../../styles/operator.css';
+import '../../styles/kickoff-deck.css';
+import AccessGate from '../../components/AccessGate.astro';
+import DeckSlideView from '../../components/DeckSlideView.astro';
+import { kickoffDeckSlides } from '../../data/kickoffDeck';
+---
+
+<!doctype html>
+<html lang="en-CA">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Presenter deck for the Canada2080 kickoff hall screen."
+    />
+    <meta name="robots" content="noindex, nofollow" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <title>Kickoff deck | Canada2080</title>
+  </head>
+  <body class="deck-body">
+    <AccessGate
+      companionHref="/events/2026-kickoff-deck-templates"
+      companionLabel="Open deck templates"
+    />
+    <div class="deck-viewport operator-content">
+      <div class="deck-toolbar">
+        <a href="/events/2026-kickoff-deck-templates">Templates</a>
+        <a href="/events/2026-kickoff-programme-plans">Programme plans</a>
+      </div>
+      <main
+        class="deck-canvas"
+        id="deck-stage"
+        data-deck-stage
+        tabindex="0"
+        aria-label="Canada2080 kickoff hall deck"
+      >
+        {
+          kickoffDeckSlides.map((slide, index) => (
+            <DeckSlideView
+              slide={slide}
+              index={index}
+              total={kickoffDeckSlides.length}
+              active={index === 0}
+            />
+          ))
+        }
+        <div class="deck-progress" aria-hidden="true">
+          <span data-deck-progress></span>
+        </div>
+        <p class="deck-hint">Clicker: next advances a talking point, then the slide.</p>
+      </main>
+    </div>
+    <script is:inline src="/scripts/deck-runtime.js"></script>
+  </body>
+</html>

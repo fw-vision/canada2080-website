@@ -1,0 +1,66 @@
+---
+interface Props {
+  companionHref: string;
+  companionLabel: string;
+}
+
+const { companionHref, companionLabel } = Astro.props;
+---
+
+<div class="access-gate" data-access-gate>
+  <form class="access-gate-form" data-access-form>
+    <p class="access-gate-kicker">Operator access</p>
+    <h1>Canada2080 kickoff tools</h1>
+    <p class="access-gate-lead">
+      Enter the access code to open the run of show, hall deck, or deck
+      templates. This is a presenter gate, not a security control.
+    </p>
+    <label class="access-gate-label" for="access-code">Access code</label>
+    <input
+      id="access-code"
+      class="access-gate-input"
+      name="access-code"
+      type="password"
+      inputmode="numeric"
+      autocomplete="off"
+      required
+    />
+    <p class="access-gate-error" data-access-error hidden>That code is not accepted.</p>
+    <button class="access-gate-submit" type="submit">Open</button>
+    <p class="access-gate-note">
+      After unlock: <a href={companionHref}>{companionLabel}</a>
+    </p>
+  </form>
+</div>
+
+<script>
+  const CODE = '2080';
+  const STORAGE_KEY = 'canada2080-operator-unlocked';
+
+  const unlock = () => {
+    document.documentElement.classList.add('is-unlocked');
+  };
+
+  if (sessionStorage.getItem(STORAGE_KEY) === '1') {
+    unlock();
+  }
+
+  const form = document.querySelector<HTMLFormElement>('[data-access-form]');
+  const error = document.querySelector<HTMLElement>('[data-access-error]');
+  const input = document.querySelector<HTMLInputElement>('#access-code');
+
+  form?.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const value = input?.value.trim() ?? '';
+    if (value === CODE) {
+      sessionStorage.setItem(STORAGE_KEY, '1');
+      unlock();
+      return;
+    }
+    if (error) {
+      error.hidden = false;
+    }
+    input?.focus();
+    input?.select();
+  });
+</script>

@@ -1,0 +1,231 @@
+html:not(.is-unlocked) .operator-content,
+html:not(.is-unlocked) .deck-stage {
+  display: none;
+}
+
+html:not(.is-unlocked) .access-gate {
+  display: grid;
+}
+
+html.is-unlocked .access-gate {
+  display: none;
+}
+
+.access-gate {
+  min-height: 100dvh;
+  place-items: center;
+  padding: var(--gutter);
+  background: var(--ink);
+  color: var(--snow);
+}
+
+.access-gate-form {
+  width: min(100%, 32rem);
+  display: grid;
+  gap: 0.85rem;
+}
+
+.access-gate-kicker,
+.operator-kicker {
+  margin: 0;
+  font: 700 0.68rem/1.4 var(--mono);
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  color: var(--horizon);
+}
+
+.access-gate h1,
+.operator-mast h1 {
+  margin: 0;
+  font-size: clamp(2rem, 5vw, 3.4rem);
+}
+
+.access-gate-lead,
+.access-gate-note,
+.operator-lead {
+  max-width: 62ch;
+  color: #d5ddd8;
+}
+
+.access-gate-label {
+  font: 700 0.75rem/1.4 var(--mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.access-gate-input {
+  width: 100%;
+  padding: 0.9rem 1rem;
+  border: 1px solid var(--lake);
+  background: var(--carbon);
+  color: var(--snow);
+  font: 700 1.25rem/1.2 var(--mono);
+}
+
+.access-gate-submit,
+.operator-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.6rem;
+  padding: 0.85rem 1.15rem;
+  border: 0;
+  background: var(--signal);
+  color: var(--white);
+  font: 700 0.875rem/1.1 var(--mono);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.access-gate-submit:hover,
+.operator-link:hover {
+  background: var(--signal-dark);
+  color: var(--white);
+}
+
+.access-gate-error {
+  margin: 0;
+  color: #ffb4a8;
+  font: 700 0.85rem/1.4 var(--body);
+}
+
+.operator-body {
+  background: var(--snow);
+}
+
+.operator-mast {
+  background: var(--ink);
+  color: var(--snow);
+  padding: clamp(1.5rem, 4vw, 3rem) 0 2rem;
+}
+
+.operator-mast-grid {
+  display: grid;
+  gap: 1.25rem 2rem;
+}
+
+.operator-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.operator-meta {
+  display: grid;
+  gap: 0.35rem;
+  margin: 0;
+  font: 700 0.78rem/1.45 var(--mono);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.operator-meta div {
+  display: grid;
+  grid-template-columns: 7rem 1fr;
+  gap: 0.75rem;
+}
+
+.operator-meta dt {
+  color: var(--horizon);
+}
+
+.operator-throughline {
+  max-width: 70ch;
+  font-family: var(--display);
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  line-height: 1.15;
+  font-size: clamp(1.15rem, 2vw, 1.55rem);
+}
+
+.programme-board {
+  padding: 2rem 0 4rem;
+}
+
+.programme-row {
+  display: grid;
+  grid-template-columns: minmax(16rem, 0.42fr) minmax(0, 1fr);
+  gap: 0;
+  border-top: 1px solid var(--ink);
+}
+
+.programme-row:last-child {
+  border-bottom: 1px solid var(--ink);
+}
+
+.programme-time {
+  padding: 1.5rem 1.5rem 1.5rem 0;
+  border-right: 1px solid var(--line);
+}
+
+.programme-time h2 {
+  font-size: clamp(1.35rem, 2vw, 1.85rem);
+  margin-bottom: 0.65rem;
+}
+
+.programme-time p,
+.programme-notes p,
+.programme-notes li {
+  max-width: none;
+}
+
+.time-stamp {
+  margin: 0 0 0.4rem;
+  font: 700 0.72rem/1.4 var(--mono);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--signal-dark);
+}
+
+.time-lead,
+.time-purpose {
+  color: var(--carbon);
+}
+
+.programme-notes {
+  padding: 1.5rem 0 1.5rem 1.75rem;
+  background: color-mix(in srgb, var(--snow) 88%, var(--horizon));
+}
+
+.programme-notes h3 {
+  font-size: 1rem;
+  margin: 1.1rem 0 0.4rem;
+}
+
+.programme-notes h3:first-child {
+  margin-top: 0;
+}
+
+.opening-example {
+  padding: 0.85rem 1rem;
+  border-left: 4px solid var(--signal);
+  background: var(--white);
+  font-size: 1.05rem;
+  line-height: 1.45;
+}
+
+.programme-notes ul,
+.programme-notes ol {
+  padding-left: 1.15rem;
+  display: grid;
+  gap: 0.4rem;
+}
+
+.guardrail-list {
+  color: var(--signal-dark);
+}
+
+@media (max-width: 860px) {
+  .programme-row,
+  .operator-meta div {
+    grid-template-columns: 1fr;
+  }
+
+  .programme-time,
+  .programme-notes {
+    padding: 1.25rem 0;
+    border-right: 0;
+  }
+}

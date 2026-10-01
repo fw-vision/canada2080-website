@@ -1,0 +1,33 @@
+---
+import '../styles/global.css';
+import '../styles/operator.css';
+import AccessGate from '../components/AccessGate.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  companionHref: string;
+  companionLabel: string;
+}
+
+const { title, description, companionHref, companionLabel } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en-CA">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="robots" content="noindex, nofollow" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <title>{title}</title>
+  </head>
+  <body class="operator-body">
+    <a class="skip-link" href="#operator-content">Skip to operator content</a>
+    <AccessGate companionHref={companionHref} companionLabel={companionLabel} />
+    <div class="operator-content" id="operator-content">
+      <slot />
+    </div>
+  </body>
+</html>

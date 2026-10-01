@@ -1,0 +1,124 @@
+---
+import OperatorLayout from '../../layouts/OperatorLayout.astro';
+import DeckSlideView from '../../components/DeckSlideView.astro';
+import { deckTemplateSpecs } from '../../data/kickoffDeck';
+import '../../styles/kickoff-deck.css';
+---
+
+<OperatorLayout
+  title="Deck templates | Canada2080 kickoff"
+  description="16:9 slide layout catalogue for the Canada2080 kickoff hall deck, including teleprompter, image-caption, image-mosaic, speaker intro, and panel-hold patterns."
+  companionHref="/events/2026-kickoff-deck"
+  companionLabel="Open the hall deck"
+>
+  <header class="templates-hero">
+    <div class="shell">
+      <p class="operator-kicker">Presentation system</p>
+      <h1>Kickoff deck templates</h1>
+      <p class="operator-throughline">
+        Every example is framed at 16:9 for 1080p and 4K hall screens, with
+        letterboxing when the browser window is a different shape. Teleprompter
+        text uses the display title font. Each slide carries the 2080 wordmark.
+      </p>
+      <div class="operator-actions">
+        <a class="operator-link" href="/events/2026-kickoff-deck">Hall deck</a>
+        <a class="operator-link" href="/events/2026-kickoff-programme-plans"
+          >Programme plans</a
+        >
+      </div>
+    </div>
+  </header>
+
+  <main class="shell templates-index">
+    <section>
+      <h2>How to use this page</h2>
+      <p>
+        Each card documents one layout, when to use it, clicker behaviour, and
+        background advice. The live example below each card is the same 16:9
+        renderer used by the hall deck. Click inside an example to step its
+        talking points.
+      </p>
+      <p>
+        As you plan the final sequence, map every programme block to one of
+        these templates before writing new copy into
+        <code>src/data/kickoffDeck.ts</code>. For mosaics, set
+        <code>images</code>, optional <code>imageColumns</code>, and
+        <code>captionRails: "around"</code>. Mosaic cells use a collage cover
+        crop so mixed portrait and landscape photos fill the box without
+        stretching.
+      </p>
+    </section>
+
+    {
+      deckTemplateSpecs.map((spec, index) => (
+        <article class="template-card" id={spec.id}>
+          <div class="template-meta">
+            <div>
+              <p class="operator-kicker">
+                Layout {String(index + 1).padStart(2, '0')}
+              </p>
+              <h2>{spec.name}</h2>
+              <p>{spec.purpose}</p>
+              {spec.example.note && (
+                <p class="template-note">{spec.example.note}</p>
+              )}
+            </div>
+            <div>
+              <h3>When to use</h3>
+              <ul>
+                {spec.whenToUse.map((item) => (
+                  <li>{item}</li>
+                ))}
+              </ul>
+              <h3>Clicker behaviour</h3>
+              <p>{spec.clickerBehaviour}</p>
+              <h3>Background advice</h3>
+              <p>{spec.backgroundAdvice}</p>
+            </div>
+          </div>
+
+          <div class="template-stage">
+            <div
+              class="deck-canvas"
+              data-deck-stage
+              tabindex="0"
+              aria-label={`${spec.name} example`}
+            >
+              <DeckSlideView
+                slide={spec.example}
+                index={0}
+                total={1}
+                active={true}
+                showChrome={true}
+              />
+            </div>
+          </div>
+        </article>
+      ))
+    }
+
+    <section>
+      <h2>Suggested mapping for the main deck</h2>
+      <ul>
+        <li><strong>Arrival hold:</strong> split, full reveal.</li>
+        <li><strong>MC welcome:</strong> text, stepped teleprompter.</li>
+        <li>
+          <strong>Land acknowledgment:</strong> image-caption, one caption at a
+          time.
+        </li>
+        <li><strong>Civic and featured intros:</strong> speaker-intro.</li>
+        <li><strong>Francis opening and close:</strong> keynote.</li>
+        <li>
+          <strong>Featured provocations:</strong> image-caption, image-mosaic,
+          or text.
+        </li>
+        <li>
+          <strong>Panels:</strong> panel-hold, stepping through questions.
+        </li>
+        <li><strong>Networking hold:</strong> split, full reveal.</li>
+      </ul>
+    </section>
+  </main>
+
+  <script is:inline src="/scripts/deck-runtime.js"></script>
+</OperatorLayout>

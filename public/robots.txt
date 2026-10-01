@@ -1,0 +1,6 @@
+User-agent: *
+Disallow: /events/2026-kickoff-programme-plans
+Disallow: /events/2026-kickoff-deck
+Disallow: /events/2026-kickoff-deck-templates
+Disallow: /events/2026-kickoff-programinfo
+Disallow: /events/2026-kickoff-programinfo-zh

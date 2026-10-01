@@ -1,0 +1,105 @@
+---
+import OperatorLayout from '../../layouts/OperatorLayout.astro';
+import { programmeBlocks, programmeMeta, programmeThroughline } from '../../data/kickoffProgramme';
+---
+
+<OperatorLayout
+  title="Programme plans | Canada2080 kickoff"
+  description="Operator run of show, ceremonial talking points, and annotated timeline for the Canada2080 kickoff."
+  companionHref="/events/2026-kickoff-deck"
+  companionLabel="Open the hall deck"
+>
+  <header class="operator-mast">
+    <div class="shell operator-mast-grid">
+      <div>
+        <p class="operator-kicker">Internal run of show</p>
+        <h1>{programmeMeta.title}</h1>
+        <p class="operator-throughline">{programmeThroughline}</p>
+      </div>
+      <dl class="operator-meta">
+        <div>
+          <dt>Date</dt>
+          <dd>{programmeMeta.date}</dd>
+        </div>
+        <div>
+          <dt>Venue</dt>
+          <dd>{programmeMeta.venue}</dd>
+        </div>
+        <div>
+          <dt>MC</dt>
+          <dd>{programmeMeta.mc}</dd>
+        </div>
+        <div>
+          <dt>Host</dt>
+          <dd>{programmeMeta.host}</dd>
+        </div>
+        <div>
+          <dt>Clock</dt>
+          <dd>Arrival {programmeMeta.arrival} · Start {programmeMeta.start}</dd>
+        </div>
+      </dl>
+      <div class="operator-actions">
+        <a class="operator-link" href="/events/2026-kickoff-deck">Hall deck</a>
+        <a class="operator-link" href="/events/2026-kickoff-deck-templates">Deck templates</a>
+        <a class="operator-link" href="/events/2026-kickoff">Public event page</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="programme-board">
+    <div class="shell">
+      {
+        programmeBlocks.map((block) => (
+          <article class="programme-row" id={block.id}>
+            <div class="programme-time">
+              <p class="time-stamp">
+                {block.time} · {block.duration}
+              </p>
+              <h2>{block.title}</h2>
+              <p class="time-lead">
+                <strong>Lead:</strong> {block.lead}
+              </p>
+              <p class="time-purpose">{block.purpose}</p>
+            </div>
+            <aside class="programme-notes" aria-label={`Notes for ${block.title}`}>
+              {block.openingExample && (
+                <>
+                  <h3>Example opening</h3>
+                  <p class="opening-example">{block.openingExample}</p>
+                </>
+              )}
+              <h3>Talking points</h3>
+              <ul>
+                {block.talkingPoints.map((point) => (
+                  <li>{point}</li>
+                ))}
+              </ul>
+              <h3>Sequence</h3>
+              <ol>
+                {block.sequence.map((step) => (
+                  <li>{step}</li>
+                ))}
+              </ol>
+              <h3>Notes</h3>
+              <ul>
+                {block.notes.map((note) => (
+                  <li>{note}</li>
+                ))}
+              </ul>
+              {block.guardrails && (
+                <>
+                  <h3>Guardrails</h3>
+                  <ul class="guardrail-list">
+                    {block.guardrails.map((rule) => (
+                      <li>{rule}</li>
+                    ))}
+                  </ul>
+                </>
+              )}
+            </aside>
+          </article>
+        ))
+      }
+    </div>
+  </main>
+</OperatorLayout>

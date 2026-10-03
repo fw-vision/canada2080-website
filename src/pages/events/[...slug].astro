@@ -30,6 +30,17 @@ const guestGroups = [
         title: "Infrastructure and innovation leaders",
     },
 ] as const;
+const participationLabels = {
+    invited: "Invited",
+    remote: "Remote",
+    "in-person": "In-person",
+} as const;
+const confirmedGuests = entry.data.guests.filter(
+    (guest) => guest.listing === "featured",
+);
+const invitedGuests = entry.data.guests.filter(
+    (guest) => guest.listing === "invited",
+);
 ---
 
 <BaseLayout
@@ -155,9 +166,9 @@ const guestGroups = [
                     </div>
                     <p>
                         Guest arrival begins at 12:30 p.m., and the
-                        programme begins at 1:00 p.m. sharp. The possible panel
-                        structure and private logistics will be confirmed with
-                        participants.
+                        programme begins at 1:00 p.m. sharp. Two invited-speaker
+                        sections and two 15-minute panels lead to a five-minute
+                        closing synthesis at 2:25 p.m.
                     </p>
                 </div>
                 <ol class="event-itinerary">
@@ -179,23 +190,42 @@ const guestGroups = [
             </div>
         </section>
 
-        <section class="section shell">
+        <section class="section shell guest-section" id="invited-guests">
             <div class="section-heading">
                 <div>
-                    <p class="eyebrow">Invited guests</p>
+                    <div class="section-anchor-heading">
+                        <p class="eyebrow">Invited guests</p>
+                        <a
+                            class="section-anchor-link"
+                            href="#invited-guests"
+                            aria-label="Link to invited guests"
+                            title="Link to invited guests"
+                        >
+                            <svg
+                                viewBox="0 0 24 24"
+                                width="18"
+                                height="18"
+                                aria-hidden="true"
+                            >
+                                <path
+                                    d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"
+                                ></path>
+                            </svg>
+                        </a>
+                    </div>
                     <h2>Governance, education, and industry in one room.</h2>
                 </div>
                 <p>
                     The Tripartite Ecosystem brings Governance, Education, and
                     Industry into one conversation. An invitation or attendance does
                     not imply endorsement or a speaking role. Guest details and
-                    programme roles remain subject to direct confirmation unless
-                    noted as remote.
+                    programme roles remain subject to direct confirmation. Attendance
+                    format is shown for confirmed contributors.
                 </p>
             </div>
             <div class="guest-groups">
                 {guestGroups.map((group) => {
-                    const guests = entry.data.guests.filter(
+                    const guests = confirmedGuests.filter(
                         (guest) => guest.group === group.id,
                     );
                     return (
@@ -212,13 +242,23 @@ const guestGroups = [
                                     {guests.map((guest) => (
                                         <li>
                                             <div class="guest-name-row">
-                                                <h4>{guest.name}</h4>
-                                                {guest.participation ===
-                                                    "remote" && (
-                                                    <span class="guest-participation">
-                                                        Joining remotely
-                                                    </span>
-                                                )}
+                                                <h4>
+                                                    <a
+                                                        href={guest.profileUrl}
+                                                        target="_blank"
+                                                        rel="noopener noreferrer"
+                                                    >
+                                                        {guest.name}
+                                                    </a>
+                                                </h4>
+                                                <span
+                                                    class:list={[
+                                                        "guest-participation",
+                                                        `guest-participation-${guest.participation}`,
+                                                    ]}
+                                                >
+                                                    {participationLabels[guest.participation]}
+                                                </span>
                                             </div>
                                             <p class="guest-institution">
                                                 {guest.institution}
@@ -229,6 +269,14 @@ const guestGroups = [
                                                 </strong>
                                             </p>
                                             <p>{guest.bio}</p>
+                                            <a
+                                                class="guest-profile-link"
+                                                href={guest.profileUrl}
+                                                target="_blank"
+                                                rel="noopener noreferrer"
+                                            >
+                                                View profile
+                                            </a>
                                         </li>
                                     ))}
                                 </ol>
@@ -237,6 +285,47 @@ const guestGroups = [
                     );
                 })}
             </div>
+            {invitedGuests.length > 0 && (
+                <section class="guest-invited" aria-labelledby="guest-invited-title">
+                    <div class="guest-invited-heading">
+                        <p class="eyebrow">Invited</p>
+                        <h3 id="guest-invited-title">Additional ecosystem guests.</h3>
+                    </div>
+                    <ol class="guest-list guest-list-invited">
+                        {invitedGuests.map((guest) => (
+                            <li>
+                                <div class="guest-name-row">
+                                    <h4>
+                                        <a
+                                            href={guest.profileUrl}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                        >
+                                            {guest.name}
+                                        </a>
+                                    </h4>
+                                    <span class="guest-participation guest-participation-invited">
+                                        {participationLabels.invited}
+                                    </span>
+                                </div>
+                                <p class="guest-institution">{guest.institution}</p>
+                                <p>
+                                    <strong>{guest.expertise}</strong>
+                                </p>
+                                <p>{guest.bio}</p>
+                                <a
+                                    class="guest-profile-link"
+                                    href={guest.profileUrl}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    View profile
+                                </a>
+                            </li>
+                        ))}
+                    </ol>
+                </section>
+            )}
         </section>
 
         <section class="section section-signal">

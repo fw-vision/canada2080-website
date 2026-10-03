@@ -466,16 +466,29 @@ ol, ul { margin: 0; padding: 0; }
 .speaker-grid, .offramp-grid, .participation-grid { display: grid; grid-template-columns: repeat(3, 1fr); margin-top: 4rem; border-top: 1px solid var(--ink); border-left: 1px solid var(--ink); }
 .speaker-grid article, .offramp-grid article, .participation-grid article { min-height: 18rem; padding: 1.5rem; border-right: 1px solid var(--ink); border-bottom: 1px solid var(--ink); }
 .speaker-grid h3, .offramp-grid h3, .participation-grid h2 { margin-top: 3rem; }
+.guest-section { scroll-margin-top: 1rem; }
+.section-anchor-heading { display: flex; align-items: center; gap: 0.55rem; }
+.section-anchor-heading .eyebrow { margin: 0; }
+.section-anchor-link { display: inline-grid; width: 1.75rem; height: 1.75rem; place-items: center; color: var(--signal); text-decoration: none; }
+.section-anchor-link:hover { color: var(--signal-dark); }
+.section-anchor-link svg { fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 .guest-groups { display: grid; margin-top: 3rem; border-top: 1px solid var(--ink); }
 .guest-group { display: grid; grid-template-columns: minmax(10rem, 0.25fr) minmax(0, 1.75fr); gap: clamp(1.5rem, 4vw, 4rem); padding: 1.5rem 0; border-bottom: 1px solid var(--ink); }
 .guest-group > h3 { margin: 0; color: var(--signal); font: 700 0.68rem/1.4 var(--mono); letter-spacing: 0.08em; text-transform: uppercase; }
 .guest-list { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); list-style: none; border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
-.guest-list li { padding: 1rem; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); }
-.guest-name-row { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.5rem 1rem; align-items: baseline; }
+.guest-list li { display: flex; min-height: 18rem; flex-direction: column; padding: 1rem; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.guest-name-row { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.5rem 1rem; align-items: flex-start; }
 .guest-list h4 { margin: 0; font: 900 clamp(1.2rem, 1.7vw, 1.5rem)/1.05 var(--display); letter-spacing: -0.045em; }
+.guest-list h4 a { text-decoration: none; }
 .guest-list p { margin: 0.35rem 0 0; color: #44565b; font-size: 0.88rem; line-height: 1.45; }
 .guest-list .guest-institution { color: var(--ink); font: 700 0.62rem/1.4 var(--mono); letter-spacing: 0.04em; text-transform: uppercase; }
 .guest-participation { color: var(--boreal); font: 700 0.6rem/1.4 var(--mono); letter-spacing: 0.05em; text-transform: uppercase; }
+.guest-participation-in-person { color: var(--signal); }
+.guest-participation-invited { color: var(--warning); }
+.guest-profile-link { width: fit-content; margin-top: auto; padding-top: 1.25rem; color: var(--signal); font: 700 0.62rem/1.4 var(--mono); letter-spacing: 0.06em; text-transform: uppercase; }
+.guest-invited { display: grid; grid-template-columns: minmax(10rem, 0.25fr) minmax(0, 1.75fr); gap: clamp(1.5rem, 4vw, 4rem); margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--ink); }
+.guest-invited-heading h3 { max-width: 12rem; margin: 0.5rem 0 0; }
+.guest-list-invited { align-self: start; }
 .offramp-grid { border-color: var(--lake); }
 .offramp-grid article { border-color: var(--lake); }
 .offramp-grid span { color: var(--horizon); font: 700 0.68rem var(--mono); }
@@ -529,6 +542,7 @@ ol, ul { margin: 0; padding: 0; }
 .article-body { width: min(100%, 48rem); margin: 4rem auto; font-size: 1.08rem; }
 .article-body h2 { font-size: clamp(2rem, 4vw, 3rem); margin-top: 3rem; }
 .article-body h3 { margin-top: 2.5rem; }
+.article-body h4 { margin: 2rem 0 0.85rem; font-size: 1rem; }
 .article-body ul, .article-body ol { padding-left: 1.3rem; }
 .article-sources { width: min(100%, 48rem); margin: 0 auto; border-top: 1px solid var(--ink); padding-top: 2rem; }
 .article-sources h2 { font-size: 1.8rem; }
@@ -575,7 +589,7 @@ ol, ul { margin: 0; padding: 0; }
   .trajectory-list li:first-child::before { left: -0.5rem; }
   .trajectory-index { margin-bottom: 1rem; }
   .mission-grid, .speaker-grid, .offramp-grid, .participation-grid { grid-template-columns: repeat(2, 1fr); }
-  .guest-group { grid-template-columns: 1fr; }
+  .guest-group, .guest-invited { grid-template-columns: 1fr; }
   .guest-list { grid-template-columns: repeat(2, 1fr); }
   .mission-grid li:nth-child(3n) { border-right: 1px solid var(--ink); }
   .mission-grid li:nth-child(2n) { border-right: 0; }

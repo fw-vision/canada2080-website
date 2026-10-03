@@ -1,0 +1,237 @@
+---
+import YearWordmark from '../../components/YearWordmark.astro';
+import {
+  handoutGaps,
+  handoutJoinPaths,
+  handoutMeta,
+  handoutPanelBlocks,
+  handoutProgrammeGlance,
+  handoutPurpose,
+  handoutReflections,
+  handoutScales,
+  handoutTripartite,
+} from '../../data/kickoffHandout';
+import '../../styles/global.css';
+import '../../styles/kickoff-handout.css';
+
+const pageTitle = 'Kickoff handout | Canada2080';
+const pageDescription =
+  'Letter-size Canada2080 kickoff take-home packet with talking points, note space, and reflection questions.';
+---
+
+<!doctype html>
+<html lang="en-CA">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={pageDescription} />
+    <link rel="canonical" href={new URL('/events/2026-kickoff-handouts', Astro.site)} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={pageDescription} />
+    <meta property="og:type" content="website" />
+    <title>{pageTitle}</title>
+  </head>
+  <body class="handout-body">
+    <header class="handout-chrome">
+      <p>Canada2080 kickoff · letter handout · take home, write in, keep working</p>
+      <div class="handout-chrome-actions">
+        <button type="button" onclick="window.print()">Print letter</button>
+        <a class="secondary" href="/events/2026-kickoff">Event page</a>
+        <a class="secondary" href="/">canada2080.org</a>
+      </div>
+    </header>
+
+    <main class="handout-stack" id="main-content">
+      <!-- Page 1 -->
+      <section class="handout-sheet" aria-label="Handout page 1 of 4">
+        <div class="handout-cover-top">
+          <div>
+            <p class="handout-kicker">Sunday, October 4, 2026 · Markham</p>
+            <h1 class="handout-title">{handoutMeta.title}</h1>
+            <p class="handout-throughline">{handoutMeta.throughline}</p>
+          </div>
+          <div class="handout-wordmark" aria-hidden="true">
+            <YearWordmark tone="default" />
+          </div>
+        </div>
+
+        <dl class="handout-meta-grid">
+          <dt>When</dt>
+          <dd>{handoutMeta.date} · {handoutMeta.time}</dd>
+          <dt>Where</dt>
+          <dd>{handoutMeta.venue}</dd>
+          <dt>Address</dt>
+          <dd>{handoutMeta.address}</dd>
+          <dt>Continue</dt>
+          <dd>{handoutMeta.site}</dd>
+        </dl>
+
+        <div class="handout-fill-grid" aria-label="Your details">
+          <div class="handout-fill-row"><span>Name</span></div>
+          <div class="handout-fill-row"><span>Organisation</span></div>
+          <div class="handout-fill-row"><span>Role</span></div>
+        </div>
+
+        <h2 class="handout-section-title">Afternoon at a glance</h2>
+        <ul class="handout-glance">
+          {
+            handoutProgrammeGlance.map((item) => (
+              <li>
+                <strong>{item.time}</strong>
+                <span>{item.title}</span>
+              </li>
+            ))
+          }
+        </ul>
+
+        <footer class="handout-footer">
+          <span>01 / 04 · Cover</span>
+          <span>{handoutMeta.subtitle}</span>
+        </footer>
+      </section>
+
+      <!-- Page 2 -->
+      <section class="handout-sheet" aria-label="Handout page 2 of 4">
+        <p class="handout-kicker">Framing</p>
+        <h2 class="handout-section-title">Why this conversation</h2>
+        <ul class="handout-bullets">
+          {handoutPurpose.map((point) => <li>{point}</li>)}
+        </ul>
+
+        <h2 class="handout-section-title">Tripartite innovation ecosystem</h2>
+        <p class="handout-copy">
+          Capability forms where education, industry, and governance meet with
+          coordinated incentives, resources, and public purpose. The kickoff is
+          designed to test that intersection, not to represent it ceremonially.
+        </p>
+        <div class="handout-tripartite">
+          {
+            handoutTripartite.map((sphere) => (
+              <article>
+                <strong>{sphere.label}</strong>
+                <small>{sphere.detail}</small>
+              </article>
+            ))
+          }
+        </div>
+
+        <div class="handout-notes">
+          <p class="handout-prompt">{handoutReflections.tripartite}</p>
+          <div class="handout-note-lines" aria-hidden="true">
+            <span></span><span></span><span></span><span></span><span></span>
+          </div>
+        </div>
+
+        <footer class="handout-footer">
+          <span>02 / 04 · Framing</span>
+          <span>{handoutMeta.site}</span>
+        </footer>
+      </section>
+
+      <!-- Page 3 -->
+      <section class="handout-sheet" aria-label="Handout page 3 of 4">
+        <p class="handout-kicker">Diagnosis</p>
+        <h2 class="handout-section-title">Four innovation Gaps</h2>
+        <p class="handout-lead">
+          Francis Wang’s research names four connected problems between Canadian
+          research strength and enduring domestic capability. Use this page to
+          locate your own work inside the diagnosis.
+        </p>
+        <div class="handout-gaps">
+          {
+            handoutGaps.map((gap) => (
+              <article>
+                <span class="handout-gap-num">Gap {gap.number}</span>
+                <strong>{gap.title}</strong>
+                <p>{gap.summary}</p>
+              </article>
+            ))
+          }
+        </div>
+
+        <div class="handout-notes">
+          <p class="handout-prompt">{handoutReflections.gaps}</p>
+          <div class="handout-note-lines" aria-hidden="true">
+            <span></span><span></span><span></span><span></span><span></span>
+            <span></span>
+          </div>
+        </div>
+
+        <footer class="handout-footer">
+          <span>03 / 04 · Gaps</span>
+          <span>canada2080.org/innovation-gaps</span>
+        </footer>
+      </section>
+
+      <!-- Page 4 -->
+      <section class="handout-sheet" aria-label="Handout page 4 of 4">
+        <p class="handout-kicker">Working questions</p>
+        <h2 class="handout-section-title">Listen, answer, choose a next step</h2>
+
+        <div class="handout-panels">
+          {
+            handoutPanelBlocks.map((panel) => (
+              <article class="handout-panel">
+                <h3>{panel.title}</h3>
+                <p>{panel.focus}</p>
+                <ol class="handout-questions">
+                  {panel.questions.map((question) => (
+                    <li>
+                      <span>{question}</span>
+                      <div class="handout-question-lines" aria-hidden="true">
+                        <span></span>
+                      </div>
+                    </li>
+                  ))}
+                </ol>
+              </article>
+            ))
+          }
+        </div>
+
+        <div class="handout-closing-grid">
+          <div>
+            <h2 class="handout-section-title">Preferred trajectory</h2>
+            <div class="handout-scales">
+              {
+                handoutScales.map((scale) => (
+                  <article>
+                    <span class="handout-gap-num">{scale.number}</span>
+                    <strong>{scale.title}</strong>
+                    <p>{scale.detail}</p>
+                  </article>
+                ))
+              }
+            </div>
+          </div>
+          <div>
+            <h2 class="handout-section-title">Stay involved</h2>
+            <div class="handout-join">
+              {
+                handoutJoinPaths.map((path) => (
+                  <article>
+                    <strong>{path.audience}</strong>
+                    <p>{path.ask}</p>
+                  </article>
+                ))
+              }
+            </div>
+          </div>
+        </div>
+
+        <div class="handout-commitment">
+          <p class="handout-prompt">{handoutReflections.nextStep}</p>
+          <div class="handout-note-lines" aria-hidden="true">
+            <span></span><span></span>
+          </div>
+        </div>
+
+        <footer class="handout-footer">
+          <span>04 / 04 · Next step</span>
+          <span>canada2080.org/join</span>
+        </footer>
+      </section>
+    </main>
+  </body>
+</html>

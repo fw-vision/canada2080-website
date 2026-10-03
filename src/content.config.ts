@@ -34,7 +34,9 @@ const events = defineCollection({
       expertise: z.string(),
       bio: z.string(),
       group: z.enum(['governance', 'academic', 'industry']),
-      participation: z.enum(['remote']).optional()
+      participation: z.enum(['invited', 'remote', 'in-person']),
+      listing: z.enum(['featured', 'invited']).default('featured'),
+      profileUrl: z.string().url()
     })).default([]),
     itinerary: z.array(z.object({
       time: z.string(),

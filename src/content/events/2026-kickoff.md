@@ -21,150 +21,179 @@ guests:
     expertise: "Mayor of Markham"
     bio: "Markham mayor and long-serving municipal leader. Participation and public role remain subject to direct confirmation."
     group: governance
+    participation: invited
+    profileUrl: "https://www.linkedin.com/in/mayor-frank-scarpitti/"
   - name: "Alan Ho"
     institution: "City of Markham"
     expertise: "Regional government, culture, and economic development"
     bio: "Municipal leader working at the intersection of regional government, culture, and economic development. Current title and participation remain subject to direct confirmation."
     group: governance
+    participation: invited
+    profileUrl: "https://www.linkedin.com/in/alan-ho-976aa03b/"
   - name: "Shaun Chen"
     institution: "Public service and policy"
     expertise: "Public-service perspective"
     bio: "Invited for a public-service and policy perspective. Current role, participation, and public biography remain subject to direct confirmation."
     group: governance
-  - name: "Dr Barry Wylant"
-    institution: "University of Calgary"
-    expertise: "Design research, systems thinking, and visual strategy"
-    bio: "Design researcher whose work helps make complex systems legible and actionable."
+    participation: invited
+    profileUrl: "https://www.linkedin.com/in/shaunchento/"
+  - name: "Barry Wylant"
+    institution: "SAPL, University of Calgary"
+    expertise: "Design thinking, industrial design, and domestic scale-up"
+    bio: "Associate Professor and Graduate Program Director bringing a design-research perspective to how Canadian capability can scale."
     group: academic
-
-  - name: "Dr Joaquin “Jay” Gonzalez"
-    institution: "Golden Gate University"
-    expertise: "Global education, public administration, and international programmes"
-    bio: "Academic and global-education leader. Current title and participation remain subject to direct confirmation."
-    group: academic
+    participation: remote
+    profileUrl: "https://www.linkedin.com/in/barry-wylant-105488100/"
   - name: "Greg Hart"
-    institution: "Future Fit Cities / InceptionU"
-    expertise: "Future-ready cities, strategic design, and applied learning"
-    bio: "Systems-design and future-ready-cities practitioner. Current titles and participation remain subject to direct confirmation."
+    institution: "InceptionU / TransPod Advisory Board"
+    expertise: "Future-ready places, transformation design, and commercialization"
+    bio: "Co-founder and facilitator at InceptionU contributing a systems perspective on innovation culture and long-horizon capability."
     group: academic
-  - name: "Dr Erin Trochim"
+    participation: in-person
+    profileUrl: "https://www.linkedin.com/in/greg-hart-design/"
+  - name: "Erin Trochim"
     institution: "Geospatial AI and applied data research"
-    expertise: "Geospatial AI, remote sensing, and applied data research"
-    bio: "Researcher bringing a place-aware perspective on evidence, federated knowledge, and resilient capability."
+    expertise: "Place-based resilience, cognitive onloading, and critical AI adoption"
+    bio: "Researcher bringing a place-aware perspective on geospatial evidence, resilient capability, and critical AI adoption."
     group: academic
     participation: remote
+    profileUrl: "https://www.linkedin.com/in/erin-trochim/"
   - name: "Dr Kimberly Yazzie"
-    institution: "Knowledge management and data governance"
+    institution: "University of British Columbia"
     expertise: "Data governance, consent, and community benefit"
-    bio: "Knowledge-governance practitioner contributing an approved perspective on data stewardship and accountable systems."
+    bio: "Researcher contributing an approved perspective on consent, data stewardship, and accountable systems outside her institutional appointment."
     group: academic
     participation: remote
-  - name: "Horatio M. Morgan"
-    institution: "University of Waterloo"
-    expertise: "Intellectual property, strategic value, and asymmetric advantage"
-    bio: "Invited for a perspective on IP, decision rights, and strategic value capture. Current title and participation remain subject to direct confirmation."
+    profileUrl: "https://www.linkedin.com/in/kimberly-yazzie-ph-d-09758a4a/"
+  - name: "Sunita Kumari"
+    institution: "AI governance research"
+    expertise: "Sovereign AI, runtime governance, and AI safety and security"
+    bio: "AI researcher contributing an independent keynote on governance and robust system design for high-stakes deployments."
     group: academic
+    participation: remote
+    profileUrl: "https://openreview.net/profile?id=%7ESunita_Kumari1"
   - name: "Pyn Lim"
     institution: "ECAMS"
-    expertise: "Governed AI, professional education, and health-adjacent knowledge systems"
-    bio: "Founder and education leader contributing a planned perspective on governed knowledge systems and professional AI adoption."
+    expertise: "Patient data sovereignty and fragmented health records"
+    bio: "Founder and education leader contributing a patient-centred perspective on continuity of care and data control."
     group: industry
-  - name: "Himanshu Joshi"
-    institution: "AI project delivery"
-    expertise: "AI implementation and programme management"
-    bio: "AI project-delivery practitioner expected to attend. Current affiliation and any speaking role remain subject to direct confirmation."
-    group: industry
+    participation: remote
+    profileUrl: "https://www.linkedin.com/in/pynlim/"
   - name: "Yulia Korobkova"
-    institution: "Data-centre architecture and infrastructure"
-    expertise: "Data-centre design, compute infrastructure, and long-term optionality"
-    bio: "Priority prospective contributor on resilient compute infrastructure. Current title and participation remain subject to direct confirmation."
+    institution: "Corgan"
+    expertise: "Data-centre design and Canadian compute capacity"
+    bio: "Data Centers Studio Leader and Vice President contributing a practitioner perspective on domestic compute infrastructure."
     group: industry
-  - name: "Diarmuid Nash"
-    institution: "Moriyama Teshima Architects"
-    expertise: "Architecture, public institutions, and cultural projects"
-    bio: "Architect with experience in complex public and cultural projects. Participation remains subject to direct confirmation."
-    group: industry
+    participation: in-person
+    profileUrl: "https://www.linkedin.com/in/yulia-korobkova/"
   - name: "Dr Michael Donaldson"
     institution: "DWA/Future Workshop"
     expertise: "Architecture, Strategic Design, Designed Futures"
     bio: "Principal Architect and Designer, invited for perspective on fostering an opportunity-enriched innovation culture, to support a resilient future."
     group: industry
-  - name: "Adrian Conrad"
-    institution: "The Cora Group Inc."
-    expertise: "Commercial real estate, development, and place-based investment"
-    bio: "Chief Operating Officer of The Cora Group, invited for a Kitchener-Waterloo real-estate and long-term-development perspective."
-    group: industry
+    participation: in-person
+    profileUrl: "https://www.designworkshop.ca/studio"
   - name: "Dr Sudarshana Bhattacharya"
     institution: "Gartner"
-    expertise: "Banking data, analytics, generative AI, and AI and machine learning"
-    bio: "Senior Director Analyst working across banking data, analytics, and AI. Participation remains subject to direct confirmation."
+    expertise: "Enterprise AI adoption, banking data, and AI governance"
+    bio: "Senior Director Analyst contributing an independent perspective on moving AI from pilots into governed operating capability."
     group: industry
+    participation: in-person
+    profileUrl: "https://www.linkedin.com/in/sudarshanabhattacharya/"
+  - name: "Sebastien Gendron"
+    institution: "TransPod"
+    expertise: "Transportation infrastructure, domestic capacity, and risk appetite"
+    bio: "Co-Founder and CEO contributing a deep-tech transportation and large-scale infrastructure delivery perspective."
+    group: industry
+    participation: in-person
+    profileUrl: "https://www.transpod.com/about-transpod/"
+  - name: "Horatio M. Morgan"
+    institution: "University of Waterloo"
+    expertise: "Intellectual property, strategic value, and asymmetric advantage"
+    bio: "Invited for a perspective on IP, decision rights, and strategic value capture."
+    group: academic
+    participation: invited
+    listing: invited
+    profileUrl: "https://www.linkedin.com/in/horatio-m-morgan-81105383/"
+  - name: "Jesse Rodgers"
+    institution: "Builders Club / Eigenspace"
+    expertise: "Entrepreneurship, investment, and technology-community building"
+    bio: "Invited for a perspective on building founder communities and durable Canadian innovation ecosystems."
+    group: industry
+    participation: invited
+    listing: invited
+    profileUrl: "https://www.linkedin.com/in/jrodgers/"
+  - name: "Charles Chan"
+    institution: "Triple View Technologies Inc."
+    expertise: "Software engineering, product development, and operating capability"
+    bio: "VP Engineering at Triple View Technologies Inc., invited for a technology-delivery perspective."
+    group: industry
+    participation: invited
+    listing: invited
+    profileUrl: "https://www.linkedin.com/in/charlesychan/"
   - name: "Cedric Tai"
     institution: "SWTCH Energy"
     expertise: "Transportation electrification and grid decarbonization"
-    bio: "Invited for a perspective on EV charging, distributed energy, and grid capability. Current title and participation remain subject to direct confirmation."
+    bio: "Invited for a perspective on EV charging, distributed energy, and grid capability."
     group: industry
-    participation: remote
-
+    participation: invited
+    listing: invited
+    profileUrl: "https://www.linkedin.com/in/ctai/"
   - name: "Krysta Traianovski"
     institution: "Velocity, University of Waterloo"
     expertise: "Founder development and early-stage entrepreneurship"
-    bio: "Founder-development leader supporting early-stage entrepreneurs and venture pathways."
+    bio: "Invited for a perspective on founder development and venture pathways."
     group: industry
-  - name: "Charles Chan"
-    institution: "Technology delivery and infrastructure"
-    expertise: "Software engineering, product development, and operating capability"
-    bio: "Invited for a technology-delivery perspective. Current employer, title, and participation remain subject to direct confirmation."
+    participation: invited
+    listing: invited
+    profileUrl: "https://www.linkedin.com/in/krystat/"
+  - name: "Adrian Conrad"
+    institution: "The Cora Group Inc."
+    expertise: "Commercial real estate, development, and place-based investment"
+    bio: "Chief Operating Officer invited for a Kitchener-Waterloo real-estate and long-term-development perspective."
     group: industry
-  - name: "Harry Gandhi"
-    institution: "Deep-tech investment"
-    expertise: "Research commercialization and patient capital"
-    bio: "Invited for a deep-tech investment and commercialization perspective. Current title and participation remain subject to direct confirmation."
-    group: industry
-  - name: "Sefunmi Osinaike"
-    institution: "Co.Lab"
-    expertise: "Experiential learning, talent pathways, and venture experience"
-    bio: "Co-founder focused on helping professionals build real-world experience and opportunity."
-    group: industry
+    participation: invited
+    listing: invited
+    profileUrl: "https://www.linkedin.com/in/adrian-conrad-6851b534/"
 itinerary:
   - time: "12:30 p.m."
-    title: "Arrival and networking"
+    title: "Arrival, reception, and remote check"
     duration: "30 minutes"
-    description: "Meet fellow guests, explore the Canada2080 programme, and connect with in-person and online participants."
+    description: "Welcome guests, connect in person, and complete remote technical checks."
   - time: "1:00 p.m."
-    title: "Welcome and programme orientation"
+    title: "MC welcome and programme orientation"
     duration: "5 minutes"
     description: "A brief welcome, accessibility and recording notice, and introduction to the afternoon."
   - time: "1:05 p.m."
     title: "Civic Welcome"
-    duration: "Up to 10 minutes"
-    description: "A welcome by municipal representatives."
-  - time: "1:15 p.m."
+    duration: "5 minutes"
+    description: "A civic welcome, subject to final confirmation."
+  - time: "1:10 p.m."
     title: "Canada2080: the long-horizon challenge"
     duration: "10 minutes"
     description: "An introduction to how research, talent, energy, compute, capital, institutions, and public purpose can become durable domestic capability."
-  - time: "1:25 p.m."
-    title: "Featured perspectives: the immediate investment case"
-    duration: "10 minutes"
-    description: "Short perspectives on sovereign and private AI, distributed compute, distributed energy, and the case for practical early investment."
-  - time: "1:35 p.m."
-    title: "Panel 1: Sovereign AI and Private Compute"
+  - time: "1:20 p.m."
+    title: "Invited speakers on sovereign AI, data governance, and trustworthy deployment"
+    duration: "20 minutes"
+    description: "Five short perspectives on enterprise AI adoption, data governance, place-based resilience, runtime governance, and patient data sovereignty."
+  - time: "1:40 p.m."
+    title: "Panel 1: Sovereign AI, Data Governance, and Trustworthy Deployment"
     duration: "15 minutes"
-    description: "What Canada should build and govern now to support privacy, local learning, operational resilience, and trusted technology deployment."
-  - time: "1:50 p.m."
-    title: "Featured perspectives: from infrastructure to capacity"
-    duration: "10 minutes"
-    description: "Short perspectives on the governance, enterprise adoption, places, and talent conditions that turn technology investment into long-term capability."
-  - time: "2:00 p.m."
-    title: "Panel 2: Making Capability Stick: Manufacturing, Talent and Long-Term Growth"
+    description: "Two questions on meaningful control, runtime governance, and a practical Canadian first deployment."
+  - time: "1:55 p.m."
+    title: "Invited speakers on infrastructure, risk appetite, and domestic scale-up"
     duration: "15 minutes"
-    description: "How Canada can retain talent, strengthen institutions, build delivery capacity, and turn promising projects into durable opportunity and reinvestment."
-  - time: "2:15 p.m."
+    description: "Four short perspectives on domestic scale-up, compute capacity, future-ready places, and innovation culture."
+  - time: "2:10 p.m."
+    title: "Panel 2: Building National Capacity: Infrastructure, Risk Appetite, and Domestic Scale-Up"
+    duration: "15 minutes"
+    description: "Two questions on why Canadian capability fails to compound domestically and what should begin now."
+  - time: "2:25 p.m."
     title: "Closing synthesis and invitation"
-    duration: "15 minutes"
+    duration: "5 minutes"
     description: "An invitation to contribute evidence, capital, institutional capacity, operating knowledge, or a next conversation."
   - time: "2:30 p.m."
-    title: "Networking and follow-up"
+    title: "Reception and follow-up"
     duration: "30 minutes"
     description: "Continue the conversation, meet participants, and identify useful next steps."
 draft: false
@@ -188,30 +217,38 @@ The gathering takes place on **Sunday, October 4, 2026** at the **Hilton Toronto
 
 Francis Wang's Tripartite Ecosystem Model maps innovation through three connected spheres: education, industry, and governance. Education contributes research, talent, and learning. Industry contributes demand, production, operating knowledge, and capital. Governance contributes public purpose, policy, trust, and continuity. The critical field is their intersection, where distinct incentives and resources can be coordinated into complete capability and public value.
 
-The kickoff reflects this model through two featured-perspective sets and two short moderated panels. The purpose is not ceremonial representation. It is to test how Canada can connect research, demand, implementation, legitimacy, long-term stewardship, and public value.
+The kickoff reflects this model through two invited-speaker sections and two short moderated panels. The purpose is not ceremonial representation. It is to test how Canada can connect research, demand, implementation, legitimacy, long-term stewardship, and public value.
 
 The people listed are invited guests, not assumed endorsers. Contributor roles, participation formats, biographies, recording terms, and public listings remain subject to direct confirmation.
 
 ## Panel discussion topics
 
-The panels will each draw from five possible topics. The live format is 15 minutes, so the moderator will likely prioritize three topics based on the confirmed contributors' expertise and the flow of the conversation.
+Each panel has two primary questions and two more questions available if time permits. The moderator will ask the two primary questions first.
 
-### Panel 1: Sovereign AI and Private Compute
+### Panel 1: Sovereign AI, Data Governance, and Trustworthy Deployment
 
-Canada needs practical options for using AI while retaining appropriate control over data, systems, energy, operating knowledge, and the ability to repair and renew critical capability. This panel considers how distributed compute and distributed energy can support that objective.
+This panel moves from AI pilots and policy language to the controls, consent, evidence, and operating governance required for high-stakes deployment. The discussion connects enterprise use, community authority, place-based implementation, and patient-controlled data.
 
-1. What immediate privacy, control, continuity, or public-interest need makes sovereign or private AI a present investment question?
-2. Which layers should be governable or locally repairable: data, deployment, model access, auditability, operating skills, energy capacity, or another layer?
-3. Why should distributed compute and distributed energy be considered together, and where does that connection create practical value?
-4. What small-scale investment or demonstration could create learning without overbuilding infrastructure or making unsupported promises?
-5. What evidence would make an AI, compute, or energy proposal credible to an investor, customer, institution, or public-interest partner?
+**Primary questions**
 
-### Panel 2: Making Capability Stick: Manufacturing, Talent and Long-Term Growth
+1. **Control and governance:** As AI moves from pilots into high-stakes use, what must remain under meaningful human, institutional, patient, or community control, and what governance must continue at runtime to make the system safe and trustworthy?
+2. **A distinctly Canadian first move:** What should Canada learn from international and place-based perspectives, and what practical first deployment would demonstrate trustworthy, useful, and context-appropriate AI?
 
-Technology investments become national capability only when people, institutions, manufacturing and service partners, capital, and places can sustain them over time. This panel examines how Canada can deliberately retain talent and build the conditions for capability to compound.
+#### More Questions
 
-1. Where does Canada most often lose capability between research, first deployment, production, and reinvestment?
-2. What work, ownership, learning, advancement, and operating conditions help talented people choose to build careers and companies in Canada?
-3. What must manufacturing, construction, service-delivery, or supply-chain partners have to adopt, maintain, repair, and renew advanced technology over time?
-4. Which institutional lever has the most leverage now: procurement, testbeds, work-integrated learning, patient capital, standards, or regional coordination?
-5. What 90-day collaboration, demonstration, or evidence-gathering step would deliberately build Canadian capacity rather than simply describe the problem?
+- **Experiment responsibly:** How can institutions move beyond reactive risk mitigation and create room for low-stakes experimentation without transferring risk to patients, communities, or the public?
+- **Set the evidence threshold:** What evidence should decision makers demand before calling an AI deployment safe, secure, trustworthy, or publicly beneficial?
+
+### Panel 2: Building National Capacity: Infrastructure, Risk Appetite, and Domestic Scale-Up
+
+This panel tests why Canadian knowledge, talent, and ventures fail to compound domestically, and identifies the infrastructure and institutional choices that connect compute, transportation, manufacturing, energy, talent, and place.
+
+**Primary questions**
+
+1. **Diagnose the break:** Why does Canadian IP, talent, and venture capacity so often leave or sell before it compounds domestically, and which internal barrier must change first: risk culture, procurement, capital, infrastructure, or something else?
+2. **Start Monday:** If Canada were serious about building capacity now, what one infrastructure or institutional move should begin on Monday, and how would it connect compute, transportation, manufacturing, energy, talent, and place over the next decade?
+
+#### More Questions
+
+- **Recognize progress:** What concrete signal within the next five to ten years would demonstrate that Canada is compounding national capacity rather than producing isolated projects?
+- **Change the risk system:** How should procurement and capital reward experimentation and long-horizon infrastructure while preserving accountability?

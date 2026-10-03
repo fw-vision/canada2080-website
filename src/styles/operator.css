@@ -113,6 +113,7 @@ html.is-unlocked .access-gate {
 }
 
 .operator-meta {
+  --operator-meta-label: 5.5rem;
   display: grid;
   gap: 0.35rem;
   margin: 0;
@@ -123,21 +124,71 @@ html.is-unlocked .access-gate {
 
 .operator-meta div {
   display: grid;
-  grid-template-columns: 7rem 1fr;
-  gap: 0.75rem;
+  grid-template-columns: var(--operator-meta-label) minmax(0, 1fr);
+  gap: 1rem;
+  align-items: baseline;
 }
 
 .operator-meta dt {
   color: var(--horizon);
 }
 
+.operator-meta dd {
+  margin: 0;
+}
+
+.operator-demo-board {
+  display: grid;
+  gap: 0.85rem;
+  padding-top: 0.35rem;
+  border-top: 1px solid rgb(255 255 255 / 12%);
+}
+
+.operator-demo-group {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.operator-demo-group h2 {
+  margin: 0;
+  font: 700 0.68rem/1.4 var(--mono);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--horizon);
+}
+
+.operator-demo-group h2 span {
+  color: var(--lake);
+  letter-spacing: 0.06em;
+}
+
+.demo-pills {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.demo-pills li {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.28rem 0.55rem;
+  border: 1px solid rgb(255 255 255 / 18%);
+  background: rgb(255 255 255 / 6%);
+  color: var(--snow);
+  font: 700 0.68rem/1.3 var(--mono);
+  letter-spacing: 0.04em;
+  text-transform: none;
+}
+
 .operator-throughline {
   max-width: 70ch;
-  font-family: var(--display);
-  font-weight: 900;
-  letter-spacing: -0.04em;
-  line-height: 1.15;
-  font-size: clamp(1.15rem, 2vw, 1.55rem);
+  margin: 0.85rem 0 0;
+  color: #d5ddd8;
+  font: 400 1.05rem/1.55 var(--body);
+  letter-spacing: 0;
 }
 
 .programme-board {

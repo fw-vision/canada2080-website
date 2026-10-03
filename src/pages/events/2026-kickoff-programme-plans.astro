@@ -1,6 +1,13 @@
 ---
 import OperatorLayout from '../../layouts/OperatorLayout.astro';
-import { programmeBlocks, programmeMeta, programmeThroughline } from '../../data/kickoffProgramme';
+import {
+  featuredFoyerDemos,
+  pendingFoyerDemos,
+  programmeBlocks,
+  programmeMeta,
+  programmeThroughline,
+  sharedFoyerDemos,
+} from '../../data/kickoffProgramme';
 ---
 
 <OperatorLayout
@@ -38,9 +45,30 @@ import { programmeBlocks, programmeMeta, programmeThroughline } from '../../data
           <dd>Arrival {programmeMeta.arrival} · Start {programmeMeta.start}</dd>
         </div>
       </dl>
+      <div class="operator-demo-board" aria-label="Foyer demo tracking">
+        <section class="operator-demo-group">
+          <h2>Featured demos <span>({featuredFoyerDemos.length})</span></h2>
+          <ul class="demo-pills">
+            {featuredFoyerDemos.map((demo) => <li>{demo.name}</li>)}
+          </ul>
+        </section>
+        <section class="operator-demo-group">
+          <h2>Shared demo table <span>({sharedFoyerDemos.length})</span></h2>
+          <ul class="demo-pills">
+            {sharedFoyerDemos.map((demo) => <li>{demo.name}</li>)}
+          </ul>
+        </section>
+        <section class="operator-demo-group">
+          <h2>Pending invited demos <span>({pendingFoyerDemos.length})</span></h2>
+          <ul class="demo-pills">
+            {pendingFoyerDemos.map((demo) => <li>{demo.name}</li>)}
+          </ul>
+        </section>
+      </div>
       <div class="operator-actions">
         <a class="operator-link" href="/events/2026-kickoff-deck">Hall deck</a>
         <a class="operator-link" href="/events/2026-kickoff-deck-templates">Deck templates</a>
+        <a class="operator-link" href="/events/2026-kickoff-handouts">Guest handouts</a>
         <a class="operator-link" href="/events/2026-kickoff">Public event page</a>
       </div>
     </div>

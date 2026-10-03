@@ -25,6 +25,42 @@ export const programmeMeta = {
   start: '1:00 p.m. sharp',
 } as const;
 
+export type FoyerDemo = {
+  name: string;
+  confirmed: boolean;
+};
+
+/** Featured foyer tables: dedicated setups with confirmed equipment. */
+export const featuredFoyerDemos: FoyerDemo[] = [
+  { name: 'Jiamu Tea', confirmed: true },
+  { name: 'HERArtstudio', confirmed: true },
+  { name: 'Harry (Guqin)', confirmed: true },
+  { name: 'Patient Companion', confirmed: true },
+  { name: 'Skrimp', confirmed: true },
+];
+
+/** Shared foyer table: projects sharing one setup surface. */
+export const sharedFoyerDemos: FoyerDemo[] = [
+  { name: 'Vitalicious', confirmed: false },
+  { name: 'Equaldocs AI', confirmed: false },
+  { name: 'PassiveInfluencer', confirmed: false },
+  { name: 'THE Media', confirmed: false },
+];
+
+/** Invited demos still deciding dedicated vs shared table. */
+export const pendingFoyerDemos: FoyerDemo[] = [
+  { name: 'Parth', confirmed: false },
+  { name: 'Himanshu', confirmed: false },
+  { name: 'DWA (Michael)', confirmed: false },
+  { name: 'Corgan (Yulia)', confirmed: false },
+  { name: 'Jerome', confirmed: false },
+  { name: 'James (Divotron)', confirmed: false },
+  { name: 'Tyler West (construction survey drones)', confirmed: false },
+  { name: 'Up and Fit', confirmed: false },
+  { name: 'Stem-cell researcher', confirmed: false },
+  { name: 'Alex Friend (LegalAI)', confirmed: false },
+];
+
 export const programmeBlocks: ProgrammeBlock[] = [
   {
     id: 'arrival',
@@ -66,7 +102,7 @@ export const programmeBlocks: ProgrammeBlock[] = [
       'Name the host, the date, and that the programme begins now.',
       'State accessibility: exits, washrooms, remote audio, and how to request support.',
       'State the recording rule: this event is being recorded, and a media team is moving through the room. If you prefer not to appear in the videos, tell a staff member so we can remove your likeness from the recorded materials.',
-      'Give the shape of the afternoon: civic welcome, a short framing, two featured sets, two panels, then a close and invitation.',
+      'Give the shape of the afternoon: civic welcome, a short framing, two invited-speaker sections, two panels, then a close and invitation.',
       'Say there is no open audience Q&A. The work continues in conversation after 2:30.',
     ],
     sequence: [
@@ -122,7 +158,7 @@ export const programmeBlocks: ProgrammeBlock[] = [
   {
     id: 'civic',
     time: '1:05 p.m.',
-    duration: 'Up to 10 minutes',
+    duration: '5 minutes',
     title: 'Civic Welcome',
     lead: 'Civic representatives, if present',
     purpose: 'A civic acknowledgment of the gathering and the municipal context. Keep the public itinerary role-based until confirmation is complete.',
@@ -132,12 +168,12 @@ export const programmeBlocks: ProgrammeBlock[] = [
       'Thank the hosts and the people who travelled or joined remotely.',
       'Locate the gathering in Markham and York Region without turning the item into a policy announcement.',
       'Name why a long-horizon conversation belongs in a municipal room: housing, talent, infrastructure, and public value are decided in places.',
-      'Keep remarks non-partisan and short enough to protect the 1:15 handoff.',
+      'Keep remarks non-partisan and short enough to protect the 1:10 handoff.',
     ],
     sequence: [
       'MC introduces Civic Welcome without over-claiming titles if any remain unconfirmed.',
       'One or two civic voices, or one voice if the other is unavailable.',
-      'MC thanks them and moves to Francis at 1:15.',
+      'MC thanks them and moves to Francis at 1:10.',
     ],
     notes: [
       'Retain the item even if only one representative is available.',
@@ -146,7 +182,7 @@ export const programmeBlocks: ProgrammeBlock[] = [
   },
   {
     id: 'framing',
-    time: '1:15 p.m.',
+    time: '1:10 p.m.',
     duration: '10 minutes',
     title: 'Canada2080: the long-horizon challenge',
     lead: 'Francis Wang',
@@ -167,7 +203,7 @@ export const programmeBlocks: ProgrammeBlock[] = [
       'Throughline and Gaps.',
       'Tripartite model.',
       'Evidence boundary and aspiration label.',
-      'Bridge to Featured Set 1: the immediate investment case.',
+      'Bridge to invited speakers on sovereign AI, data governance, and trustworthy deployment.',
     ],
     notes: [
       'This is framing, not a 25-minute keynote. Keep to ten minutes.',
@@ -181,54 +217,54 @@ export const programmeBlocks: ProgrammeBlock[] = [
   },
   {
     id: 'featured-1',
-    time: '1:25 p.m.',
-    duration: '10 minutes',
-    title: 'Featured perspectives: the immediate investment case',
-    lead: 'Confirmed contributors only',
-    purpose: 'Two short perspectives that introduce the technical, institutional, or resilience question behind Panel 1.',
+    time: '1:20 p.m.',
+    duration: '20 minutes',
+    title: 'Invited speakers on sovereign AI, data governance, and trustworthy deployment',
+    lead: 'Sudarshana Bhattacharya, Kimberly Yazzie, Erin Trochim, Sunita Kumari, and Pyn Lim',
+    purpose: 'Five short perspectives that establish the governance, place, safety, and patient-data context for Panel 1.',
     talkingPoints: [
-      'Private and sovereign AI need: what privacy, control, continuity, or public-interest need makes this a present investment question?',
-      'Distributed compute and energy: what is the smallest credible investment that creates local capability, learning, and resilience?',
-      'Physical delivery: what site, energy, cooling, connectivity, construction, or operating choices make a compute proposal buildable?',
+      'Sudarshana: enterprise AI adoption, banking data and AI governance, and moving pilots into operating capability.',
+      'Kimberly: approved framing only, with her confirmed biography and speaking-outside-appointment disclaimer.',
+      'Erin: place-based and geospatial resilience, cognitive onloading, comparative perspectives, and critical AI adoption.',
+      'Sunita: sovereign AI, runtime governance, and the why and how of AI safety and security.',
+      'Pyn: patient data sovereignty and fragmented health records, framed around the problem rather than clinic efficiency.',
     ],
     sequence: [
-      'MC names the set and the time limit: three to five minutes each.',
-      'Contributor 1, then Contributor 2.',
-      'No debate yet. The panel tests the claims.',
-      'Featured contributors may sit for Panel 1 but should not repeat their full remarks.',
+      'MC names the set and the hard three-minute cap, except Pyn at three to five minutes.',
+      'Sudarshana, Kimberly, Erin, Sunita, then Pyn.',
+      'Use the block buffer for introductions and remote handoffs.',
+      'Sunita is keynote-only. Sudarshana, Kimberly, Erin, and Pyn move into Panel 1.',
     ],
     notes: [
-      'Preferred planning lenses, subject to confirmation: physical delivery, applied data and resilience, and data stewardship with approved framing only.',
-      'Assign at most two voices. Do not fill the set because someone is available.',
+      'Protect the order and hard caps.',
+      'Do not use a United States university affiliation for Erin in event materials.',
     ],
     guardrails: [
-      'Do not imply a named data centre, software system, customer, or energy asset exists unless approved and evidenced.',
-      'Do not promise privacy, security, cost savings, or employment outcomes.',
+      'Do not imply Gartner endorsement of Sudarshana.',
+      'Do not imply that Sunita represents Himanshu, COHUMAIN Labs, UT Austin, or another institution.',
     ],
   },
   {
     id: 'panel-1',
-    time: '1:35 p.m.',
+    time: '1:40 p.m.',
     duration: '15 minutes',
-    title: 'Panel 1: Sovereign AI and Private Compute',
-    lead: 'MC plus up to three confirmed panelists',
-    purpose: 'What Canada should build and govern now for privacy, local learning, operational resilience, and trusted deployment.',
+    title: 'Panel 1: Sovereign AI, Data Governance, and Trustworthy Deployment',
+    lead: 'MC with Sudarshana Bhattacharya, Kimberly Yazzie, Erin Trochim, and Pyn Lim',
+    purpose: 'Move from AI pilots and policy language to the controls, consent, evidence, and runtime governance required for high-stakes deployment.',
     talkingPoints: [
-      'Urgency: what immediate need makes sovereign or private AI a present investment question?',
-      'Selective sovereignty: which layers should be governable or locally repairable?',
-      'The stack: why consider distributed compute and distributed energy together?',
-      'First move: what small demonstration creates learning without overbuilding?',
-      'Evidence: what would make a proposal credible to an investor, customer, institution, or public-interest partner?',
+      'Control and governance: As AI moves from pilots into high-stakes use, what must remain under meaningful human, institutional, patient, or community control, and what governance must continue at runtime to make the system safe and trustworthy?',
+      'A distinctly Canadian first move: What should Canada learn from international and place-based perspectives, and what practical first deployment would demonstrate trustworthy, useful, and context-appropriate AI?',
+      'More question, experiment responsibly: How can institutions move beyond reactive risk mitigation and create room for low-stakes experimentation without transferring risk to patients, communities, or the public?',
+      'More question, set the evidence threshold: What evidence should decision makers demand before calling an AI deployment safe, secure, trustworthy, or publicly beneficial?',
     ],
     sequence: [
       'MC restates the panel purpose in one sentence.',
-      'Questions 1 to 4 are the core sequence.',
-      'Hold question 5 only if time remains.',
-      'A featured contributor who already spoke receives only one central panel question.',
+      'Ask the two primary questions.',
+      'Use one of the two more questions only if time remains.',
       'MC closes the panel by naming one tension to carry into the next set.',
     ],
     notes: [
-      'Live format is 15 minutes. Prioritize three questions if the room is running long.',
+      'Live format is 15 minutes. Protect the two-question structure.',
       'Remote panelists need a named cue and a visible time card.',
     ],
     guardrails: [
@@ -238,58 +274,58 @@ export const programmeBlocks: ProgrammeBlock[] = [
   },
   {
     id: 'featured-2',
-    time: '1:50 p.m.',
-    duration: '10 minutes',
-    title: 'Featured perspectives: from infrastructure to capacity',
-    lead: 'Confirmed contributors only',
-    purpose: 'A short bridge from technology investment to the people, institutions, and places that make capability stick.',
+    time: '1:55 p.m.',
+    duration: '15 minutes',
+    title: 'Invited speakers on infrastructure, risk appetite, and domestic scale-up',
+    lead: 'Barry Wylant, Yulia Korobkova, Greg Hart, and Michael Donaldson',
+    purpose: 'Four short perspectives on domestic scale-up, compute capacity, future-ready places, and opportunity-enriched innovation culture.',
     openingExample:
       'What must a future-ready Canadian city or region put in place now so that AI, energy, infrastructure, talent, and institutions create enduring public value rather than isolated projects?',
     talkingPoints: [
-      'Governance and delivery: what operating discipline turns a promising initiative into a deliverable programme?',
-      'Enterprise adoption and capital: what must be true for organizations to fund and renew Canadian capability?',
-      'Future-ready places and talent: what conditions make people and firms choose to build here for the long term?',
+      'Barry: Canadian firms that had to sell internationally to scale, using source-approved examples as an IP-exit and domestic scale-up case.',
+      'Yulia: internal Canadian compute-capacity barriers, possible solutions, and a decades-scale path.',
+      'Greg: future-ready places, transformation design, and risk-averse commercialization.',
+      'Michael: opportunity-enriched innovation culture, architecture, strategic design, and designed futures.',
     ],
     sequence: [
-      'MC names the shift: from control of systems to capacity that compounds.',
-      'Two or three provocations of two to three minutes each.',
-      'Each contributor ends with one condition the room should test after the kickoff.',
-      'Move immediately into Panel 2.',
+      'MC names the shift from trustworthy deployment to national capacity.',
+      'Barry, Yulia, Greg, then Michael, with three minutes each.',
+      'Use the block buffer for introductions and handoffs.',
+      'Barry is keynote-only. Yulia, Greg, and Michael move into Panel 2.',
     ],
     notes: [
-      'This is a bridge, not a second keynote block.',
-      'Choose complementary lenses: delivery, adoption and capital, and place or design.',
+      'Barry remains subject to health confirmation. Compress the block if he cannot attend.',
+      'Do not frame Yulia through a Canada-United States practice comparison.',
     ],
   },
   {
     id: 'panel-2',
-    time: '2:00 p.m.',
+    time: '2:10 p.m.',
     duration: '15 minutes',
-    title: 'Panel 2: Making Capability Stick',
-    lead: 'MC plus up to three confirmed panelists',
-    purpose: 'How Canada retains talent, builds delivery capacity, and turns projects into durable opportunity and reinvestment.',
+    title: 'Panel 2: Building National Capacity: Infrastructure, Risk Appetite, and Domestic Scale-Up',
+    lead: 'MC with Yulia Korobkova, Greg Hart, Michael Donaldson, and Sebastien Gendron',
+    purpose: 'Test why Canadian knowledge, talent, and ventures fail to compound domestically, and identify the infrastructure and institutional choices that connect national capability.',
     talkingPoints: [
-      'Where does Canada most often lose capability between research, first deployment, production, and reinvestment?',
-      'What work, ownership, learning, and advancement help talented people stay and build here?',
-      'What must manufacturing, construction, and service partners have to adopt, repair, and renew advanced technology?',
-      'Which institutional lever has the most leverage now: procurement, testbeds, work-integrated learning, patient capital, standards, or regional coordination?',
-      'What 90-day step would deliberately build Canadian capacity rather than describe the problem?',
+      'Diagnose the break: Why does Canadian IP, talent, and venture capacity so often leave or sell before it compounds domestically, and which internal barrier must change first: risk culture, procurement, capital, infrastructure, or something else?',
+      'Start Monday: If Canada were serious about building capacity now, what one infrastructure or institutional move should begin on Monday, and how would it connect compute, transportation, manufacturing, energy, talent, and place over the next decade?',
+      'More question, recognize progress: What concrete signal within the next five to ten years would demonstrate that Canada is compounding national capacity rather than producing isolated projects?',
+      'More question, change the risk system: How should procurement and capital reward experimentation and long-horizon infrastructure while preserving accountability?',
     ],
     sequence: [
       'MC restates the purpose in one sentence.',
-      'Questions 1 to 4 are the core sequence.',
-      'Hold question 5 if time remains; otherwise Francis can take it into the close.',
+      'Ask the two primary questions.',
+      'Use one of the two more questions only if time remains.',
       'Close by naming one condition for capability to compound.',
     ],
     notes: [
-      'Use examples and questions, not forecasts.',
-      'Do not create a separate health panel inside this discussion.',
+      'Sebastien is panel-only.',
+      'Treat corridor and transportation examples as discussion prompts, not adopted policy.',
     ],
   },
   {
     id: 'close',
-    time: '2:15 p.m.',
-    duration: '15 minutes',
+    time: '2:25 p.m.',
+    duration: '5 minutes',
     title: 'Closing synthesis and invitation',
     lead: 'Francis Wang, with MC handoff',
     purpose: 'Name the tensions, invite contribution, and close without over-claiming the afternoon.',
@@ -305,7 +341,7 @@ export const programmeBlocks: ProgrammeBlock[] = [
     sequence: [
       'MC hands back to Francis.',
       'Synthesis, then invitation.',
-      'MC thanks contributors and guests, repeats the networking instruction, and ends the programmed portion at 2:30.',
+      'MC thanks contributors and guests, repeats the reception instruction, and ends the programmed portion at 2:30.',
     ],
     notes: [
       'Do not announce partnerships, products, or follow-on events that are not approved.',

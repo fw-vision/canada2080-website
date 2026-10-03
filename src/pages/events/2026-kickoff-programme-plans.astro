@@ -2,12 +2,19 @@
 import OperatorLayout from '../../layouts/OperatorLayout.astro';
 import {
   featuredFoyerDemos,
-  pendingFoyerDemos,
+  guestNameTags,
   programmeBlocks,
   programmeMeta,
   programmeThroughline,
   sharedFoyerDemos,
+  staffNameTags,
 } from '../../data/kickoffProgramme';
+
+const attendanceLabels = {
+  'in-person': 'In person',
+  remote: 'Remote',
+  invited: 'Invited',
+} as const;
 ---
 
 <OperatorLayout
@@ -33,35 +40,51 @@ import {
           <dd>{programmeMeta.venue}</dd>
         </div>
         <div>
-          <dt>MC</dt>
-          <dd>{programmeMeta.mc}</dd>
-        </div>
-        <div>
           <dt>Host</dt>
           <dd>{programmeMeta.host}</dd>
         </div>
         <div>
+          <dt>Co-host</dt>
+          <dd>{programmeMeta.coHost}</dd>
+        </div>
+        <div>
+          <dt>MC</dt>
+          <dd>{programmeMeta.mc}</dd>
+        </div>
+        <div>
+          <dt>Prep</dt>
+          <dd>{programmeMeta.prep}</dd>
+        </div>
+        <div>
+          <dt>Staff</dt>
+          <dd>{programmeMeta.staffArrival}</dd>
+        </div>
+        <div>
           <dt>Clock</dt>
-          <dd>Arrival {programmeMeta.arrival} · Start {programmeMeta.start}</dd>
+          <dd>Guests {programmeMeta.arrival} · Start {programmeMeta.start}</dd>
         </div>
       </dl>
       <div class="operator-demo-board" aria-label="Foyer demo tracking">
         <section class="operator-demo-group">
-          <h2>Featured demos <span>({featuredFoyerDemos.length})</span></h2>
+          <h2>Demo tables <span>({featuredFoyerDemos.length})</span></h2>
           <ul class="demo-pills">
-            {featuredFoyerDemos.map((demo) => <li>{demo.name}</li>)}
+            {featuredFoyerDemos.map((demo) => (
+              <li>
+                {demo.name}
+                {demo.holders && demo.holders.length > 0 && <span> · {demo.holders.join(', ')}</span>}
+              </li>
+            ))}
           </ul>
         </section>
         <section class="operator-demo-group">
           <h2>Shared demo table <span>({sharedFoyerDemos.length})</span></h2>
           <ul class="demo-pills">
-            {sharedFoyerDemos.map((demo) => <li>{demo.name}</li>)}
-          </ul>
-        </section>
-        <section class="operator-demo-group">
-          <h2>Pending invited demos <span>({pendingFoyerDemos.length})</span></h2>
-          <ul class="demo-pills">
-            {pendingFoyerDemos.map((demo) => <li>{demo.name}</li>)}
+            {sharedFoyerDemos.map((demo) => (
+              <li>
+                {demo.name}
+                {demo.holders && demo.holders.length > 0 && <span> · {demo.holders.join(', ')}</span>}
+              </li>
+            ))}
           </ul>
         </section>
       </div>
@@ -73,6 +96,77 @@ import {
       </div>
     </div>
   </header>
+
+  <section class="roster-board" aria-label="Name-tag rosters">
+    <div class="shell roster-grid">
+      <article class="roster-card">
+        <header>
+          <p class="operator-kicker">Grey lanyard</p>
+          <h2>Guests</h2>
+          <p>Print grey tags for in-person and invited guests. Every grey-lanyard guest is highlighted and has a reserved seat. Remote speakers do not receive a grey lanyard.</p>
+        </header>
+        <table class="roster-table">
+          <thead>
+            <tr>
+              <th scope="col">Name</th>
+              <th scope="col">Affiliation</th>
+              <th scope="col">Topic</th>
+              <th scope="col">Attendance</th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              guestNameTags.map((guest) => (
+                <tr class:list={[guest.lanyard === 'grey' && 'is-highlighted']}>
+                  <th scope="row">{guest.name}</th>
+                  <td>{guest.affiliation}</td>
+                  <td>{guest.topic}</td>
+                  <td>
+                    <span class:list={['attendance-pill', `attendance-${guest.attendance}`]}>
+                      {attendanceLabels[guest.attendance]}
+                    </span>
+                    {guest.lanyard === 'grey' && <span class="lanyard-pill lanyard-grey">Grey lanyard</span>}
+                    {guest.municipal && <span class="attendance-pill attendance-municipal">Municipal</span>}
+                    {guest.note && <p class="roster-note">{guest.note}</p>}
+                  </td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </article>
+      <article class="roster-card">
+        <header>
+          <p class="operator-kicker">Green lanyard</p>
+          <h2>Staff, host, and helpers</h2>
+          <p>Print green tags for the named team and demo holders. Demo holders are listed before helpers. Keep two blank tags at check-in for handwritten names. William Yao is co-host; William 嘉木 is Jiamu Tea. Kritika also holds Monkii; her MC role takes priority on the lanyard.</p>
+        </header>
+        <table class="roster-table">
+          <thead>
+            <tr>
+              <th scope="col">Name</th>
+              <th scope="col">Role</th>
+              <th scope="col">Tag</th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              staffNameTags.map((person) => (
+                <tr class:list={[person.blank && 'is-blank-tag']}>
+                  <th scope="row">{person.blank ? 'Blank name line' : person.name}</th>
+                  <td>{person.role}</td>
+                  <td>
+                    <span class="lanyard-pill lanyard-green">Green lanyard</span>
+                    {person.blank && <span class="attendance-pill">Handwritten</span>}
+                  </td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </article>
+    </div>
+  </section>
 
   <main class="programme-board">
     <div class="shell">
@@ -96,12 +190,68 @@ import {
                   <p class="opening-example">{block.openingExample}</p>
                 </>
               )}
-              <h3>Talking points</h3>
-              <ul>
-                {block.talkingPoints.map((point) => (
-                  <li>{point}</li>
-                ))}
-              </ul>
+              {block.speakers && block.speakers.length > 0 && (
+                <>
+                  <h3>Bio + topics</h3>
+                  <ol class="speaker-briefs">
+                    {block.speakers.map((speaker) => (
+                      <li class="speaker-brief">
+                        <header class="speaker-brief-head">
+                          <p class="speaker-name">
+                            <strong class="speaker-fullname">{speaker.name}</strong>
+                            {speaker.affiliation && (
+                              <strong class="speaker-title"> · {speaker.affiliation}</strong>
+                            )}
+                          </p>
+                          <span class:list={['attendance-pill', `attendance-${speaker.attendance}`]}>
+                            {attendanceLabels[speaker.attendance]}
+                          </span>
+                        </header>
+                        <div class="speaker-brief-body">
+                          <p>
+                            <strong>Topic:</strong> {speaker.topic}
+                          </p>
+                          <p>
+                            <strong>Bio:</strong> {speaker.bio}
+                          </p>
+                          {speaker.note && (
+                            <p>
+                              <strong>Note:</strong> {speaker.note}
+                            </p>
+                          )}
+                        </div>
+                      </li>
+                    ))}
+                  </ol>
+                </>
+              )}
+              {block.questions && block.questions.length > 0 && (
+                <>
+                  <h3>Questions</h3>
+                  <ol class="question-list">
+                    {block.questions.map((item) => (
+                      <li>
+                        <p>
+                          <span class:list={['question-kind', `question-${item.kind}`]}>
+                            {item.kind === 'primary' ? 'Primary' : 'More'}
+                          </span>
+                          <strong>{item.label}:</strong> {item.question}
+                        </p>
+                      </li>
+                    ))}
+                  </ol>
+                </>
+              )}
+              {block.talkingPoints && block.talkingPoints.length > 0 && (
+                <>
+                  <h3>{block.talkingPointsHeading ?? 'Talking points'}</h3>
+                  <ul>
+                    {block.talkingPoints.map((point) => (
+                      <li>{point}</li>
+                    ))}
+                  </ul>
+                </>
+              )}
               <h3>Sequence</h3>
               <ol>
                 {block.sequence.map((step) => (

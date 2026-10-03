@@ -11,6 +11,18 @@ export type DeckLayout =
 
 export type DeckCaptionRails = 'below' | 'above' | 'around';
 
+export type DeckRuby = {
+  base: string;
+  reading: string;
+};
+
+export type DeckRichText = Array<string | DeckRuby>;
+
+export type DeckSource = {
+  href: string;
+  label: string;
+};
+
 export type DeckImage = {
   src: string;
   alt: string;
@@ -34,9 +46,16 @@ export type DeckSlide = {
   imageColumns?: number;
   /** Where captions sit relative to the shared image bounding box. */
   captionRails?: DeckCaptionRails;
-  points: string[];
+  points?: string[];
+  /** Continuous rich statement. Prefer this over points for ceremonial text-only slides. */
+  body?: DeckRichText;
+  source?: DeckSource;
   note?: string;
 };
+
+export function isDeckRuby(part: string | DeckRuby): part is DeckRuby {
+  return typeof part === 'object' && 'base' in part && 'reading' in part;
+}
 
 export type DeckTemplateSpec = {
   id: string;
@@ -76,7 +95,7 @@ export function resolveImageColumns(count: number, requested?: number): number {
 }
 
 export function splitCaptionRails(
-  points: string[],
+  points: string[] = [],
   rails: DeckCaptionRails = 'below',
 ): { above: string[]; below: string[] } {
   if (rails === 'above') {
@@ -169,7 +188,7 @@ export const deckTemplateSpecs: DeckTemplateSpec[] = [
     name: 'Full-bleed teleprompter',
     purpose: 'Fill the entire slide with display-font talking points so the screen becomes the prompt.',
     whenToUse: [
-      'Land acknowledgment and ceremonial openings.',
+      'Land acknowledgement and ceremonial openings.',
       'Key framing sentences that should dominate the room.',
       'Closing invitation language.',
     ],
@@ -359,26 +378,38 @@ export const kickoffDeckSlides: DeckSlide[] = [
     kicker: '1:00 p.m. · Welcome',
     title: 'Welcome to the Canada2080 kickoff',
     points: [
-      'Whether you are in this room or online, you are here to test how Canada builds systems that last.',
+      'Welcome to guests in the room and joining online.',
+      'Our host today is Francis Wang.',
+      'Accessibility: exits, washrooms, remote audio, and how to request support.',
       'This event is being recorded. A media team is in the room. If you prefer not to appear, tell a staff member so we can remove your likeness.',
-      'Civic welcome. Framing. Two invited-speaker sections. Two short panels. Then an invitation.',
-      'There is no open audience Q&A. The work continues in conversation after 2:30.',
     ],
   },
   {
     id: 'ceremony',
-    layout: 'image-caption',
-    reveal: 'step',
-    kicker: 'Opening · Place and relationship',
-    title: 'We meet on lands with older relationships than this gathering',
-    images: [heroPool[5]],
-    captionRails: 'below',
-    points: [
-      'Before the working conversation, acknowledge the lands and the Nations whose relationships with this place precede us.',
-      'Traditional and treaty lands of the Mississaugas of the Credit First Nation, and the traditional territory of the Anishinaabe, the Chippewa, the Haudenosaunee, and the Wendat peoples.',
-      'These lands are covered by Treaty 13 and the Williams Treaties.',
-      'This is a civic-form acknowledgment. Do not add names, stories, or protocol that have not been given.',
+    layout: 'text',
+    reveal: 'full',
+    kicker: '1:00 p.m. · Land acknowledgement',
+    title: 'Land acknowledgement',
+    points: [],
+    body: [
+      'We begin today by acknowledging the traditional territories of Indigenous peoples and their commitment to stewardship of the land. We acknowledge the communities in circle. The North, West, South and Eastern directions, and ',
+      { base: 'Haudenosaunee', reading: 'hoe-den-oh-SHOW-nee' },
+      ', ',
+      { base: 'Huron-Wendat', reading: 'HYUR-on WEN-dat' },
+      ', ',
+      { base: 'Anishnabeg', reading: 'ah-nish-NAH-beg' },
+      ', ',
+      { base: 'Seneca', reading: 'SEN-ih-kuh' },
+      ', ',
+      { base: 'Chippewa', reading: 'CHIP-uh-wah' },
+      ', and the ',
+      { base: 'Mississaugas', reading: 'miss-ih-SAW-guz' },
+      ' of the Credit peoples. We share the responsibility with the caretakers of this land to ensure the dish is never empty and to restore relationships that are based on peace, friendship, and trust. We are committed to reconciliation, partnership and enhanced understanding.',
     ],
+    source: {
+      href: 'https://www.markham.ca/about-the-city-of-markham/diversity-equity-inclusion-and-accessibility/city-of-markham-land-acknowledgement',
+      label: 'City of Markham Land Acknowledgement',
+    },
   },
   {
     id: 'civic-intro',
@@ -386,17 +417,19 @@ export const kickoffDeckSlides: DeckSlide[] = [
     reveal: 'full',
     kicker: '1:05 p.m. · Civic Welcome',
     title: 'Civic Welcome',
-    role: 'Municipal representatives, if present',
+    role: 'Municipal leaders · introduced by the MC',
     subtitle: 'A welcome to a long-horizon conversation in Markham',
     points: [
-      'Capability is decided in places: housing, talent, infrastructure, and public value.',
+      'If present: Frank Scarpitti, Mayor of Markham, first.',
+      'Then Alan Ho, City Councillor of Markham and Chair, Culture & Economic Development Committee (Markham).',
+      'Thank them, then introduce Francis for the Canada2080 vision.',
     ],
   },
   {
     id: 'framing',
     layout: 'keynote',
     reveal: 'step',
-    kicker: '1:10 p.m. · Francis Wang',
+    kicker: '1:10 p.m. · Francis Wang · Canada2080 vision',
     title: 'Canada has the research foundation to lead',
     points: [
       'If a hospital, grid, laboratory, or northern link is to serve people in 2080, the work has a present tense.',
@@ -453,10 +486,10 @@ export const kickoffDeckSlides: DeckSlide[] = [
     reveal: 'full',
     kicker: '1:55 p.m. · Invited speakers',
     title: 'Invited speakers on infrastructure, risk appetite, and domestic scale-up',
-    role: 'Barry · Yulia · Greg · Michael',
-    subtitle: '15 minutes including introductions and handoffs',
+    role: 'Barry · Yulia · Greg · Michael · Sebastien',
+    subtitle: '20 minutes including introductions and handoffs',
     points: [
-      'Domestic scale-up, compute, future-ready places, and innovation culture.',
+      'Domestic scale-up, compute, future-ready places, innovation culture, and TransPod as a case in government risk.',
     ],
   },
   {
@@ -469,14 +502,14 @@ export const kickoffDeckSlides: DeckSlide[] = [
       'What do Canadian IP exits reveal about domestic scale-up?',
       'Which internal barriers constrain national compute capacity?',
       'What makes places and innovation cultures ready for long-horizon capability?',
-      'What must change in Canada’s risk appetite?',
+      'What does TransPod show about how the Canadian government approaches risk?',
     ],
   },
   {
     id: 'panel-2',
     layout: 'panel-hold',
     reveal: 'step',
-    kicker: '2:10 p.m. · Panel 2',
+    kicker: '2:15 p.m. · Panel 2',
     title: 'Building National Capacity',
     subtitle: 'Infrastructure, risk appetite, and domestic scale-up',
     points: [
@@ -484,13 +517,14 @@ export const kickoffDeckSlides: DeckSlide[] = [
       'What one infrastructure or institutional move should begin on Monday, and how would it connect compute, transportation, manufacturing, energy, talent, and place?',
       'More: What signal would demonstrate that Canada is compounding national capacity?',
       'More: How should procurement and capital reward experimentation while preserving accountability?',
+      'For Sebastien: How do we enable and champion long-term infrastructure projects?',
     ],
   },
   {
     id: 'close',
     layout: 'keynote',
     reveal: 'step',
-    kicker: '2:25 p.m. · Closing',
+    kicker: '2:30 p.m. · Closing',
     title: 'Attach an owner, a 90-day action, and a measure',
     points: [
       'Research becomes leadership only when it becomes capability, opportunity, and public value in Canada.',
@@ -503,7 +537,7 @@ export const kickoffDeckSlides: DeckSlide[] = [
     id: 'hold-close',
     layout: 'split',
     reveal: 'full',
-    kicker: '2:30 p.m. · Continue the conversation',
+    kicker: '2:35 p.m. · Continue the conversation',
     title: 'Canada2080',
     image: {
       ...heroPool[5],

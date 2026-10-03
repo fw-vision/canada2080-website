@@ -66,12 +66,12 @@ guests:
     participation: remote
     profileUrl: "https://www.linkedin.com/in/kimberly-yazzie-ph-d-09758a4a/"
   - name: "Sunita Kumari"
-    institution: "AI governance research"
+    institution: "AI Researcher at UT Austin/COHUMAIN Labs"
     expertise: "Sovereign AI, runtime governance, and AI safety and security"
-    bio: "AI researcher contributing an independent keynote on governance and robust system design for high-stakes deployments."
+    bio: "AI researcher at UT Austin/COHUMAIN Labs, attending in person. She is delivering a keynote on sovereign AI, runtime governance, and AI safety and security, including the topic supplied by Himanshu Joshi."
     group: academic
-    participation: remote
-    profileUrl: "https://openreview.net/profile?id=%7ESunita_Kumari1"
+    participation: in-person
+    profileUrl: "https://www.linkedin.com/in/sunita-kumari-data-ai/"
   - name: "Pyn Lim"
     institution: "ECAMS"
     expertise: "Patient data sovereignty and fragmented health records"
@@ -102,8 +102,8 @@ guests:
     profileUrl: "https://www.linkedin.com/in/sudarshanabhattacharya/"
   - name: "Sebastien Gendron"
     institution: "TransPod"
-    expertise: "Transportation infrastructure, domestic capacity, and risk appetite"
-    bio: "Co-Founder and CEO contributing a deep-tech transportation and large-scale infrastructure delivery perspective."
+    expertise: "Transportation infrastructure, domestic capacity, and government risk appetite"
+    bio: "Co-Founder and CEO contributing TransPod as a case study in how the Canadian government approaches risk, and a panel perspective on enabling long-term infrastructure."
     group: industry
     participation: in-person
     profileUrl: "https://www.transpod.com/about-transpod/"
@@ -161,13 +161,13 @@ itinerary:
     duration: "30 minutes"
     description: "Welcome guests, connect in person, and complete remote technical checks."
   - time: "1:00 p.m."
-    title: "MC welcome and programme orientation"
+    title: "Welcome and Program Orientation"
     duration: "5 minutes"
-    description: "A brief welcome, accessibility and recording notice, and introduction to the afternoon."
+    description: "MC welcome and orientation, including the host Francis Wang, accessibility, and the recording rule; then the land acknowledgement; then the shape of the afternoon."
   - time: "1:05 p.m."
     title: "Civic Welcome"
     duration: "5 minutes"
-    description: "A civic welcome, subject to final confirmation."
+    description: "A few words from our municipal leaders."
   - time: "1:10 p.m."
     title: "Canada2080: the long-horizon challenge"
     duration: "10 minutes"
@@ -183,7 +183,7 @@ itinerary:
   - time: "1:55 p.m."
     title: "Invited speakers on infrastructure, risk appetite, and domestic scale-up"
     duration: "15 minutes"
-    description: "Four short perspectives on domestic scale-up, compute capacity, future-ready places, and innovation culture."
+    description: "Five short perspectives on domestic scale-up, compute capacity, future-ready places, innovation culture, and TransPod as a case in how the Canadian government approaches risk."
   - time: "2:10 p.m."
     title: "Panel 2: Building National Capacity: Infrastructure, Risk Appetite, and Domestic Scale-Up"
     duration: "15 minutes"

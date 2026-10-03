@@ -1,5 +1,6 @@
 ---
 import YearWordmark from './YearWordmark.astro';
+import DeckRubyText from './DeckRubyText.astro';
 import {
   resolveImageColumns,
   resolveSlideImages,
@@ -17,18 +18,26 @@ interface Props {
 
 const { slide, index, total, active = false, showChrome = true } = Astro.props;
 const layoutClass = `deck-layout-${slide.layout}`;
+const points = slide.points ?? [];
 const images = resolveSlideImages(slide);
 const columns = resolveImageColumns(images.length, slide.imageColumns);
 const rails =
   slide.captionRails ??
   (slide.layout === 'image-mosaic' ? 'around' : 'below');
-const { above, below } = splitCaptionRails(slide.points, rails);
+const { above, below } = splitCaptionRails(points, rails);
 const usesImageBox =
   slide.layout === 'image-caption' || slide.layout === 'image-mosaic';
+const usesStatement =
+  Boolean(slide.body && slide.body.length > 0) &&
+  (slide.layout === 'text' || slide.layout === 'keynote');
 ---
 
 <section
-  class:list={['deck-slide', layoutClass, { 'is-active': active }]}
+  class:list={[
+    'deck-slide',
+    layoutClass,
+    { 'is-active': active, 'has-statement': usesStatement },
+  ]}
   data-slide
   data-layout={slide.layout}
   data-mode={slide.reveal}
@@ -62,7 +71,7 @@ const usesImageBox =
           </figure>
         )}
         <ul class="deck-points">
-          {slide.points.map((point) => (
+          {points.map((point) => (
             <li class="deck-point" data-point>
               {point}
             </li>
@@ -75,13 +84,32 @@ const usesImageBox =
   {
     (slide.layout === 'text' || slide.layout === 'keynote') && (
       <div class="deck-frame deck-frame-text">
-        <ul class="deck-points deck-points-teleprompter">
-          {slide.points.map((point) => (
-            <li class="deck-point" data-point>
-              {point}
-            </li>
-          ))}
-        </ul>
+        {usesStatement ? (
+          <>
+            <p class="deck-statement">
+              <DeckRubyText parts={slide.body ?? []} />
+            </p>
+            {slide.source && (
+              <p class="deck-source">
+                <a
+                  href={slide.source.href}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  {slide.source.label}
+                </a>
+              </p>
+            )}
+          </>
+        ) : (
+          <ul class="deck-points deck-points-teleprompter">
+            {points.map((point) => (
+              <li class="deck-point" data-point>
+                {point}
+              </li>
+            ))}
+          </ul>
+        )}
       </div>
     )
   }
@@ -140,7 +168,7 @@ const usesImageBox =
     slide.layout === 'speaker-intro' && (
       <div class="deck-frame deck-frame-speaker">
         <ul class="deck-points deck-points-teleprompter">
-          {slide.points.map((point) => (
+          {points.map((point) => (
             <li class="deck-point" data-point>
               {point}
             </li>
@@ -154,7 +182,7 @@ const usesImageBox =
     slide.layout === 'panel-hold' && (
       <div class="deck-frame deck-frame-panel">
         <ul class="deck-points deck-points-teleprompter deck-points-questions">
-          {slide.points.map((point) => (
+          {points.map((point) => (
             <li class="deck-point" data-point>
               {point}
             </li>

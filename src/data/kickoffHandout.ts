@@ -19,7 +19,7 @@ export const handoutMeta = {
 
 export const handoutProgrammeGlance = [
   { time: '12:30', title: 'Arrival, networking, and foyer demos' },
-  { time: '1:00', title: 'MC welcome and programme orientation' },
+  { time: '1:00', title: 'Welcome and Program Orientation' },
   { time: '1:05', title: 'Civic welcome' },
   { time: '1:10', title: 'Canada2080: the long-horizon challenge' },
   { time: '1:20', title: 'Invited speakers on sovereign AI and trustworthy deployment' },

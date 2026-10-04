@@ -209,16 +209,17 @@
 }
 
 .deck-points-teleprompter {
-  gap: 0.85rem;
-  max-width: 34ch;
+  width: 100%;
+  max-width: none;
+  gap: clamp(0.6rem, 1.5vh, 0.95rem);
 }
 
 .deck-layout-text .deck-point,
 .deck-layout-keynote .deck-point,
 .deck-layout-panel-hold .deck-point,
 .deck-layout-speaker-intro .deck-point {
-  max-width: 34ch;
-  font-size: clamp(1.25rem, 2.3vw, 2rem);
+  max-width: none;
+  font-size: clamp(1.05rem, 2vw, 1.8rem);
 }
 
 .deck-slide.has-statement .deck-title {
@@ -240,8 +241,16 @@
   font-weight: 800;
   letter-spacing: -0.035em;
   font-size: clamp(1.02rem, 1.9vw, 1.55rem);
-  line-height: 2.15;
+  line-height: 2;
   color: var(--snow);
+}
+
+.deck-layout-text.has-statement .deck-statement {
+  align-self: center;
+  max-width: none;
+  font-size: clamp(1rem, 1.75vw, 1.4rem);
+  line-height: 2.3;
+  text-wrap: pretty;
 }
 
 ruby.deck-ruby {
@@ -317,6 +326,31 @@ ruby.deck-ruby rt {
   color: var(--horizon);
   font: 700 0.6rem/1.2 var(--mono);
   letter-spacing: 0.1em;
+}
+
+/* Minimal centered statement */
+.deck-layout-statement {
+  grid-template-rows: minmax(0, 1fr) auto;
+  padding-top: var(--deck-pad);
+}
+
+.deck-layout-statement .deck-header {
+  display: none;
+}
+
+.deck-layout-statement .deck-frame-text {
+  place-items: center;
+  align-content: center;
+  padding: 0;
+  overflow: hidden;
+  text-align: center;
+}
+
+.deck-layout-statement .deck-statement {
+  max-width: 20ch;
+  font-size: clamp(2rem, 6vw, 5rem);
+  line-height: 0.98;
+  letter-spacing: -0.06em;
 }
 
 /* Host and contributor biographies */
@@ -413,11 +447,33 @@ ruby.deck-ruby rt {
   overflow: hidden;
 }
 
+.deck-frame-panel-live:not(.has-question) {
+  grid-template-columns: 1fr;
+}
+
 .deck-panel-people {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 0.45rem;
   min-height: 0;
+}
+
+.deck-frame-panel-live:not(.has-question) .deck-panel-person {
+  gap: 0.5rem;
+  padding: 0.75rem 0.85rem;
+}
+
+.deck-frame-panel-live:not(.has-question) .deck-panel-person h2 {
+  font-size: clamp(1.05rem, 1.7vw, 1.45rem);
+}
+
+.deck-frame-panel-live:not(.has-question) .deck-panel-affiliation {
+  font-size: clamp(0.62rem, 0.85vw, 0.78rem);
+}
+
+.deck-frame-panel-live:not(.has-question) .deck-panel-bio {
+  font-size: clamp(0.7rem, 1.05vw, 0.95rem);
+  line-height: 1.35;
 }
 
 .deck-panel-person {
@@ -505,6 +561,15 @@ ruby.deck-ruby rt {
   grid-template-rows: minmax(0, 1fr);
 }
 
+.deck-slide.is-image-only {
+  grid-template-rows: minmax(0, 1fr) auto;
+  padding-top: var(--deck-pad);
+}
+
+.deck-slide.is-image-only .deck-header {
+  display: none;
+}
+
 .deck-image-box {
   --deck-image-columns: 1;
   width: 100%;
@@ -550,6 +615,10 @@ ruby.deck-ruby rt {
   object-position: center;
 }
 
+.deck-layout-image-caption .deck-figure-collage img {
+  object-fit: contain;
+}
+
 .deck-credit-float {
   position: absolute;
   left: 0.4rem;
@@ -577,6 +646,11 @@ ruby.deck-ruby rt {
 
 .deck-caption-rail-above {
   align-content: start;
+}
+
+.deck-layout-image-caption .deck-caption-rail {
+  min-height: 3.75rem;
+  max-height: 5.5rem;
 }
 
 .deck-caption-line {
@@ -667,7 +741,7 @@ ruby.deck-ruby rt {
 
 .deck-footer {
   display: grid;
-  grid-template-columns: 1fr auto;
+  grid-template-columns: 1fr;
   align-items: end;
   gap: 1rem;
   font: 700 0.65rem/1.4 var(--mono);

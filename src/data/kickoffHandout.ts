@@ -40,7 +40,6 @@ export const handoutMeta = {
   },
   coHost: {
     ...programmeHosts[1],
-    affiliation: `${programmeHosts[1].affiliation} | ex-Merrill Lynch`,
   },
   mc: programmeMeta.mc,
   mcProfileUrl: 'https://www.linkedin.com/in/kritika-saihgpaul/',
@@ -78,8 +77,8 @@ function toContributor(speaker: ProgrammeSpeaker): HandoutContributor {
     },
     'Dr Kimberly Yazzie': {
       affiliation: 'University of British Columbia',
-      topic: 'Approved framing only: data governance, consent, and community benefit.',
-      bio: 'Researcher contributing an approved perspective on consent, data stewardship, and accountable systems outside her institutional appointment.',
+      topic: 'Data governance, consent, and community benefit.',
+      bio: 'Researcher contributing a perspective on consent, data stewardship, and accountable systems outside her institutional appointment.',
     },
     'Erin Trochim': {
       bio: 'Researcher bringing a place-aware perspective on geospatial evidence, resilient capability, and critical AI adoption.',

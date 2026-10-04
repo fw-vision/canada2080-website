@@ -31,14 +31,24 @@ const usesStatement =
   Boolean(slide.body && slide.body.length > 0) &&
   (slide.layout === 'text' ||
     slide.layout === 'keynote' ||
-    slide.layout === 'script');
+    slide.layout === 'script' ||
+    slide.layout === 'statement');
+const isImageOnly =
+  usesImageBox &&
+  slide.kicker.length === 0 &&
+  slide.title.length === 0 &&
+  points.length === 0;
 ---
 
 <section
   class:list={[
     'deck-slide',
     layoutClass,
-    { 'is-active': active, 'has-statement': usesStatement },
+    {
+      'is-active': active,
+      'has-statement': usesStatement,
+      'is-image-only': isImageOnly,
+    },
   ]}
   data-slide
   data-layout={slide.layout}
@@ -87,7 +97,8 @@ const usesStatement =
   {
     (slide.layout === 'text' ||
       slide.layout === 'keynote' ||
-      slide.layout === 'script') && (
+      slide.layout === 'script' ||
+      slide.layout === 'statement') && (
       <div class="deck-frame deck-frame-text">
         {usesStatement ? (
           <>
@@ -143,7 +154,13 @@ const usesStatement =
 
   {
     slide.layout === 'panel-live' && slide.people && (
-      <div class="deck-frame deck-frame-panel-live">
+      <div
+        class:list={[
+          'deck-frame',
+          'deck-frame-panel-live',
+          { 'has-question': Boolean(slide.question) },
+        ]}
+      >
         <div class="deck-panel-people">
           {slide.people.map((person) => (
             <article class="deck-panel-person">
@@ -155,12 +172,14 @@ const usesStatement =
             </article>
           ))}
         </div>
-        <aside class="deck-panel-question">
-          <p class="deck-question-label">
-            {slide.evidenceLabel} · {slide.questionLabel}
-          </p>
-          <p>{slide.question}</p>
-        </aside>
+        {slide.question && (
+          <aside class="deck-panel-question">
+            <p class="deck-question-label">
+              {slide.evidenceLabel} · {slide.questionLabel}
+            </p>
+            <p>{slide.question}</p>
+          </aside>
+        )}
       </div>
     )
   }
@@ -250,7 +269,6 @@ const usesStatement =
           {String(index + 1).padStart(2, '0')} /{' '}
           {String(total).padStart(2, '0')} · {slide.layout}
         </p>
-        <p>Arrows · Page Up/Down · Space</p>
       </footer>
     )
   }

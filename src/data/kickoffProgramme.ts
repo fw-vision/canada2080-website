@@ -73,21 +73,21 @@ export const programmeMeta = {
   prep: '9:00 a.m. to 11:30 a.m.',
   staffArrival: '11:30 a.m. to 12:30 p.m.',
   arrival: '12:30 p.m.',
-  start: '1:00 p.m. sharp',
+  start: '1:00 p.m.',
 } as const;
 
 export const programmeHosts: ProgrammeHost[] = [
   {
     name: 'Francis Wang',
-    role: 'Host · Founder, Canada2080',
-    affiliation: 'Founder, FW.VISION · Principal, Perceptiosphere',
-    bio: 'Francis Wang is a strategic-foresight and design researcher working across innovation ecosystems, sustainable innovation, and AI-augmented knowledge systems. He created the Tripartite Ecosystem Model and founded Canada2080 as a long-horizon initiative for Canadian capability.',
+    role: 'Host · Canada2080 Founder',
+    affiliation: 'FW.VISION · Dual Doctoral Researcher in AI and Innovation',
+    bio: 'Francis Wang is the founder of Canada2080 and FW.VISION and a dual doctoral researcher in AI and innovation. His work focuses on sovereign AI, distributed AI, strategic foresight, and resilient systems.',
   },
   {
     name: 'William Yao',
     role: 'Co-host',
-    affiliation: 'Solar-energy entrepreneur · Business strategist',
-    bio: 'William Yao is a solar-energy entrepreneur and business strategist whose work spans distributed-energy development, asset financing, platform economics, and information-market dynamics. He brings a practical operating and financing perspective to long-horizon capability building.',
+    affiliation: 'Solar-energy entrepreneur · Business strategist · ex-Merrill Lynch',
+    bio: 'William Yao is a solar-energy entrepreneur, business strategist, and ex-Merrill Lynch professional whose work spans distributed-energy development, asset financing, platform economics, and information-market dynamics. He brings a practical operating and financing perspective to long-horizon capability building.',
   },
 ] as const;
 
@@ -471,7 +471,7 @@ export const programmeBlocks: ProgrammeBlock[] = [
         name: 'Dr Kimberly Yazzie',
         affiliation: 'Assistant Professor · University of British Columbia',
         attendance: 'remote',
-        topic: 'Approved framing only: data governance, consent, community benefit, and accountable systems.',
+        topic: 'Data governance, consent, community benefit, and accountable systems.',
         bio: 'Dr Kimberly Yazzie is an Assistant Professor in the Department of Forests and Conservation Sciences, Faculty of Forestry and Environmental Stewardship, at the University of British Columbia. Her research spans freshwater ecology, climate solutions, and Indigenous land and water governance.',
         note: 'Use her confirmed biography and speaking-outside-appointment disclaimer. Moves into Panel 1.',
       },
@@ -495,7 +495,7 @@ export const programmeBlocks: ProgrammeBlock[] = [
         name: 'Pyn Lim',
         affiliation: 'Medical-aesthetics trainer · AI-education collaborator',
         attendance: 'remote',
-        topic: 'Patient data sovereignty and fragmented health records. Frame the problem and need, not a product or clinic-efficiency pitch.',
+        topic: 'Patient data sovereignty and fragmented health records.',
         bio: 'Pyn Lim is a medical-aesthetics trainer and AI-education collaborator focused on professional learning and health-related data systems. Her contribution frames patient data sovereignty and fragmented health records as continuity-of-care challenges.',
         note: 'Three to five minutes. Moves into Panel 1.',
       },
@@ -581,7 +581,7 @@ export const programmeBlocks: ProgrammeBlock[] = [
         name: 'Barry Wylant',
         affiliation: 'Associate Professor and Graduate Program Director, SAPL, University of Calgary',
         attendance: 'remote',
-        topic: 'Canadian firms that had to sell to international companies to scale, using source-approved examples as an IP-exit and domestic scale-up case.',
+        topic: 'Canadian firms that had to sell to international companies to scale, as an IP-exit and domestic scale-up case.',
         bio: 'Barry Wylant is Associate Professor and Graduate Program Director at SAPL, University of Calgary. An industrial designer and design researcher, he examines how design, technology, and community impact intersect.',
         note: 'Maybe, depending on health. Keynote-only. Confirm Sunday morning; if he cannot attend, skip the slot and give the recovered minutes to the remaining speakers or to Panel 2.',
       },

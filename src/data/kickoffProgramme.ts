@@ -7,6 +7,13 @@ export type ProgrammeSpeaker = {
   note?: string;
 };
 
+export type ProgrammeHost = {
+  name: string;
+  role: string;
+  affiliation: string;
+  bio: string;
+};
+
 export type ProgrammeQuestion = {
   kind: 'primary' | 'more';
   label: string;
@@ -69,6 +76,21 @@ export const programmeMeta = {
   start: '1:00 p.m. sharp',
 } as const;
 
+export const programmeHosts: ProgrammeHost[] = [
+  {
+    name: 'Francis Wang',
+    role: 'Host · Founder, Canada2080',
+    affiliation: 'Founder, FW.VISION · Principal, Perceptiosphere',
+    bio: 'Francis Wang is a strategic-foresight and design researcher working across innovation ecosystems, sustainable innovation, and AI-augmented knowledge systems. He created the Tripartite Ecosystem Model and founded Canada2080 as a long-horizon initiative for Canadian capability.',
+  },
+  {
+    name: 'William Yao',
+    role: 'Co-host',
+    affiliation: 'Solar-energy entrepreneur · Business strategist',
+    bio: 'William Yao is a solar-energy entrepreneur and business strategist whose work spans distributed-energy development, asset financing, platform economics, and information-market dynamics. He brings a practical operating and financing perspective to long-horizon capability building.',
+  },
+] as const;
+
 /** Grey lanyard: in-person guests. Remote guests are listed for the run of show, not for grey tags. */
 export const guestNameTags: NameTagGuest[] = [
   {
@@ -98,11 +120,12 @@ export const guestNameTags: NameTagGuest[] = [
     note: 'Ex-MP. Not speaking.',
   },
   {
-    name: 'Dr Sudarshana Bhattacharya',
-    affiliation: 'Analyst',
-    topic: 'Applied climate science · doctoral work at GGU',
+    name: 'Sudarshana Bhattacharya',
+    affiliation: 'Senior Director Analyst · Financial Services, Gartner',
+    topic: 'Enterprise AI adoption · banking data and AI governance',
     attendance: 'in-person',
     lanyard: 'grey',
+    note: 'Speaks in a personal, non-representative capacity. Participation does not imply Gartner endorsement.',
   },
   {
     name: 'Dr Kimberly Yazzie',
@@ -120,14 +143,14 @@ export const guestNameTags: NameTagGuest[] = [
   },
   {
     name: 'Sunita Kumari',
-    affiliation: 'AI Researcher at UT Austin/COHUMAIN Labs',
+    affiliation: 'Independent AI researcher',
     topic: 'Sovereign AI, runtime governance, and AI safety and security',
     attendance: 'in-person',
     lanyard: 'grey',
   },
   {
     name: 'Pyn Lim',
-    affiliation: 'ECAMS',
+    affiliation: 'Medical-aesthetics trainer · AI-education collaborator',
     topic: 'Patient data sovereignty and fragmented health records',
     attendance: 'remote',
     lanyard: 'none',
@@ -141,16 +164,16 @@ export const guestNameTags: NameTagGuest[] = [
     note: 'Maybe, depending on health.',
   },
   {
-    name: 'Yulia Korobkova',
-    affiliation: 'Corgan',
+    name: 'Yulia Korobkova, OAA, AAA, AANB, LEED',
+    affiliation: 'Data Centers Studio Leader, Vice President · Corgan Canada',
     topic: 'Data-centre design and Canadian compute capacity',
     attendance: 'in-person',
     lanyard: 'grey',
   },
   {
     name: 'Greg Hart',
-    affiliation: 'Founder, Future Fit Cities · InceptionU / TransPod Advisory Board',
-    topic: 'Stop Solving Problems',
+    affiliation: 'Co-founder and Facilitator, InceptionU · TransPod Advisory Board',
+    topic: 'Future-ready places · transformation design · commercialization',
     attendance: 'in-person',
     lanyard: 'grey',
   },
@@ -196,7 +219,6 @@ export const staffNameTags: StaffBadge[] = [
   { name: 'Salar Ali Mumtaz', role: 'Demo holder · AuroraNyxus' },
   { name: 'Mengsi Gong', role: 'Event helper' },
   { name: 'Parth Sharma', role: 'Event helper' },
-  { name: 'James Zheng', role: 'Event helper' },
   { name: 'Dean Zhu', role: 'Event helper' },
   { name: 'Maria Smirnova', role: 'Event helper' },
   { name: '', role: 'Event helper', blank: true },
@@ -438,19 +460,19 @@ export const programmeBlocks: ProgrammeBlock[] = [
     purpose: 'Five short perspectives that establish the governance, place, safety, and patient-data context for Panel 1.',
     speakers: [
       {
-        name: 'Dr Sudarshana Bhattacharya',
-        affiliation: 'Analyst',
+        name: 'Sudarshana Bhattacharya',
+        affiliation: 'Senior Director Analyst, Financial Services · Gartner',
         attendance: 'in-person',
-        topic: 'Applied climate science.',
-        bio: 'Analyst contributing applied climate research from her doctoral work at GGU.',
-        note: 'Introduce as Analyst. Frame the contribution through doctoral work at GGU. Do not name an employer. Moves into Panel 1.',
+        topic: 'Enterprise AI adoption, banking data and AI governance, and moving pilots into operating capability.',
+        bio: 'Sudarshana Bhattacharya is a Senior Director Analyst on Gartner’s Financial Services team in Canada and a Golden Gate University DBA candidate focused on generative AI. Her contribution connects banking data strategy, enterprise AI governance, and the transition from pilots to governed operating capability.',
+        note: 'She speaks in a personal, non-representative capacity. Participation does not imply Gartner endorsement. Moves into Panel 1.',
       },
       {
         name: 'Dr Kimberly Yazzie',
-        affiliation: 'University of British Columbia',
+        affiliation: 'Assistant Professor · University of British Columbia',
         attendance: 'remote',
-        topic: 'Approved framing only: data governance, consent, and community benefit.',
-        bio: 'Researcher contributing an approved perspective on consent, data stewardship, and accountable systems outside her institutional appointment.',
+        topic: 'Approved framing only: data governance, consent, community benefit, and accountable systems.',
+        bio: 'Dr Kimberly Yazzie is an Assistant Professor in the Department of Forests and Conservation Sciences, Faculty of Forestry and Environmental Stewardship, at the University of British Columbia. Her research spans freshwater ecology, climate solutions, and Indigenous land and water governance.',
         note: 'Use her confirmed biography and speaking-outside-appointment disclaimer. Moves into Panel 1.',
       },
       {
@@ -458,23 +480,23 @@ export const programmeBlocks: ProgrammeBlock[] = [
         affiliation: 'Geospatial AI and applied data research',
         attendance: 'remote',
         topic: 'Place-based and geospatial resilience, cognitive onloading, comparative perspectives, and critical AI adoption.',
-        bio: 'Researcher bringing a place-aware perspective on geospatial evidence, resilient capability, and critical AI adoption.',
+        bio: 'Erin Trochim is a geospatial AI and remote-sensing researcher. Her contribution connects place-based and geospatial resilience, cognitive onloading, comparative perspectives, and critical AI adoption.',
         note: 'Do not use a United States university affiliation. Moves into Panel 1.',
       },
       {
         name: 'Sunita Kumari',
-        affiliation: 'AI Researcher at UT Austin/COHUMAIN Labs',
+        affiliation: 'Independent AI researcher',
         attendance: 'in-person',
         topic: 'Sovereign AI; AI governance including runtime governance; the why and how of AI safety and security.',
-        bio: 'AI researcher at UT Austin/COHUMAIN Labs, attending in person. She is delivering the three-minute keynote on sovereign AI, runtime governance, and AI safety and security, including the topic supplied by Himanshu Joshi. Himanshu is not attending.',
-        note: 'Keynote-only. It is permitted to mention her association with Himanshu Joshi and COHUMAIN Labs.',
+        bio: 'Sunita Kumari is an AI researcher whose work centres on enterprise AI governance, cognitive stress testing, and robust system design for high-stakes deployments.',
+        note: 'Keynote-only. She contributes independently and does not represent Himanshu Joshi, COHUMAIN Labs, UT Austin, or another institution unless separately approved.',
       },
       {
         name: 'Pyn Lim',
-        affiliation: 'ECAMS',
+        affiliation: 'Medical-aesthetics trainer · AI-education collaborator',
         attendance: 'remote',
         topic: 'Patient data sovereignty and fragmented health records. Frame the problem and need, not a product or clinic-efficiency pitch.',
-        bio: 'Founder and education leader contributing a patient-centred perspective on continuity of care and data control.',
+        bio: 'Pyn Lim is a medical-aesthetics trainer and AI-education collaborator focused on professional learning and health-related data systems. Her contribution frames patient data sovereignty and fragmented health records as continuity-of-care challenges.',
         note: 'Three to five minutes. Moves into Panel 1.',
       },
     ],
@@ -489,7 +511,7 @@ export const programmeBlocks: ProgrammeBlock[] = [
       'Sunita is keynote-only. Sudarshana, Kimberly, Erin, and Pyn move into Panel 1.',
     ],
     guardrails: [
-      'Introduce Sudarshana as Analyst, contributing applied climate research from her doctoral work at GGU. Do not name an employer.',
+      'Introduce Sudarshana with the bounded biography above and state that participation does not imply Gartner endorsement.',
       'Do not publicly attach cultural, Indigenous, institutional, or place-based framing to Kimberly or Erin beyond their approved wording.',
     ],
   },
@@ -512,6 +534,12 @@ export const programmeBlocks: ProgrammeBlock[] = [
         label: 'A distinctly Canadian first move',
         question:
           'What should Canada learn from international and place-based perspectives, and what practical first deployment would demonstrate trustworthy, useful, and context-appropriate AI?',
+      },
+      {
+        kind: 'more',
+        label: 'Define sovereignty',
+        question:
+          'In practical terms, should AI sovereignty centre on ownership, access, portability, auditability, the right to withdraw, or another form of control?',
       },
       {
         kind: 'more',
@@ -554,31 +582,31 @@ export const programmeBlocks: ProgrammeBlock[] = [
         affiliation: 'Associate Professor and Graduate Program Director, SAPL, University of Calgary',
         attendance: 'remote',
         topic: 'Canadian firms that had to sell to international companies to scale, using source-approved examples as an IP-exit and domestic scale-up case.',
-        bio: "Barry Wylant is an Associate Professor and Graduate Program Director at SAPL, working with thesis students in the Master of Design Research, PhD, and Doctor of Design programmes. In his work and writings, Barry emphasizes the 'how' of design thinking. With extensive experience as an industrial designer and consultant, Barry explores the intersection of design, technology, and community impact. His design work has advanced innovation in various areas, including medical and accessibility devices, and consumer products. Barry contributes regularly to the University's e2i (evolve to innovate) programme, has been published in key international design journals, and is the co-editor of the book Enabling Solutions for Sustainable Living. Barry is an innovative thinker and his commitment to bringing a sense of thoughtfulness to the design process inspires a vision of design practices across disciplines shaping a brighter and more sustainable future.",
+        bio: 'Barry Wylant is Associate Professor and Graduate Program Director at SAPL, University of Calgary. An industrial designer and design researcher, he examines how design, technology, and community impact intersect.',
         note: 'Maybe, depending on health. Keynote-only. Confirm Sunday morning; if he cannot attend, skip the slot and give the recovered minutes to the remaining speakers or to Panel 2.',
       },
       {
-        name: 'Yulia Korobkova',
-        affiliation: 'Corgan',
+        name: 'Yulia Korobkova, OAA, AAA, AANB, LEED',
+        affiliation: 'Data Centers Studio Leader, Vice President · Corgan Canada',
         attendance: 'in-person',
         topic: 'Internal Canadian compute-capacity barriers, possible solutions, and a decades-scale path.',
-        bio: 'Data Centers Studio Leader and Vice President contributing a practitioner perspective on domestic compute infrastructure.',
-        note: 'Do not frame Yulia through a Canada-United States practice comparison. Moves into Panel 2.',
+        bio: 'Yulia Korobkova is Data Centers Studio Leader and Vice President at Corgan in Toronto. Her practice combines architecture, project leadership, and compute-infrastructure delivery.',
+        note: 'Use corrected titles and credentials. Do not frame Yulia through a Canada-United States practice comparison. Moves into Panel 2.',
       },
       {
         name: 'Greg Hart',
-        affiliation: 'Founder, Future Fit Cities · InceptionU / TransPod Advisory Board',
+        affiliation: 'Co-founder and Facilitator, InceptionU · TransPod Advisory Board',
         attendance: 'in-person',
-        topic: 'Stop Solving Problems. Future-ready places, transformation design, and risk-averse commercialization, including Future Fit Cities.',
-        bio: 'Founder of Future Fit Cities; co-founder and facilitator at InceptionU. Contributes a systems perspective on innovation culture and long-horizon capability.',
-        note: 'Slides titled Stop Solving Problems. Mention Future Fit Cities. Moves into Panel 2.',
+        topic: 'Future-ready places, transformation design, and risk-averse commercialization.',
+        bio: 'Greg Hart is Co-founder and Facilitator at InceptionU and serves on the TransPod Advisory Board. His work develops transformation designers who connect systems thinking and strategy to practical implementation.',
+        note: 'Slides titled Stop Solving Problems. Moves into Panel 2.',
       },
       {
         name: 'Dr Michael Donaldson',
         affiliation: 'DWA/Future Workshop',
         attendance: 'in-person',
         topic: 'Opportunity-enriched innovation culture; architecture, strategic design, and designed futures.',
-        bio: 'Principal Architect and Designer, invited for perspective on fostering an opportunity-enriched innovation culture, to support a resilient future.',
+        bio: 'Dr Michael Donaldson is Principal Architect and Designer at DWA / Future Workshop, working across architecture, strategic design, and designed futures. He contributes a perspective on fostering an opportunity-enriched innovation culture to support a resilient future.',
         note: 'Use his preferred bio. Moves into Panel 2.',
       },
       {
@@ -586,7 +614,7 @@ export const programmeBlocks: ProgrammeBlock[] = [
         affiliation: 'TransPod',
         attendance: 'in-person',
         topic: 'TransPod as a case study in how the Canadian government approaches risk.',
-        bio: 'Co-Founder and CEO contributing a deep-tech transportation and large-scale infrastructure delivery perspective.',
+        bio: 'Sebastien Gendron is Co-Founder and CEO of TransPod and serves on its Board of Directors. He contributes a transportation and deep-technology perspective on infrastructure, domestic capacity, risk appetite, finance, and delivery.',
         note: 'Invited speaker immediately before Panel 2, then panelist. On the panel, the MC will ask how Canada enables and champions long-term infrastructure projects, combining the more-questions on changing the risk system and recognizing progress.',
       },
     ],
@@ -625,15 +653,21 @@ export const programmeBlocks: ProgrammeBlock[] = [
       },
       {
         kind: 'more',
-        label: 'Recognize progress',
+        label: 'Choose what to build here',
         question:
-          'What concrete signal within the next five to ten years would demonstrate that Canada is compounding national capacity rather than producing isolated projects?',
+          'Which capabilities must Canada build and retain domestically, and which should remain part of trusted global exchange?',
       },
       {
         kind: 'more',
         label: 'Change the risk system',
         question:
           'How should procurement and capital reward experimentation and long-horizon infrastructure while preserving accountability?',
+      },
+      {
+        kind: 'more',
+        label: 'Recognize progress',
+        question:
+          'What concrete signal within the next five to ten years would demonstrate that Canada is compounding national capacity rather than producing isolated projects?',
       },
     ],
     sequence: [
@@ -651,7 +685,7 @@ export const programmeBlocks: ProgrammeBlock[] = [
   {
     id: 'close',
     time: '2:30 p.m.',
-    duration: '5 minutes',
+    duration: 'Approximately 6 minutes · no enforced cutoff',
     title: 'Closing synthesis and invitation',
     lead: 'Francis Wang, with MC handoff',
     purpose: 'Name the tensions, invite contribution, and hand into networking, photo ops, and show-and-tell.',
@@ -662,19 +696,20 @@ export const programmeBlocks: ProgrammeBlock[] = [
     ],
     sequence: [
       'MC hands back to Francis.',
-      'Synthesis, then invitation.',
+      'Francis delivers the complete bilingual closing and invitation.',
       'MC thanks contributors and guests, invites everyone to networking, and notes the stage photo and Canada2080 props.',
-      'End the programmed portion at 2:35.',
+      'The programmed portion ends when the closing is complete.',
     ],
     notes: [
       'Do not announce partnerships, products, or follow-on events that are not approved.',
-      'The stage photo happens in networking, not inside the five-minute close.',
+      'Do not compress or cut off the canonical closing to preserve an artificial five-minute limit.',
+      'The stage photo happens in networking, not inside the closing.',
     ],
   },
   {
     id: 'networking',
-    time: '2:35 p.m.',
-    duration: '25 minutes',
+    time: 'After the closing',
+    duration: 'Until 3:00 p.m.',
     title: 'Networking, photo ops, and show-and-tell',
     lead: 'Host team',
     purpose: 'Continue the conversation, gather for a stage photo, show Canada2080 props and posters, and book useful next steps.',

@@ -1,151 +1,239 @@
-export type HandoutGap = {
-  number: string;
+import {
+  programmeBlocks,
+  programmeHosts,
+  programmeMeta,
+  programmeThroughline,
+  type ProgrammeQuestion,
+  type ProgrammeSpeaker,
+} from './kickoffProgramme';
+
+export type HandoutContributor = ProgrammeSpeaker;
+
+export type HandoutPanel = {
   title: string;
-  summary: string;
+  titleLines: string[];
+  purpose: string;
+  questions: ProgrammeQuestion[];
+  writingPrompts: string[];
 };
+
+const featuredOne = programmeBlocks.find((block) => block.id === 'featured-1');
+const featuredTwo = programmeBlocks.find((block) => block.id === 'featured-2');
+const panelOne = programmeBlocks.find((block) => block.id === 'panel-1');
+const panelTwo = programmeBlocks.find((block) => block.id === 'panel-2');
 
 export const handoutMeta = {
   title: 'Canada2080 kickoff',
   subtitle: 'Guest working packet',
-  date: 'Sunday, October 4, 2026',
-  venue: 'Markham Ballroom · Hilton Toronto/Markham Suites Conference Centre',
+  date: programmeMeta.date,
+  venue: programmeMeta.venue,
   address: '8500 Warden Ave., Markham, ON L6G 1A5',
-  time: 'Arrival 12:30 p.m. · Programme 1:00–2:30 p.m.',
-  throughline:
-    'Canada has the research foundation to lead, but leadership depends on whether knowledge becomes durable capability, opportunity, production, and public value in Canada.',
+  time: `Arrival ${programmeMeta.arrival} · Programme ${programmeMeta.start}`,
+  throughline: programmeThroughline,
   site: 'canada2080.org',
   eventPath: '/events/2026-kickoff',
+  host: {
+    ...programmeHosts[0],
+    affiliation:
+      'Canada2080 Founder | FW.VISION | Dual Doctoral Researcher in AI and Innovation',
+    profileUrl: 'https://www.linkedin.com/in/findcongwang/',
+  },
+  coHost: {
+    ...programmeHosts[1],
+    affiliation: `${programmeHosts[1].affiliation} | ex-Merrill Lynch`,
+  },
+  mc: programmeMeta.mc,
+  mcProfileUrl: 'https://www.linkedin.com/in/kritika-saihgpaul/',
 } as const;
 
-export const handoutProgrammeGlance = [
-  { time: '12:30', title: 'Arrival, networking, and foyer demos' },
-  { time: '1:00', title: 'Welcome and Program Orientation' },
-  { time: '1:05', title: 'Civic welcome' },
-  { time: '1:10', title: 'Canada2080: the long-horizon challenge' },
-  { time: '1:20', title: 'Invited speakers on sovereign AI and trustworthy deployment' },
-  { time: '1:40', title: 'Panel 1: Sovereign AI, Data Governance, and Trustworthy Deployment' },
-  { time: '1:55', title: 'Invited speakers on infrastructure and domestic scale-up' },
-  { time: '2:10', title: 'Panel 2: Building National Capacity' },
-  { time: '2:25', title: 'Closing synthesis and invitation' },
-  { time: '2:30', title: 'Networking and follow-up' },
-] as const;
+const programmeIds = [
+  'arrival',
+  'welcome',
+  'civic',
+  'framing',
+  'featured-1',
+  'panel-1',
+  'featured-2',
+  'panel-2',
+  'close',
+  'networking',
+];
 
-export const handoutPurpose = [
-  'Canada2080 is a public long-horizon agenda for building the economic sovereignty, strategic capability, and public value Canada may need by 2080.',
-  "The kickoff starts from Canada's research and educational strengths, then asks where conversion into durable domestic capability stalls.",
-  'The room is cross-sector on purpose: education, industry, and governance each bring different resources, and capability forms at their intersection.',
-  'The aim is not a slogan. It is one clearer diagnosis, one sharper question, and one practical next step you can take home.',
-] as const;
+export const handoutProgrammeGlance = programmeIds
+  .map((id) => programmeBlocks.find((block) => block.id === id))
+  .filter((block): block is NonNullable<typeof block> => Boolean(block))
+  .map((block) => ({
+    time: block.time,
+    title: block.title,
+    duration: block.duration,
+  }));
 
-export const handoutTripartite = [
-  {
-    label: 'Education',
-    detail: 'Research, talent formation, and learning systems that keep knowledge renewable.',
-  },
-  {
-    label: 'Industry',
-    detail: 'Demand, production, operating knowledge, suppliers, and capital that turn ideas into working systems.',
-  },
-  {
-    label: 'Governance',
-    detail: 'Public purpose, policy, procurement, trust, and continuity across political and market cycles.',
-  },
-] as const;
+function toContributor(speaker: ProgrammeSpeaker): HandoutContributor {
+  const deployedProfileOverrides: Record<string, Partial<ProgrammeSpeaker>> = {
+    'Sudarshana Bhattacharya': {
+      name: 'Dr Sudarshana Bhattacharya',
+      affiliation: 'Analyst',
+      topic: 'Applied climate science.',
+      bio: 'Analyst contributing applied climate research from her doctoral work at GGU.',
+    },
+    'Dr Kimberly Yazzie': {
+      affiliation: 'University of British Columbia',
+      topic: 'Approved framing only: data governance, consent, and community benefit.',
+      bio: 'Researcher contributing an approved perspective on consent, data stewardship, and accountable systems outside her institutional appointment.',
+    },
+    'Erin Trochim': {
+      bio: 'Researcher bringing a place-aware perspective on geospatial evidence, resilient capability, and critical AI adoption.',
+    },
+    'Sunita Kumari': {
+      affiliation: 'AI Researcher at UT Austin/COHUMAIN Labs',
+      bio: 'AI researcher at UT Austin/COHUMAIN Labs, attending in person. She is delivering the three-minute keynote on sovereign AI, runtime governance, and AI safety and security, including the topic supplied by Himanshu Joshi. Himanshu is not attending.',
+    },
+    'Pyn Lim': {
+      affiliation: 'ECAMS',
+      bio: 'Founder and education leader contributing a patient-centred perspective on continuity of care and data control.',
+    },
+    'Barry Wylant': {
+      bio: "Barry Wylant is an Associate Professor and Graduate Program Director at SAPL, working with thesis students in the Master of Design Research, PhD, and Doctor of Design programmes. In his work and writings, Barry emphasizes the 'how' of design thinking. With extensive experience as an industrial designer and consultant, Barry explores the intersection of design, technology, and community impact. His design work has advanced innovation in various areas, including medical and accessibility devices, and consumer products.",
+    },
+    'Yulia Korobkova, OAA, AAA, AANB, LEED': {
+      affiliation: 'Data Centers Studio Leader — Vice President · Corgan Canada',
+      bio: 'Data Centers Studio Leader and Vice President contributing a practitioner perspective on domestic compute infrastructure.',
+    },
+    'Greg Hart': {
+      affiliation: 'Founder, Future Fit Cities · InceptionU / TransPod Advisory Board',
+      topic: 'Stop Solving Problems. Future-ready places, transformation design, and risk-averse commercialization, including Future Fit Cities.',
+      bio: 'Founder of Future Fit Cities; co-founder and facilitator at InceptionU. Contributes a systems perspective on innovation culture and long-horizon capability.',
+    },
+    'Dr Michael Donaldson': {
+      bio: 'Principal Architect and Designer, invited for perspective on fostering an opportunity-enriched innovation culture, to support a resilient future.',
+    },
+    'Sebastien Gendron': {
+      bio: 'Co-Founder and CEO contributing a deep-tech transportation and large-scale infrastructure delivery perspective.',
+    },
+  };
 
-export const handoutGaps: HandoutGap[] = [
+  return {
+    ...speaker,
+    ...deployedProfileOverrides[speaker.name],
+  };
+}
+
+export const handoutContributorSets = [
   {
-    number: '01',
-    title: 'Commercialization and scale-up',
-    summary:
-      'Strong research too rarely travels through adoption, first customers, production, suppliers, exports, and reinvestment.',
+    label: 'Keynote set 1',
+    title: featuredOne?.title ?? '',
+    titleLines: [
+      'Invited speakers on sovereign AI,',
+      'data governance, and trustworthy deployment',
+    ],
+    contributors: (featuredOne?.speakers ?? []).map(toContributor),
   },
   {
-    number: '02',
-    title: 'Talent retention and domestic opportunity',
-    summary:
-      'Canada needs enough demanding work for people to apply advanced capability, lead, return, and build from here.',
-  },
-  {
-    number: '03',
-    title: 'IP ownership and decision rights',
-    summary:
-      'Activity becomes strategic capability only when rights to use, govern, improve, finance, and redirect systems remain clear.',
-  },
-  {
-    number: '04',
-    title: 'Long-term investment and risk capacity',
-    summary:
-      'Productive capacity must compound through capital, adoption, infrastructure, skills, demand, and institutional continuity.',
+    label: 'Keynote set 2',
+    title: featuredTwo?.title ?? '',
+    titleLines: [
+      'Invited speakers on infrastructure, risk appetite,',
+      'and domestic scale-up',
+    ],
+    contributors: (featuredTwo?.speakers ?? []).map(toContributor),
   },
 ];
 
-export const handoutPanelBlocks = [
+export const handoutPanels: HandoutPanel[] = [
   {
-    title: 'Panel 1 · Sovereign AI, Data Governance, and Trustworthy Deployment',
-    focus:
-      'The controls, consent, evidence, and runtime governance required for high-stakes AI deployment.',
-    questions: [
-      'As AI moves from pilots into high-stakes use, what must remain under meaningful human, institutional, patient, or community control, and what governance must continue at runtime?',
-      'What should Canada learn from international and place-based perspectives, and what practical first deployment would demonstrate trustworthy, useful, and context-appropriate AI?',
+    title: panelOne?.title ?? '',
+    titleLines: [
+      'Panel 1: Sovereign AI, Data Governance,',
+      'and Trustworthy Deployment',
+    ],
+    purpose: panelOne?.purpose ?? '',
+    questions: panelOne?.questions ?? [],
+    writingPrompts: [
+      'What must remain under meaningful human, patient, community, or institutional control?',
+      'What evidence threshold would earn my trust?',
     ],
   },
   {
-    title: 'Panel 2 · Building National Capacity',
-    focus:
-      'The infrastructure, risk appetite, and domestic scale-up choices that allow Canadian capability to compound.',
-    questions: [
-      'Why does Canadian IP, talent, and venture capacity so often leave or sell before it compounds domestically, and which internal barrier must change first?',
-      'What one infrastructure or institutional move should begin on Monday, and how would it connect compute, transportation, manufacturing, energy, talent, and place over the next decade?',
+    title: panelTwo?.title ?? '',
+    titleLines: [
+      'Panel 2: Building National Capacity:',
+      'Infrastructure, Risk Appetite, and Domestic Scale-Up',
+    ],
+    purpose: panelTwo?.purpose ?? '',
+    questions: panelTwo?.questions ?? [],
+    writingPrompts: [
+      'Which internal Canadian barrier should change first?',
+      'What capability should Canada build or retain domestically?',
     ],
   },
-] as const;
+];
 
-export const handoutScales = [
-  {
-    number: '01',
-    title: 'Prove a unit',
-    detail: 'Test energy, water, food, compute, or production with real users, costs, rights, and recovery.',
-  },
-  {
-    number: '02',
-    title: 'Connect a community',
-    detail: 'Share surplus capacity while protecting sensitive data, essential services, and local control.',
-  },
-  {
-    number: '03',
-    title: 'Build regional loops',
-    detail: 'Join infrastructure, demand, skills, suppliers, repair, and public institutions into repeatable systems.',
-  },
-  {
-    number: '04',
-    title: 'Network national capability',
-    detail: 'Link differentiated regions through standards, trusted exchange, redundancy, and domestic decision rights.',
-  },
-] as const;
-
-export const handoutJoinPaths = [
-  { audience: 'Investors', ask: 'Finance a capability gap.' },
-  { audience: 'Institutions', ask: 'Operate a bridge or testbed.' },
-  { audience: 'Policy', ask: 'Remove one bottleneck.' },
-  { audience: 'Researchers', ask: 'Strengthen the evidence.' },
-  { audience: 'Operators', ask: 'Make capability work in production.' },
-  { audience: 'Communities', ask: 'Define legitimate value.' },
-] as const;
-
-export const handoutReflections = {
-  tripartite:
-    'Which sphere do you primarily work in? Where is the missing connection that would turn knowledge into durable capability?',
-  gaps:
-    'Which Gap most constrains your work today? What evidence would strengthen or change that diagnosis?',
-  nextStep:
-    'In the next 90 days, what one conversation, demonstration, or evidence trail will you start?',
+export const handoutAiReflection = {
+  title: 'Personal reflection | Not a verified economic claim',
+  instruction:
+    'This exercise concerns only the spending you personally influence or help decide. It does not estimate Canadian AI spending, demand, capacity, or economic impact. Keep the page for your own use unless a separate collection purpose and consent statement is provided.',
+  prompts: [
+    {
+      question:
+        'In the next 12 months, approximately how much AI-related spending do you personally influence or help decide?',
+      options: [
+        'None',
+        'Under CAD 10,000',
+        'CAD 10,000–100,000',
+        'CAD 100,000–1 million',
+        'Over CAD 1 million',
+        'Prefer not to record',
+      ],
+    },
+    {
+      question:
+        'What share could realistically be directed toward compute physically located in Canada if capacity, price, reliability, security, and governance requirements were met?',
+      options: ['0%', 'Under 25%', '25–50%', 'More than 50%', 'Unsure'],
+    },
+    {
+      question:
+        'Would your answer differ for services under Canadian control rather than infrastructure merely located in Canada? Why?',
+      options: [],
+    },
+    {
+      question: 'Which domestic compute constraint would need to change first?',
+      options: [
+        'Power or interconnection',
+        'Network capacity',
+        'Land or permitting',
+        'Hardware access',
+        'Financing',
+        'Skills',
+        'Procurement',
+        'Security or compliance',
+        'Demand certainty',
+        'Other',
+      ],
+    },
+    {
+      question:
+        'What evidence or operating condition would justify shifting spending? What would make you decide not to shift it?',
+      options: [],
+    },
+  ],
+  supporters: [
+    {
+      name: 'DAICompute',
+      website: 'daicompute.ca',
+      href: 'https://daicompute.ca',
+    },
+    {
+      name: 'AuroraNyxus',
+      website: 'auroranyxus.com',
+      href: 'https://auroranyxus.com',
+    },
+  ],
 } as const;
 
-/** Approved brief bios for guest materials. Keep these as the canonical handout wording. */
-export const handoutGuestBios = [
-  {
-    name: 'Barry Wylant',
-    affiliation: 'Associate Professor and Graduate Program Director, SAPL, University of Calgary',
-    bio: "Barry Wylant is an Associate Professor and Graduate Program Director at SAPL, working with thesis students in the Master of Design Research, PhD, and Doctor of Design programmes. In his work and writings, Barry emphasizes the 'how' of design thinking. With extensive experience as an industrial designer and consultant, Barry explores the intersection of design, technology, and community impact. His design work has advanced innovation in various areas, including medical and accessibility devices, and consumer products. Barry contributes regularly to the University's e2i (evolve to innovate) programme, has been published in key international design journals, and is the co-editor of the book Enabling Solutions for Sustainable Living. Barry is an innovative thinker and his commitment to bringing a sense of thoughtfulness to the design process inspires a vision of design practices across disciplines shaping a brighter and more sustainable future.",
-  },
+export const handoutReceptionQuestions = [
+  'What claim or assumption from Panel 1 do I want to test?',
+  'What claim or assumption from Panel 2 do I want to test?',
+  'What question would I ask a contributor after the programme?',
+  'What evidence, example, or counterexample could I contribute?',
+  'What next conversation would be useful, with whom, and why?',
 ] as const;

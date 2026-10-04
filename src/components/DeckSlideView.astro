@@ -29,7 +29,9 @@ const usesImageBox =
   slide.layout === 'image-caption' || slide.layout === 'image-mosaic';
 const usesStatement =
   Boolean(slide.body && slide.body.length > 0) &&
-  (slide.layout === 'text' || slide.layout === 'keynote');
+  (slide.layout === 'text' ||
+    slide.layout === 'keynote' ||
+    slide.layout === 'script');
 ---
 
 <section
@@ -52,6 +54,7 @@ const usesStatement =
     <h1 class="deck-title">{slide.title}</h1>
     {slide.role && <p class="deck-role">{slide.role}</p>}
     {slide.subtitle && <p class="deck-subtitle">{slide.subtitle}</p>}
+    {slide.evidenceLabel && <p class="deck-evidence-label">{slide.evidenceLabel}</p>}
   </header>
 
   {
@@ -82,7 +85,9 @@ const usesStatement =
   }
 
   {
-    (slide.layout === 'text' || slide.layout === 'keynote') && (
+    (slide.layout === 'text' ||
+      slide.layout === 'keynote' ||
+      slide.layout === 'script') && (
       <div class="deck-frame deck-frame-text">
         {usesStatement ? (
           <>
@@ -110,6 +115,52 @@ const usesStatement =
             ))}
           </ul>
         )}
+      </div>
+    )
+  }
+
+  {
+    slide.layout === 'bio' && slide.person && (
+      <div class="deck-frame deck-frame-bio">
+        <div class="deck-bio-meta">
+          {slide.person.affiliation && <p>{slide.person.affiliation}</p>}
+          {slide.person.attendance && (
+            <span class="deck-attendance">
+              {slide.person.attendance === 'remote' ? 'Remote' : 'In person'}
+            </span>
+          )}
+        </div>
+        <p class="deck-bio-copy">{slide.person.bio}</p>
+        {slide.person.topic && (
+          <div class="deck-bio-topic">
+            <span>Contribution</span>
+            <p>{slide.person.topic}</p>
+          </div>
+        )}
+      </div>
+    )
+  }
+
+  {
+    slide.layout === 'panel-live' && slide.people && (
+      <div class="deck-frame deck-frame-panel-live">
+        <div class="deck-panel-people">
+          {slide.people.map((person) => (
+            <article class="deck-panel-person">
+              <div>
+                <h2>{person.name}</h2>
+                {person.affiliation && <p class="deck-panel-affiliation">{person.affiliation}</p>}
+              </div>
+              <p class="deck-panel-bio">{person.bio}</p>
+            </article>
+          ))}
+        </div>
+        <aside class="deck-panel-question">
+          <p class="deck-question-label">
+            {slide.evidenceLabel} · {slide.questionLabel}
+          </p>
+          <p>{slide.question}</p>
+        </aside>
       </div>
     )
   }

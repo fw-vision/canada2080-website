@@ -42,7 +42,7 @@ Public launch and kickoff scheduling. The kickoff is Sunday, October 4, 2026, at
 - Keep public substantive claims attributable and appropriately qualified, but do not clutter the Gaps metric column with visible evidence-class labels.
 - Attribute the four Gaps publicly as part of **Francis Wang's research into Canadian sustainable innovation**. Preserve the 2025 proposal provenance in About and source records.
 - Never publish the 66% graduate or 73% taxpayer-funded IP figures without reproducible upstream evidence.
-- Never turn climate exposure estimates into displacement, migration, or Canada-destination claims.
+- The canonical kickoff speech may present its 3.8-billion climate-migration passage verbatim as Francis Wang's scenario and advocacy inference. Do not present that passage as a verified migration forecast or attribute the migration conclusion to the climate-niche research itself.
 - The approved climate line is that 2.1 to 3.7 billion people could be exposed to unprecedented heat or conditions outside a historical human temperature niche under specified late-century scenarios. State that this is not a displacement forecast.
 - Treat precision resilience as a working hypothesis attributed to Francis Wang and Barry Wylant.
 - Treat quantum timing, global leadership, and Type I civilization as scenarios or aspirations, not forecasts.

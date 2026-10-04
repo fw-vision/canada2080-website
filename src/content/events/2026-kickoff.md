@@ -45,9 +45,9 @@ guests:
     participation: remote
     profileUrl: "https://www.linkedin.com/in/barry-wylant-105488100/"
   - name: "Greg Hart"
-    institution: "Founder, Future Fit Cities · InceptionU / TransPod Advisory Board"
-    expertise: "Stop Solving Problems · future-ready places and transformation design"
-    bio: "Founder of Future Fit Cities; co-founder and facilitator at InceptionU. Contributes a systems perspective on innovation culture and long-horizon capability."
+    institution: "Co-founder and Facilitator, InceptionU · TransPod Advisory Board"
+    expertise: "Future-ready places, transformation design, and commercialization"
+    bio: "Co-founder and Facilitator at InceptionU and a member of the TransPod Advisory Board. His work develops transformation designers who connect systems thinking and strategy to practical implementation."
     group: academic
     participation: in-person
     profileUrl: "https://www.linkedin.com/in/greg-hart-design/"
@@ -66,23 +66,23 @@ guests:
     participation: remote
     profileUrl: "https://www.linkedin.com/in/kimberly-yazzie-ph-d-09758a4a/"
   - name: "Sunita Kumari"
-    institution: "AI Researcher at UT Austin/COHUMAIN Labs"
+    institution: "Independent AI researcher"
     expertise: "Sovereign AI, runtime governance, and AI safety and security"
-    bio: "AI researcher at UT Austin/COHUMAIN Labs, attending in person. She is delivering a keynote on sovereign AI, runtime governance, and AI safety and security, including the topic supplied by Himanshu Joshi."
+    bio: "AI researcher whose work centres on enterprise AI governance, cognitive stress testing, and robust system design for high-stakes deployments. She contributes independently."
     group: academic
     participation: in-person
     profileUrl: "https://www.linkedin.com/in/sunita-kumari-data-ai/"
   - name: "Pyn Lim"
-    institution: "ECAMS"
+    institution: "Medical-aesthetics training and AI education"
     expertise: "Patient data sovereignty and fragmented health records"
-    bio: "Founder and education leader contributing a patient-centred perspective on continuity of care and data control."
+    bio: "Medical-aesthetics trainer and AI-education collaborator contributing a patient-centred perspective on continuity of care and data control."
     group: industry
     participation: remote
     profileUrl: "https://www.linkedin.com/in/pynlim/"
-  - name: "Yulia Korobkova"
-    institution: "Corgan"
+  - name: "Yulia Korobkova, OAA, AAA, AANB, LEED"
+    institution: "Data Centers Studio Leader, Vice President · Corgan Canada"
     expertise: "Data-centre design and Canadian compute capacity"
-    bio: "Data Centers Studio Leader and Vice President contributing a practitioner perspective on domestic compute infrastructure."
+    bio: "Data Centers Studio Leader and Vice President at Corgan Canada, contributing a practitioner perspective on domestic compute infrastructure."
     group: industry
     participation: in-person
     profileUrl: "https://www.linkedin.com/in/yulia-korobkova/"
@@ -93,10 +93,10 @@ guests:
     group: industry
     participation: in-person
     profileUrl: "https://www.designworkshop.ca/studio"
-  - name: "Dr Sudarshana Bhattacharya"
-    institution: "Analyst"
-    expertise: "Applied climate science"
-    bio: "Analyst contributing applied climate research from her doctoral work at GGU."
+  - name: "Sudarshana Bhattacharya"
+    institution: "Senior Director Analyst, Financial Services · Gartner"
+    expertise: "Enterprise AI adoption, banking data, and AI governance"
+    bio: "Senior Director Analyst on Gartner’s Financial Services team in Canada and a Golden Gate University DBA candidate focused on generative AI. She speaks in a personal, non-representative capacity; participation does not imply Gartner endorsement."
     group: industry
     participation: in-person
     profileUrl: "https://www.linkedin.com/in/sudarshanabhattacharya/"
@@ -182,19 +182,19 @@ itinerary:
     description: "Two questions on meaningful control, runtime governance, and a practical Canadian first deployment."
   - time: "1:55 p.m."
     title: "Invited speakers on infrastructure, risk appetite, and domestic scale-up"
-    duration: "15 minutes"
+    duration: "20 minutes"
     description: "Five short perspectives on domestic scale-up, compute capacity, future-ready places, innovation culture, and TransPod as a case in how the Canadian government approaches risk."
-  - time: "2:10 p.m."
+  - time: "2:15 p.m."
     title: "Panel 2: Building National Capacity: Infrastructure, Risk Appetite, and Domestic Scale-Up"
     duration: "15 minutes"
     description: "Two questions on why Canadian capability fails to compound domestically and what should begin now."
-  - time: "2:25 p.m."
-    title: "Closing synthesis and invitation"
-    duration: "5 minutes"
-    description: "An invitation to contribute evidence, capital, institutional capacity, operating knowledge, or a next conversation."
   - time: "2:30 p.m."
+    title: "Closing synthesis and invitation"
+    duration: "Approximately 6 minutes · no enforced cutoff"
+    description: "The complete bilingual closing and an invitation to contribute evidence, capital, institutional capacity, operating knowledge, or a next conversation."
+  - time: "After the closing"
     title: "Reception and follow-up"
-    duration: "30 minutes"
+    duration: "Until 3:00 p.m."
     description: "Continue the conversation, meet participants, and identify useful next steps."
 draft: false
 ---

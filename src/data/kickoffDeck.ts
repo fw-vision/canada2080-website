@@ -1,3 +1,10 @@
+import {
+  programmeBlocks,
+  programmeHosts,
+  programmeMeta,
+  type ProgrammeSpeaker,
+} from './kickoffProgramme';
+
 export type DeckReveal = 'full' | 'step';
 
 export type DeckLayout =
@@ -7,7 +14,10 @@ export type DeckLayout =
   | 'image-mosaic'
   | 'speaker-intro'
   | 'panel-hold'
-  | 'keynote';
+  | 'keynote'
+  | 'script'
+  | 'bio'
+  | 'panel-live';
 
 export type DeckCaptionRails = 'below' | 'above' | 'around';
 
@@ -30,6 +40,15 @@ export type DeckImage = {
   credit: string;
 };
 
+export type DeckPerson = {
+  name: string;
+  role: string;
+  affiliation?: string;
+  attendance?: 'in-person' | 'remote';
+  topic?: string;
+  bio: string;
+};
+
 export type DeckSlide = {
   id: string;
   layout: DeckLayout;
@@ -49,6 +68,11 @@ export type DeckSlide = {
   points?: string[];
   /** Continuous rich statement. Prefer this over points for ceremonial text-only slides. */
   body?: DeckRichText;
+  person?: DeckPerson;
+  people?: DeckPerson[];
+  questionLabel?: string;
+  question?: string;
+  evidenceLabel?: string;
   source?: DeckSource;
   note?: string;
 };
@@ -354,20 +378,365 @@ export const deckTemplateSpecs: DeckTemplateSpec[] = [
   },
 ];
 
+const blockById = new Map(programmeBlocks.map((block) => [block.id, block]));
+const featuredOne = blockById.get('featured-1');
+const featuredTwo = blockById.get('featured-2');
+const panelOne = blockById.get('panel-1');
+const panelTwo = blockById.get('panel-2');
+const allSpeakers = [...(featuredOne?.speakers ?? []), ...(featuredTwo?.speakers ?? [])];
+
+function toDeckPerson(speaker: ProgrammeSpeaker): DeckPerson {
+  return {
+    name: speaker.name,
+    role: speaker.topic,
+    affiliation: speaker.affiliation,
+    attendance: speaker.attendance,
+    topic: speaker.topic,
+    bio: speaker.bio,
+  };
+}
+
+function findSpeaker(name: string): DeckPerson {
+  const speaker = allSpeakers.find((item) => item.name === name);
+  if (!speaker) {
+    throw new Error(`Missing kickoff speaker: ${name}`);
+  }
+  return toDeckPerson(speaker);
+}
+
+function biographySlides(
+  prefix: string,
+  speakers: ProgrammeSpeaker[] = [],
+): DeckSlide[] {
+  return speakers.map((speaker, index) => ({
+    id: `${prefix}-${index + 1}`,
+    layout: 'bio',
+    reveal: 'full',
+    kicker: `${speaker.attendance === 'remote' ? 'Remote contributor' : 'In-person contributor'} · Introduced by Kritika Saihgpaul`,
+    title: speaker.name,
+    person: toDeckPerson(speaker),
+    note:
+      speaker.attendance === 'remote'
+        ? 'Hold for the introduction, then cut to the remote camera or screen share. Return here after the contribution.'
+        : 'Hold for the introduction and contribution unless an approved presenter deck is supplied.',
+  }));
+}
+
+function panelSlides(
+  id: string,
+  time: string,
+  title: string,
+  purpose: string,
+  people: DeckPerson[],
+  questions = panelOne?.questions ?? [],
+): DeckSlide[] {
+  return questions.map((question, index) => ({
+    id: `${id}-question-${index + 1}`,
+    layout: 'panel-live',
+    reveal: 'full',
+    kicker: `${time} · ${question.kind === 'primary' ? 'Primary question' : 'Backup question'}`,
+    title,
+    subtitle: purpose,
+    people,
+    questionLabel: question.label,
+    question: question.question,
+    evidenceLabel: question.kind === 'primary' ? 'PRIMARY' : 'BACKUP',
+    note: 'Keep this slide on screen while the panel answers. Advance only when the MC moves to the next question.',
+  }));
+}
+
+const openingScript: DeckSlide[] = [
+  {
+    id: 'speech-opening-01',
+    layout: 'script',
+    reveal: 'full',
+    kicker: 'Canada2080 Vision · Francis Wang',
+    title: 'A kickoff, not the whole conversation',
+    body: [
+      'Good afternoon, folks joining in person and online, I thank you for coming today for the kickoff of the Canada 2080 initiative. Normally, to launch something at this scale will require a multi-day event. Where each of the guests I have invited today has a much longer dedicated keynote, followed by hour-long panels to do this properly. However, As the name suggests. Canada 2080 is a long-horizon initiative. And my intention today, calling a kickoff, will be just to pull a gathering of people who believe in similar possibilities and to start conversations, and many more events to come. ',
+    ],
+  },
+  {
+    id: 'speech-opening-02',
+    layout: 'script',
+    reveal: 'full',
+    kicker: 'ASPIRATION',
+    title: 'Canada is the future of planet Earth',
+    body: [
+      'I have been thinking about bold ambitions, and claims; to rally behind and to put purpose with my struggles. For Canada to be one of the most prosperous nations by 2080; and to say that Canada is the future of planet Earth.',
+    ],
+  },
+  {
+    id: 'speech-opening-03',
+    layout: 'script',
+    reveal: 'full',
+    kicker: 'Looking forward from today',
+    title: 'Strong foundations',
+    body: [
+      "Let's begin by looking forward from today. Canada has strong foundations. From land, freshwater access, rare earth and biomaterials, clean power generation, to home of the most innovative education and research institutions in the world. We have the natural capital and a strong zero-to-one in almost everything.",
+    ],
+  },
+  {
+    id: 'speech-opening-04',
+    layout: 'script',
+    reveal: 'full',
+    kicker: 'The conversion problem',
+    title: 'But we have our issues',
+    body: [
+      'But we have our issues. Today, Canadian firms often struggle to commercialize and scale, resulting in intellectual property going to foreign corporations; we have our brain drain issues where educated folks leave Canada for opportunities elsewhere. And we sell our raw materials instead of building the capabilities and the supply chains for a thriving local economy.',
+    ],
+  },
+  {
+    id: 'speech-opening-05',
+    layout: 'script',
+    reveal: 'full',
+    kicker: 'Capability and value',
+    title: 'What remains here?',
+    body: [
+      "The American industrialists are smart; back then, they built all these oil pipelines such that the industries stayed in America. Today, the smartest entrepreneurs and innovators flock to the Bay Area, make the big bucks, and then sometimes they feel like it's time to contribute, and they bring money back; to build more training institutions that ends up building talents in Canada to funnel elsewhere in the world. We are trading our intellectual culture and our resources; VALUE; away for cheap money. Making us specialized as a plantation for the world without properly and deliberately building up the infrastructure for ourselves. ",
+    ],
+  },
+  {
+    id: 'speech-opening-06',
+    layout: 'script',
+    reveal: 'full',
+    kicker: 'Opportunity',
+    title: 'Big ambitions are feasible',
+    body: [
+      "BUT, we ARE rich in this zero-to-one and opportunities lie in front of us; to build resilient living systems, bringing back manufacturing and an integrated supply chain, we can make our own compute chips, although it'll probably be quantum chips by that point. It took Taiwan 40 years to become a leader in chip manufacturing. These big, hairy, ambitious things are feasible if we aim for them.",
+    ],
+  },
+  {
+    id: 'speech-opening-07',
+    layout: 'script',
+    reveal: 'full',
+    kicker: 'FRANCIS WANG SCENARIO / ADVOCACY INFERENCE',
+    title: 'Look backwards from the future',
+    body: [
+      "Now, let's look backwards from the future. Canada IS the future of this planet. By 2080, 3.8 billion people will be living outside of the human climate niche based on current models. These people need to go somewhere, and if you look at the world map (equal earth projects, recently adopted by UN), there isn't a lot of land in the Southern Hemisphere. Climate-based migration will move northward; to countries are not as affected by rising coastlines. ",
+    ],
+    evidenceLabel: 'SCENARIO / INFERENCE',
+  },
+  {
+    id: 'speech-opening-08',
+    layout: 'script',
+    reveal: 'full',
+    kicker: 'FRANCIS WANG SCENARIO / ADVOCACY INFERENCE',
+    title: 'That leaves Canada and Russia',
+    body: [
+      "That leaves Canada and Russia. To host the world's people What's interesting about this future is that some time along the way, there will be climate-based immigration and a corresponing increase in population in Canada. That enables business models and patterns in Asia which depend on higher population density that cannot be replicated here. And also we'll have the workforce to support that integrated supply chain.",
+    ],
+    evidenceLabel: 'SCENARIO / INFERENCE',
+  },
+  {
+    id: 'speech-opening-09',
+    layout: 'script',
+    reveal: 'full',
+    kicker: 'ACTUALIZE',
+    title: 'What do we retain?',
+    body: [
+      "So there's a picture, what can we do to ACTUALIZE? A country can sell resources and still lose  the higher-value capability around them. It can export culture and still lose  the ownership, distribution, and learning  that allow culture to compound. It can produce brilliant research and still see  the decisions, production, and reinvestment  happen elsewhere.",
+    ],
+  },
+  {
+    id: 'speech-opening-10',
+    layout: 'script',
+    reveal: 'full',
+    kicker: 'Capability · ownership · learning',
+    title: 'Canada needs all four',
+    body: [
+      'The distinction is simple, even when the work is hard: Selling resources and culture brings revenue and exchange. Retaining capability  keeps the means to build and operate. Retaining ownership and decision rights  keeps the right to choose a direction. Retaining learning and reinvestment  keeps each success connected to the next generation of capacity. Canada needs all four.',
+    ],
+  },
+  {
+    id: 'speech-opening-11',
+    layout: 'script',
+    reveal: 'full',
+    kicker: 'AI + infrastructure',
+    title: 'Two tightly coupled conversations',
+    body: [
+      "Our first panel topic is on AI, and the second one is on infrastructure. I believe these two are tightly coupled, although we address these at different timescales. Since industrialization, everything we do at scale requires energy; AI is such a critical topic at this moment because with agentic AI, I will argue that all things that happen at scale from this point onwards will require compute; and with that, even greater demand on energy. I always tell people I don't know what the next fad is going to be. It could be quantum computing, reconfigurable surfaces in terms of some advanced material science. But whatever it is, it's going to need even MORE energy; even MORE compute, and whatever the new thing will be. That is building strong foundations.",
+    ],
+  },
+  {
+    id: 'speech-opening-12',
+    layout: 'script',
+    reveal: 'full',
+    kicker: 'Energy and destiny',
+    title: 'Controlling our energy means controlling our destiny',
+    body: [
+      'And is in alignment with our current national strategy, Carney stated in his forward guidance just this past month. and I quote: "Controlling our energy means controlling our destiny."',
+    ],
+  },
+  {
+    id: 'speech-opening-13',
+    layout: 'script',
+    reveal: 'full',
+    kicker: 'Precision resilience',
+    title: 'Resilient parts with cross-scale connections',
+    body: [
+      'We need to build capacity in Canada, in a way that is resilient; resilient systems are made of resilient parts with cross-scale connections. AI is enabling complex systems at small scale due to cheaper management. So perhaps we could build new neighborhoods; that generate their own energy, compute, produces its own food and manages water; and these resilient parts come together for a resilient society.',
+    ],
+  },
+  {
+    id: 'speech-opening-14',
+    layout: 'script',
+    reveal: 'full',
+    kicker: 'From decentralized energy to decentralized compute',
+    title: 'Capability in every household',
+    body: [
+      "I'll end this intro with some of my current efforts based on my experiences in decentralized energy; and bringing that to decentralized compute. Because I imagine this prosperous future where every household can manage some of that complexity. So that your family's health data, and financial information, and digitize private assets are on local compute in the household. While also providing the compute capacity to your connected systems for less sensitive payloads.",
+    ],
+  },
+  {
+    id: 'speech-opening-15',
+    layout: 'script',
+    reveal: 'full',
+    kicker: 'Show of hands',
+    title: 'Who remembers dial-up modems?',
+    body: [
+      "Show of hands: how many people remember the dial-up modems? It makes this very nostalgic connection noise, which I'll not replicate, but I could. It's noisy and takes forever, then you got to cable modems; and sometimes you have to unplug and replug them back in and wait before you're online. Why is it so slow?  ",
+    ],
+  },
+  {
+    id: 'speech-opening-16',
+    layout: 'script',
+    reveal: 'full',
+    kicker: 'The physical internet',
+    title: 'A concrete presence of something with no form',
+    body: [
+      "As a computer science graduate from Waterloo, I'll tell you what's fascinating about these things: every piece of those modems was a physical part of the internet. A concrete physical presence of something with no form. It has to communicate and join this complex network of billions of devices. So I understand why it takes some time. And I still complain that it's so slow. Because users don't care about that.",
+    ],
+  },
+  {
+    id: 'speech-opening-17',
+    layout: 'script',
+    reveal: 'full',
+    kicker: 'Small steps',
+    title: 'Let’s jump into AI and our guests',
+    body: [
+      "Why I bring that up, is that I see some younger folks, some parents with kids. If you bought for yourself or for your children these (getting very expensive) gaming machines. I thank you for investing in Canada's infrastructure and sovereign assets. You see, we have already started small steps. Let's jump into AI and our guests. Thank you.",
+    ],
+  },
+];
+
+const closingScript: DeckSlide[] = [
+  {
+    id: 'speech-close-01',
+    layout: 'script',
+    reveal: 'full',
+    kicker: 'Closing Invitation · Francis Wang',
+    title: 'Thank you',
+    body: [
+      "Thank you, Kritika. Thank you to all of our guest speakers for a barrage of information. Wow, time flew by. We are in Markham, one of my aunts has always told me that these events are always in English, and it's difficult for her. My parents are here too, and I know it's difficult for them to understand what I've been saying. ",
+    ],
+  },
+  {
+    id: 'speech-close-02',
+    layout: 'script',
+    reveal: 'full',
+    kicker: 'English + 中文',
+    title: 'Why this close is bilingual',
+    body: [
+      'So I will try to do this closing and invitations bilingually, that people can know how important this is, and how noble is our pursuit. And if you are willing to invest the time, also help do that in your own communities. 我燕姨一直说这些活动都是用英文讲的，她其实也听不太懂。 所以今天我就试试中英双开。 我小学三年级的语文水平啊，大家见笑了。 ',
+    ],
+  },
+  {
+    id: 'speech-close-03',
+    layout: 'script',
+    reveal: 'full',
+    kicker: 'Go far, together',
+    title: 'A common belief in a future',
+    body: [
+      'In the Conrad School of Business at Waterloo, there is this plaque framed that says "if you want to go fast, go alone. If you want to go far, go together." I believe that sums up today, undertaking an initiative of this magnitude requires coalitions, partnerships, and a common belief in a future to co-create and actualize, and to benefit from the values realized by that future manifesting to all those that struggled towards it.',
+    ],
+  },
+  {
+    id: 'speech-close-04',
+    layout: 'script',
+    reveal: 'full',
+    kicker: '独行快，众行远',
+    title: '共识的理想',
+    body: [
+      '我们滑铁卢大学的一个商学院里面有这么 一个 poster, 说 独行快，众行远。 我个人觉得这句话很好。 也很符合今天我们讲的那些东西。 要想把一个50年的远景 做出来不是一小群人可以办到的事情。 我们需要团体和合作 以及共识的理想去实现这些未来。 才能在这个未来 成真之后 能把他带来的财富给予 在实践路上的这些人。',
+    ],
+  },
+  {
+    id: 'speech-close-05',
+    layout: 'script',
+    reveal: 'full',
+    kicker: 'GRIT + LUCK',
+    title: 'Fortune favors the bold',
+    body: [
+      'Actualizing the future and building Canada into a strong, sovereign nation on the global stage. For all our excitement and passion, it\'s a long and arduous journey. It is difficult. It takes GRIT and LUCK, it\'s like the old saying that "fortune favors the bold." There\'s another phrase I like. I believe it\'s actually a Western idiom: "Better run than curse the road." and honestly, it sounds a lot cooler in Chinese.',
+    ],
+  },
+  {
+    id: 'speech-close-06',
+    layout: 'script',
+    reveal: 'full',
+    kicker: 'Providence',
+    title: 'Favoured by persistence',
+    body: [
+      'Providence favors those who persist despite failures, continue despite adversity, and still carry on despite being tired. They are favoured. WE are favoured, because we have a type of resilience, that comes having deeper purpose, a "why" that propels us to press onwards and be restless in our pursuits. So difficult as it is, difficulty itself is of no concern. Because we knew about the difficulties before we started.',
+    ],
+  },
+  {
+    id: 'speech-close-07',
+    layout: 'script',
+    reveal: 'full',
+    kicker: '难，不是问题',
+    title: '上天眷恋那些继续的人',
+    body: [
+      '我们这次打出这么大的口号，要把加拿大这个国家 做成世界强国。难。真的很难。 我们需要很大的韧性。而且光是韧性还远远不够，我们还需要运气。但话说回来了，有些运气是可以人为的。 上天眷恋什么样的人呢？上天眷恋那些 失败后还能继续的人 那些 受挫折但仍然坚持的人 和那些累，但脚却停不下来的人 这些人会被眷恋，因为这些人他们停不下来。他们停不下来，是因为他们背后有更大的 意志 和 理想 驱动着他们。',
+    ],
+  },
+  {
+    id: 'speech-close-08',
+    layout: 'script',
+    reveal: 'full',
+    kicker: 'Better run than curse the road',
+    title: '风雨兼程，笃行不怠',
+    body: [
+      '所以 难 不是问题。因为我们在启程的时候就已经知道这条路很难了。 "Better run than curse the road." 与其感慨路难行，不如即刻出发。让我们风雨兼程，笃行不怠。 也祝我们 一往无前，所向披靡！',
+    ],
+  },
+  {
+    id: 'speech-close-09',
+    layout: 'script',
+    reveal: 'full',
+    kicker: 'We, the North',
+    title: 'Winter will pass',
+    body: [
+      '"Better run than curse the road." We, the North, are a strong people. We know about tough winters, how to be resourceful, how to keep stock, how to provide for one another in tough times, for when the table turns and we need help; it takes a community. but winter will pass, and we will welcome; SPRING.',
+    ],
+  },
+  {
+    id: 'speech-close-10',
+    layout: 'script',
+    reveal: 'full',
+    kicker: 'Invitation',
+    title: 'Join this initiative',
+    body: [
+      'I invite all of you, to join in this initiative, and together - We will build a sustainable, abundant, and resilient Canada! Thank you!',
+    ],
+  },
+];
+
 export const kickoffDeckSlides: DeckSlide[] = [
   {
     id: 'hold',
     layout: 'split',
     reveal: 'full',
-    kicker: 'Sunday, October 4, 2026 · Markham Ballroom',
+    kicker: `${programmeMeta.date} · ${programmeMeta.venue}`,
     title: 'A future of abundance and resilience',
     image: {
       ...heroPool[0],
       caption: 'The long horizon has a present tense.',
     },
     points: [
-      'Guest arrival from 12:30 p.m.',
-      'Programme begins at 1:00 p.m. sharp.',
+      `Guest arrival from ${programmeMeta.arrival}`,
+      `Programme begins at ${programmeMeta.start}`,
       'In person and online.',
     ],
   },
@@ -379,11 +748,24 @@ export const kickoffDeckSlides: DeckSlide[] = [
     title: 'Welcome to the Canada2080 kickoff',
     points: [
       'Welcome to guests in the room and joining online.',
-      'Our host today is Francis Wang.',
+      'Our host today is Francis Wang. Our co-host is William Yao.',
       'Accessibility: exits, washrooms, remote audio, and how to request support.',
       'This event is being recorded. A media team is in the room. If you prefer not to appear, tell a staff member so we can remove your likeness.',
     ],
   },
+  ...programmeHosts.map<DeckSlide>((host, index) => ({
+    id: `host-${index + 1}`,
+    layout: 'bio',
+    reveal: 'full',
+    kicker: 'Host team · Introduced by Kritika Saihgpaul',
+    title: host.name,
+    person: {
+      name: host.name,
+      role: host.role,
+      affiliation: host.affiliation,
+      bio: host.bio,
+    },
+  })),
   {
     id: 'ceremony',
     layout: 'text',
@@ -417,7 +799,7 @@ export const kickoffDeckSlides: DeckSlide[] = [
     reveal: 'full',
     kicker: '1:05 p.m. · Civic Welcome',
     title: 'Civic Welcome',
-    role: 'Municipal leaders · introduced by the MC',
+    role: 'Municipal leaders · introduced by Kritika Saihgpaul',
     subtitle: 'A welcome to a long-horizon conversation in Markham',
     points: [
       'If present: Frank Scarpitti, Mayor of Markham, first.',
@@ -425,119 +807,61 @@ export const kickoffDeckSlides: DeckSlide[] = [
       'Thank them, then introduce Francis for the Canada2080 vision.',
     ],
   },
-  {
-    id: 'framing',
-    layout: 'keynote',
-    reveal: 'step',
-    kicker: '1:10 p.m. · Francis Wang · Canada2080 vision',
-    title: 'Canada has the research foundation to lead',
-    points: [
-      'If a hospital, grid, laboratory, or northern link is to serve people in 2080, the work has a present tense.',
-      'Four systemic Gaps: commercialization, talent and domestic opportunity, IP and decision rights, long-term investment.',
-      'Education, industry, and governance. Durable capability forms where they intersect.',
-      'We will distinguish facts, qualified claims, scenarios, hypotheses, and aspirations.',
-      '2080 is a chosen direction for present decisions, not a forecast.',
-    ],
-  },
+  ...openingScript,
   {
     id: 'featured-1-intro',
     layout: 'speaker-intro',
     reveal: 'full',
     kicker: '1:20 p.m. · Invited speakers',
-    title: 'Invited speakers on sovereign AI, data governance, and trustworthy deployment',
-    role: 'Sudarshana · Kimberly · Erin · Sunita · Pyn',
-    subtitle: '20 minutes including introductions and handoffs',
-    points: [
-      'Five short perspectives establish the operating context for Panel 1.',
-    ],
+    title: featuredOne?.title ?? 'Sovereign AI, Data Governance, and Trustworthy Deployment',
+    role: featuredOne?.lead,
+    subtitle: featuredOne?.purpose,
+    points: ['Five short perspectives establish the operating context for Panel 1.'],
   },
-  {
-    id: 'featured-1',
-    layout: 'image-mosaic',
-    reveal: 'step',
-    kicker: 'Invited speakers',
-    title: 'From pilots to trustworthy deployment',
-    images: heroPool.slice(0, 4),
-    imageColumns: 4,
-    captionRails: 'around',
-    points: [
-      'Above: enterprise adoption needs operating governance, not only policy.',
-      'Below: place, consent, runtime safety, and patient control shape trustworthy deployment.',
-      'Below: practical sovereignty depends on meaningful decision rights.',
+  ...biographySlides('featured-1-speaker', featuredOne?.speakers),
+  ...panelSlides(
+    'panel-1',
+    panelOne?.time ?? '1:40 p.m.',
+    panelOne?.title ?? 'Panel 1',
+    panelOne?.purpose ?? '',
+    [
+      findSpeaker('Sudarshana Bhattacharya'),
+      findSpeaker('Dr Kimberly Yazzie'),
+      findSpeaker('Erin Trochim'),
+      findSpeaker('Pyn Lim'),
     ],
-  },
-  {
-    id: 'panel-1',
-    layout: 'panel-hold',
-    reveal: 'step',
-    kicker: '1:40 p.m. · Panel 1',
-    title: 'Sovereign AI, Data Governance, and Trustworthy Deployment',
-    subtitle: '15 minutes · Two primary questions',
-    points: [
-      'As AI moves into high-stakes use, what must remain under meaningful human, institutional, patient, or community control, and what governance must continue at runtime?',
-      'What should Canada learn from international and place-based perspectives, and what practical first deployment would demonstrate trustworthy, useful, and context-appropriate AI?',
-      'More: How can institutions create room for low-stakes experimentation without transferring risk?',
-      'More: What evidence should decision makers demand before calling a deployment trustworthy?',
-    ],
-  },
+    panelOne?.questions,
+  ),
   {
     id: 'featured-2-intro',
     layout: 'speaker-intro',
     reveal: 'full',
     kicker: '1:55 p.m. · Invited speakers',
-    title: 'Invited speakers on infrastructure, risk appetite, and domestic scale-up',
-    role: 'Barry · Yulia · Greg · Michael · Sebastien',
-    subtitle: '20 minutes including introductions and handoffs',
-    points: [
-      'Domestic scale-up, compute, future-ready places, innovation culture, and TransPod as a case in government risk.',
-    ],
+    title: featuredTwo?.title ?? 'Building National Capacity',
+    role: featuredTwo?.lead,
+    subtitle: featuredTwo?.purpose,
+    points: ['Five short perspectives establish the operating context for Panel 2.'],
   },
-  {
-    id: 'featured-2',
-    layout: 'text',
-    reveal: 'step',
-    kicker: 'Invited speakers',
-    title: 'What allows capability to compound here?',
-    points: [
-      'What do Canadian IP exits reveal about domestic scale-up?',
-      'Which internal barriers constrain national compute capacity?',
-      'What makes places and innovation cultures ready for long-horizon capability?',
-      'What does TransPod show about how the Canadian government approaches risk?',
+  ...biographySlides('featured-2-speaker', featuredTwo?.speakers),
+  ...panelSlides(
+    'panel-2',
+    panelTwo?.time ?? '2:15 p.m.',
+    panelTwo?.title ?? 'Panel 2',
+    panelTwo?.purpose ?? '',
+    [
+      findSpeaker('Yulia Korobkova, OAA, AAA, AANB, LEED'),
+      findSpeaker('Greg Hart'),
+      findSpeaker('Dr Michael Donaldson'),
+      findSpeaker('Sebastien Gendron'),
     ],
-  },
-  {
-    id: 'panel-2',
-    layout: 'panel-hold',
-    reveal: 'step',
-    kicker: '2:15 p.m. · Panel 2',
-    title: 'Building National Capacity',
-    subtitle: 'Infrastructure, risk appetite, and domestic scale-up',
-    points: [
-      'Why does Canadian IP, talent, and venture capacity so often leave or sell before it compounds domestically, and which internal barrier must change first?',
-      'What one infrastructure or institutional move should begin on Monday, and how would it connect compute, transportation, manufacturing, energy, talent, and place?',
-      'More: What signal would demonstrate that Canada is compounding national capacity?',
-      'More: How should procurement and capital reward experimentation while preserving accountability?',
-      'For Sebastien: How do we enable and champion long-term infrastructure projects?',
-    ],
-  },
-  {
-    id: 'close',
-    layout: 'keynote',
-    reveal: 'step',
-    kicker: '2:30 p.m. · Closing',
-    title: 'Attach an owner, a 90-day action, and a measure',
-    points: [
-      'Research becomes leadership only when it becomes capability, opportunity, and public value in Canada.',
-      'Name the tensions heard, not a transcript and not an endorsement.',
-      'Contribution lanes: evidence, capital, institutional capacity, operating knowledge, or a next conversation.',
-      'Leave with one named next step.',
-    ],
-  },
+    panelTwo?.questions,
+  ),
+  ...closingScript,
   {
     id: 'hold-close',
     layout: 'split',
     reveal: 'full',
-    kicker: '2:35 p.m. · Continue the conversation',
+    kicker: 'After the closing · Continue the conversation',
     title: 'Canada2080',
     image: {
       ...heroPool[5],

@@ -281,6 +281,203 @@ ruby.deck-ruby rt {
   color: var(--snow);
 }
 
+/* Verbatim host script */
+.deck-layout-script {
+  background:
+    linear-gradient(135deg, rgb(240 46 35 / 8%), transparent 38%),
+    var(--ink);
+}
+
+.deck-layout-script .deck-header {
+  gap: 0.22rem;
+}
+
+.deck-layout-script .deck-title {
+  max-width: 30ch;
+  font-size: clamp(1.65rem, 3.2vw, 3.5rem);
+}
+
+.deck-layout-script .deck-frame-text {
+  align-content: center;
+  overflow: hidden;
+}
+
+.deck-layout-script .deck-statement {
+  max-width: 66ch;
+  font-size: clamp(1rem, 1.65vw, 1.75rem);
+  line-height: 1.42;
+  letter-spacing: -0.025em;
+}
+
+.deck-evidence-label {
+  width: max-content;
+  margin: 0.15rem 0 0;
+  padding: 0.28rem 0.45rem;
+  border: 1px solid var(--horizon);
+  color: var(--horizon);
+  font: 700 0.6rem/1.2 var(--mono);
+  letter-spacing: 0.1em;
+}
+
+/* Host and contributor biographies */
+.deck-layout-bio .deck-title {
+  max-width: 22ch;
+  font-size: clamp(2.1rem, 5vw, 4.1rem);
+}
+
+.deck-frame-bio {
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(15rem, 0.7fr);
+  grid-template-rows: auto 1fr;
+  gap: 0.9rem 1.5rem;
+  align-content: center;
+  min-height: 0;
+}
+
+.deck-bio-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.55rem;
+  grid-column: 1 / -1;
+}
+
+.deck-bio-meta p {
+  margin: 0;
+  color: var(--horizon);
+  font: 800 clamp(0.85rem, 1.35vw, 1.15rem)/1.3 var(--display);
+  letter-spacing: -0.025em;
+}
+
+.deck-attendance {
+  padding: 0.24rem 0.42rem;
+  border: 1px solid var(--lake);
+  color: var(--snow);
+  font: 700 0.58rem/1.2 var(--mono);
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.deck-bio-copy {
+  margin: 0;
+  align-self: start;
+  max-width: 54ch;
+  font: 800 clamp(1.05rem, 2vw, 1.65rem)/1.35 var(--display);
+  letter-spacing: -0.035em;
+}
+
+.deck-bio-topic {
+  align-self: stretch;
+  padding: 0.9rem;
+  border-left: 3px solid var(--signal);
+  background: rgb(245 244 239 / 7%);
+}
+
+.deck-bio-topic span {
+  color: var(--horizon);
+  font: 700 0.58rem/1.2 var(--mono);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.deck-bio-topic p {
+  margin: 0.4rem 0 0;
+  font: 800 clamp(0.95rem, 1.55vw, 1.3rem)/1.35 var(--display);
+  letter-spacing: -0.03em;
+}
+
+/* Persistent panel roster with active question */
+.deck-layout-panel-live .deck-header {
+  gap: 0.2rem;
+}
+
+.deck-layout-panel-live .deck-title {
+  max-width: 34ch;
+  font-size: clamp(1.35rem, 2.6vw, 2.4rem);
+}
+
+.deck-layout-panel-live .deck-subtitle {
+  max-width: 70ch;
+  font-size: clamp(0.72rem, 1vw, 0.9rem);
+  font-family: var(--body);
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 1.3;
+}
+
+.deck-frame-panel-live {
+  display: grid;
+  grid-template-columns: minmax(0, 1.55fr) minmax(16rem, 0.85fr);
+  gap: 1rem;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.deck-panel-people {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.45rem;
+  min-height: 0;
+}
+
+.deck-panel-person {
+  display: grid;
+  align-content: start;
+  gap: 0.35rem;
+  min-width: 0;
+  padding: 0.55rem 0.65rem;
+  border: 1px solid rgb(143 166 173 / 45%);
+  background: rgb(245 244 239 / 5%);
+  overflow: hidden;
+}
+
+.deck-panel-person h2 {
+  margin: 0;
+  font: 900 clamp(0.82rem, 1.35vw, 1.1rem)/1.08 var(--display);
+  letter-spacing: -0.04em;
+}
+
+.deck-panel-affiliation,
+.deck-panel-bio {
+  margin: 0;
+}
+
+.deck-panel-affiliation {
+  margin-top: 0.18rem;
+  color: var(--horizon);
+  font: 700 clamp(0.55rem, 0.72vw, 0.68rem)/1.25 var(--mono);
+  letter-spacing: 0.035em;
+}
+
+.deck-panel-bio {
+  color: #d7e0dc;
+  font: 600 clamp(0.62rem, 0.88vw, 0.82rem)/1.3 var(--body);
+}
+
+.deck-panel-question {
+  display: grid;
+  align-content: center;
+  gap: 0.55rem;
+  padding: 0.9rem;
+  border-left: 4px solid var(--signal);
+  background: rgb(240 46 35 / 8%);
+  overflow: hidden;
+}
+
+.deck-panel-question .deck-question-label {
+  margin: 0;
+  color: var(--horizon);
+  font: 700 0.62rem/1.3 var(--mono);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.deck-panel-question > p:last-child {
+  margin: 0;
+  font: 900 clamp(1rem, 1.75vw, 1.6rem)/1.25 var(--display);
+  letter-spacing: -0.035em;
+}
+
 /* Shared fixed image bounding box for single and multi-image layouts */
 .deck-frame-image-box {
   display: grid;
@@ -602,8 +799,14 @@ ruby.deck-ruby rt {
 
 @media (max-width: 900px) {
   .deck-frame-split,
+  .deck-frame-bio,
+  .deck-frame-panel-live,
   .template-meta {
     grid-template-columns: 1fr;
+  }
+
+  .deck-panel-people {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .deck-title {

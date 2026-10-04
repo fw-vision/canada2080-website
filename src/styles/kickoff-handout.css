@@ -112,6 +112,13 @@ body.handout-body {
   color: var(--handout-mute);
 }
 
+.handout-launch-line {
+  margin: 0.45rem 0 0;
+  max-width: 34rem;
+  font: 900 15pt/1.15 var(--handout-display);
+  letter-spacing: -0.04em;
+}
+
 .handout-cover-top {
   display: grid;
   grid-template-columns: 1fr auto;
@@ -156,6 +163,12 @@ body.handout-body {
   letter-spacing: -0.045em;
   line-height: 1.05;
   font-size: 15pt;
+  hyphens: none;
+  overflow-wrap: normal;
+}
+
+.handout-section-title > span {
+  display: block;
 }
 
 .handout-lead,
@@ -209,6 +222,27 @@ body.handout-body {
   padding: 0;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 0.28rem 0.85rem;
+}
+
+.handout-glance-full {
+  grid-template-columns: 1fr;
+  gap: 0;
+  border-top: 1px solid var(--handout-rule);
+}
+
+.handout-glance-full li {
+  grid-template-columns: 5rem 1fr;
+  padding: 0.28rem 0;
+  border-bottom: 1px solid var(--handout-rule);
+}
+
+.handout-glance-full small {
+  display: block;
+  margin-top: 0.08rem;
+  color: var(--handout-mute);
+  font: 700 6.7pt/1.25 var(--handout-mono);
+  letter-spacing: 0.035em;
+  text-transform: uppercase;
 }
 
 .handout-glance li {
@@ -327,6 +361,321 @@ body.handout-body {
   background: var(--handout-snow);
 }
 
+.handout-cover-statement {
+  margin-top: auto;
+  padding: 0.8rem;
+  border-top: 4px solid var(--handout-signal);
+  background: var(--handout-snow);
+}
+
+.handout-cover-statement p {
+  margin: 0;
+  font: 900 20pt/1.05 var(--handout-display);
+  letter-spacing: -0.05em;
+}
+
+.handout-cover-statement span {
+  display: block;
+  margin-top: 0.5rem;
+  color: var(--handout-horizon);
+  font: 700 7.5pt/1.3 var(--handout-mono);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.handout-role-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.45rem;
+}
+
+.handout-role-grid article {
+  padding: 0.55rem;
+  border: 1px solid var(--handout-rule);
+}
+
+.handout-role-grid span,
+.handout-contributor header > span {
+  color: var(--handout-signal);
+  font: 700 6.7pt/1.25 var(--handout-mono);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.handout-role-grid strong {
+  display: block;
+  margin-top: 0.22rem;
+  font: 900 10pt/1.15 var(--handout-display);
+}
+
+.handout-role-grid p {
+  margin: 0.25rem 0 0;
+  color: var(--handout-mute);
+  font-size: 7.5pt;
+  line-height: 1.3;
+}
+
+.handout-role-grid a {
+  display: block;
+  margin-top: 0.3rem;
+  color: var(--handout-signal);
+  font: 700 6.5pt/1.25 var(--handout-mono);
+  text-decoration: none;
+}
+
+.handout-notice,
+.handout-disclosure,
+.handout-supporters {
+  padding: 0.6rem 0.7rem;
+  border-left: 3px solid var(--handout-signal);
+  background: var(--handout-snow);
+}
+
+.handout-notice strong,
+.handout-disclosure strong,
+.handout-supporters > strong {
+  font: 900 8.5pt/1.2 var(--handout-display);
+}
+
+.handout-notice p,
+.handout-disclosure p {
+  margin: 0.25rem 0 0;
+  color: var(--handout-mute);
+  font-size: 7.5pt;
+  line-height: 1.35;
+}
+
+.handout-supporters > div {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.45rem;
+  margin-top: 0.45rem;
+}
+
+.handout-supporters a {
+  display: grid;
+  gap: 0.1rem;
+  padding: 0.45rem 0.5rem;
+  border: 1px solid var(--handout-rule);
+  color: var(--handout-ink);
+  text-decoration: none;
+}
+
+.handout-supporters a b {
+  font: 900 9pt/1.2 var(--handout-display);
+}
+
+.handout-supporters a span {
+  color: var(--handout-signal);
+  font: 700 6.8pt/1.25 var(--handout-mono);
+  letter-spacing: 0.04em;
+}
+
+.handout-mini-notes {
+  display: grid;
+  gap: 0.4rem;
+  margin-top: auto;
+}
+
+.handout-approval-line {
+  margin: 0;
+  padding: 0.38rem 0.5rem;
+  border: 1px solid var(--handout-rule);
+  color: var(--handout-mute);
+  font: 700 6.8pt/1.35 var(--handout-mono);
+}
+
+.handout-contributors {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.handout-contributor {
+  padding: 0.48rem 0.55rem;
+  border: 1px solid var(--handout-rule);
+  break-inside: avoid;
+}
+
+.handout-contributor header {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.65rem;
+  align-items: start;
+}
+
+.handout-contributor h3 {
+  margin: 0;
+  font: 900 10.5pt/1.1 var(--handout-display);
+  letter-spacing: -0.035em;
+}
+
+.handout-contributor header p {
+  margin: 0.12rem 0 0;
+  color: var(--handout-horizon);
+  font: 700 6.7pt/1.25 var(--handout-mono);
+}
+
+.handout-contributor > p {
+  margin: 0.3rem 0 0;
+  color: var(--handout-mute);
+  font-size: 7.5pt;
+  line-height: 1.32;
+}
+
+.handout-contributor .handout-topic {
+  color: var(--handout-ink);
+}
+
+.handout-contributor small {
+  display: block;
+  margin-top: 0.25rem;
+  padding-top: 0.25rem;
+  border-top: 1px dotted var(--handout-line);
+  color: var(--handout-mute);
+  font-size: 6.3pt;
+  line-height: 1.25;
+}
+
+.handout-panel-questions,
+.handout-reflection-list {
+  display: grid;
+  gap: 0.42rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: handout-question;
+}
+
+.handout-panel-questions li {
+  display: grid;
+  grid-template-columns: 4.8rem 1fr;
+  gap: 0.55rem;
+  padding-bottom: 0.38rem;
+  border-bottom: 1px solid var(--handout-rule);
+  break-inside: avoid;
+}
+
+.handout-panel-questions p {
+  margin: 0;
+  font-size: 8.2pt;
+  line-height: 1.38;
+}
+
+.handout-question-kind {
+  align-self: start;
+  width: max-content;
+  padding: 0.22rem 0.32rem;
+  border: 1px solid var(--handout-line);
+  font: 700 6.2pt/1.2 var(--handout-mono);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.handout-question-kind.is-primary {
+  border-color: var(--handout-signal);
+  color: var(--handout-signal);
+}
+
+.handout-writing-block {
+  margin-top: auto;
+  padding: 0.55rem;
+  border: 1.5px solid var(--handout-ink);
+  background: var(--handout-snow);
+}
+
+.handout-writing-block > p {
+  margin: 0 0 0.25rem;
+  font-weight: 700;
+  font-size: 8pt;
+}
+
+.handout-reflection-list {
+  gap: 0.36rem;
+}
+
+.handout-reflection-list > li {
+  padding-bottom: 0.3rem;
+  border-bottom: 1px solid var(--handout-rule);
+  break-inside: avoid;
+}
+
+.handout-reflection-list p {
+  margin: 0;
+  font-weight: 700;
+  font-size: 7.8pt;
+  line-height: 1.3;
+}
+
+.handout-checks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.18rem 0.55rem;
+  margin-top: 0.25rem;
+}
+
+.handout-checks span {
+  font-size: 7pt;
+  line-height: 1.25;
+}
+
+.handout-reflection-list .handout-note-lines {
+  gap: 0.28rem;
+  margin-top: 0.15rem;
+}
+
+.handout-reflection-list .handout-note-lines span {
+  min-height: 0.75rem;
+}
+
+.handout-reception-prompts {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.handout-reception-prompts article {
+  display: grid;
+  grid-template-columns: 2rem 1fr;
+  gap: 0.1rem 0.5rem;
+  break-inside: avoid;
+}
+
+.handout-reception-prompts article > span {
+  grid-row: 1 / 3;
+  color: var(--handout-signal);
+  font: 900 13pt/1 var(--handout-display);
+}
+
+.handout-reception-prompts p {
+  margin: 0;
+  font-weight: 700;
+  font-size: 8.5pt;
+}
+
+.handout-reception-prompts .handout-note-lines {
+  gap: 0.25rem;
+}
+
+.handout-reception-prompts .handout-note-lines span {
+  min-height: 0.8rem;
+}
+
+.handout-final-line {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 0.6rem;
+  margin-top: auto;
+  padding: 0.65rem;
+  border: 1.5px solid var(--handout-ink);
+  background: var(--handout-snow);
+}
+
+.handout-final-line strong,
+.handout-final-line span {
+  min-height: 1.1rem;
+  border-bottom: 1px solid var(--handout-line);
+  font-size: 7.5pt;
+}
+
 .handout-footer {
   margin-top: auto;
   display: flex;
@@ -340,9 +689,17 @@ body.handout-body {
   color: var(--handout-mute);
 }
 
+.handout-cover-statement + .handout-footer,
+.handout-mini-notes + .handout-footer,
+.handout-writing-block + .handout-footer,
+.handout-final-line + .handout-footer {
+  margin-top: 0;
+}
+
 @media (max-width: 720px) {
   .handout-cover-top,
   .handout-glance,
+  .handout-role-grid,
   .handout-tripartite,
   .handout-gaps,
   .handout-panels,
@@ -366,19 +723,23 @@ body.handout-body {
   }
 
   .handout-stack {
+    display: block;
+    width: 100%;
     padding: 0;
     gap: 0;
   }
 
   .handout-sheet {
-    width: auto;
+    width: 100%;
+    max-width: none;
     min-height: 0;
-    height: auto;
+    height: 9.9in;
     padding: 0;
     margin: 0;
     box-shadow: none;
     break-after: page;
     page-break-after: always;
+    overflow: hidden;
   }
 
   .handout-sheet:last-child {

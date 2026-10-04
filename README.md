@@ -74,7 +74,7 @@ Before production release:
 - Public event records omit private emails, attendee data, meeting links, and unconfirmed logistics.
 - The four Gaps are described as part of Francis Wang's research into Canadian sustainable innovation.
 - Do not publish the proposal-era 66% graduate or 73% IP figures without reproducible upstream evidence.
-- Never turn climate exposure into a displacement, migration, or Canada-destination forecast.
+- The canonical kickoff speech may present its 3.8-billion climate-migration passage verbatim as Francis Wang's scenario and advocacy inference; do not relabel it as a verified migration forecast or attribute the migration conclusion to the climate-niche research itself.
 - Treat precision resilience as a working hypothesis, quantum timing as uncertain, global leadership as an aspiration, and Type I civilization as a distant orienting horizon.
 - Publication requires source, consent, rights, privacy, and sensitivity review.
 

@@ -99,8 +99,8 @@ export const guestNameTags: NameTagGuest[] = [
   },
   {
     name: 'Dr Sudarshana Bhattacharya',
-    affiliation: 'Gartner',
-    topic: 'Enterprise AI adoption, banking data, and AI governance',
+    affiliation: 'Analyst',
+    topic: 'Applied climate science · doctoral work at GGU',
     attendance: 'in-person',
     lanyard: 'grey',
   },
@@ -134,7 +134,7 @@ export const guestNameTags: NameTagGuest[] = [
   },
   {
     name: 'Barry Wylant',
-    affiliation: 'SAPL, University of Calgary',
+    affiliation: 'Associate Professor and Graduate Program Director, SAPL, University of Calgary',
     topic: 'Design thinking, industrial design, and domestic scale-up',
     attendance: 'remote',
     lanyard: 'none',
@@ -149,8 +149,8 @@ export const guestNameTags: NameTagGuest[] = [
   },
   {
     name: 'Greg Hart',
-    affiliation: 'InceptionU / TransPod Advisory Board',
-    topic: 'Future-ready places, transformation design, and commercialization',
+    affiliation: 'Founder, Future Fit Cities · InceptionU / TransPod Advisory Board',
+    topic: 'Stop Solving Problems',
     attendance: 'in-person',
     lanyard: 'grey',
   },
@@ -439,11 +439,11 @@ export const programmeBlocks: ProgrammeBlock[] = [
     speakers: [
       {
         name: 'Dr Sudarshana Bhattacharya',
-        affiliation: 'Gartner',
+        affiliation: 'Analyst',
         attendance: 'in-person',
-        topic: 'Enterprise AI adoption, banking data and AI governance, and moving pilots into operating capability.',
-        bio: 'Senior Director Analyst contributing an independent perspective on moving AI from pilots into governed operating capability.',
-        note: 'Do not imply Gartner endorsement. Moves into Panel 1.',
+        topic: 'Applied climate science.',
+        bio: 'Analyst contributing applied climate research from her doctoral work at GGU.',
+        note: 'Introduce as Analyst. Frame the contribution through doctoral work at GGU. Do not name an employer. Moves into Panel 1.',
       },
       {
         name: 'Dr Kimberly Yazzie',
@@ -489,7 +489,7 @@ export const programmeBlocks: ProgrammeBlock[] = [
       'Sunita is keynote-only. Sudarshana, Kimberly, Erin, and Pyn move into Panel 1.',
     ],
     guardrails: [
-      'Do not imply Gartner endorsement of Sudarshana.',
+      'Introduce Sudarshana as Analyst, contributing applied climate research from her doctoral work at GGU. Do not name an employer.',
       'Do not publicly attach cultural, Indigenous, institutional, or place-based framing to Kimberly or Erin beyond their approved wording.',
     ],
   },
@@ -554,7 +554,7 @@ export const programmeBlocks: ProgrammeBlock[] = [
         affiliation: 'Associate Professor and Graduate Program Director, SAPL, University of Calgary',
         attendance: 'remote',
         topic: 'Canadian firms that had to sell to international companies to scale, using source-approved examples as an IP-exit and domestic scale-up case.',
-        bio: 'Associate Professor and Graduate Program Director bringing a design-research perspective to how Canadian capability can scale. Barry is not a doctor.',
+        bio: "Barry Wylant is an Associate Professor and Graduate Program Director at SAPL, working with thesis students in the Master of Design Research, PhD, and Doctor of Design programmes. In his work and writings, Barry emphasizes the 'how' of design thinking. With extensive experience as an industrial designer and consultant, Barry explores the intersection of design, technology, and community impact. His design work has advanced innovation in various areas, including medical and accessibility devices, and consumer products. Barry contributes regularly to the University's e2i (evolve to innovate) programme, has been published in key international design journals, and is the co-editor of the book Enabling Solutions for Sustainable Living. Barry is an innovative thinker and his commitment to bringing a sense of thoughtfulness to the design process inspires a vision of design practices across disciplines shaping a brighter and more sustainable future.",
         note: 'Maybe, depending on health. Keynote-only. Confirm Sunday morning; if he cannot attend, skip the slot and give the recovered minutes to the remaining speakers or to Panel 2.',
       },
       {
@@ -567,11 +567,11 @@ export const programmeBlocks: ProgrammeBlock[] = [
       },
       {
         name: 'Greg Hart',
-        affiliation: 'InceptionU / TransPod Advisory Board',
+        affiliation: 'Founder, Future Fit Cities · InceptionU / TransPod Advisory Board',
         attendance: 'in-person',
-        topic: 'Future-ready places, transformation design, and risk-averse commercialization.',
-        bio: 'Co-founder and facilitator at InceptionU contributing a systems perspective on innovation culture and long-horizon capability.',
-        note: 'Moves into Panel 2.',
+        topic: 'Stop Solving Problems. Future-ready places, transformation design, and risk-averse commercialization, including Future Fit Cities.',
+        bio: 'Founder of Future Fit Cities; co-founder and facilitator at InceptionU. Contributes a systems perspective on innovation culture and long-horizon capability.',
+        note: 'Slides titled Stop Solving Problems. Mention Future Fit Cities. Moves into Panel 2.',
       },
       {
         name: 'Dr Michael Donaldson',

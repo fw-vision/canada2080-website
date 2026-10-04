@@ -32,7 +32,7 @@ export const handoutProgrammeGlance = [
 
 export const handoutPurpose = [
   'Canada2080 is a public long-horizon agenda for building the economic sovereignty, strategic capability, and public value Canada may need by 2080.',
-  'The kickoff starts from Canada’s research and educational strengths, then asks where conversion into durable domestic capability stalls.',
+  "The kickoff starts from Canada's research and educational strengths, then asks where conversion into durable domestic capability stalls.",
   'The room is cross-sector on purpose: education, industry, and governance each bring different resources, and capability forms at their intersection.',
   'The aim is not a slogan. It is one clearer diagnosis, one sharper question, and one practical next step you can take home.',
 ] as const;
@@ -140,3 +140,12 @@ export const handoutReflections = {
   nextStep:
     'In the next 90 days, what one conversation, demonstration, or evidence trail will you start?',
 } as const;
+
+/** Approved brief bios for guest materials. Keep these as the canonical handout wording. */
+export const handoutGuestBios = [
+  {
+    name: 'Barry Wylant',
+    affiliation: 'Associate Professor and Graduate Program Director, SAPL, University of Calgary',
+    bio: "Barry Wylant is an Associate Professor and Graduate Program Director at SAPL, working with thesis students in the Master of Design Research, PhD, and Doctor of Design programmes. In his work and writings, Barry emphasizes the 'how' of design thinking. With extensive experience as an industrial designer and consultant, Barry explores the intersection of design, technology, and community impact. His design work has advanced innovation in various areas, including medical and accessibility devices, and consumer products. Barry contributes regularly to the University's e2i (evolve to innovate) programme, has been published in key international design journals, and is the co-editor of the book Enabling Solutions for Sustainable Living. Barry is an innovative thinker and his commitment to bringing a sense of thoughtfulness to the design process inspires a vision of design practices across disciplines shaping a brighter and more sustainable future.",
+  },
+] as const;

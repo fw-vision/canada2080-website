@@ -38,16 +38,16 @@ guests:
     participation: invited
     profileUrl: "https://www.linkedin.com/in/shaunchento/"
   - name: "Barry Wylant"
-    institution: "SAPL, University of Calgary"
+    institution: "Associate Professor and Graduate Program Director, SAPL, University of Calgary"
     expertise: "Design thinking, industrial design, and domestic scale-up"
-    bio: "Associate Professor and Graduate Program Director bringing a design-research perspective to how Canadian capability can scale."
+    bio: "Associate Professor and Graduate Program Director at SAPL, bringing a design-research perspective on the how of design thinking and domestic scale-up."
     group: academic
     participation: remote
     profileUrl: "https://www.linkedin.com/in/barry-wylant-105488100/"
   - name: "Greg Hart"
-    institution: "InceptionU / TransPod Advisory Board"
-    expertise: "Future-ready places, transformation design, and commercialization"
-    bio: "Co-founder and facilitator at InceptionU contributing a systems perspective on innovation culture and long-horizon capability."
+    institution: "Founder, Future Fit Cities · InceptionU / TransPod Advisory Board"
+    expertise: "Stop Solving Problems · future-ready places and transformation design"
+    bio: "Founder of Future Fit Cities; co-founder and facilitator at InceptionU. Contributes a systems perspective on innovation culture and long-horizon capability."
     group: academic
     participation: in-person
     profileUrl: "https://www.linkedin.com/in/greg-hart-design/"
@@ -94,9 +94,9 @@ guests:
     participation: in-person
     profileUrl: "https://www.designworkshop.ca/studio"
   - name: "Dr Sudarshana Bhattacharya"
-    institution: "Gartner"
-    expertise: "Enterprise AI adoption, banking data, and AI governance"
-    bio: "Senior Director Analyst contributing an independent perspective on moving AI from pilots into governed operating capability."
+    institution: "Analyst"
+    expertise: "Applied climate science"
+    bio: "Analyst contributing applied climate research from her doctoral work at GGU."
     group: industry
     participation: in-person
     profileUrl: "https://www.linkedin.com/in/sudarshanabhattacharya/"
@@ -175,7 +175,7 @@ itinerary:
   - time: "1:20 p.m."
     title: "Invited speakers on sovereign AI, data governance, and trustworthy deployment"
     duration: "20 minutes"
-    description: "Five short perspectives on enterprise AI adoption, data governance, place-based resilience, runtime governance, and patient data sovereignty."
+    description: "Five short perspectives on applied climate science, data governance, place-based resilience, runtime governance, and patient data sovereignty."
   - time: "1:40 p.m."
     title: "Panel 1: Sovereign AI, Data Governance, and Trustworthy Deployment"
     duration: "15 minutes"

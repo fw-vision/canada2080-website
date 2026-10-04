@@ -4,3 +4,5 @@ Disallow: /events/2026-kickoff-deck
 Disallow: /events/2026-kickoff-deck-templates
 Disallow: /events/2026-kickoff-programinfo
 Disallow: /events/2026-kickoff-programinfo-zh
+Disallow: /events/2026-kickoff-reminder
+Disallow: /events/2026-kickoff-reminder-zh

@@ -269,12 +269,26 @@ const hasTranscript = Astro.slots.has("transcript");
     }
     .transcript blockquote {
         margin: 0.35rem 0 0;
-        padding: 0.1rem 0 0.15rem 0.9rem;
-        border-left: 3px solid var(--signal);
+        padding: 0;
+        border: 0;
     }
     .transcript blockquote p {
+        margin: 0;
+        padding: 0.12rem 0 0.12rem 0.9rem;
+        border-left: 3px solid var(--signal);
         max-width: none;
         color: #5c6c70;
+        font-size: 1.02rem;
+        line-height: 1.5;
+    }
+    .transcript blockquote p + p {
+        margin-top: 0.85rem;
+    }
+    .transcript .ask {
+        margin: 1rem 0 0.35rem;
+        padding: 0;
+        max-width: none;
+        color: #24383c;
         font-size: 1.02rem;
         line-height: 1.5;
     }

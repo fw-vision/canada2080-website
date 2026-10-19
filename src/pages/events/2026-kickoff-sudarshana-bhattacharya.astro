@@ -71,6 +71,9 @@ const photos = [
     </p>
     <Fragment slot="transcript">
         <p class="transcript-note">Cleaned up transcripts.</p>
+        <div class="transcript-columns">
+            <div>
+                <h3>Keynote</h3>
         <blockquote>
             <p>
                 Good afternoon, everyone. It's great to be here. My name is Dr
@@ -147,5 +150,58 @@ const photos = [
                 conversation after we wrap up. Thank you.
             </p>
         </blockquote>
+            </div>
+            <div>
+                <h3 id="panel">Panel</h3>
+                <p class="transcript-note">Francis Wang asked the questions.</p>
+                <p class="ask">
+                    What is the first distinctive thing we can do by
+                    borrowing from patterns abroad? What are the patterns
+                    we can accommodate in Canada?
+                </p>
+                <p class="transcript-note">Dr Sudarshana Bhattacharya.</p>
+                <blockquote>
+                    <p>
+                        Another thing that I'm seeing happening a lot,
+                        especially in the Asia-Pacific, is starting with not so
+                        many billions of parameters. Start with a small
+                        language model and go very domain-specific, because
+                        there are certain domains where the data is cleaner. It
+                        is always easier to start with those domains and train
+                        your own model. Train it in your own backyard and get
+                        it ready. In that way, you are not losing on compute.
+                        You don't have to use anything that you have to procure
+                        from outside. Small, domain-specific, homegrown models
+                        would be one of the ways to think about it.
+                    </p>
+                </blockquote>
+                <p class="ask">
+                    What evidence should decision-makers demand before
+                    calling an AI deployment here safe, secure, trusted, or
+                    publicly beneficial?
+                </p>
+                <p class="transcript-note">Dr Sudarshana Bhattacharya.</p>
+                <blockquote>
+                    <p>
+                        Governance, complemented with observability and
+                        provenance, is also very important. I need to understand
+                        why certain decisions were made and what really
+                        triggered that kind of decision. If I go back to the
+                        banking example, and a certain part of the community is
+                        not getting a benefit, say a home loan or any type of
+                        mortgage, why is that happening? Observability and a
+                        clear decision provenance give that clarity, and that
+                        runs in parallel with governance.
+                    </p>
+                    <p>
+                        Even when we do our best with whatever we deploy,
+                        threat vectors expand every day. It is very hard to
+                        stay a step ahead. This is where I see AI security
+                        platforms as one way to keep watching for bad actors
+                        trying to infringe a system.
+                    </p>
+                </blockquote>
+            </div>
+        </div>
     </Fragment>
 </KickoffSession>

@@ -9,7 +9,10 @@ export default defineConfig({
   vite: {
     server: {
       host: "0.0.0.0",
-      allowedHosts: [".tail0f7891.ts.net"],
+      allowedHosts: [
+        "fcwang-elitemini-series.tail0f7891.ts.net",
+        ".tail0f7891.ts.net",
+      ],
     },
     optimizeDeps: {
       // Keep the card PNG exporter available in `astro dev`. Without this,

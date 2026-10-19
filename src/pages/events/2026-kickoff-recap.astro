@@ -3,6 +3,7 @@ import fs from "node:fs";
 import path from "node:path";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import StatementLink from "../../components/StatementLink.astro";
+import TripartiteEcosystem from "../../components/TripartiteEcosystem.astro";
 
 const galleryDir = path.join(
     process.cwd(),
@@ -1683,6 +1684,10 @@ const galleryPhotos = gallery.map((name) => ({
                     </div>
                 </li>
             </ol>
+        </section>
+
+        <section class="section shell" aria-label="Tripartite ecosystem model">
+            <TripartiteEcosystem />
         </section>
 
         <section class="section shell" aria-labelledby="gallery-title">

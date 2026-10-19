@@ -1,10 +1,10 @@
 ---
 title: "Canada2080: A future of abundance and resilience"
-description: "A public kickoff conversation on the systems Canada must build now for sovereign AI, resilient infrastructure, long-term capability, and public value. Guest arrival begins at 12:30 p.m. and the programme begins at 1:00 p.m."
+description: "The 4 October 2026 kickoff has been held. Read the recap of the public conversation on sovereign AI, resilient infrastructure, long-term capability, and public value."
 dateLabel: "Sunday, October 4, 2026"
 candidateDates: []
 sortDate: 2026-10-04
-status: scheduled
+status: completed
 location: "Markham Ballroom · Hilton Toronto/Markham Suites Conference Centre"
 locationAddress: "8500 Warden Ave., Markham, ON L6G 1A5"
 mapUrl: "https://www.google.com/maps/search/?api=1&query=Hilton+Toronto%2FMarkham+Suites+Conference+Centre%2C+8500+Warden+Ave.%2C+Markham%2C+ON+L6G+1A5"
@@ -12,7 +12,6 @@ time: "Guest arrival 12:30 p.m. · Programme begins 1:00 p.m."
 arrivalTime: "Guest arrival: 12:30 p.m."
 programmeTime: "Programme begins: 1:00 p.m."
 onlineAttendance: "Online: Google Meet"
-rsvp: "https://luma.com/w7g9hjb7"
 format: "Invitation-led public kickoff and moderated conversation"
 duration: "150 minutes"
 guests:

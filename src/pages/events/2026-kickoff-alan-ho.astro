@@ -1,0 +1,120 @@
+---
+import KickoffSession from "../../components/KickoffSession.astro";
+
+const photos = [
+    {
+        src: "/images/events/2026-kickoff/gallery/img_5349.jpg",
+        alt: "Alan Ho at the podium. The slide behind him is the civic welcome.",
+        caption: "Opening the civic welcome.",
+    },
+    {
+        src: "/images/events/2026-kickoff/gallery/img_5350.jpg",
+        alt: "Francis Wang and Alan Ho hold a framed City of Markham proclamation.",
+        caption: "With Francis Wang and the City of Markham proclamation.",
+    },
+    {
+        src: "/images/events/2026-kickoff/gallery/img_5329.jpg",
+        alt: "Alan Ho signs the Canada2080 kickoff banner.",
+        caption: "Signing the kickoff banner.",
+    },
+    {
+        src: "/images/events/2026-kickoff/gallery/img_5347.jpg",
+        alt: "Alan Ho with speakers and guests holding the Canada2080 kickoff banner.",
+        caption: "With speakers and guests, and the kickoff banner.",
+    },
+    {
+        src: "/images/events/2026-kickoff/gallery/img_5343.jpg",
+        alt: "The kickoff group, including Alan Ho, holding the signed banner.",
+        caption: "The room, with the banner.",
+    },
+];
+---
+
+<KickoffSession
+    documentTitle="The future is not guaranteed. It is made. | Canada2080"
+    description="Alan Ho's civic welcome at the Canada2080 kickoff. The future is not guaranteed. It is made."
+    eyebrow="Civic welcome · 1:05 p.m."
+    headline="The future is not guaranteed."
+    claim="It is made."
+    name="Alan Ho"
+    bio="Alan Ho is York Regional Councillor for the City of Markham and Chair of Markham's Culture and Economic Development Committee."
+    profileUrl="https://www.linkedin.com/in/alan-ho-976aa03b/"
+    podiumSrc="/images/events/2026-kickoff/gallery/img_5349.jpg"
+    podiumAlt="Alan Ho at the podium. The slide behind him is the civic welcome."
+    photos={photos}
+>
+    <p class="lede">
+        Abundance has to be shared. Resilience has to be built on purpose. Both
+        depend on the choices made now.
+    </p>
+    <p>
+        Alan Ho opened the Canada2080 kickoff with a welcome about 2080: a
+        future of abundance and resilience. Soaring technology, cleaner energy,
+        longer lives, and thriving communities are a picture. They are not a
+        promise.
+    </p>
+    <p>The work, as he set it out, starts in four places.</p>
+    <ul>
+        <li>Protect water, parks, and climate.</li>
+        <li>Plan housing and transit for every generation.</li>
+        <li>Take up innovation, and still safeguard dignity.</li>
+        <li>Strengthen local food, health, and social connection.</li>
+    </ul>
+    <p>
+        Resilience, in his definition, is more than surviving a shock. It is
+        adapting, recovering, and growing together. Abundance is more than
+        having more. It is enough opportunity, and enough hope, for everyone.
+    </p>
+    <p>
+        He pictured Markham, and places beyond it, where seniors are supported,
+        young people can afford to stay, newcomers belong, and neighbourhoods
+        stay green and safe. That takes courage, collaboration, and a longer
+        view than the next political cycle.
+    </p>
+    <p class="close-line">Imagine boldly. Plan wisely. Act together.</p>
+    <Fragment slot="transcript">
+        <p class="transcript-note">Cleaned up transcripts.</p>
+        <blockquote>
+            <p>
+                Well, good afternoon everyone, and welcome. My name is Alan Ho,
+                York Regional Councillor for the City of Markham. I'm also the
+                Chair of Markham's Culture and Economic Development Committee.
+                It is my great, great pleasure to be here today with you all,
+                and today it is an honour to open this important conversation
+                about 2080: a future of abundance and resilience.
+            </p>
+            <p>
+                When we imagine 2080, we may picture soaring technology,
+                cleaner energy, longer lives, and thriving communities. That
+                future is not guaranteed. Abundance must be shared and
+                resilience must be built deliberately.
+            </p>
+            <p>
+                It begins with choices we make today: protecting our water,
+                parks, and climate; planning housing and transit for all
+                generations; embracing innovation while safeguarding dignity;
+                and strengthening local food, health, and social connection.
+            </p>
+            <p>
+                Resilience is not only surviving shocks. It is adapting,
+                recovering, and growing together. Abundance is not only having
+                more. It is ensuring everyone has enough opportunity and hope.
+            </p>
+            <p>
+                In the City of Markham and beyond, we can create a future where
+                seniors are supported, young people can afford to stay,
+                newcomers belong, and neighbourhoods are green and safe.
+            </p>
+            <p>
+                That future demands courage, collaboration, and long-term
+                thinking. So let us move beyond short-term politics and build
+                lasting prosperity. Let us imagine boldly, plan wisely, and act
+                together.
+            </p>
+            <p>
+                Thank you for being part of this journey towards 2080: a future
+                of abundance and resilience for all. Thank you very much.
+            </p>
+        </blockquote>
+    </Fragment>
+</KickoffSession>

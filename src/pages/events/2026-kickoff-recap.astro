@@ -1,0 +1,1805 @@
+---
+import fs from "node:fs";
+import path from "node:path";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import StatementLink from "../../components/StatementLink.astro";
+
+const galleryDir = path.join(
+    process.cwd(),
+    "public/images/events/2026-kickoff/gallery",
+);
+const gallery = [
+    "img_5329.jpg",
+    "img_5331.jpg",
+    "img_5332.jpg",
+    "img_5335.jpg",
+    "img_5340.jpg",
+    "img_5343.jpg",
+    "img_5347.jpg",
+    "img_5349.jpg",
+    "img_5350.jpg",
+    "img_5351.jpg",
+    "img_5363.jpg",
+    "img_5373.jpg",
+    "img_5380.jpg",
+    "img_5390.jpg",
+    "img_5392.jpg",
+    "img_5398.jpg",
+    "img_5406.jpg",
+    "img_5408.jpg",
+    "img_5410.jpg",
+    "img_5417.jpg",
+    "img_5425.jpg",
+    "img_5430.jpg",
+    "img_5432.jpg",
+    "img_5433.jpg",
+    "img_5453.jpg",
+    "img_5461.jpg",
+    "img_5463.jpg",
+    "img_5472.jpg",
+    "img_5475.jpg",
+    "img_5476.jpg",
+    "img_5477.jpg",
+    "img_5488.jpg",
+    "img_5490.jpg",
+].filter((name) => fs.existsSync(path.join(galleryDir, name)));
+
+function jpegSize(filePath: string) {
+    const buf = fs.readFileSync(filePath);
+    let i = 2;
+    while (i + 8 < buf.length) {
+        if (buf[i] !== 0xff) {
+            i += 1;
+            continue;
+        }
+        const marker = buf[i + 1];
+        const standalone =
+            marker === 0xd8 ||
+            marker === 0xd9 ||
+            marker === 0x01 ||
+            (marker >= 0xd0 && marker <= 0xd7);
+        if (standalone) {
+            i += 2;
+            continue;
+        }
+        const length = buf.readUInt16BE(i + 2);
+        if (marker >= 0xc0 && marker <= 0xc3) {
+            return {
+                h: buf.readUInt16BE(i + 5),
+                w: buf.readUInt16BE(i + 7),
+            };
+        }
+        i += 2 + length;
+    }
+    return { w: 3, h: 2 };
+}
+
+const galleryPhotos = gallery.map((name) => ({
+    name,
+    ...jpegSize(path.join(galleryDir, name)),
+}));
+---
+
+<BaseLayout
+    title="Canada is the future. | Canada2080"
+    description="The record of the Canada2080 kickoff on 4 October 2026 at the Markham Ballroom, with photographs in the order they were taken."
+>
+    <article class="recap">
+        <figure class="recap-hero">
+            <div class="recap-hero-media">
+                <img
+                    src="/images/events/2026-kickoff/gallery/img_5347.jpg"
+                    alt="Speakers and guests hold the signed Canada2080 kickoff banner in the Markham Ballroom."
+                    width="2560"
+                    height="1707"
+                />
+                <div class="recap-hero-copy">
+                    <p class="eyebrow">Sunday, 4 October 2026 · Markham Ballroom</p>
+                    <h1>Canada is<br />the future.</h1>
+                    <p class="hero-tagline">
+                        Actualizing an abundant, resilient, sustainable, and
+                        sovereign future for Canada.
+                    </p>
+                </div>
+            </div>
+            <figcaption class="shell">
+                Speakers and guests with the kickoff banner. Hilton
+                Toronto/Markham Suites Conference Centre, 4 October 2026.
+            </figcaption>
+        </figure>
+
+        <section class="highlights shell" aria-label="Event highlights">
+            <p class="eyebrow">Event highlights</p>
+            <ul class="highlight-grid">
+                <li>
+                    <p class="highlight-line">That future is not guaranteed.</p>
+                    <p class="highlight-by">
+                        Alan Ho. Abundance has to be shared, and resilience
+                        has to be built on purpose.
+                    </p>
+                </li>
+                <li>
+                    <p class="highlight-line">
+                        An area the size of one Nepal, every year.
+                    </p>
+                    <p class="highlight-by">
+                        Dr Sudarshana Bhattacharya, on wildfire in Alberta's
+                        boreal forest. 16.5 million hectares and $9.9 billion
+                        a year.
+                    </p>
+                </li>
+                <li>
+                    <p class="highlight-line">
+                        Canada is the future of the planet.
+                    </p>
+                    <p class="highlight-by">
+                        Francis Wang. In a climate-changed 2080, 3.8 billion
+                        people would live outside a historical climate niche,
+                        and Canada would host more of the world's people.
+                    </p>
+                </li>
+                <li>
+                    <p class="highlight-line">
+                        Know where the data sits, and who answers.
+                    </p>
+                    <p class="highlight-by">
+                        Sunita Kumari. Sovereign AI means knowing where the
+                        data sits, who can see it, and who answers for the
+                        outcome.
+                    </p>
+                </li>
+                <li>
+                    <p class="highlight-line">Start Monday.</p>
+                    <p class="highlight-by">
+                        Greg Hart. 2080 is not a problem to be solved. Set
+                        the direction, then do the daily work.
+                    </p>
+                </li>
+                <li>
+                    <p class="highlight-line">
+                        Stop settling for a good second.
+                    </p>
+                    <p class="highlight-by">
+                        Sebastien Gendron, on the habit of following the
+                        United States or China.
+                    </p>
+                </li>
+            </ul>
+        </section>
+
+        <section class="feature-band shell" aria-label="Signing the initiative">
+            <p class="eyebrow">Signing the initiative</p>
+            <div class="feature-grid">
+                <figure>
+                    <img
+                        src="/images/events/2026-kickoff/gallery/img_5329.jpg"
+                        alt="Alan Ho leans over the kickoff banner and signs it."
+                    />
+                    <figcaption>
+                        Alan Ho, York Regional Councillor for the City of
+                        Markham and Chair of the Culture and Economic
+                        Development Committee, signs the kickoff banner.
+                    </figcaption>
+                </figure>
+                <figure>
+                    <img
+                        src="/images/events/2026-kickoff/gallery/img_5332.jpg"
+                        alt="Greg Hart leans over the kickoff banner and signs it."
+                    />
+                    <figcaption>
+                        Greg Hart, co-founder and facilitator at InceptionU
+                        and a member of the TransPod Advisory Board, signs
+                        the kickoff banner.
+                    </figcaption>
+                </figure>
+                <figure>
+                    <img
+                        src="/images/events/2026-kickoff/gallery/img_5331.jpg"
+                        class="is-signatures"
+                        alt="Close view of handwritten signatures on the Canada2080 kickoff banner."
+                    />
+                    <figcaption>
+                        Innovators, speakers, and guests all over Canada
+                        joining and supporting the initiative.
+                    </figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <section class="section shell">
+            <ol class="timeline">
+                <li>
+                    <div class="beat-copy">
+                        <p class="beat-time">12:30 p.m.</p>
+                        <h2>Before the first word.</h2>
+                        <p>Guests were checking in, in person and online.</p>
+                        <p>
+                            Francis Wang hosted. Kritika Saihgpaul was master
+                            of ceremonies. The programme was set for 1:00 p.m.
+                        </p>
+                    </div>
+                    <div class="beat-rail" aria-hidden="true"></div>
+                    <div class="beat-photos">
+                        <figure>
+                            <img
+                                src="/images/events/2026-kickoff/gallery/img_5340.jpg"
+                                alt="Guests seated in the Markham Ballroom before the programme."
+                            />
+                            <figcaption>
+                                Guests in the Markham Ballroom before the
+                                programme. Hilton Toronto/Markham Suites
+                                Conference Centre.
+                            </figcaption>
+                        </figure>
+                    </div>
+                </li>
+
+                <li>
+                    <div class="beat-copy">
+                        <p class="beat-time">1:05 p.m.</p>
+                        <h2>The future is not guaranteed.</h2>
+                        <h3>
+                            Alan Ho
+                            <StatementLink
+                                href="/events/2026-kickoff-alan-ho"
+                                label="Alan Ho's statement"
+                            />
+                        </h3>
+                        <p class="speaker-role">
+                            York Regional Councillor for the City of Markham.
+                            Chair of the Culture and Economic Development
+                            Committee.
+                        </p>
+                        <p class="speaker-link">
+                            <a
+                                href="https://www.linkedin.com/in/alan-ho-976aa03b/"
+                                target="_blank"
+                                rel="noopener noreferrer">LinkedIn</a
+                            >
+                            <a href="/events/2026-kickoff-alan-ho#full-transcript">Full Transcript</a>
+                        </p>
+                        <p>He opened the afternoon.</p>
+                        <p>
+                            The welcome was about 2080: a future of abundance
+                            and resilience. Soaring technology, cleaner energy,
+                            longer lives, and thriving communities are a
+                            picture, he said. They are not a promise.
+                        </p>
+                        <p>
+                            Abundance has to be shared. Resilience has to be
+                            built on purpose. Both depend on choices made now.
+                        </p>
+                        <ul>
+                            <li>Protect water, parks, and climate.</li>
+                            <li>Plan housing and transit for every generation.</li>
+                            <li>
+                                Take up innovation, and still safeguard dignity.
+                            </li>
+                            <li>
+                                Strengthen local food, health, and social
+                                connection.
+                            </li>
+                        </ul>
+                        <p>
+                            Resilience, in his definition, is more than
+                            surviving a shock. It is adapting, recovering, and
+                            growing together. Abundance is more than having
+                            more. It is enough opportunity, and enough hope,
+                            for everyone.
+                        </p>
+                        <p>
+                            He pictured Markham, and places beyond it, where
+                            seniors are supported, young people can afford to
+                            stay, newcomers belong, and neighbourhoods stay
+                            green and safe. That, he said, takes courage,
+                            collaboration, and a longer view than the next
+                            political cycle.
+                        </p>
+                    </div>
+                    <div class="beat-rail" aria-hidden="true"></div>
+                    <div class="beat-photos">
+                        <figure>
+                            <img
+                                src="/images/events/2026-kickoff/gallery/img_5349.jpg"
+                                alt="Alan Ho speaking at the podium during the civic welcome."
+                            />
+                            <figcaption>
+                                Alan Ho, York Regional Councillor for the City
+                                of Markham, opening the civic welcome.
+                            </figcaption>
+                        </figure>
+                        <figure>
+                            <img
+                                src="/images/events/2026-kickoff/gallery/img_5350.jpg"
+                                alt="Francis Wang and Alan Ho hold a framed City of Markham proclamation for the Canada2080 kickoff."
+                            />
+                            <figcaption>
+                                Francis Wang and Alan Ho with the City of
+                                Markham proclamation for the kickoff.
+                            </figcaption>
+                        </figure>
+                    </div>
+                </li>
+
+                <li>
+                    <div class="beat-copy">
+                        <p class="beat-time">1:10 p.m.</p>
+                        <h2>Canada is the future of the planet.</h2>
+                        <h3>
+                            Francis Wang
+                            <StatementLink
+                                href="/events/2026-kickoff-francis-wang"
+                                label="Francis Wang's statement"
+                            />
+                        </h3>
+                        <p class="speaker-role">
+                            Opening keynote, Canada2080: the long-horizon
+                            challenge.
+                        </p>
+                        <p class="speaker-link">
+                            <a
+                                href="https://www.linkedin.com/in/findcongwang/"
+                                target="_blank"
+                                rel="noopener noreferrer">LinkedIn</a
+                            >
+                            <a href="/events/2026-kickoff-francis-wang#full-transcript"
+                                >Full Transcript</a
+                            >
+                        </p>
+                        <p>He called it a kickoff, not a multi-day launch.</p>
+                        <p>
+                            Canada2080, in his words, is a long-horizon
+                            initiative. Gather people who believe in similar
+                            possibilities, start the conversations, and hold
+                            many more.
+                        </p>
+                        <p>
+                            The claim he set out: for Canada to be one of the
+                            most prosperous nations by 2080, and to say that
+                            Canada is the future of planet Earth.
+                        </p>
+                        <ul>
+                            <li>
+                                Foundations already in hand: land, freshwater,
+                                rare earths, biomaterials, clean power, research
+                                institutions, and zero-to-one opportunities.
+                            </li>
+                            <li>
+                                The failure, as he put it: firms struggle to
+                                commercialize and scale, intellectual property
+                                goes to foreign corporations, educated people
+                                leave, and raw materials are sold instead of
+                                becoming local supply chains. He called that a
+                                trade of intellectual culture and resource value
+                                for cheap money, and a plantation for the world.
+                            </li>
+                            <li>
+                                American industrialists built pipelines so the industry stayed in America.
+                                The Bay Area, he said, is where entrepreneurs
+                                make the money, then sometimes fund training
+                                institutions whose talent is funnelled
+                                elsewhere.
+                            </li>
+                            <li>
+                                The ambition: resilient living systems,
+                                manufacturing, an integrated supply chain, and
+                                domestic chips. By then, he said, they would be
+                                quantum chips. He said it took Taiwan 40 years
+                                to lead in chip manufacturing.
+                            </li>
+                            <li>
+                                Looking back from 2080, 3.8 billion people would
+                                be living outside a historical climate niche and
+                                would need to go somewhere. He pointed to an
+                                equal-earth map and said the Southern Hemisphere
+                                has little land, so the movement would be north,
+                                leaving Canada and Russia to host more of the
+                                world's people. A larger population would
+                                support the density patterns he associates with
+                                Asia, and the workforce for a domestic supply
+                                chain.
+                            </li>
+                            <li>
+                                Four retentions, and Canada needs all four.
+                                Capability keeps the means to build and operate.
+                                Ownership and decision rights keep the choice of
+                                direction. Learning and reinvestment keep the
+                                next success connected to the one after it.
+                            </li>
+                            <li>
+                                AI and infrastructure, he said, are tightly
+                                coupled. Scale requires energy. From this point,
+                                he argued, scale also requires compute. He
+                                quoted forward guidance from the past month:
+                                "Controlling our energy means controlling our
+                                destiny."
+                            </li>
+                            <li>
+                                Neighbourhoods that generate their own energy,
+                                compute, food, and water. Household compute for
+                                health, finances, and private records, with
+                                spare capacity returned to the connected system.
+                            </li>
+                            <li>
+                                He took the room from dial-up to cable modems,
+                                as a computer science graduate from Waterloo. He
+                                thanked people who had bought gaming computers,
+                                and called that an investment in Canada's
+                                sovereign compute.
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="beat-rail" aria-hidden="true"></div>
+                    <div class="beat-photos">
+                        <figure>
+                            <img
+                                src="/images/events/2026-kickoff/gallery/img_5351.jpg"
+                                alt="Francis Wang speaking at the podium. The slide behind him reads bold ambition by 2080."
+                            />
+                            <figcaption>
+                                Francis Wang. The slide behind him is the
+                                long-horizon challenge.
+                            </figcaption>
+                        </figure>
+                    </div>
+                </li>
+
+                <li>
+                    <div class="beat-copy">
+                        <p class="beat-time">1:20 p.m.</p>
+                        <h2>Sovereign AI, close to the problem.</h2>
+                        <p>
+                            Kritika Saihgpaul introduced the set. Five speakers
+                            followed. The banking topic in one introduction
+                            belonged to Sunita Kumari, not to the wildfire talk.
+                        </p>
+                        <h3>
+                            Dr Sudarshana Bhattacharya
+                            <StatementLink
+                                href="/events/2026-kickoff-sudarshana-bhattacharya"
+                                label="Dr Sudarshana Bhattacharya's statement"
+                            />
+                        </h3>
+                        <p class="speaker-link">
+                            <a
+                                href="https://www.linkedin.com/in/sudarshanabhattacharya/"
+                                target="_blank"
+                                rel="noopener noreferrer">LinkedIn</a
+                            >
+                            <a
+                                href="/events/2026-kickoff-sudarshana-bhattacharya#full-transcript"
+                                >Full Transcript</a
+                            >
+                        </p>
+                        <p>
+                            She had just graduated from Golden Gate University.
+                            At work she is a senior director analyst. She kept
+                            the remarks on what Canada already has, and on one
+                            urgent problem that returns every year: wildfire in
+                            Alberta's boreal forest.
+                        </p>
+                        <p>
+                            Her geographic context: every summer, wildfire burns
+                            an area the size of one Nepal. She put the numbers
+                            at 16.5 million hectares and $9.9 billion at stake
+                            each year. Indigenous communities who live there are most affected. The
+                            timber industry is hit hardest.
+                        </p>
+                        <p>
+                            AI, as she used the word, is not only ChatGPT. She
+                            dated the field at 70 years, and said that older
+                            practice does not need the compute that GPT models
+                            or Gemini need. That gap is where her research sits.
+                        </p>
+                        <p>The thesis architecture has two layers.</p>
+                        <ul>
+                            <li>
+                                A foundation pulls the data together and cleans
+                                it. She said that step does not need the compute
+                                people assume.
+                            </li>
+                            <li>
+                                An intelligence layer starts with Random Forest,
+                                which she said can run on an ordinary computer,
+                                then a convolutional network that tries to see
+                                the way an eye does, then an ANN that brings
+                                the parts together.
+                            </li>
+                        </ul>
+                        <p>
+                            The aim is a calculated dollar figure for forest-fire
+                            exposure. She would implement it with small,
+                            domain-specific language models, using Natural
+                            Resources Canada and Statistics Canada. Geospatial
+                            data is the hard remaining set. She has a project
+                            charter for a master's capstone. Some Copernicus
+                            satellite data from Europe may still be needed. The
+                            point, she said, is a usable picture of what is at
+                            stake, built as much as possible on data held here.
+                        </p>
+                    </div>
+                    <div class="beat-rail" aria-hidden="true"></div>
+                    <div class="beat-photos">
+                        <figure>
+                            <img
+                                src="/images/events/2026-kickoff/gallery/img_5363.jpg"
+                                alt="Dr Sudarshana Bhattacharya speaking at the podium in a white blazer."
+                            />
+                            <figcaption>
+                                On wildfire exposure in Alberta's boreal forest.
+                            </figcaption>
+                        </figure>
+                    </div>
+                </li>
+
+                <li>
+                    <div class="beat-copy">
+                        <h3>
+                            Dr Kimberly Yazzie
+                            <StatementLink
+                                href="/events/2026-kickoff-kimberly-yazzie"
+                                label="Dr Kimberly Yazzie's statement"
+                            />
+                        </h3>
+                        <p class="speaker-link">
+                            <a
+                                href="https://www.linkedin.com/in/kimberly-yazzie-ph-d-09758a4a/"
+                                target="_blank"
+                                rel="noopener noreferrer">LinkedIn</a
+                            >
+                            <a
+                                href="/events/2026-kickoff-kimberly-yazzie#full-transcript"
+                                >Full Transcript</a
+                            >
+                        </p>
+                        <p>
+                            Joining remotely, she spoke in her own capacity, not
+                            on behalf of her institution. Sovereign AI, she
+                            said, is usually who owns the compute, the data, and
+                            the models. She asked a different question: for
+                            whom?
+                        </p>
+                        <p>
+                            For Indigenous communities, she said, AI is a
+                            question of relationships. Who decides, who
+                            benefits, and who carries the responsibility after a
+                            project ends. Satellites and sensors can be a tool
+                            for care. Built without the people of that land,
+                            they can become a way of watching them. It is not
+                            her place to speak for any community. Indigenous
+                            data sovereignty and early engagement, she said,
+                            deserve real support.
+                        </p>
+                        <p>
+                            Every community can take up a new technology, or
+                            not, on its own terms. When it steps in, education
+                            and partnership start with the first conversation.
+                        </p>
+                        <p>Two commitments make that choice meaningful.</p>
+                        <ul>
+                            <li>
+                                Consent that stays open. Free, prior, and
+                                informed consent is an ongoing relationship, not
+                                a checkbox. A community can revisit its choice,
+                                and data stays under the authority of the
+                                community it describes.
+                            </li>
+                            <li>
+                                Accountability to relationships, not just
+                                outputs. AI has to move with Indigenous
+                                governance, not in a direction set only from
+                                the outside.
+                            </li>
+                        </ul>
+                        <p>
+                            She cited the UNESCO Recommendation on the Ethics
+                            of Artificial Intelligence: Indigenous peoples must
+                            take part in shaping AI, and the task is to make
+                            room for that in practice. Her proposal is to begin
+                            with the partnership, not a product. Her link
+                            dropped before the panel question.
+                        </p>
+                    </div>
+                    <div class="beat-rail" aria-hidden="true"></div>
+                    <div class="beat-photos">
+                        <figure>
+                            <img
+                                src="/images/events/2026-kickoff/gallery/img_5373.jpg"
+                                alt="Dr Kimberly Yazzie on the screen, joining the kickoff remotely."
+                            />
+                            <figcaption>
+                                Dr Kimberly Yazzie, on the screen.
+                            </figcaption>
+                        </figure>
+                    </div>
+                </li>
+
+                <li>
+                    <div class="beat-copy">
+                        <h3>
+                            Dr Erin Trochim
+                            <StatementLink
+                                href="/events/2026-kickoff-erin-trochim"
+                                label="Dr Erin Trochim's statement"
+                            />
+                        </h3>
+                        <p class="speaker-link">
+                            <a
+                                href="https://www.linkedin.com/in/erin-trochim/"
+                                target="_blank"
+                                rel="noopener noreferrer">LinkedIn</a
+                            >
+                            <a
+                                href="/events/2026-kickoff-erin-trochim#full-transcript"
+                                >Full Transcript</a
+                            >
+                        </p>
+                        <p>
+                            Also remote. She joined as a Canadian living in
+                            Alaska. A vast amount of geospatial data exists.
+                            Very little of it reaches the person who needs it
+                            when something breaks.
+                        </p>
+                        <p>
+                            Her story was a door stuck closed, after an
+                            earthquake, a house on permafrost, or a single frost
+                            heave. The record has often known about the movement
+                            for a long time. NASA's NISAR products track it. The
+                            question is whether somebody tells the homeowner,
+                            and what happens next. Too often it goes straight to
+                            the insurer.
+                        </p>
+                        <p>
+                            The data is plentiful and, on the jurisdictional
+                            side, still not connected. New systems need common
+                            protocols across individuals, municipalities, tribal
+                            nations, and state and federal governments, with
+                            authority retained by the participants. Cognitive
+                            offloading hands thought to the model. She wants the
+                            other half kept: the ability to question a finding,
+                            and a choice about who the system does more for.
+                        </p>
+                        <p>
+                            For Canada in 2080 she offered four tests of
+                            control, drawn from community planning she wants
+                            embedded in the information system.
+                        </p>
+                        <ul>
+                            <li>
+                                Contestability: the people affected can contest
+                                or refuse a consequential decision.
+                            </li>
+                            <li>
+                                Dependency: participants can operate, interpret,
+                                maintain, and negotiate without one vendor or
+                                one expert.
+                            </li>
+                            <li>
+                                Value intention: community assets are
+                                strengthened or extracted, and the difference
+                                has to be visible.
+                            </li>
+                            <li>
+                                Adaptability: institutions and communities can
+                                exit, provide, substitute, or repair.
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="beat-rail" aria-hidden="true"></div>
+                    <div class="beat-photos">
+                        <figure>
+                            <img
+                                src="/images/events/2026-kickoff/gallery/img_5380.jpg"
+                                alt="Dr Erin Trochim on the screen, joining the kickoff remotely."
+                            />
+                            <figcaption>
+                                Dr Erin Trochim, on the screen.
+                            </figcaption>
+                        </figure>
+                    </div>
+                </li>
+
+                <li>
+                    <div class="beat-copy">
+                        <h3>
+                            Sunita Kumari
+                            <StatementLink
+                                href="/events/2026-kickoff-sunita-kumari"
+                                label="Sunita Kumari's statement"
+                            />
+                        </h3>
+                        <p class="speaker-link">
+                            <a
+                                href="https://www.linkedin.com/in/sunita-kumari-data-ai/"
+                                target="_blank"
+                                rel="noopener noreferrer">LinkedIn</a
+                            >
+                            <a
+                                href="/events/2026-kickoff-sunita-kumari#full-transcript"
+                                >Full Transcript</a
+                            >
+                        </p>
+                        <p>
+                            AI is writing code and taking on human tasks. The
+                            other side, she said, is risk: hallucinations,
+                            biased responses, and exposed customer data. That
+                            is where governance starts.
+                        </p>
+                        <p>
+                            Governance enforces the controls that keep a model
+                            operating responsibly. Sovereign AI is who controls
+                            the environment: where the data resides, where the
+                            infrastructure is, who can see the data, and who
+                            answers for the outcome.
+                        </p>
+                        <p>
+                            Her example was a bank's mortgage agent that keeps
+                            denying applicants with a strong credit history. If
+                            the training data carries a location preference, the
+                            responses will be biased too. Governance makes the
+                            output transparent, sends a suspicious result to a
+                            person, and that person can ask for a retrain.
+                        </p>
+                        <p>
+                            People think governance slows innovation. She said
+                            it is how you scale with confidence. She compared
+                            the early fear of putting a credit card online,
+                            which receded once anti-fraud controls existed.
+                        </p>
+                    </div>
+                    <div class="beat-rail" aria-hidden="true"></div>
+                    <div class="beat-photos">
+                        <figure>
+                            <img
+                                src="/images/events/2026-kickoff/gallery/img_5390.jpg"
+                                alt="Sunita Kumari speaking at the podium in a light blue blazer, with remote participants on the screen behind her."
+                            />
+                            <figcaption>
+                                Sunita Kumari on enterprise risk and who answers
+                                for a model's outcome.
+                            </figcaption>
+                        </figure>
+                    </div>
+                </li>
+
+                <li>
+                    <div class="beat-copy">
+                        <h3>
+                            Pyn Lim
+                            <StatementLink
+                                href="/events/2026-kickoff-pyn-lim"
+                                label="Pyn Lim's statement"
+                            />
+                        </h3>
+                        <p class="speaker-link">
+                            <a
+                                href="https://www.linkedin.com/in/pynlim/"
+                                target="_blank"
+                                rel="noopener noreferrer">LinkedIn</a
+                            >
+                        </p>
+                        <ul>
+                            <li>
+                                Remote. She has worked for nearly two decades
+                                across aesthetic medicine, aesthetic surgery,
+                                and postgraduate medical education.
+                            </li>
+                            <li>
+                                Patients leave a clinic without a portable
+                                record of what was done to the body. She cited a
+                                figure that post-care capture is about 60
+                                percent. That figure is hers. The clinic keeps a
+                                file. The next clinician, especially after
+                                travel, may not know the product, the implant,
+                                or the procedure.
+                            </li>
+                            <li>
+                                Cases she named: fragmented vaccination
+                                booklets, aesthetic procedures, implants, and
+                                medical tourism, where the clinic abroad is hard
+                                to reach.
+                            </li>
+                            <li>
+                                The record she proposed is controlled by the
+                                patient and authenticated by the clinician.
+                                Patients do not edit clinical entries.
+                                Corrections are signed, dated additions that
+                                keep the original.
+                            </li>
+                            <li>
+                                A private assistant may organize the timeline,
+                                translate jargon, prepare a summary for a new
+                                clinician, and flag a drug or supplement
+                                interaction. Every output has to point at a
+                                verified source. It does not diagnose or
+                                prescribe.
+                            </li>
+                            <li>
+                                A related project is starting in Ireland. She
+                                invited a Canada-Europe link, and she asked for
+                                demonstrations that produce evidence rather than
+                                promises.
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="beat-rail" aria-hidden="true"></div>
+                    <div class="beat-photos">
+                        <figure>
+                            <img
+                                src="/images/events/2026-kickoff/gallery/img_5392.jpg"
+                                alt="Pyn Lim on the screen beside her slide, Patient data sovereignty."
+                            />
+                            <figcaption>
+                                Pyn Lim, on the screen.
+                            </figcaption>
+                        </figure>
+                    </div>
+                </li>
+
+                <li>
+                    <div class="beat-copy">
+                        <p class="beat-time">1:40 p.m.</p>
+                        <h2>Borrow the practice. Prove the deployment.</h2>
+                        <p>
+                            Kritika Saihgpaul introduced the panel. Francis Wang
+                            asked the questions. Sunita Kumari, Dr Erin Trochim,
+                            and Dr Sudarshana Bhattacharya answered. Pyn Lim did
+                            not speak. Dr Kimberly Yazzie's link dropped before
+                            her question, so a planned question on consent was
+                            not taken.
+                        </p>
+                        <h3>What Canada can borrow</h3>
+                        <ul>
+                            <li>
+                                Sunita Kumari: data stays in the country, server
+                                location is known, access is known, and a person
+                                is accountable for the outcome. Those answers
+                                are a baseline before a sovereign deployment.
+                            </li>
+                            <li>
+                                Dr Erin Trochim: a recent Australian news story
+                                on data-centre construction. Citizens have to
+                                apply their own law and energy context, rather
+                                than import someone else's model.
+                            </li>
+                            <li>
+                                Dr Sudarshana Bhattacharya: the Asia-Pacific
+                                habit of avoiding huge parameter counts, and of
+                                starting with a small, domain-specific model
+                                trained at home on cleaner data.
+                            </li>
+                        </ul>
+                        <h3>What counts as safe</h3>
+                        <ul>
+                            <li>
+                                Sunita Kumari: governance is not a one-time
+                                check. It has to run with every response.
+                            </li>
+                            <li>
+                                Dr Sudarshana Bhattacharya: provenance, so a
+                                mortgage denial can be explained, plus
+                                continuous watching for new threats. She called
+                                for security platforms that keep looking, because
+                                the threats change.
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="beat-rail" aria-hidden="true"></div>
+                    <div class="beat-photos">
+                        <figure>
+                            <img
+                                src="/images/events/2026-kickoff/gallery/img_5398.jpg"
+                                alt="Sunita Kumari, Francis Wang, and Dr Sudarshana Bhattacharya seated for Panel 1, with remote speakers on the screen."
+                            />
+                            <figcaption>
+                                Panel 1. Sunita Kumari, Francis Wang, and Dr
+                                Sudarshana Bhattacharya. Remote speakers are on
+                                the screen.
+                            </figcaption>
+                        </figure>
+                    </div>
+                </li>
+
+                <li>
+                    <div class="beat-copy">
+                        <p class="beat-time">1:55 p.m.</p>
+                        <h2>Scale it here, or sell the firm.</h2>
+                        <p>
+                            Kritika Saihgpaul introduced the second set. The
+                            company histories and funding decisions below are
+                            what each speaker said.
+                        </p>
+                    </div>
+                    <div class="beat-rail" aria-hidden="true"></div>
+                    <div class="beat-photos">
+                        <figure>
+                            <img
+                                src="/images/events/2026-kickoff/gallery/img_5408.jpg"
+                                alt="Kritika Saihgpaul at the podium, master of ceremonies."
+                            />
+                            <figcaption>
+                                Kritika Saihgpaul, master of ceremonies.
+                            </figcaption>
+                        </figure>
+                    </div>
+                </li>
+
+                <li>
+                    <div class="beat-copy">
+                        <h3>
+                            Barry Wylant
+                            <StatementLink
+                                href="/events/2026-kickoff-barry-wylant"
+                                label="Barry Wylant's statement"
+                            />
+                        </h3>
+                        <p class="speaker-link">
+                            <a
+                                href="https://www.linkedin.com/in/barry-wylant-105488100/"
+                                target="_blank"
+                                rel="noopener noreferrer">LinkedIn</a
+                            >
+                        </p>
+                        <ul>
+                            <li>
+                                A Canadian firm designs a product, grows
+                                locally, and then sells to a foreign
+                                multinational that already has global
+                                manufacturing and distribution.
+                            </li>
+                            <li>
+                                Chariot Carriers, in Alberta, designed bicycle
+                                child trailers and accessories, including
+                                plastic wheels, hitches, and an attachment he
+                                called the wing. Acquired by Thule.
+                            </li>
+                            <li>
+                                Tenet Medical Engineering developed products for
+                                orthopaedic surgery. Acquired by Smith &amp;
+                                Nephew.
+                            </li>
+                            <li>
+                                Dynastream Innovations, of Cochrane, developed
+                                personal activity monitors. Acquired by Garmin.
+                            </li>
+                            <li>
+                                His history of the Auto Pact: in the early
+                                1960s, Canadian plants made standard
+                                transmissions and the United States was moving
+                                to automatics. He said Canada put a 25 percent
+                                tariff on cars entering with automatic
+                                transmissions. The tariff fight led to the Auto
+                                Pact, later NAFTA, later CUSMA.
+                            </li>
+                            <li>
+                                Expo 67 is when Canadian design came of age, including the design organization
+                                later headquartered in Montreal, now the World
+                                Design Organization. By the 1990s, he said,
+                                China had become the world's primary
+                                manufacturer.
+                            </li>
+                            <li>
+                                His ask: a serious look at what scaling
+                                manufacturing and AI in Canada means on a 2080
+                                horizon, from a Canadian point of view.
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="beat-rail" aria-hidden="true"></div>
+                    <div class="beat-photos">
+                        <figure>
+                            <img
+                                src="/images/events/2026-kickoff/gallery/img_5406.jpg"
+                                alt="Barry Wylant on the screen, joining the kickoff remotely."
+                            />
+                            <figcaption>Barry Wylant, on the screen.</figcaption>
+                        </figure>
+                    </div>
+                </li>
+
+                <li>
+                    <div class="beat-copy">
+                        <h3>
+                            Yulia Korobkova
+                            <StatementLink
+                                href="/events/2026-kickoff-yulia-korobkova"
+                                label="Yulia Korobkova's statement"
+                            />
+                        </h3>
+                        <p class="speaker-link">
+                            <a
+                                href="https://www.linkedin.com/in/yulia-korobkova/"
+                                target="_blank"
+                                rel="noopener noreferrer">LinkedIn</a
+                            >
+                        </p>
+                        <ul>
+                            <li>
+                                Data Centre Studio Leader at Corgan in Toronto.
+                                She compared a modern data centre with light
+                                industry. She did not compare Canada with the
+                                United States.
+                            </li>
+                            <li>
+                                Closed-loop cooling, she said, uses about as
+                                much water as an office. Noise is lower than an
+                                Amazon distribution centre. Contamination is
+                                almost nothing, lower than a bottling plant.
+                            </li>
+                            <li>
+                                Canada, she said, already has the land, the
+                                people, the technology, and the manufacturing
+                                base.
+                            </li>
+                            <li>
+                                The shift she named is away from isolated
+                                buildings and toward a high-tech industrial
+                                campus, with buffers, local jobs, and the
+                                community in the plan.
+                            </li>
+                            <li>
+                                The barrier she named is the real-estate habit
+                                that still prefers the isolated building. Change
+                                that, and the campuses can be built here.
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="beat-rail" aria-hidden="true"></div>
+                    <div class="beat-photos">
+                        <figure>
+                            <img
+                                src="/images/events/2026-kickoff/gallery/img_5410.jpg"
+                                alt="Yulia Korobkova speaking beside the podium. Her name is on the slide."
+                            />
+                            <figcaption>
+                                Yulia Korobkova. Her name is on the slide.
+                            </figcaption>
+                        </figure>
+                    </div>
+                </li>
+
+                <li>
+                    <div class="beat-copy">
+                        <h3>
+                            Greg Hart
+                            <StatementLink
+                                href="/events/2026-kickoff-greg-hart"
+                                label="Greg Hart's statement"
+                            />
+                        </h3>
+                        <p class="speaker-link">
+                            <a
+                                href="https://www.linkedin.com/in/greg-hart-design/"
+                                target="_blank"
+                                rel="noopener noreferrer">LinkedIn</a
+                            >
+                        </p>
+                        <ul>
+                            <li>
+                                Stop treating 2080 as a problem to be solved.
+                                Routine problems should be solved. This one, he
+                                said, is not a wicked problem. If it is framed
+                                that way, it is not really a problem at all.
+                            </li>
+                            <li>
+                                Strategy asks what could be created, then builds
+                                the conditions. He used a cargo boat full of
+                                containers as a picture of old assumptions
+                                carried into the future.
+                            </li>
+                            <li>
+                                He named VUCA, volatility, uncertainty,
+                                complexity, and ambiguity, and he cited Sidney
+                                Dekker on the drift into failure: a slow collapse
+                                that arrives because the old thinking was kept
+                                too long. If the boat leaks, look for a new
+                                boat. Systems are not broken, he said. They
+                                produce patterns we dislike.
+                            </li>
+                            <li>
+                                Design, in his definition, is creating the
+                                conditions for success, the soil the work grows
+                                in. Speed is a byproduct of low friction, not a
+                                goal. He pointed to the Apollo teams as a
+                                mission shaped around potential.
+                            </li>
+                            <li>
+                                A living-systems test: life creates the
+                                conditions for more life. Potential and
+                                relationships over raw quantity. Quality over
+                                quantity. Lower energy when it will do. Keep
+                                operating, and still invest in the next option.
+                            </li>
+                            <li>
+                                Places matter. A Utrecht highway, built as an
+                                expressway around 1980, was returned to a canal.
+                                Fail to design the place, he said, and the
+                                result is a Blade Runner future.
+                            </li>
+                            <li>
+                                Education, in his view, is outdated for this
+                                work. Rewire it around critical thinking,
+                                systems thinking, and computational thinking,
+                                not memorized facts.
+                            </li>
+                            <li>
+                                Relentless pragmatism: know where you are going,
+                                know where you are without romance, and do the
+                                actions in between. Start Monday.
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="beat-rail" aria-hidden="true"></div>
+                    <div class="beat-photos">
+                        <figure>
+                            <img
+                                src="/images/events/2026-kickoff/gallery/img_5417.jpg"
+                                alt="Greg Hart speaking beside the podium. His name is on the slide."
+                            />
+                            <figcaption>Greg Hart. His name is on the slide.</figcaption>
+                        </figure>
+                    </div>
+                </li>
+
+                <li>
+                    <div class="beat-copy">
+                        <h3>
+                            Dr Michael Donaldson
+                            <StatementLink
+                                href="/events/2026-kickoff-michael-donaldson"
+                                label="Dr Michael Donaldson's statement"
+                            />
+                        </h3>
+                        <p class="speaker-link">
+                            <a
+                                href="https://www.designworkshop.ca/studio"
+                                target="_blank"
+                                rel="noopener noreferrer">Design Workshop</a
+                            >
+                        </p>
+                        <ul>
+                            <li>
+                                Principal architect at DWA / Future Workshop.
+                                The largest holders of commercial property and
+                                infrastructure capital, he said, still want a
+                                six-month return from assets that mature over 10
+                                to 20 years.
+                            </li>
+                            <li>
+                                An innovation mindset, in his usage, is an
+                                unwillingness to accept what is not working, and
+                                the habit of encouraging that unwillingness.
+                            </li>
+                            <li>
+                                His test: four days in the depth of winter, the
+                                power out, and no food coming in. Would a city
+                                know what to do?
+                            </li>
+                            <li>
+                                He argued for decentralized local
+                                infrastructure, and for resilience as a baseline
+                                expectation rather than an add-on.
+                            </li>
+                            <li>
+                                Private practice, he said, shows systems that
+                                deliver little of what they promise. Architects
+                                and citizens should stop accepting processes
+                                that do not work.
+                            </li>
+                            <li>
+                                Both of his parents volunteered at Expo 67. He
+                                asked for a founding story strong enough to
+                                rally a resilient economy, rather than being
+                                absorbed into someone else's.
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="beat-rail" aria-hidden="true"></div>
+                    <div class="beat-photos">
+                        <figure>
+                            <img
+                                src="/images/events/2026-kickoff/gallery/img_5425.jpg"
+                                alt="Dr Michael Donaldson speaking at the podium, in a white shirt and white glasses."
+                            />
+                            <figcaption>Dr Michael Donaldson.</figcaption>
+                        </figure>
+                    </div>
+                </li>
+
+                <li>
+                    <div class="beat-copy">
+                        <h3>
+                            Sebastien Gendron
+                            <StatementLink
+                                href="/events/2026-kickoff-sebastien-gendron"
+                                label="Sebastien Gendron's statement"
+                            />
+                        </h3>
+                        <p class="speaker-link">
+                            <a
+                                href="https://www.transpod.com/about-transpod/"
+                                target="_blank"
+                                rel="noopener noreferrer">TransPod</a
+                            >
+                        </p>
+                        <ul>
+                            <li>
+                                TransPod is a Canadian deep-tech company about ten years old. The proposal is an
+                                ultra-high-speed tube between Edmonton and
+                                Calgary. A vehicle rides in a steel tube on
+                                concrete pillars, most of the air removed, at
+                                more than 300 kilometres an hour.
+                            </li>
+                            <li>
+                                He said the Strategic Innovation Fund refused
+                                the company twice under the previous federal
+                                government. Once, because it did not understand
+                                the intellectual property. Once, in a letter
+                                that gave no reason.
+                            </li>
+                            <li>
+                                Invest Ontario, he said, would invest only after
+                                a further $100 million private round. His line:
+                                they would invest when the company no longer
+                                needed the money.
+                            </li>
+                            <li>
+                                Useful support would have been timely capital, a real reading of the IP, a
+                                reason when the answer is no, and a decision
+                                instead of another multi-year study.
+                            </li>
+                            <li>
+                                He quoted an Export Development Canada
+                                representative who described Canada as a bear
+                                coming out of hibernation. The hope, in that
+                                line, is that the country stays awake.
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="beat-rail" aria-hidden="true"></div>
+                    <div class="beat-photos">
+                        <figure>
+                            <img
+                                src="/images/events/2026-kickoff/gallery/img_5430.jpg"
+                                alt="Sebastien Gendron speaking at the podium in a floral shirt."
+                            />
+                            <figcaption>Sebastien Gendron.</figcaption>
+                        </figure>
+                        <figure>
+                            <img
+                                src="/images/events/2026-kickoff/gallery/img_5432.jpg"
+                                alt="Sebastien Gendron speaking with an orange microphone."
+                            />
+                            <figcaption>
+                                Sebastien Gendron, at the microphone.
+                            </figcaption>
+                        </figure>
+                    </div>
+                </li>
+
+                <li>
+                    <div class="beat-copy">
+                        <p class="beat-time">2:15 p.m.</p>
+                        <h2>How Canada would know.</h2>
+                        <p>
+                            Francis Wang asked two questions. How would Canada
+                            know, within five to ten years, that it was making
+                            progress rather than collecting isolated projects?
+                            And what does Monday look like?
+                        </p>
+                        <h3>Signals of progress</h3>
+                        <ul>
+                            <li>
+                                Greg Hart: name the potential first. Canada, he
+                                said, has mostly played catch-up. Once the
+                                strategy is set, the progress has to be visible.
+                            </li>
+                            <li>
+                                Yulia Korobkova: harmonize building codes and
+                                labour rules across provinces, and lower
+                                municipal development charges, so a campus can
+                                actually be built.
+                            </li>
+                            <li>
+                                Dr Michael Donaldson: shared geographic data,
+                                with the UK Ordnance Survey as his example, and
+                                national rules for professional certification,
+                                so administrative friction is not mistaken for
+                                work.
+                            </li>
+                            <li>
+                                Sebastien Gendron: the will to do the thing.
+                                Leaders, he said, still prefer to be a good
+                                second to the United States or China. His
+                                alternative is learning by doing.
+                            </li>
+                            <li>
+                                Barry Wylant: leave a small-player mentality,
+                                and recover the design ambition of the 1960s,
+                                before progress can be measured.
+                            </li>
+                            <li>
+                                Greg Hart placed the complacency in the 1980s
+                                free-trade agreement. The share of exports going
+                                to one country moved from 40 or 50 percent to
+                                well over 80 percent, and ambition went to
+                                sleep.
+                            </li>
+                        </ul>
+                        <h3>What Monday looks like</h3>
+                        <ul>
+                            <li>
+                                Sebastien Gendron: TransPod is drafting a
+                                response to Alberta's high-speed rail request,
+                                with selection in view by April 2027. The draft
+                                has to be compelling without frightening a
+                                risk-averse reader.
+                            </li>
+                            <li>
+                                Dr Michael Donaldson: keep testing systems that
+                                do not work, by doing the work.
+                            </li>
+                            <li>
+                                Yulia Korobkova: treat resilience as a
+                                performance metric, and use AI to get past
+                                operating constraints. The build-out she sees is
+                                a 2040 or 2050 horizon, not 2080.
+                            </li>
+                            <li>
+                                Greg Hart: set the compass, then do the small
+                                daily actions that match it.
+                            </li>
+                            <li>
+                                Barry Wylant, making the point with a joke,
+                                argued for Tuesday, and for local moves that
+                                still serve the national aim.
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="beat-rail" aria-hidden="true"></div>
+                    <div class="beat-photos">
+                        <figure>
+                            <img
+                                src="/images/events/2026-kickoff/gallery/img_5433.jpg"
+                                alt="Five people seated on stage for Panel 2. Francis Wang is at the right with a red microphone."
+                            />
+                            <figcaption>
+                                Panel 2. Francis Wang, at right with the red
+                                microphone, asked the questions. Yulia Korobkova
+                                and Greg Hart are seated with Barry Wylant, Dr
+                                Michael Donaldson, and Sebastien Gendron.
+                            </figcaption>
+                        </figure>
+                    </div>
+                </li>
+
+                <li>
+                    <div class="beat-copy">
+                        <p class="beat-time">2:30 p.m.</p>
+                        <h2>Go far, and go together.</h2>
+                        <h3>
+                            Francis Wang
+                            <StatementLink
+                                href="/events/2026-kickoff-francis-wang#closing"
+                                label="Francis Wang's closing"
+                            />
+                        </h3>
+                        <p class="speaker-link">
+                            <a
+                                href="https://www.linkedin.com/in/findcongwang/"
+                                target="_blank"
+                                rel="noopener noreferrer">LinkedIn</a
+                            >
+                            <a href="/events/2026-kickoff-francis-wang#closing"
+                                >Full Transcript</a
+                            >
+                        </p>
+                        <p>He closed in English and in Chinese.</p>
+                        <p>
+                            The afternoon was in Markham. One of his aunts, he
+                            said, finds these events difficult because they are
+                            held in English. His parents were in the room. He
+                            asked guests to carry the ideas into their own
+                            communities.
+                        </p>
+                        <ul>
+                            <li>
+                                A plaque at Waterloo's Conrad School: if you
+                                want to go fast, go alone. If you want to go
+                                far, go together. An initiative of this scale,
+                                he said, takes coalitions, partnerships, and a
+                                common belief. The value has to come back to
+                                the people who do the work.
+                            </li>
+                            <li>
+                                It is a long road. It takes grit and luck. He
+                                used "Better run than curse the road," and the
+                                Chinese 与其感慨路难行，不如即刻出发. Difficulty, he
+                                said, was known before the start.
+                            </li>
+                            <li>
+                                We, the North. Tough winters, stock kept for one
+                                another, and spring after the winter. He invited
+                                the room to build a sustainable, abundant, and
+                                resilient Canada.
+                            </li>
+                        </ul>
+                        <p>
+                            Participation in the afternoon was not an
+                            endorsement of Canada2080. Figures and institutional
+                            histories above are what the speakers said.
+                        </p>
+                    </div>
+                    <div class="beat-rail" aria-hidden="true"></div>
+                    <div class="beat-photos">
+                        <figure>
+                            <img
+                                src="/images/events/2026-kickoff/gallery/img_5453.jpg"
+                                alt="Francis Wang at the podium with a red microphone, closing the kickoff."
+                            />
+                            <figcaption>
+                                Francis Wang closes the afternoon, in English
+                                and in Chinese.
+                            </figcaption>
+                        </figure>
+                    </div>
+                </li>
+            </ol>
+        </section>
+
+        <section class="section shell" aria-labelledby="after-title">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">Until 3:00 p.m.</p>
+                    <h2 id="after-title">The room stayed.</h2>
+                </div>
+                <p>
+                    The reception followed the close.
+                    {gallery.length} selected photographs from the organizer's
+                    camera, in the order the camera kept them.
+                </p>
+            </div>
+            <ul class="recap-gallery" data-mosaic>
+                {
+                    galleryPhotos.map((photo) => (
+                        <li data-w={photo.w} data-h={photo.h}>
+                            <a
+                                href={`/images/events/2026-kickoff/gallery/${photo.name}`}
+                            >
+                                <img
+                                    src={`/images/events/2026-kickoff/gallery/${photo.name}`}
+                                    alt={`Canada2080 kickoff photograph ${photo.name}`}
+                                    width={photo.w}
+                                    height={photo.h}
+                                />
+                            </a>
+                            <span>{photo.name}</span>
+                        </li>
+                    ))
+                }
+            </ul>
+            <script is:inline>
+                (function () {
+                    var gallery = document.querySelector("[data-mosaic]");
+                    if (!gallery) return;
+                    var gap = 8;
+                    function layout() {
+                        var items = Array.prototype.slice.call(gallery.children);
+                        var width = gallery.clientWidth;
+                        if (!width) return;
+                        var target =
+                            width < 720 ? 148 : width < 1100 ? 188 : 216;
+                        var row = [];
+                        var aspectSum = 0;
+                        function place(isLast) {
+                            if (!row.length) return;
+                            var gaps = gap * (row.length - 1);
+                            var height = (width - gaps) / aspectSum;
+                            if (isLast && height > target * 1.35) height = target;
+                            var used = 0;
+                            row.forEach(function (item, index) {
+                                var w =
+                                    !isLast && index === row.length - 1
+                                        ? width - gaps - used
+                                        : Math.max(1, Math.round(item.aspect * height));
+                                used += w;
+                                item.li.style.width = w + "px";
+                            });
+                            row = [];
+                            aspectSum = 0;
+                        }
+                        items.forEach(function (li) {
+                            var aspect =
+                                Number(li.getAttribute("data-w")) /
+                                Number(li.getAttribute("data-h"));
+                            if (!aspect || aspect < 0.2 || aspect > 5) aspect = 1.5;
+                            var count = row.length + 1;
+                            var needed =
+                                (aspectSum + aspect) * target + gap * (count - 1);
+                            if (row.length && needed > width) place(false);
+                            row.push({ li: li, aspect: aspect });
+                            aspectSum += aspect;
+                        });
+                        place(true);
+                    }
+                    layout();
+                    window.addEventListener("resize", layout);
+                    window.addEventListener("load", layout);
+                })();
+            </script>
+        </section>
+    </article>
+</BaseLayout>
+
+<style>
+    .recap-hero {
+        margin: 0;
+        background: var(--ink);
+    }
+    .recap-hero-media {
+        position: relative;
+        width: min(100%, 1400px);
+        margin: 0 auto;
+        overflow: hidden;
+        aspect-ratio: 1400 / 640;
+    }
+    .recap-hero img {
+        display: block;
+        width: 100%;
+        max-width: 1400px;
+        height: auto;
+        margin-top: -11.5%;
+    }
+    .recap-hero-copy {
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
+        padding: 1.15rem 1.4rem 2.75rem;
+        color: var(--snow);
+        background: linear-gradient(
+            to bottom,
+            rgba(7, 31, 38, 0.78) 0%,
+            rgba(7, 31, 38, 0.42) 58%,
+            transparent 100%
+        );
+    }
+    .recap-hero-copy .eyebrow {
+        color: #f3b2ab;
+    }
+    .recap-hero h1 {
+        max-width: none;
+        margin: 0.35rem 0 0.55rem;
+        color: #fff;
+        font-size: clamp(2.4rem, 4.2vw, 3.8rem);
+        line-height: 0.9;
+        letter-spacing: -0.06em;
+    }
+    .hero-tagline {
+        max-width: 36rem;
+        margin: 0;
+        color: #fff;
+        font-size: clamp(1.05rem, 1.6vw, 1.35rem);
+        line-height: 1.35;
+    }
+    .recap-hero figcaption {
+        color: #d7e0e1;
+        padding-top: 0.55rem;
+        padding-bottom: 0.7rem;
+    }
+    .highlights {
+        padding-top: 1.25rem;
+        padding-bottom: 0.25rem;
+    }
+    .highlight-grid {
+        list-style: none;
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1rem;
+        margin: 0.65rem 0 0;
+        padding: 0;
+    }
+    .highlight-grid li {
+        margin: 0;
+        padding: 1.1rem 1.15rem 1rem;
+        background: #fff;
+        border-top: 3px solid var(--signal);
+    }
+    .highlight-line {
+        margin: 0 0 0.75rem;
+        max-width: 22ch;
+        color: var(--ink);
+        font-family: var(--display);
+        font-weight: 800;
+        font-size: clamp(1.35rem, 2vw, 1.7rem);
+        line-height: 1.05;
+        letter-spacing: -0.04em;
+    }
+    .highlight-by {
+        margin: 0;
+        color: #44565b;
+        font-size: 0.92rem;
+        line-height: 1.45;
+    }
+    .feature-band {
+        padding-top: 1.75rem;
+    }
+    .feature-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1rem;
+        margin-top: 0.85rem;
+    }
+    .feature-grid figure {
+        margin: 0;
+    }
+    .feature-grid img {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+    .timeline {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+    .timeline > li {
+        display: grid;
+        grid-template-columns: minmax(0, 1.2fr) 2.25rem minmax(15rem, 0.8fr);
+        column-gap: clamp(0.85rem, 2vw, 1.75rem);
+        align-items: start;
+        padding-bottom: 2.25rem;
+    }
+    .beat-time {
+        margin: 0 0 0.45rem;
+        color: var(--signal);
+        font: 700 0.72rem/1.3 var(--mono);
+        letter-spacing: 0.11em;
+        text-transform: uppercase;
+    }
+    .beat-copy h2 {
+        margin: 0 0 0.7rem;
+        font-size: clamp(1.7rem, 2.6vw, 2.6rem);
+        max-width: 16ch;
+    }
+    .beat-copy h3 {
+        margin: 1.15rem 0 0.2rem;
+        font-size: clamp(1.15rem, 1.5vw, 1.4rem);
+        letter-spacing: -0.04em;
+    }
+    .speaker-role {
+        margin: 0 0 0.15rem;
+        color: #24383c;
+    }
+    .speaker-link {
+        margin: 0 0 0.45rem;
+        font-size: 0.92rem;
+    }
+    .speaker-link a {
+        color: var(--signal);
+    }
+    .speaker-link a + a {
+        margin-left: 0.9rem;
+    }
+    .beat-copy p,
+    .beat-copy li {
+        color: #24383c;
+    }
+    .beat-copy ul {
+        list-style: disc;
+        margin: 0.15rem 0 0.35rem;
+        padding-left: 1.15rem;
+        max-width: var(--reading-width);
+    }
+    .beat-copy li {
+        margin: 0.38rem 0;
+    }
+    .beat-copy li::marker {
+        color: var(--signal);
+    }
+    .beat-rail {
+        position: relative;
+        align-self: stretch;
+        min-height: 100%;
+    }
+    .beat-rail::before {
+        content: "";
+        position: absolute;
+        left: 50%;
+        top: 0;
+        bottom: -2.25rem;
+        width: 2px;
+        background: var(--ink);
+        transform: translateX(-50%);
+    }
+    .timeline > li:last-child .beat-rail::before {
+        bottom: 0.4rem;
+    }
+    .beat-rail::after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        top: 0.2rem;
+        width: 0.85rem;
+        height: 0.85rem;
+        border: 2px solid var(--ink);
+        border-radius: 50%;
+        background: var(--signal);
+        transform: translateX(-50%);
+    }
+    .beat-photos {
+        display: flex;
+        flex-direction: column;
+        gap: 1.25rem;
+    }
+    .beat-photos figure {
+        margin: 0;
+    }
+    .beat-photos img {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+    .recap .recap-hero figcaption {
+        color: #d7e0e1;
+    }
+    .recap figcaption,
+    .recap-gallery span {
+        display: block;
+        margin-top: 0.35rem;
+        color: #44565b;
+        font-size: 0.82rem;
+    }
+    .recap-gallery {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: flex-start;
+        column-gap: 8px;
+        row-gap: 0.85rem;
+        list-style: none;
+        margin: 1.25rem 0 0;
+        padding: 0;
+    }
+    .recap-gallery li {
+        min-width: 0;
+    }
+    .recap-gallery a {
+        display: block;
+    }
+    .recap-gallery img {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+    .recap-gallery span {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    @media (max-width: 860px) {
+        .timeline > li {
+            grid-template-columns: 1.4rem minmax(0, 1fr);
+            column-gap: 0.9rem;
+        }
+        .beat-copy,
+        .beat-photos {
+            grid-column: 2;
+        }
+        .beat-rail {
+            grid-column: 1;
+            grid-row: 1 / span 2;
+        }
+        .beat-photos {
+            margin-top: 1rem;
+        }
+        .highlight-grid,
+        .feature-grid {
+            grid-template-columns: 1fr;
+        }
+        .feature-grid img,
+        .beat-photos img,
+        .recap-gallery img {
+            height: auto;
+        }
+    }
+</style>

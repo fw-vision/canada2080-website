@@ -1,0 +1,324 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+interface Photo {
+    src: string;
+    alt: string;
+    caption: string;
+}
+
+interface Props {
+    documentTitle: string;
+    description: string;
+    eyebrow: string;
+    headline: string;
+    claim?: string;
+    name: string;
+    bio: string;
+    profileUrl?: string;
+    profileLabel?: string;
+    podiumSrc?: string;
+    podiumAlt?: string;
+    photos?: Photo[];
+}
+
+const {
+    documentTitle,
+    description,
+    eyebrow,
+    headline,
+    claim,
+    name,
+    bio,
+    profileUrl,
+    profileLabel = "LinkedIn",
+    podiumSrc,
+    podiumAlt = "",
+    photos = [],
+} = Astro.props;
+
+const hasTranscript = Astro.slots.has("transcript");
+---
+
+<BaseLayout title={documentTitle} description={description}>
+    <article class="session">
+        <div class="session-pack shell" data-session-pack>
+            <div class="pack-col" data-pack="lead">
+                <div class="statement">
+                    <p class="eyebrow">
+                        <a href="/events/2026-kickoff-recap">Kickoff recap</a>
+                        · {eyebrow}
+                    </p>
+                    <slot />
+                </div>
+            </div>
+            <div class="pack-col" data-pack="side">
+                <aside class="profile">
+                    {
+                        podiumSrc && (
+                            <figure class="podium">
+                                <img src={podiumSrc} alt={podiumAlt} />
+                            </figure>
+                        )
+                    }
+                    <div class="bio">
+                        <h1 class:list={[{ "has-claim": Boolean(claim) }]}>
+                            {
+                                claim ? (
+                                    <span class="title-setup">{headline}</span>
+                                ) : (
+                                    headline
+                                )
+                            }
+                            {claim && <span class="title-claim">{claim}</span>}
+                        </h1>
+                        <h2>{name}</h2>
+                        <p>{bio}</p>
+                        {
+                            profileUrl && (
+                                <p>
+                                    <a
+                                        href={profileUrl}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                    >
+                                        {profileLabel}
+                                    </a>
+                                </p>
+                            )
+                        }
+                    </div>
+                </aside>
+            </div>
+            {
+                hasTranscript && (
+                    <div class="transcript" id="full-transcript">
+                        <h2>Full Transcript</h2>
+                        <slot name="transcript" />
+                    </div>
+                )
+            }
+        </div>
+        <script is:inline>
+            (function () {
+                if (location.hash !== "#full-transcript") return;
+                var transcript = document.getElementById("full-transcript");
+                if (!transcript) return;
+                function go() {
+                    transcript.scrollIntoView({ block: "start" });
+                }
+                go();
+                window.addEventListener("load", function () {
+                    go();
+                });
+            })();
+        </script>
+        {
+            photos.length > 0 && (
+                <section class="shell session-gallery">
+                    <h2>At the kickoff</h2>
+                    <ul>
+                        {photos.map((photo) => (
+                            <li>
+                                <img src={photo.src} alt={photo.alt} />
+                                <span>{photo.caption}</span>
+                            </li>
+                        ))}
+                    </ul>
+                </section>
+            )
+        }
+    </article>
+</BaseLayout>
+
+<style is:inline>
+    .session-pack {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(12.5rem, 20rem);
+        gap: clamp(1.25rem, 3vw, 2.25rem);
+        align-items: start;
+        padding-top: clamp(2.25rem, 5vw, 4rem);
+        padding-bottom: 1rem;
+    }
+    .pack-col {
+        min-width: 0;
+    }
+    .statement .eyebrow a {
+        color: inherit;
+    }
+    .statement p,
+    .lede,
+    .statement li {
+        max-width: none;
+    }
+    .profile h1 {
+        max-width: none;
+        margin: 0.75rem 0 0.45rem;
+        font-size: clamp(1.65rem, 2.2vw, 2.2rem);
+        line-height: 1.08;
+        letter-spacing: -0.04em;
+    }
+    .profile h1.has-claim {
+        font-size: clamp(1.85rem, 2.6vw, 2.45rem);
+        line-height: 1.05;
+    }
+    .profile h1 .title-setup {
+        display: block;
+        font-size: 0.72em;
+        line-height: 1.12;
+        letter-spacing: -0.03em;
+    }
+    .profile h1 .title-claim {
+        display: block;
+        margin-top: 0.2em;
+        line-height: 1.05;
+    }
+    .lede {
+        color: var(--ink);
+        font-size: 1.2rem;
+        line-height: 1.4;
+    }
+    .statement ul {
+        list-style: disc;
+        margin: 0.35rem 0 1rem;
+        padding-left: 1.15rem;
+        max-width: none;
+    }
+    .statement li {
+        margin: 0.4rem 0;
+    }
+    .statement li::marker {
+        color: var(--signal);
+    }
+    .close-line {
+        margin-top: 1.5rem;
+        color: var(--ink);
+        font-family: var(--display);
+        font-weight: 900;
+        font-size: clamp(1.35rem, 2vw, 1.7rem);
+        letter-spacing: -0.04em;
+        line-height: 1.15;
+    }
+    .podium {
+        margin: 0;
+    }
+    .podium img {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+    .bio {
+        padding-top: 0.55rem;
+    }
+    .bio h2 {
+        margin: 0.15rem 0 0.45rem;
+        font-size: 1.05rem;
+        letter-spacing: -0.03em;
+        line-height: 1.15;
+    }
+    .bio p {
+        margin: 0;
+        max-width: none;
+        color: #24383c;
+        font-size: 0.95rem;
+        line-height: 1.45;
+    }
+    .bio p + p {
+        margin-top: 0.35rem;
+    }
+    .bio a {
+        color: var(--signal);
+        font-size: 0.88rem;
+    }
+    .transcript {
+        grid-column: 1 / -1;
+        margin-top: 0.5rem;
+        padding-top: 1.25rem;
+        border-top: 1px solid #d5dedf;
+        scroll-margin-top: 1.25rem;
+    }
+    .transcript h2 {
+        margin: 0 0 0.35rem;
+        font-size: clamp(1.35rem, 2vw, 1.7rem);
+    }
+    .transcript h3 {
+        margin: 1.35rem 0 0.45rem;
+        font-size: 1.15rem;
+        letter-spacing: -0.03em;
+        line-height: 1.1;
+        scroll-margin-top: 1.25rem;
+    }
+    .transcript-note {
+        color: #44565b;
+        font-size: 0.92rem;
+    }
+    .transcript-columns {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        gap: clamp(1.25rem, 3vw, 2.5rem);
+        align-items: start;
+        margin-top: 0.85rem;
+    }
+    .transcript-columns h3 {
+        margin-top: 0;
+    }
+    .transcript p,
+    .transcript li,
+    .transcript-note {
+        max-width: none;
+    }
+    .transcript blockquote {
+        margin: 0.35rem 0 0;
+        padding: 0.1rem 0 0.15rem 0.9rem;
+        border-left: 3px solid var(--signal);
+    }
+    .transcript blockquote p {
+        max-width: none;
+        color: #5c6c70;
+        font-size: 1.02rem;
+        line-height: 1.5;
+    }
+    .session-gallery {
+        padding-top: 0.5rem;
+        padding-bottom: 3rem;
+    }
+    .session-gallery h2 {
+        margin-bottom: 1rem;
+    }
+    .session-gallery ul {
+        list-style: none;
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1rem;
+        margin: 0;
+        padding: 0;
+    }
+    .session-gallery img {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+    .session-gallery span {
+        display: block;
+        margin-top: 0.4rem;
+        color: #44565b;
+        font-size: 0.9rem;
+    }
+    @media (max-width: 860px) {
+        .session-pack {
+            grid-template-columns: 1fr;
+        }
+        .pack-col[data-pack="side"] {
+            order: -1;
+        }
+        .transcript-columns {
+            grid-template-columns: 1fr;
+        }
+        .session-gallery ul {
+            grid-template-columns: 1fr;
+        }
+        .session-gallery img {
+            height: auto;
+        }
+    }
+</style>

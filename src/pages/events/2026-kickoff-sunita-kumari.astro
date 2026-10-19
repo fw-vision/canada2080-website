@@ -1,0 +1,109 @@
+---
+import KickoffSession from "../../components/KickoffSession.astro";
+
+const photos = [
+    {
+        src: "/images/events/2026-kickoff/gallery/img_5390.jpg",
+        alt: "Sunita Kumari speaking at the podium in a light blue blazer, with remote participants on the screen behind her.",
+        caption: "On enterprise risk and who answers for a model's outcome.",
+    },
+];
+---
+
+<KickoffSession
+    documentTitle="Know where the data sits, and who answers. | Canada2080"
+    description="Sunita Kumari on AI governance, a biased mortgage model, and sovereign control of data, from her cleaned remarks at the Canada2080 kickoff."
+    eyebrow="Sovereign AI · 1:20 p.m."
+    headline="Know where the data sits, and who answers."
+    name="Sunita Kumari"
+    bio="Sunita Kumari is an AI researcher whose work centres on enterprise AI governance, cognitive stress testing, and robust system design for high-stakes deployments."
+    profileUrl="https://www.linkedin.com/in/sunita-kumari-data-ai/"
+    podiumSrc="/images/events/2026-kickoff/gallery/img_5390.jpg"
+    podiumAlt="Sunita Kumari speaking at the podium in a light blue blazer."
+    photos={photos}
+>
+    <p class="lede">
+        Sovereign AI, she said, is who controls the environment where the model
+        operates, and who answers for the outcome.
+    </p>
+    <p>
+        Every day brings a new story of AI writing code and taking on human
+        tasks. The other side is risk. Models hallucinate. Responses come back
+        biased. Customer data is exposed. That is where governance starts.
+    </p>
+    <p>
+        Governance enforces the security controls that keep a model operating
+        responsibly. Sovereign AI asks who controls the environment: where the
+        data resides, where the infrastructure is, where customer data sits,
+        who can see it, and who is responsible for the outcome.
+    </p>
+    <p>
+        Her example was a bank's mortgage agent that keeps denying applications
+        from people with a strong credit history. If the training data is
+        biased, including a preference for some locations, the responses will
+        be biased too. That is the gap governance is meant to close.
+    </p>
+    <p>
+        The controls make the output transparent. When something looks wrong,
+        the system looks at the evidence and escalates to a person. If the
+        person finds a problem, they ask for a retrain, and the system stays
+        safe.
+    </p>
+    <p>
+        People think governance will slow innovation. She said it is how you
+        scale with confidence and trust. She remembered the early fear of
+        putting a credit card online. Anti-fraud controls made the payments
+        ordinary. The same shift follows once the controls are in place.
+    </p>
+    <Fragment slot="transcript">
+        <p class="transcript-note">Cleaned up transcripts.</p>
+        <blockquote>
+            <p>
+                Hello. Good afternoon everyone. I'm Sunita. Every day we are
+                hearing new stories about AI. AI is writing code. It is doing
+                human tasks. But there is another side of the story, too. It is
+                adding risk. Models are hallucinating. It is giving biased
+                responses and customer data is exposed. And that is where AI
+                governance becomes very important, and that is the journey we
+                are going to explore today.
+            </p>
+            <p>
+                AI governance enforces security controls that will make sure
+                that AI models are operating responsibly. Now, who controls the
+                environment where the AI operates? That is where sovereign AI
+                becomes important. It will enforce meaningful controls around
+                data, infrastructure, and environment, making sure where the
+                data resides, where the infrastructure is, where the customer
+                data is, who has access to the data, and who is responsible for
+                the outcome.
+            </p>
+            <p>
+                Let me make it real with an example. Let's say a bank has set
+                up a mortgage AI agent and it is continuously denying a few
+                mortgage applications even though the customer has a very good
+                credit history. Now, models are trained on biased data, and
+                there could be a possibility that the data is biased on
+                location preferences. If the data is biased, model responses
+                will also be biased, and that is the gap AI governance is
+                trying to solve. It will enforce security controls, making sure
+                that the output and the responses are transparent. Whenever
+                there is any escalation or something is wrong, it will look at
+                the evidence, and if something looks suspicious, it will
+                escalate for human review. If humans find something wrong, they
+                will request to retrain the model and make sure that this
+                entire system operates in a safe and responsible manner.
+            </p>
+            <p>
+                Now, people think that AI governance will slow down AI
+                innovation, but it will help to scale with confidence and
+                trust. Remember when credit card payments were launched, people
+                were scared to put credit card details on online platforms? But
+                slowly we built anti-fraud mechanisms, and everyone is
+                comfortable using online payment systems. The same kind of
+                shift is going to happen when we have the right governance and
+                controls in place. We can scale with confidence. Thank you so
+                much.
+            </p>
+        </blockquote>
+    </Fragment>
+</KickoffSession>

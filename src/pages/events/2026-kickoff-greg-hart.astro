@@ -1,0 +1,76 @@
+---
+import KickoffSession from "../../components/KickoffSession.astro";
+
+const photos = [
+    {
+        src: "/images/events/2026-kickoff/gallery/img_5417.jpg",
+        alt: "Greg Hart speaking beside the podium. His name is on the slide.",
+        caption: "On designing the conditions, then starting Monday.",
+    },
+    {
+        src: "/images/events/2026-kickoff/gallery/img_5332.jpg",
+        alt: "Greg Hart leans over the kickoff banner and signs it.",
+        caption: "Signing the kickoff banner.",
+    },
+];
+---
+
+<KickoffSession
+    documentTitle="Start Monday. | Canada2080"
+    description="Greg Hart on future-ready places and relentless pragmatism at the Canada2080 kickoff."
+    eyebrow="Capacity · 1:55 p.m."
+    headline="Start Monday."
+    name="Greg Hart"
+    bio="Greg Hart is co-founder and facilitator at InceptionU, founder of Future Fit Cities, and a member of the TransPod Advisory Board. His work connects systems thinking and strategy to practical implementation."
+    profileUrl="https://www.linkedin.com/in/greg-hart-design/"
+    podiumSrc="/images/events/2026-kickoff/gallery/img_5417.jpg"
+    podiumAlt="Greg Hart speaking beside the podium. His name is on the slide."
+    photos={photos}
+>
+    <p class="lede">
+        Stop treating 2080 as a problem to be solved. Strategy asks what could
+        be created, then builds the conditions.
+    </p>
+    <ul>
+        <li>
+            Routine problems should be solved. This one, he said, is not a
+            wicked problem. If it is framed that way, it is not really a
+            problem at all.
+        </li>
+        <li>
+            He used a cargo boat full of containers as a picture of old
+            assumptions carried into the future. He named VUCA, volatility,
+            uncertainty, complexity, and ambiguity, and he cited Sidney Dekker
+            on the drift into failure: a slow collapse that arrives because the
+            old thinking was kept too long. If the boat leaks, look for a new
+            boat. Systems are not broken, he said. They produce patterns we
+            dislike.
+        </li>
+        <li>
+            Design, in his definition, is creating the conditions for success,
+            the soil the work grows in. Speed is a byproduct of low friction,
+            not a goal. He pointed to the Apollo teams as a mission shaped
+            around potential.
+        </li>
+        <li>
+            A living-systems test: life creates the conditions for more life.
+            Potential and relationships over raw quantity. Quality over
+            quantity. Lower energy when it will do. Keep operating, and still
+            invest in the next option.
+        </li>
+        <li>
+            Places matter. A Utrecht highway, built as an expressway around
+            1980, was returned to a canal. Fail to design the place, he said,
+            and the result is a Blade Runner future.
+        </li>
+        <li>
+            Education, in his view, is outdated for this work. Rewire it around
+            critical thinking, systems thinking, and computational thinking,
+            not memorized facts.
+        </li>
+        <li>
+            Relentless pragmatism: know where you are going, know where you are
+            without romance, and do the actions in between.
+        </li>
+    </ul>
+</KickoffSession>

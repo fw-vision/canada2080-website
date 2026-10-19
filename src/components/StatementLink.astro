@@ -1,0 +1,31 @@
+---
+interface Props {
+    href: string;
+    label: string;
+}
+const { href, label } = Astro.props;
+---
+
+<a class="statement-icon" href={href} aria-label={label} title={label}>
+    <svg viewBox="0 0 20 20" width="14" height="14" aria-hidden="true" focusable="false">
+        <path
+            d="M5.5 14.5 14.5 5.5M8 5.5h6.5V12"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="square"
+            stroke-linejoin="miter"></path>
+    </svg>
+</a>
+
+<style>
+    .statement-icon {
+        display: inline-flex;
+        margin-left: 0.4rem;
+        color: var(--signal);
+        vertical-align: 0.12em;
+    }
+    .statement-icon:hover {
+        color: var(--ink);
+    }
+</style>

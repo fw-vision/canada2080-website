@@ -1,0 +1,151 @@
+---
+import KickoffSession from "../../components/KickoffSession.astro";
+
+const photos = [
+    {
+        src: "/images/events/2026-kickoff/gallery/img_5363.jpg",
+        alt: "Dr Sudarshana Bhattacharya speaking at the podium in a white blazer.",
+        caption: "On wildfire exposure in Alberta's boreal forest.",
+    },
+];
+---
+
+<KickoffSession
+    documentTitle="An area the size of one Nepal, every year. | Canada2080"
+    description="Dr Sudarshana Bhattacharya on wildfire exposure in Alberta's boreal forest, from her cleaned remarks at the Canada2080 kickoff."
+    eyebrow="Sovereign AI · 1:20 p.m."
+    headline="An area the size of one Nepal, every year."
+    name="Dr Sudarshana Bhattacharya"
+    bio="Dr Sudarshana Bhattacharya is a senior director analyst and a recent graduate of Golden Gate University. Her doctoral research applies satellite data and machine learning to wildfire exposure in Alberta's boreal forest."
+    profileUrl="https://www.linkedin.com/in/sudarshanabhattacharya/"
+    podiumSrc="/images/events/2026-kickoff/gallery/img_5363.jpg"
+    podiumAlt="Dr Sudarshana Bhattacharya speaking at the podium in a white blazer."
+    photos={photos}
+>
+    <p class="lede">
+        Every summer, she said, wildfire burns an area the size of one Nepal
+        in Alberta's boreal forest.
+    </p>
+    <p>
+        She had just graduated from Golden Gate University. At work she is a
+        senior director analyst. She kept the talk on what Canada already has,
+        and on one urgent problem that returns every year.
+    </p>
+    <p>
+        Her numbers: 16.5 million hectares and $9.9 billion at stake each year.
+        Indigenous communities who live there are most affected. The timber
+        industry is hit hardest.
+    </p>
+    <p>
+        AI, as she used the word, is not only ChatGPT. The field is about 70
+        years old, and that older practice does not need the compute GPT models
+        or Gemini need. Her research sits in the gap between satellite data
+        and simpler machine learning, and a confirmed account of what is
+        actually at risk.
+    </p>
+    <p>Two layers in the thesis architecture.</p>
+    <ul>
+        <li>
+            Pull the data together and clean it. She said that foundation does
+            not need the compute people assume.
+        </li>
+        <li>
+            Start with Random Forest on an ordinary computer, then a
+            convolutional network that tries to see the way an eye does, then
+            an ANN that brings the parts together.
+        </li>
+    </ul>
+    <p>
+        The result she wants is a dollar figure for forest-fire exposure.
+        Small, domain-specific language models could do it, drawing on Natural
+        Resources Canada and Statistics Canada. Geospatial data is the
+        remaining hard set. She has a project charter for a master's capstone,
+        for anyone who wants to run it end to end inside a small language
+        model.
+    </p>
+    <p>
+        The doctorate, she said, was not the point. The point is a usable
+        picture of what is at stake each year, built as much as possible on
+        data held here. Some Copernicus satellite data from Europe may still
+        be needed.
+    </p>
+    <Fragment slot="transcript">
+        <p class="transcript-note">Cleaned up transcripts.</p>
+        <blockquote>
+            <p>
+                Good afternoon, everyone. It's great to be here. My name is Dr
+                Sudarshana. I just graduated from Golden Gate University, and
+                at work, I'm a senior director analyst, as Francis mentioned.
+            </p>
+            <p>
+                I'm keeping it very crisp and aligned to what Francis mentioned
+                around Canada becoming stronger with what we have right now,
+                pivoting on the materials that we have and at the same time
+                trying to tackle the challenges that we are posed with every
+                year. My research tried to address one of the urgent things
+                that happens every year, focused on the boreal forest of
+                Alberta.
+            </p>
+            <p>
+                Geographically for context, every year we burn the area of one
+                Nepal during our summer season because of wildfires. The people
+                most impacted are our Indigenous communities who stay there.
+                Industry-wise, the timber industry is hit the worst.
+            </p>
+            <p>
+                On the other side, we hear a lot of things happening with AI.
+                Let me keep it very simple here: when I say AI, it is not just
+                ChatGPT. We have been doing AI for 70 years now, so let's start
+                from there. That does not require the type of compute that GPT
+                models or Gemini require. That is where the research
+                intervention is. I will quickly go over some context to show
+                you the numbers: 16.5 million hectares and $9.9 billion are at
+                stake every year. The research tries to bridge the gap between
+                satellite data, AI, machine learning, and probabilistic output
+                on the left-hand side, and the right-hand side where we need a
+                confirmed way to understand what is actually at risk. That is
+                exactly the research intervention.
+            </p>
+            <p>
+                This is a high-level architecture proposed as part of the
+                thesis. It starts with the top layer where we pull data
+                together. That is the foundation, and once we clean the data,
+                that does not require the amount of compute we always thought
+                it would. The second layer is the intelligence layer. We start
+                with very simple, basic machine learning without going to any
+                GPTs. We start with Random Forest, which can easily run on PC,
+                and then move to CNN (convolutional neural network), which
+                tries to replicate the way our eyes see and perceive. Then an
+                ANN brings it all together.
+            </p>
+            <p>
+                What it tries to solve is how we can account for the amount of
+                exposure we have due to forest fires and arrive at calculated
+                dollar figures. To implement that, it could be done using small
+                language models, domain-specific language models, and most
+                importantly, pulling together datasets from Natural Resources
+                Canada and Statistics Canada. The only other challenging
+                dataset we have is geospatial data. If we can figure out how
+                best to pull geospatial data together, I would love to
+                implement it as a capstone project. If anyone in a Master's
+                program wants to implement it as a capstone project, I have a
+                project charter outlining how to sequence these activities so
+                we can see what end-to-end implementation within a small
+                language model looks like.
+            </p>
+            <p>
+                The idea here was not just to pursue a doctorate in AI or
+                machine learning. The idea was to make it as applicable and
+                sovereign as possible by leveraging in-house data. We may rely
+                on some European satellite datasets coming from Copernicus, but
+                that is all we would need to really implement it and have a
+                clearer picture of what goes at stake every year and how we can
+                protect it.
+            </p>
+            <p>
+                I am happy to answer any questions you have and to continue the
+                conversation after we wrap up. Thank you.
+            </p>
+        </blockquote>
+    </Fragment>
+</KickoffSession>

@@ -1,0 +1,50 @@
+---
+import KickoffSession from "../../components/KickoffSession.astro";
+
+const photos = [
+    {
+        src: "/images/events/2026-kickoff/gallery/img_5410.jpg",
+        alt: "Yulia Korobkova speaking beside the podium. Her name is on the slide.",
+        caption: "On data centres as a high-tech industrial campus.",
+    },
+];
+---
+
+<KickoffSession
+    documentTitle="A campus, not an isolated building. | Canada2080"
+    description="Yulia Korobkova on data-centre design and Canadian compute capacity at the Canada2080 kickoff."
+    eyebrow="Capacity · 1:55 p.m."
+    headline="A campus, not an isolated building."
+    name="Yulia Korobkova"
+    bio="Yulia Korobkova is Data Centers Studio Leader and Vice President at Corgan in Toronto. Her practice combines architecture, project leadership, and the delivery of compute infrastructure."
+    profileUrl="https://www.linkedin.com/in/yulia-korobkova/"
+    podiumSrc="/images/events/2026-kickoff/gallery/img_5410.jpg"
+    podiumAlt="Yulia Korobkova speaking beside the podium. Her name is on the slide."
+    photos={photos}
+>
+    <p class="lede">
+        Canada, she said, already has the land, the people, the technology, and
+        the manufacturing base.
+    </p>
+    <ul>
+        <li>
+            She compared a modern data centre with light industry. She did not
+            compare Canada with the United States.
+        </li>
+        <li>
+            Closed-loop cooling, she said, uses about as much water as an
+            office. Noise is lower than an Amazon distribution centre.
+            Contamination is almost nothing, lower than a bottling plant.
+        </li>
+        <li>
+            The shift she named is away from isolated buildings and toward a
+            high-tech industrial campus, with buffers, local jobs, and the
+            community in the plan.
+        </li>
+        <li>
+            The barrier she named is the real-estate habit that still prefers
+            the isolated building. Change that, and the campuses can be built
+            here.
+        </li>
+    </ul>
+</KickoffSession>

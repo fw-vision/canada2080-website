@@ -7,6 +7,10 @@ export default defineConfig({
   output: 'static',
   trailingSlash: 'never',
   vite: {
+    server: {
+      host: "0.0.0.0",
+      allowedHosts: [".tail0f7891.ts.net"],
+    },
     optimizeDeps: {
       // Keep the card PNG exporter available in `astro dev`. Without this,
       // Vite can omit the prebundle and the page script fails to load, so
